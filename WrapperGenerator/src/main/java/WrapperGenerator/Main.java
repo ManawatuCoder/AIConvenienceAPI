@@ -1,4 +1,7 @@
-import netscape.javascript.JSObject;
+package WrapperGenerator;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,9 +48,12 @@ public class Main {
         test.addMessage(0,"Is this working?");
 
         JSObj = jsonify();
-        System.out.println(JSObj);
 
-        System.out.println(postMessages());
+        String response = postMessages();
+        JSONObject responseJSON = new JSONObject(response);
+        JSONArray choices = responseJSON.getJSONArray("choices");
+        String message = choices.getJSONObject(0).getJSONObject("message").getString("content");
+        System.out.println(message);
         //choices.content_filter_results.message.content
         //"choices":[{"content_filter_results":
         //"message":{"annotations":[],"content":"aaaaa","refusal":null,"role":"assistant"}
