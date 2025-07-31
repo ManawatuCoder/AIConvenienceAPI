@@ -19,8 +19,8 @@ import java.util.stream.Stream;
 public class Main {
 
     // Azure OpenAI configuration constants
-    private static final String AZURE_OPENAI_ENDPOINT = "https://azsdk-openai.openai.azure.com/";
-    private static final String AZURE_OPENAI_KEY = "1bRjUg3XvlZL9iNWWn4RPWfLtenHCaF6HLbJb83uLuyikpVFwZWcJQQJ99BGACHYHv6XJ3w3AAABACOGULZB";
+    private static final String AZURE_OPENAI_ENDPOINT = "Enter Endpoint here";
+    private static final String AZURE_OPENAI_KEY = "Enter Key here";
     private static final String DEPLOYMENT_NAME = "gpt-4.1";
 
     // Creates and configures the Azure OpenAI client
