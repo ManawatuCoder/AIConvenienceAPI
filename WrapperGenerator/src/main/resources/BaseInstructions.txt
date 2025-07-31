@@ -1,1 +1,0 @@
-respond with aaaaa if yes, bbbb if no.\nRespond with appropriate answer if answer is not yes or no.
