@@ -1,6 +1,7 @@
 //This takes a codegen output file, and breaks it apart based upon specific tags present in codegen.
 //At the moment this just uses "@Metadata", "@ServiceMethod", and "@Generated" as the delimiters for chunks.
-//@TODO: More delimiters should be investigated - there very well may be other tags in the codegen. I already found one.
+//TODO: More delimiters should be investigated - there very well may be other tags in the codegen. I already found one.
+//TODO: Could consider using function declaration as delimiter? - regex exists in DefinitionExtractor.java
 //I also know that we will get multiple definitions grouped together, as this delimiter does not exist between them -
 //as seen in https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/translation/azure-ai-translation-text/src/main/java/com/azure/ai/translation/text/TextTranslationClient.java#L62
 //(ctrl click above link to open in browser)
