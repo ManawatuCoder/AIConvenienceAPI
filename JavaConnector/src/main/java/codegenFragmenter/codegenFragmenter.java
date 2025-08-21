@@ -3,6 +3,13 @@
 //@TODO: More delimiters should be investigated - there very well may be other tags in the codegen.
 //I initially tried just @Generated, but noticed this tag is not even present in the file I used,
 //while @Metadata was not present in the file I used as reference while exploring ideas.
+//
+//Stores global variables and imports, as well as any initial comments, within first chunk designated
+//as a header chunk. This is currently considered important information for each prompt, to maintain context.
+//TODO: Examine whether header contains extraneous information; Should header chunk really be included?
+//TODO: Header contains global variables, but not variables local to entire class.
+//I.E. blobstorage has "private ContainerProperties properties;" which is not included in header.
+//Is, instead, contained within its own chunk and is not grouped with fromJson() chunk, despite being used there.
 
 
 package codegenFragmenter;
@@ -20,6 +27,7 @@ public class codegenFragmenter {
         String line;
         StringBuilder currentChunk = new StringBuilder();
         boolean inChunk = false;
+        currentChunk.append("Header:\n");
 
         while ((line = reader.readLine()) != null) {
             if (line.contains("@Metadata") || line.contains("@Generated")) {
