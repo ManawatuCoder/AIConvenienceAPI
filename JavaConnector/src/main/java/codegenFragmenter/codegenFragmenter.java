@@ -1,8 +1,11 @@
 //This takes a codegen output file, and breaks it apart based upon specific tags present in codegen.
-//At the moment this just uses "@Metadata" and "@Generated" as the delimiters for chunks.
-//@TODO: More delimiters should be investigated - there very well may be other tags in the codegen.
+//At the moment this just uses "@Metadata", "@ServiceMethod", and "@Generated" as the delimiters for chunks.
+//@TODO: More delimiters should be investigated - there very well may be other tags in the codegen. I already found one.
+//I also know that we will get multiple definitions grouped together, as this delimiter does not exist between them -
+//as seen in https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/translation/azure-ai-translation-text/src/main/java/com/azure/ai/translation/text/TextTranslationClient.java#L62
+//(ctrl click above link to open in browser)
 //I initially tried just @Generated, but noticed this tag is not even present in the file I used,
-//while @Metadata was not present in the file I used as reference while exploring ideas.
+//while @Metadata was not present in the file I used as reference while exploring ideas (hyperlinked above).
 //
 //Stores global variables and imports, as well as any initial comments, within first chunk designated
 //as a header chunk. This is currently considered important information for each prompt, to maintain context.
@@ -30,7 +33,7 @@ public class codegenFragmenter {
         currentChunk.append("Header:\n");
 
         while ((line = reader.readLine()) != null) {
-            if (line.contains("@Metadata") || line.contains("@Generated")) {
+            if (line.contains("@Metadata") || line.contains("@Generated") || line.contains("@ServiceMethod")) {
                 if (currentChunk.length() > 0) { //Maybe redundant;
                     chunks.add(currentChunk.toString());
                     // checks if anything exists between tags, or before first tag, before appending chunk to List.
