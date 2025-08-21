@@ -1,10 +1,9 @@
-//This is for looking through the list of fragments, and linking dependant fragments together.
 //It appends the Header chunk (first chunk in list) to every output chunk.
 //
 //Currently stores entire chunk containing function definition.
-//Perhaps this is undesireable, as I see some chunks may contain multiple definitions.
+//Perhaps this is undesirable, as I see some chunks may contain multiple definitions.
 //If chunks are likely to only contain a small number of these, perhaps this is not a huge issue
-//TODO: but should still be optimised out if time allows.
+//TODO: but potentially should still be optimised out if time allows.
 
 package codegenFragmenter;
 
@@ -18,17 +17,21 @@ import java.util.regex.Pattern;
 //(public|protected|private|static|\s) +[\w\<\>\[\]]+\s+(\w+) *\([^\)]*\) *(\{?|[^;])
 //Regex for function declarations.
 
-public class chunkLinker {
-    public static List<Map> linker(List<String> chunkList){
+public class definitionExtractor {
 
+    public static Map<String,String> extract(List<String> chunkList){
+
+        //******************************************
+        //Todo: Remove this debug output
+        //******************************************
         for (int i = 0; i < chunkList.size(); i++) {
             System.out.println("//// CHUNK " + (i + 1) + " START ////");
             System.out.println(chunkList.get(i));
             System.out.println("//// CHUNK " + (i + 1) + " END ////\n");
-
         }
+        //******************************************
 
-        List<Map> jam = new ArrayList<>();
+        Map<String, String> definitionList = new HashMap<>();
 
         Pattern methodDefPattern = Pattern.compile(
                 "(public|protected|private|static|\\s) +[\\w\\<\\>\\[\\]]+\\s+(\\w+) *\\([^\\)]*\\) *(\\{?|[^;])"
@@ -37,14 +40,13 @@ public class chunkLinker {
         for(String chunk : chunkList){
             Matcher matcher = methodDefPattern.matcher(chunk);
             while (matcher.find()) {
-                Map<String, String> entry = new HashMap<>();
-                entry.put(matcher.group(2), chunk);
-                jam.add(entry);
+                definitionList.put(matcher.group(2), chunk);
+//                Debug output:
 //                String methodDefinition = matcher.group(2);
 //                System.out.println("Found method: " + methodDefinition);
             }
         }
 
-        return jam;
+        return definitionList;
     }
 }

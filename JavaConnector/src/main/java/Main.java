@@ -1,13 +1,15 @@
 import codegenFragmenter.codegenFragmenter;
+import codegenFragmenter.definitionExtractor;
+import codegenFragmenter.chunkLinker;
 import com.azure.ai.openai.OpenAIClient;
 import com.azure.ai.openai.OpenAIClientBuilder;
 import com.azure.ai.openai.models.*;
 import com.azure.core.credential.AzureKeyCredential;
-import com.azure.core.exception.ClientAuthenticationException;
 import com.azure.core.util.Configuration;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,6 +18,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 public class Main {
@@ -219,16 +222,29 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
+        PrintStream fileOut = new PrintStream("output.txt");
+        System.setOut(fileOut);  // all System.out.println now goes to output.txt
         codegenFragmenter fragmenter = new codegenFragmenter();
         File file = new File("../TypeSpec_Conversion/tsp-output/clients/java/src/main/java/azurestoragemanagement/BlobContainer.java");
         List<String> chunks = fragmenter.fragment(file);
 
-        for (int i = 0; i < chunks.size(); i++) {
-            System.out.println("//// CHUNK " + (i + 1) + " START ////");
-            System.out.println(chunks.get(i));
-            System.out.println("//// CHUNK " + (i + 1) + " END ////\n");
-
+        definitionExtractor extractor = new definitionExtractor();
+        Map<String,String> functionList = extractor.extract(chunks);
+        for (Map.Entry<String,String> chunk : functionList.entrySet()){
+            System.out.println("Function: \n" + chunk.getKey());
         }
+
+        chunkLinker linker = new chunkLinker();
+        List<List<String>> linkedChunks = linker.link(chunks, functionList);
+
+        for(List<String> group : linkedChunks){
+            System.out.println("Grouped chunks:\n");
+            for(String chunk : group){
+                System.out.println("Chunk:\n" + chunk);
+            }
+        }
+
+
 //        try {
 //            // Initialize
 //            OpenAIClient client = createOpenAIClient();
