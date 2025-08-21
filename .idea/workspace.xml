@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a45e00b1-fa9f-4959-ae6b-85c268df1552" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaConnector/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaConnector/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaConnector/src/main/java/codegenFragmenter/codegenFragmenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaConnector/src/main/java/codegenFragmenter/codegenFragmenter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

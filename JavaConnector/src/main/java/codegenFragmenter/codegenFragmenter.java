@@ -1,3 +1,10 @@
+//This takes a codegen output file, and breaks it apart based upon specific tags present in codegen.
+//At the moment this just uses "@Metadata" and "@Generated" as the delimiters for chunks.
+//@TODO: More delimiters should be investigated - there very well may be other tags in the codegen.
+//I initially tried just @Generated, but noticed this tag is not even present in the file I used,
+//while @Metadata was not present in the file I used as reference while exploring ideas.
+
+
 package codegenFragmenter;
 
 import java.io.*;
@@ -16,20 +23,17 @@ public class codegenFragmenter {
 
         while ((line = reader.readLine()) != null) {
             if (line.contains("@Metadata") || line.contains("@Generated")) {
-                // save previous chunk if it exists
-                if (inChunk && currentChunk.length() > 0) {
+                if (currentChunk.length() > 0) { //Maybe redundant;
                     chunks.add(currentChunk.toString());
+                    // checks if anything exists between tags, or before first tag, before appending chunk to List.
                     currentChunk.setLength(0);
                 }
-                inChunk = true; // start new chunk
             }
 
-            if (inChunk) {
-                currentChunk.append(line).append(System.lineSeparator());
-            }
+            currentChunk.append(line).append(System.lineSeparator());
         }
 
-        // add the last chunk
+        // add the last chunk if it exists.
         if (currentChunk.length() > 0) {
             chunks.add(currentChunk.toString());
         }
@@ -39,20 +43,6 @@ public class codegenFragmenter {
     }
 
     public codegenFragmenter() throws IOException {
-        File file = new File("../TypeSpec_Conversion/tsp-output/clients/java/src/main/java/azurestoragemanagement/BlobContainer.java");
-        List<String> chunks = fragment(file);
 
-        System.out.println(file.getAbsolutePath());
-        System.out.println(file.exists());
-
-        System.out.println("GO!");
-
-
-        for (int i = 0; i < chunks.size(); i++) {
-            System.out.println("//// CHUNK " + (i + 1) + " START ////");
-            System.out.println(chunks.get(i));
-            System.out.println("//// CHUNK " + (i + 1) + " END ////");
-            System.out.println();
-        }
     }
 }
