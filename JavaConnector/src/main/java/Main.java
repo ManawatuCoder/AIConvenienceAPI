@@ -222,8 +222,6 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        PrintStream fileOut = new PrintStream("output.txt");
-        System.setOut(fileOut);  // all System.out.println now goes to output.txt
         codegenFragmenter fragmenter = new codegenFragmenter();
         File file = new File("../TypeSpec_Conversion/tsp-output/clients/java/src/main/java/azurestoragemanagement/BlobContainer.java");
         List<String> chunks = fragmenter.fragment(file);
