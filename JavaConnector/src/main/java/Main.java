@@ -1,3 +1,4 @@
+import codegenFragmenter.codegenFragmenter;
 import com.azure.ai.openai.OpenAIClient;
 import com.azure.ai.openai.OpenAIClientBuilder;
 import com.azure.ai.openai.models.*;
@@ -216,29 +217,30 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
-        try {
-            // Initialize
-            OpenAIClient client = createOpenAIClient();
-
-            // Read all required files
-            System.out.println("Reading files...");
-            String inputSpecs = readFileContent("../PlainText/InputSpecs.txt");
-            String typeSpecContent = readFileContent("../TypeSpec_Conversion/blob-storage.tsp");
-            List<String> srcFiles = readAllSourceFiles("../TypeSpec_Conversion/tsp-output/clients/java/src");
-
-            // Send content to AI for analysis
-            analyzeGeneratedCode(client, inputSpecs, typeSpecContent, srcFiles);
-
-        } catch (ClientAuthenticationException e) {
-            System.err.println("Authentication failed: " + e.getMessage());
-            System.err.println("Please check your API key and endpoint.");
-        } catch (IOException e) {
-            System.err.println("File reading error: " + e.getMessage());
-            e.printStackTrace();
-        } catch (Exception e) {
-            System.err.println("Error occurred: " + e.getMessage());
-            e.printStackTrace();
-        }
+    public static void main(String[] args) throws IOException {
+        codegenFragmenter fragmenter = new codegenFragmenter();
+//        try {
+//            // Initialize
+//            OpenAIClient client = createOpenAIClient();
+//
+//            // Read all required files
+//            System.out.println("Reading files...");
+//            String inputSpecs = readFileContent("../PlainText/InputSpecs.txt");
+//            String typeSpecContent = readFileContent("../TypeSpec_Conversion/blob-storage.tsp");
+//            List<String> srcFiles = readAllSourceFiles("../TypeSpec_Conversion/tsp-output/clients/java/src");
+//
+//            // Send content to AI for analysis
+//            analyzeGeneratedCode(client, inputSpecs, typeSpecContent, srcFiles);
+//
+//        } catch (ClientAuthenticationException e) {
+//            System.err.println("Authentication failed: " + e.getMessage());
+//            System.err.println("Please check your API key and endpoint.");
+//        } catch (IOException e) {
+//            System.err.println("File reading error: " + e.getMessage());
+//            e.printStackTrace();
+//        } catch (Exception e) {
+//            System.err.println("Error occurred: " + e.getMessage());
+//            e.printStackTrace();
+//        }
     }
 }
