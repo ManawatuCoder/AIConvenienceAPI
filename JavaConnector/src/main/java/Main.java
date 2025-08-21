@@ -6,6 +6,7 @@ import com.azure.core.credential.AzureKeyCredential;
 import com.azure.core.exception.ClientAuthenticationException;
 import com.azure.core.util.Configuration;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -219,6 +220,15 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         codegenFragmenter fragmenter = new codegenFragmenter();
+        File file = new File("../TypeSpec_Conversion/tsp-output/clients/java/src/main/java/azurestoragemanagement/BlobContainer.java");
+        List<String> chunks = fragmenter.fragment(file);
+
+        for (int i = 0; i < chunks.size(); i++) {
+            System.out.println("//// CHUNK " + (i + 1) + " START ////");
+            System.out.println(chunks.get(i));
+            System.out.println("//// CHUNK " + (i + 1) + " END ////\n");
+
+        }
 //        try {
 //            // Initialize
 //            OpenAIClient client = createOpenAIClient();
