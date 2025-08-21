@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class chunkLinker {
+public class ChunkLinker {
 
     public static List<List<String>> link(List<String> codegenChunks, Map<String,String> functionChunks){
         List<List<String>> linkedChunks = new ArrayList<>();
