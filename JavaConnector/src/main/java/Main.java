@@ -1,6 +1,6 @@
-import codegenFragmenter.codegenFragmenter;
-import codegenFragmenter.definitionExtractor;
-import codegenFragmenter.chunkLinker;
+import codegenFragmenter.CodegenFragmenter;
+import codegenFragmenter.DefinitionExtractor;
+import codegenFragmenter.ChunkLinker;
 import com.azure.ai.openai.OpenAIClient;
 import com.azure.ai.openai.OpenAIClientBuilder;
 import com.azure.ai.openai.models.*;
@@ -9,7 +9,6 @@ import com.azure.core.util.Configuration;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -222,17 +221,17 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        codegenFragmenter fragmenter = new codegenFragmenter();
+        CodegenFragmenter fragmenter = new CodegenFragmenter();
         File file = new File("../TypeSpec_Conversion/tsp-output/clients/java/src/main/java/azurestoragemanagement/BlobContainer.java");
         List<String> chunks = fragmenter.fragment(file);
 
-        definitionExtractor extractor = new definitionExtractor();
+        DefinitionExtractor extractor = new DefinitionExtractor();
         Map<String,String> functionList = extractor.extract(chunks);
         for (Map.Entry<String,String> chunk : functionList.entrySet()){
             System.out.println("Function: \n" + chunk.getKey());
         }
 
-        chunkLinker linker = new chunkLinker();
+        ChunkLinker linker = new ChunkLinker();
         List<List<String>> linkedChunks = linker.link(chunks, functionList);
 
         for(List<String> group : linkedChunks){

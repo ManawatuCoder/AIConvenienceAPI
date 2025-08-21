@@ -7,7 +7,6 @@
 
 package codegenFragmenter;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +16,7 @@ import java.util.regex.Pattern;
 //(public|protected|private|static|\s) +[\w\<\>\[\]]+\s+(\w+) *\([^\)]*\) *(\{?|[^;])
 //Regex for function declarations.
 
-public class definitionExtractor {
+public class DefinitionExtractor {
 
     public static Map<String,String> extract(List<String> chunkList){
 

@@ -21,7 +21,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class codegenFragmenter {
+public class CodegenFragmenter {
 
     public static List<String> fragment(File file) throws IOException {
         List<String> chunks = new ArrayList<>();
@@ -53,7 +53,7 @@ public class codegenFragmenter {
         return chunks;
     }
 
-    public codegenFragmenter() throws IOException {
+    public CodegenFragmenter() throws IOException {
 
     }
 }
