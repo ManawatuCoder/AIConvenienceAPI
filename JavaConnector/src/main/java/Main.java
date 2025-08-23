@@ -223,16 +223,16 @@ public class Main {
     public static void main(String[] args) throws IOException {
         CodegenFragmenter fragmenter = new CodegenFragmenter();
         File file = new File("../TypeSpec_Conversion/tsp-output/clients/java/src/main/java/azurestoragemanagement/BlobContainer.java");
-        List<String> chunks = fragmenter.fragment(file);
+        Map<String, String> chunks = fragmenter.fragment(file);
 
         DefinitionExtractor extractor = new DefinitionExtractor();
-        Map<String,String> functionList = extractor.extract(chunks);
-        for (Map.Entry<String,String> chunk : functionList.entrySet()){
-            System.out.println("Function: \n" + chunk.getKey());
-        }
+//        Map<String,String> functionList = extractor.extract(chunks);
+//        for (Map.Entry<String,String> chunk : functionList.entrySet()){
+//            System.out.println("Function: \n" + chunk.getKey());
+//        }
 
         ChunkLinker linker = new ChunkLinker();
-        List<List<String>> linkedChunks = linker.link(chunks, functionList);
+        List<List<String>> linkedChunks = linker.link(chunks);
 
         for(List<String> group : linkedChunks){
             System.out.println("Grouped chunks:\n");
