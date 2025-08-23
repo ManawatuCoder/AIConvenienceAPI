@@ -14,6 +14,8 @@ package codegenFragmenter;
 import com.github.javaparser.StaticJavaParser;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.comments.Comment;
+import com.github.javaparser.ast.comments.JavadocComment;
 
 
 import java.io.*;
@@ -30,33 +32,25 @@ public class CodegenFragmenter {
         CompilationUnit compilationUnit = StaticJavaParser.parse(file);
 
         List<MethodDeclaration> methods = compilationUnit.findAll(MethodDeclaration.class);
-        methods.sort(Comparator.comparing(md -> md.getBegin().get().line));
+//        methods.sort(Comparator.comparing(md -> md.getBegin().get().line));
 
-        MethodDeclaration md = methods.get(0);
-        int thisMethod = 0;
-        int nextMethod = md.getBegin().get().line - 2;
+        String key = "Header"; //bracket included for pattern matching in ChunkLinker
+        chunks.put(key, headerExtractor(methods, lines));
 
-        List<String> outputLine = lines.subList(thisMethod, nextMethod + 1); //All lines between thisMethod and nextMethod
-        StringBuilder currentChunk = new StringBuilder();
-        currentChunk.append("Header:\n");
+        key = methods.get(0).getNameAsString() + "(";
+        chunks.put(key, firstDeclarationExtractor(methods, lines));
 
-        for(int j = 0; j < outputLine.size(); j++){
-            //Stick lines together into one contiguous chunk
-            currentChunk.append(outputLine.get(j) + "\n");
-        }
-
-        String key = md.getNameAsString() + "("; //bracket included for pattern matching in ChunkLinker
-        chunks.put(key, currentChunk.toString());
-
-        for (int i = 0; i < methods.size(); i++) {
+        for (int i = 1; i < methods.size(); i++) {
+            MethodDeclaration md = methods.get(i-1);
+            int previousMethod = md.getEnd().get().line; //Line above method declaration
             md = methods.get(i);
-            thisMethod = md.getBegin().get().line - 1; //Line above method declaration
-            nextMethod = (i + 1 < methods.size()) //Two lines above next method declaration
-                    ? methods.get(i+1).getBegin().get().line - 2
-                    : lines.size() - 1;
+            int thisMethod = (md.getEnd().get().line);
 
-            outputLine = lines.subList(thisMethod, nextMethod + 1); //All lines between thisMethod and nextMethod
-            currentChunk = new StringBuilder();
+            List<String> outputLine = lines.subList(previousMethod, thisMethod + 1); //All lines between previousMethod and thisMethod
+            StringBuilder currentChunk = new StringBuilder();
+
+            Comment comment = md.getComment().get();
+//            System.out.println("Comment: " + comment);
 
             for(int j = 0; j < outputLine.size(); j++){
                 //Stick lines together into one contiguous chunk
@@ -67,36 +61,65 @@ public class CodegenFragmenter {
             chunks.put(key, currentChunk.toString());
         }
         return chunks;
+    }
 
 
+    private static String headerExtractor(List<MethodDeclaration> methods, List<String> lines){
+        MethodDeclaration md = methods.get(0);
+        int thisMethod = 0;
+        int nextMethod = md.getBegin().get().line - 2; //Start at first method declaration as failsafe
+
+        Optional<JavadocComment> commentOpt = md.getJavadocComment();
+        //Try end the header before the beginning of the comment for the first method declaration
+        if (commentOpt.isPresent() && commentOpt.get().getRange().isPresent()) {
+            int commentStartLine = commentOpt.get().getRange().get().begin.line - 2;
+//            System.out.println(commentOpt);
+            if (commentStartLine < nextMethod) {
+                nextMethod = commentStartLine;
+            }
+        }
+
+        List<String> outputLine = lines.subList(thisMethod, nextMethod + 1); //All lines between thisMethod and nextMethod
+        StringBuilder currentChunk = new StringBuilder();
+        currentChunk.append("Header:\n");
+
+        for(int j = 0; j < outputLine.size(); j++){
+            //Stick lines together into one contiguous chunk
+            currentChunk.append(outputLine.get(j) + "\n");
+        }
+
+        return currentChunk.toString();
+    }
 
 
-//        List<String> chunks = new ArrayList<>();
-//        BufferedReader reader = new BufferedReader(new FileReader(file));
-//
-//        String line;
-//        StringBuilder currentChunk = new StringBuilder();
-//        currentChunk.append("Header:\n");
-//
-//        while ((line = reader.readLine()) != null) {
-//            if (line.contains("@Metadata") || line.contains("@Generated") || line.contains("@ServiceMethod")) {
-//                if (currentChunk.length() > 0) { //Maybe redundant;
-//                    chunks.add(currentChunk.toString());
-//                    // checks if anything exists between tags, or before first tag, before appending chunk to List.
-//                    currentChunk.setLength(0);
-//                }
-//            }
-//
-//            currentChunk.append(line).append(System.lineSeparator());
-//        }
-//
-//        // add the last chunk if it exists.
-//        if (currentChunk.length() > 0) {
-//            chunks.add(currentChunk.toString());
-//        }
-//
-//        reader.close();
-//        return chunks;
+    private static String firstDeclarationExtractor(List<MethodDeclaration> methods, List<String> lines){
+        MethodDeclaration md = methods.get(0);
+        int thisMethod = md.getBegin().get().line - 1; //Line above method declaration as failsafe
+        int nextMethod = md.getEnd().get().line;
+
+        Optional<JavadocComment> commentOpt = md.getJavadocComment();
+        //Try end the header before the beginning of the comment for the first method declaration
+        if (commentOpt.isPresent() && commentOpt.get().getRange().isPresent()) {
+            int commentStartLine = commentOpt.get().getRange().get().begin.line - 2;
+//            System.out.println(commentOpt);
+            if (commentStartLine < thisMethod) {
+                thisMethod = commentStartLine;
+            }
+        }
+
+        List<String> outputLine = lines.subList(thisMethod, nextMethod + 1); //All lines between thisMethod and nextMethod
+        StringBuilder currentChunk = new StringBuilder();
+
+        Comment comment = md.getComment().get();
+//        System.out.println("Comment: " + comment);
+
+        for(int j = 0; j < outputLine.size(); j++){
+            //Stick lines together into one contiguous chunk
+            currentChunk.append(outputLine.get(j) + "\n");
+        }
+
+        String key = md.getNameAsString() + "("; //bracket included for pattern matching in ChunkLinker
+        return currentChunk.toString();
     }
 
     public CodegenFragmenter() throws IOException {
