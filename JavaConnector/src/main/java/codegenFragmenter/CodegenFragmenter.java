@@ -5,8 +5,9 @@
 //as a header chunk. This is currently considered important information for each prompt, to maintain context.
 //TODO: Examine whether header contains extraneous information; Should header chunk really be included?
 
-//TODO:Should be reading up to prior definition, not next - as the relevant comments precede declarations.
-//Currently reading comments for next chunk as a result of reading forward.
+//TODO: fix map implementation. Overloaded methods will clash as they will share a key.
+
+
 
 
 package codegenFragmenter;
@@ -58,6 +59,7 @@ public class CodegenFragmenter {
             }
 
             key = md.getNameAsString() + "("; //bracket included for pattern matching in ChunkLinker
+            //TODO:modify the above, or below, to prevent clashes with overloaded methods
             chunks.put(key, currentChunk.toString());
         }
         return chunks;
