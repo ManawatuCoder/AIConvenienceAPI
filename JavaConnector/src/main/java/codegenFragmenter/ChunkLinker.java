@@ -11,11 +11,11 @@ import java.util.Map;
 
 public class ChunkLinker {
 
-    public static List<List<String>> link(List<String> codegenChunks, Map<String,String> functionChunks){
+    public static List<List<String>> link(Map<String,String> functionChunks){
         List<List<String>> linkedChunks = new ArrayList<>();
 
         int i = 0;
-        for(String chunk : codegenChunks){
+        for(String chunk : functionChunks.values()){
             List<String> singleChunkList = new ArrayList<>();
             singleChunkList.add(chunk);
             linkedChunks.add(singleChunkList);

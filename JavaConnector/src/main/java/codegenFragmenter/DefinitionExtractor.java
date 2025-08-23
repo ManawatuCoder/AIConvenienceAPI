@@ -1,3 +1,6 @@
+
+//Below comments are outdated. This class is now seemingly defunct.
+
 //It appends the Header chunk (first chunk in list) to every output chunk.
 //
 //Currently stores entire chunk containing function definition.
