@@ -225,7 +225,7 @@ public class Main {
         File file = new File("../TypeSpec_Conversion/tsp-output/clients/java/src/main/java/azurestoragemanagement/BlobContainer.java");
         Map<String, String> chunks = fragmenter.fragment(file);
 
-        DefinitionExtractor extractor = new DefinitionExtractor();
+//        DefinitionExtractor extractor = new DefinitionExtractor();
 //        Map<String,String> functionList = extractor.extract(chunks);
 //        for (Map.Entry<String,String> chunk : functionList.entrySet()){
 //            System.out.println("Function: \n" + chunk.getKey());
