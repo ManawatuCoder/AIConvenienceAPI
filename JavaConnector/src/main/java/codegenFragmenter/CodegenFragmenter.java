@@ -18,40 +18,88 @@
 
 package codegenFragmenter;
 
+import com.github.javaparser.StaticJavaParser;
+import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.CompilationUnit;
+
+
 import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class CodegenFragmenter {
 
     public static List<String> fragment(File file) throws IOException {
         List<String> chunks = new ArrayList<>();
-        BufferedReader reader = new BufferedReader(new FileReader(file));
+        List<String> lines = Files.readAllLines(file.toPath());
+        CompilationUnit compilationUnit = StaticJavaParser.parse(file);
 
-        String line;
+        List<MethodDeclaration> methods = compilationUnit.findAll(MethodDeclaration.class);
+        methods.sort(Comparator.comparing(md -> md.getBegin().get().line));
+
+        MethodDeclaration md = methods.get(0);
+        int thisMethod = 0;
+        int nextMethod = md.getBegin().get().line - 2;
+
+        List<String> outputLine = lines.subList(thisMethod, nextMethod + 1); //All lines between thisMethod and nextMethod
         StringBuilder currentChunk = new StringBuilder();
-        boolean inChunk = false;
         currentChunk.append("Header:\n");
 
-        while ((line = reader.readLine()) != null) {
-            if (line.contains("@Metadata") || line.contains("@Generated") || line.contains("@ServiceMethod")) {
-                if (currentChunk.length() > 0) { //Maybe redundant;
-                    chunks.add(currentChunk.toString());
-                    // checks if anything exists between tags, or before first tag, before appending chunk to List.
-                    currentChunk.setLength(0);
-                }
+        for(int j = 0; j < outputLine.size(); j++){
+            currentChunk.append(outputLine.get(j) + "\n");
+        }
+
+        chunks.add(currentChunk.toString());
+
+        for (int i = 0; i < methods.size(); i++) {
+            md = methods.get(i);
+            thisMethod = md.getBegin().get().line - 1; //Line above method declaration
+            nextMethod = (i + 1 < methods.size()) //Two lines above next method declaration
+                    ? methods.get(i+1).getBegin().get().line - 2
+                    : lines.size() - 1;
+
+            outputLine = lines.subList(thisMethod, nextMethod + 1); //All lines between thisMethod and nextMethod
+            currentChunk = new StringBuilder();
+
+            for(int j = 0; j < outputLine.size(); j++){
+                currentChunk.append(outputLine.get(j) + "\n");
             }
 
-            currentChunk.append(line).append(System.lineSeparator());
-        }
-
-        // add the last chunk if it exists.
-        if (currentChunk.length() > 0) {
             chunks.add(currentChunk.toString());
         }
-
-        reader.close();
         return chunks;
+
+
+
+
+//        List<String> chunks = new ArrayList<>();
+//        BufferedReader reader = new BufferedReader(new FileReader(file));
+//
+//        String line;
+//        StringBuilder currentChunk = new StringBuilder();
+//        currentChunk.append("Header:\n");
+//
+//        while ((line = reader.readLine()) != null) {
+//            if (line.contains("@Metadata") || line.contains("@Generated") || line.contains("@ServiceMethod")) {
+//                if (currentChunk.length() > 0) { //Maybe redundant;
+//                    chunks.add(currentChunk.toString());
+//                    // checks if anything exists between tags, or before first tag, before appending chunk to List.
+//                    currentChunk.setLength(0);
+//                }
+//            }
+//
+//            currentChunk.append(line).append(System.lineSeparator());
+//        }
+//
+//        // add the last chunk if it exists.
+//        if (currentChunk.length() > 0) {
+//            chunks.add(currentChunk.toString());
+//        }
+//
+//        reader.close();
+//        return chunks;
     }
 
     public CodegenFragmenter() throws IOException {
