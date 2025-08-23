@@ -16,8 +16,10 @@ public class ChunkLinker {
 
         int i = 0;
         for(String chunk : functionChunks.values()){
-            //TODO: We can add the header chunk here, or we can do it elsewhere depending how prompts will be constructed.
             List<String> singleChunkList = new ArrayList<>();
+            //We can add the header chunk here, or we can do it elsewhere depending how prompts will be constructed.
+            //TODO: Decide whether to keep following line:
+//            singleChunkList.add(functionChunks.get("Header"));
             singleChunkList.add(chunk);
             linkedChunks.add(singleChunkList);
             if (!chunk.startsWith("Header:")) { //Header chunk needs no linking. Should be sent with all prompts.
