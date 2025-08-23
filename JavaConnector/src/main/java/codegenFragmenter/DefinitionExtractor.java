@@ -7,6 +7,10 @@
 
 package codegenFragmenter;
 
+import com.github.javaparser.StaticJavaParser;
+import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.body.MethodDeclaration;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,18 +36,27 @@ public class DefinitionExtractor {
 
         Map<String, String> definitionList = new HashMap<>();
 
-        Pattern methodDefPattern = Pattern.compile(
-                "(public|protected|private|static|\\s) +[\\w\\<\\>\\[\\]]+\\s+(\\w+) *\\([^\\)]*\\) *(\\{?|[^;])"
-        );
+//        Pattern methodDefPattern = Pattern.compile(
+//                "(public|protected|private|static|\\s) +[\\w\\<\\>\\[\\]]+\\s+(\\w+) *\\([^\\)]*\\) *(\\{?|[^;])"
+//        );
 
         for(String chunk : chunkList){
-            Matcher matcher = methodDefPattern.matcher(chunk);
-            while (matcher.find()) {
-                definitionList.put(matcher.group(2), chunk);
-//                Debug output:
-//                String methodDefinition = matcher.group(2);
-//                System.out.println("Found method: " + methodDefinition);
-            }
+            System.out.println("Chunk: " + chunk + "\nChunk end:\n");
+            String wrapped = "public class Dummy {\n" + chunk + "\n}";
+            CompilationUnit compilationUnit = StaticJavaParser.parse(wrapped);
+
+            compilationUnit.findAll(MethodDeclaration.class).forEach(md -> {
+                System.out.println(md.getDeclarationAsString(true, true, true));
+            });
+
+
+//            Matcher matcher = methodDefPattern.matcher(chunk);
+//            while (matcher.find()) {
+//                definitionList.put(matcher.group(2), chunk);
+////                Debug output:
+////                String methodDefinition = matcher.group(2);
+////                System.out.println("Found method: " + methodDefinition);
+//            }
         }
 
         return definitionList;
