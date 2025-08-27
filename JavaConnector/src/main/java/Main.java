@@ -1,6 +1,3 @@
-import codegenFragmenter.CodegenFragmenter;
-import codegenFragmenter.DefinitionExtractor;
-import codegenFragmenter.ChunkLinker;
 import com.azure.ai.openai.OpenAIClient;
 import com.azure.ai.openai.OpenAIClientBuilder;
 import com.azure.ai.openai.models.*;
@@ -8,7 +5,6 @@ import com.azure.core.credential.AzureKeyCredential;
 import com.azure.core.exception.ClientAuthenticationException;
 import com.azure.core.util.Configuration;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,7 +14,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 public class Main {
