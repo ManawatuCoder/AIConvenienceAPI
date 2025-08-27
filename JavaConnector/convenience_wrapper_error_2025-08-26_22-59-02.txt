@@ -1,0 +1,19 @@
+Java Convenience Wrapper Generation Error Report
+Generated: 2025-08-26 22:59:02
+========================================
+
+=== ERROR DETAILS ===
+Error Type: ReactiveException
+Error Message: java.net.MalformedURLException: no protocol: Enter Endpoint here/openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview
+Stack Trace:
+  reactor.core.Exceptions.propagate(Exceptions.java:396)
+  com.azure.core.implementation.http.rest.RestProxyBase.invoke(RestProxyBase.java:116)
+  com.azure.core.http.rest.RestProxy.invoke(RestProxy.java:91)
+  jdk.proxy2/jdk.proxy2.$Proxy3.getChatCompletionsSync(Unknown Source)
+  com.azure.ai.openai.implementation.OpenAIClientImpl.getChatCompletionsWithResponse(OpenAIClientImpl.java:1444)
+  com.azure.ai.openai.OpenAIClient.getChatCompletionsWithResponse(OpenAIClient.java:318)
+  com.azure.ai.openai.OpenAIClient.getChatCompletions(OpenAIClient.java:685)
+  Main.analyzeGeneratedCode(Main.java:119)
+  Main.main(Main.java:231)
+
+========================================
