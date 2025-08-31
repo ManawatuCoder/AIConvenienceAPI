@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a45e00b1-fa9f-4959-ae6b-85c268df1552" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/JavaConnector/src/main/java/codegenFragmenter/chunkLinker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaConnector/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JavaConnector/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaConnector/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaConnector/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaConnector/src/main/java/codegenFragmenter/codegenFragmenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaConnector/src/main/java/codegenFragmenter/codegenFragmenter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +15,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "casinobear"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ManawatuCoder/AIConvenienceAPI.git",
+    "accountId": "7608b658-829f-4c2e-86dc-03bcb4997d7e"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -30,8 +38,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Pease/Documents/codes/Personal/uni/Capstone/WrapperGenerator/JavaConnector",
+    "last_opened_file_path": "/home/ghostowl/IdeaProjects/AIConvenienceAPI/JavaConnector/pom.xml",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
