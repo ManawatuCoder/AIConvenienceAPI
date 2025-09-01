@@ -33,8 +33,11 @@ public class Main {
             AZURE_OPENAI_ENDPOINT = prop.getProperty("AZURE_OPENAI_ENDPOINT");
             AZURE_OPENAI_KEY = prop.getProperty("AZURE_OPENAI_KEY");
 
-            if (AZURE_OPENAI_KEY == null || AZURE_OPENAI_ENDPOINT.isEmpty()) {
+            if (AZURE_OPENAI_KEY == null || AZURE_OPENAI_KEY.isEmpty()) {
                 throw new IllegalStateException("AZURE_OPENAI_KEY is missing in config.properties");
+            }
+            if (AZURE_OPENAI_ENDPOINT == null || AZURE_OPENAI_ENDPOINT.isEmpty()) {
+                throw new IllegalStateException("AZURE_OPENAI_ENDPOINT is missing in config.properties");
             }
         } catch (Exception e) {
             throw new RuntimeException("Unable to find config.properties", e);
