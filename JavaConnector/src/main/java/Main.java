@@ -5,6 +5,7 @@ import com.azure.core.credential.AzureKeyCredential;
 import com.azure.core.exception.ClientAuthenticationException;
 import com.azure.core.util.Configuration;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,14 +14,34 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.stream.Stream;
 
 public class Main {
-
+  private static final Properties prop = new Properties();
   // Azure OpenAI configuration constants
-  private static final String AZURE_OPENAI_ENDPOINT = "Enter Endpoint here";
-  private static final String AZURE_OPENAI_KEY = "Enter Key here";
+  private static String AZURE_OPENAI_ENDPOINT;
+  private static String AZURE_OPENAI_KEY;
   private static final String DEPLOYMENT_NAME = "gpt-4.1";
+
+  // Loads config properties
+  private static void loadConfigProperties() {
+    try (InputStream configInput = Files.newInputStream(Paths.get("config.properties"))) {
+      prop.load(configInput);
+
+      AZURE_OPENAI_ENDPOINT = prop.getProperty("AZURE_OPENAI_ENDPOINT");
+      AZURE_OPENAI_KEY = prop.getProperty("AZURE_OPENAI_KEY");
+
+      if (AZURE_OPENAI_KEY == null || AZURE_OPENAI_KEY.isEmpty()) {
+        throw new IllegalStateException("AZURE_OPENAI_KEY is missing in config.properties");
+      }
+      if (AZURE_OPENAI_ENDPOINT == null || AZURE_OPENAI_ENDPOINT.isEmpty()) {
+        throw new IllegalStateException("AZURE_OPENAI_ENDPOINT is missing in config.properties");
+      }
+    } catch (Exception e) {
+      throw new RuntimeException("Unable to find config.properties", e);
+    }
+  }
 
   // Creates and configures the Azure OpenAI client
   private static OpenAIClient createOpenAIClient() {
@@ -236,6 +257,7 @@ public class Main {
   public static void main(String[] args) {
     try {
       // Initialize
+      loadConfigProperties();
       OpenAIClient client = createOpenAIClient();
 
       // Read all required files
