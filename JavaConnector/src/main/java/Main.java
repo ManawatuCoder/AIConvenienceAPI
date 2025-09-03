@@ -4,6 +4,13 @@ import com.azure.ai.openai.models.*;
 import com.azure.core.credential.AzureKeyCredential;
 import com.azure.core.exception.ClientAuthenticationException;
 import com.azure.core.util.Configuration;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.javaparser.utils.Log;
+
+import io.modelcontextprotocol.server.McpServer;
+import io.modelcontextprotocol.server.McpServerFeatures;
+import io.modelcontextprotocol.server.transport.StdioServerTransportProvider;
+import io.modelcontextprotocol.spec.McpSchema;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,6 +21,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 public class Main {
@@ -217,28 +225,70 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        try {
-            // Initialize
-            OpenAIClient client = createOpenAIClient();
+        /*
+         * try {
+         * // Initialize
+         * OpenAIClient client = createOpenAIClient();
+         * 
+         * // Read all required files
+         * System.out.println("Reading files...");
+         * String inputSpecs = readFileContent("../PlainText/InputSpecs.txt");
+         * String typeSpecContent =
+         * readFileContent("../TypeSpec_Conversion/blob-storage.tsp");
+         * List<String> srcFiles =
+         * readAllSourceFiles("../TypeSpec_Conversion/tsp-output/clients/java/src");
+         * 
+         * // Send content to AI for analysis
+         * analyzeGeneratedCode(client, inputSpecs, typeSpecContent, srcFiles);
+         * 
+         * } catch (ClientAuthenticationException e) {
+         * System.err.println("Authentication failed: " + e.getMessage());
+         * System.err.println("Please check your API key and endpoint.");
+         * } catch (IOException e) {
+         * System.err.println("File reading error: " + e.getMessage());
+         * e.printStackTrace();
+         * } catch (Exception e) {
+         * System.err.println("Error occurred: " + e.getMessage());
+         * e.printStackTrace();
+         * }
+         */
 
-            // Read all required files
-            System.out.println("Reading files...");
-            String inputSpecs = readFileContent("../PlainText/InputSpecs.txt");
-            String typeSpecContent = readFileContent("../TypeSpec_Conversion/blob-storage.tsp");
-            List<String> srcFiles = readAllSourceFiles("../TypeSpec_Conversion/tsp-output/clients/java/src");
+        // STDIO Server Transport
+        var transportProvider = new StdioServerTransportProvider(new ObjectMapper());
+        // Create Sync Tool Specification
+        var syncToolSpec = getSyncToolSpecification();
 
-            // Send content to AI for analysis
-            analyzeGeneratedCode(client, inputSpecs, typeSpecContent, srcFiles);
+        // Create MCP Server
+        McpServer.sync(transportProvider)
+                .serverInfo("JavaConnector-MCP-Server", "1.0.0")
+                .capabilities(McpSchema.ServerCapabilities.builder()
+                        .tools(true)
+                        .logging()
+                        .build())
+                .tools(syncToolSpec).build();
 
-        } catch (ClientAuthenticationException e) {
-            System.err.println("Authentication failed: " + e.getMessage());
-            System.err.println("Please check your API key and endpoint.");
-        } catch (IOException e) {
-            System.err.println("File reading error: " + e.getMessage());
-            e.printStackTrace();
-        } catch (Exception e) {
-            System.err.println("Error occurred: " + e.getMessage());
-            e.printStackTrace();
-        }
+        Log.info("MCP Server created successfully");
+    }
+
+    // Get Sync Tool Specification
+    private static McpServerFeatures.SyncToolSpecification getSyncToolSpecification() {
+        // Create and return a SyncToolSpecification instance
+        String schema = "{\n" +
+                "    \"type\": \"object\",\n" +
+                "    \"properties\": {\n" +
+                "        \"input\": {\n" +
+                "            \"type\": \"string\"\n" +
+                "        },\n" +
+                "        \"output\": {\n" +
+                "            \"type\": \"string\"\n" +
+                "        }\n" +
+                "    }\n" +
+                "}";
+        return new McpServerFeatures.SyncToolSpecification(
+                new McpSchema.Tool("Test", "Execution", schema),
+                (exchange, arguments) -> {
+                    // Define the behavior for the tool specification
+                    return new McpSchema.CallToolResult("Tool executed successfully", false);
+                });
     }
 }
