@@ -27,14 +27,9 @@ buildNumber.properties
 *~
 
 # Environment and Configuration
-.env
-.env.local
-.env.production
-.env.staging
-.env.development
+config.properties
 application.properties
 application-*.properties
-config.properties
 
 # OS
 .DS_Store
