@@ -94,6 +94,29 @@
                     <mainClass>Main</mainClass>
                 </configuration>
             </plugin>
+
+            <!-- Maven Spotless for Java Formatting -->
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>2.43.0</version>
+                <configuration>
+                    <java>
+                        <googleJavaFormat>
+                            <version>1.22.0</version>
+                        </googleJavaFormat>
+                    </java>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>spotless-check</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             
             <!-- Maven Shade Plugin for creating an executable JAR -->
             <plugin>
