@@ -6,6 +6,10 @@ import com.azure.ai.openai.models.*;
 import com.azure.core.credential.AzureKeyCredential;
 import com.azure.core.exception.ClientAuthenticationException;
 import com.azure.core.util.Configuration;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import guidelinesFragmentation.GuidelineParser;
 
 import java.io.File;
 import java.io.IOException;
@@ -241,49 +245,104 @@ public class Main {
         }
     }
 
-  private static void prepareFragments() throws IOException {
-    CodegenFragmenter fragmenter = new CodegenFragmenter();
-    ChunkLinker linker = new ChunkLinker();
+    private static void prepareFragments() throws Exception {
+        CodegenFragmenter fragmenter = new CodegenFragmenter();
+        ChunkLinker linker = new ChunkLinker();
+        List<List<String>> linked = List.of();
+        GuidelineParser parser = new GuidelineParser();
 
-    Map<String,String> newMap = fragmenter.fragment(new File("..\\TypeSpec_Conversion\\tsp-output\\clients\\java\\src\\main\\java\\azurestoragemanagement\\BlobContainer.java"));
-    List<List<String>> linked = linker.link(newMap);
+        String guidelineString = Files.readString(Path.of(parser.parse("https://azure.github.io/azure-sdk/java_introduction.html")));
+        JsonArray guidelineArray = JsonParser.parseString(guidelineString).getAsJsonArray();
+        String headings = "";
 
-    for(List<String> list : linked){
-      System.out.println("Chunk List: ");
-      for(String entry : list){
-        System.out.println(entry);
-      }
+        for(JsonElement element : guidelineArray){
+            headings += element.getAsJsonObject().get("heading").getAsString() + "\n";
+        }
+
+//        System.out.println(headings);
+
+        try{
+            Map<String,String> newMap = fragmenter.fragment(new File("..\\TypeSpec_Conversion\\tsp-output\\clients\\java\\src\\main\\java\\azurestoragemanagement\\BlobContainer.java"));
+            linked = linker.link(newMap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for(List<String> list : linked){
+            //This will be the main loop.
+            String prompt = "";
+
+            prompt = Files.readString(Path.of("../PlainText/GuidelineRequest.txt")).toString();
+
+            String code = "";
+
+            for(String entry : list){
+                code += entry;
+            }
+
+            prompt = prompt.replace("{code}", code);
+            prompt = prompt.replace("{guidelines}", headings);
+
+//            System.out.println(prompt);
+
+            //TODO: Send this prompt through.
+            //Example response: Model Types;Java API Best Practices;Naming Patterns
+
+            //TODO: set the following string equal to the contents of the response;
+            String guidelineResponse = "Model Types;Java API Best Practices;Naming Patterns";
+            String guidelinesRequested = "";
+
+            for(JsonElement guideline : guidelineArray){
+                String heading = guideline.getAsJsonObject().get("heading").getAsString();
+
+                if(guidelineResponse.contains(heading)){
+                    guidelinesRequested += heading + "\n" + guideline.getAsJsonObject().get("content").getAsString() + "\n\n";
+                }
+            }
+
+//            System.out.println(guidelinesRequested);
+
+            prompt = Files.readString(Path.of("../PlainText/WrapperRequest.txt")).toString();
+
+            prompt = prompt.replace("{code}", code);
+            prompt = prompt.replace("{guidelines}", guidelinesRequested);
+
+            System.out.println(prompt);
+//            System.out.println("Chunk List: ");
+//            for(String entry : list){
+//            System.out.println(entry);
+//            }
+        }
     }
-  }
 
-  public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
-    prepareFragments();
+        prepareFragments();
 
     //    try {
-//      // Initialize
-//      loadConfigProperties();
-//      OpenAIClient client = createOpenAIClient();
-//
-//      // Read all required files
-//      System.out.println("Reading files...");
-//      String inputSpecs = readFileContent("../PlainText/InputSpecs.txt");
-//      String typeSpecContent = readFileContent("../TypeSpec_Conversion/blob-storage.tsp");
-//      List<String> srcFiles =
-//          readAllSourceFiles("../TypeSpec_Conversion/tsp-output/clients/java/src");
-//
-//      // Send content to AI for analysis
-//      analyzeGeneratedCode(client, inputSpecs, typeSpecContent, srcFiles);
-//
-//    } catch (ClientAuthenticationException e) {
-//      System.err.println("Authentication failed: " + e.getMessage());
-//      System.err.println("Please check your API key and endpoint.");
-//    } catch (IOException e) {
-//      System.err.println("File reading error: " + e.getMessage());
-//      e.printStackTrace();
-//    } catch (Exception e) {
-//      System.err.println("Error occurred: " + e.getMessage());
-//      e.printStackTrace();
-//    }
-  }
+    //      // Initialize
+    //      loadConfigProperties();
+    //      OpenAIClient client = createOpenAIClient();
+    //
+    //      // Read all required files
+    //      System.out.println("Reading files...");
+    //      String inputSpecs = readFileContent("../PlainText/InputSpecs.txt");
+    //      String typeSpecContent = readFileContent("../TypeSpec_Conversion/blob-storage.tsp");
+    //      List<String> srcFiles =
+    //          readAllSourceFiles("../TypeSpec_Conversion/tsp-output/clients/java/src");
+    //
+    //      // Send content to AI for analysis
+    //      analyzeGeneratedCode(client, inputSpecs, typeSpecContent, srcFiles);
+    //
+    //    } catch (ClientAuthenticationException e) {
+    //      System.err.println("Authentication failed: " + e.getMessage());
+    //      System.err.println("Please check your API key and endpoint.");
+    //    } catch (IOException e) {
+    //      System.err.println("File reading error: " + e.getMessage());
+    //      e.printStackTrace();
+    //    } catch (Exception e) {
+    //      System.err.println("Error occurred: " + e.getMessage());
+    //      e.printStackTrace();
+    //    }
+    }
 }

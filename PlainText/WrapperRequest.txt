@@ -1,0 +1,15 @@
+Write me convenience wrapper methods for the following code:
+
+
+{code}
+
+
+
+Strictly follow the following design guidelines:
+
+
+{guidelines}
+
+
+
+Return only the code you generate, which I will insert into a separate already existing class, and none of the provided code.
