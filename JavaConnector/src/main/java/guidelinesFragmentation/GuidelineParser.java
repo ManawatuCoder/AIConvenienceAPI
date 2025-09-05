@@ -60,8 +60,7 @@ public class GuidelineParser {
             // Convert to JSON using Gson
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String json = gson.toJson(chunks);
-
-            // Print JSON array
+            
             try {
                 if (!Files.exists(parsedGuidelines)) {
                     Files.writeString(parsedGuidelines, json,
