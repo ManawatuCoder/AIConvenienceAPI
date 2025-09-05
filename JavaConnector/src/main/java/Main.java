@@ -1,9 +1,13 @@
+import codegenFragmenter.ChunkLinker;
+import codegenFragmenter.CodegenFragmenter;
 import com.azure.ai.openai.OpenAIClient;
 import com.azure.ai.openai.OpenAIClientBuilder;
 import com.azure.ai.openai.models.*;
 import com.azure.core.credential.AzureKeyCredential;
 import com.azure.core.exception.ClientAuthenticationException;
 import com.azure.core.util.Configuration;
+
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -14,6 +18,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.stream.Stream;
 
@@ -254,31 +259,49 @@ public class Main {
     }
   }
 
-  public static void main(String[] args) {
-    try {
-      // Initialize
-      loadConfigProperties();
-      OpenAIClient client = createOpenAIClient();
+  private static void prepareFragments() throws IOException {
+    CodegenFragmenter fragmenter = new CodegenFragmenter();
+    ChunkLinker linker = new ChunkLinker();
 
-      // Read all required files
-      System.out.println("Reading files...");
-      String inputSpecs = readFileContent("../PlainText/InputSpecs.txt");
-      String typeSpecContent = readFileContent("../TypeSpec_Conversion/blob-storage.tsp");
-      List<String> srcFiles =
-          readAllSourceFiles("../TypeSpec_Conversion/tsp-output/clients/java/src");
+    Map<String,String> newMap = fragmenter.fragment(new File("..\\TypeSpec_Conversion\\tsp-output\\clients\\java\\src\\main\\java\\azurestoragemanagement\\BlobContainer.java"));
+    List<List<String>> linked = linker.link(newMap);
 
-      // Send content to AI for analysis
-      analyzeGeneratedCode(client, inputSpecs, typeSpecContent, srcFiles);
-
-    } catch (ClientAuthenticationException e) {
-      System.err.println("Authentication failed: " + e.getMessage());
-      System.err.println("Please check your API key and endpoint.");
-    } catch (IOException e) {
-      System.err.println("File reading error: " + e.getMessage());
-      e.printStackTrace();
-    } catch (Exception e) {
-      System.err.println("Error occurred: " + e.getMessage());
-      e.printStackTrace();
+    for(List<String> list : linked){
+      System.out.println("Chunk List: ");
+      for(String entry : list){
+        System.out.println(entry);
+      }
     }
+  }
+
+  public static void main(String[] args) throws IOException {
+
+    prepareFragments();
+
+    //    try {
+//      // Initialize
+//      loadConfigProperties();
+//      OpenAIClient client = createOpenAIClient();
+//
+//      // Read all required files
+//      System.out.println("Reading files...");
+//      String inputSpecs = readFileContent("../PlainText/InputSpecs.txt");
+//      String typeSpecContent = readFileContent("../TypeSpec_Conversion/blob-storage.tsp");
+//      List<String> srcFiles =
+//          readAllSourceFiles("../TypeSpec_Conversion/tsp-output/clients/java/src");
+//
+//      // Send content to AI for analysis
+//      analyzeGeneratedCode(client, inputSpecs, typeSpecContent, srcFiles);
+//
+//    } catch (ClientAuthenticationException e) {
+//      System.err.println("Authentication failed: " + e.getMessage());
+//      System.err.println("Please check your API key and endpoint.");
+//    } catch (IOException e) {
+//      System.err.println("File reading error: " + e.getMessage());
+//      e.printStackTrace();
+//    } catch (Exception e) {
+//      System.err.println("Error occurred: " + e.getMessage());
+//      e.printStackTrace();
+//    }
   }
 }
