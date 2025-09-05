@@ -1,7 +1,15 @@
 I need you to write a convenience wrapper for the following code:
 
+
 {code}
+
+
 
 Here is a list of design guideline document headers - which do you think will be relevant here, so I can send their contents through to you?
 
+
 {guidelines}
+
+
+
+Return only the header or headers exactly how they have been presented, separated by a semicolon (;).
