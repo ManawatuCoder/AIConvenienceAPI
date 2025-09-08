@@ -28,5 +28,6 @@ High-level Java convenience wrapper
 
 
 MCP Inpector command: npx @modelcontextprotocol/inspector
+Make sure to update the Request Timeout to 120000 and maximum total timeout to 240000
 Path command: -jar D:/AiCon/AIConvenienceAPI/JavaConnector/target/MCP-Server-1.0.0.jar
 Build: mvn clean package

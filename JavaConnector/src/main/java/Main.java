@@ -2,6 +2,7 @@ import com.azure.ai.openai.OpenAIClient;
 import com.azure.ai.openai.OpenAIClientBuilder;
 import com.azure.ai.openai.models.*;
 import com.azure.core.credential.AzureKeyCredential;
+import com.azure.core.exception.ClientAuthenticationException;
 import com.azure.core.util.Configuration;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javaparser.utils.Log;
@@ -25,8 +26,8 @@ import java.util.stream.Stream;
 public class Main {
 
     // Azure OpenAI configuration constants
-    private static final String AZURE_OPENAI_ENDPOINT = "Enter Endpoint here";
-    private static final String AZURE_OPENAI_KEY = "Enter Key here";
+    private static final String AZURE_OPENAI_ENDPOINT = "https://azsdk-openai.openai.azure.com/";
+    private static final String AZURE_OPENAI_KEY = "";
     private static final String DEPLOYMENT_NAME = "gpt-4.1";
 
     // Creates and configures the Azure OpenAI client
@@ -39,8 +40,9 @@ public class Main {
     private static String readFileContent(String filePath) throws IOException {
         Path path = Paths.get(filePath);
         if (!Files.exists(path)) {
-            System.err.println("Warning: File not found: " + filePath);
-            return "File not found: " + filePath;
+            String error = "File not found: " + filePath + " (absolute path: " + path.toAbsolutePath() + ")";
+            System.err.println("Error: " + error);
+            throw new IOException(error);
         }
         return Files.readString(path);
     }
@@ -50,8 +52,9 @@ public class Main {
         Path basePath = Paths.get(baseDir);
 
         if (!Files.exists(basePath)) {
-            System.err.println("Warning: Directory not found: " + baseDir);
-            return sourceFileContents;
+            String error = "Directory not found: " + baseDir + " (absolute path: " + basePath.toAbsolutePath() + ")";
+            System.err.println("Error: " + error);
+            throw new IOException(error);
         }
 
         try (Stream<Path> paths = Files.walk(basePath)) {
@@ -73,8 +76,8 @@ public class Main {
         return sourceFileContents;
     }
 
-    // Sends all content to Azure OpenAI
-    private static void analyzeGeneratedCode(OpenAIClient client, String inputSpecs, String typeSpecContent,
+    // Generates convenience wrapper and returns the result as string
+    private static String generateConvenienceWrapper(OpenAIClient client, String inputSpecs, String typeSpecContent,
             List<String> srcFiles) {
 
         // Build the content to be analyzed
@@ -137,12 +140,18 @@ public class Main {
             System.out.println("Completion tokens: " + chatCompletions.getUsage().getCompletionTokens());
             System.out.println("Total tokens: " + chatCompletions.getUsage().getTotalTokens());
 
+            // Return the generated wrapper
+            return aiResponse;
+
         } catch (Exception e) {
             System.err.println("Error during convenience wrapper generation: " + e.getMessage());
             e.printStackTrace();
 
             // Save error report to file
             saveErrorReportToFile(e, contentBuilder.toString(), inputSpecs);
+
+            // Re-throw the exception so it can be handled by the caller
+            throw new RuntimeException("Failed to generate convenience wrapper: " + e.getMessage(), e);
         }
     }
 
@@ -222,34 +231,66 @@ public class Main {
         }
     }
 
+    // Get Sync Tool Specification
+    private static McpServerFeatures.SyncToolSpecification getSyncToolSpecification() {
+        // Create and return a SyncToolSpecification instance
+        String schema = "{\n" +
+                "    \"type\": \"object\",\n" +
+                "    \"properties\": {\n" +
+                "        \"input\": {\n" +
+                "            \"type\": \"string\"\n" +
+                "        },\n" +
+                "        \"output\": {\n" +
+                "            \"type\": \"string\"\n" +
+                "        }\n" +
+                "    }\n" +
+                "}";
+        return new McpServerFeatures.SyncToolSpecification(
+                new McpSchema.Tool("Blob-Storage-Generate-Convenience-Wrapper",
+                        "Generates Convenience Wrapper for blob storage Azure API", schema),
+                (exchange, arguments) -> {
+                    // Define the behavior for the tool specification
+                    try {
+                        // Initialize
+                        OpenAIClient client = createOpenAIClient();
+
+                        // Read all required files with fixed absolute paths
+                        System.out.println("Reading files...");
+                        String projectRoot = "D:\\AiCon\\AIConvenienceAPI";
+
+                        String inputSpecs = readFileContent(projectRoot + "\\PlainText\\InputSpecs.txt");
+                        String typeSpecContent = readFileContent(
+                                projectRoot + "\\TypeSpec_Conversion\\blob-storage.tsp");
+                        List<String> srcFiles = readAllSourceFiles(
+                                projectRoot + "\\TypeSpec_Conversion\\tsp-output\\clients\\java\\src");
+
+                        // Generate convenience wrapper and get the result
+                        String generatedWrapper = generateConvenienceWrapper(client, inputSpecs, typeSpecContent,
+                                srcFiles);
+
+                        // Return the generated wrapper as tool result
+                        return new McpSchema.CallToolResult(generatedWrapper, false);
+
+                    } catch (ClientAuthenticationException e) {
+                        String errorMsg = "Authentication failed: " + e.getMessage()
+                                + "\nPlease check your API key and endpoint.";
+                        System.err.println(errorMsg);
+                        return new McpSchema.CallToolResult(errorMsg, true);
+                    } catch (IOException e) {
+                        String errorMsg = "File reading error: " + e.getMessage();
+                        System.err.println(errorMsg);
+                        e.printStackTrace();
+                        return new McpSchema.CallToolResult(errorMsg, true);
+                    } catch (Exception e) {
+                        String errorMsg = "Error occurred: " + e.getMessage();
+                        System.err.println(errorMsg);
+                        e.printStackTrace();
+                        return new McpSchema.CallToolResult(errorMsg, true);
+                    }
+                });
+    }
+
     public static void main(String[] args) {
-        /*
-         * try {
-         * // Initialize
-         * OpenAIClient client = createOpenAIClient();
-         * 
-         * // Read all required files
-         * System.out.println("Reading files...");
-         * String inputSpecs = readFileContent("../PlainText/InputSpecs.txt");
-         * String typeSpecContent =
-         * readFileContent("../TypeSpec_Conversion/blob-storage.tsp");
-         * List<String> srcFiles =
-         * readAllSourceFiles("../TypeSpec_Conversion/tsp-output/clients/java/src");
-         * 
-         * // Send content to AI for analysis
-         * analyzeGeneratedCode(client, inputSpecs, typeSpecContent, srcFiles);
-         * 
-         * } catch (ClientAuthenticationException e) {
-         * System.err.println("Authentication failed: " + e.getMessage());
-         * System.err.println("Please check your API key and endpoint.");
-         * } catch (IOException e) {
-         * System.err.println("File reading error: " + e.getMessage());
-         * e.printStackTrace();
-         * } catch (Exception e) {
-         * System.err.println("Error occurred: " + e.getMessage());
-         * e.printStackTrace();
-         * }
-         */
 
         // STDIO Server Transport
         var transportProvider = new StdioServerTransportProvider(new ObjectMapper());
@@ -266,27 +307,5 @@ public class Main {
                 .tools(syncToolSpec).build();
 
         Log.info("MCP Server created successfully");
-    }
-
-    // Get Sync Tool Specification
-    private static McpServerFeatures.SyncToolSpecification getSyncToolSpecification() {
-        // Create and return a SyncToolSpecification instance
-        String schema = "{\n" +
-                "    \"type\": \"object\",\n" +
-                "    \"properties\": {\n" +
-                "        \"input\": {\n" +
-                "            \"type\": \"string\"\n" +
-                "        },\n" +
-                "        \"output\": {\n" +
-                "            \"type\": \"string\"\n" +
-                "        }\n" +
-                "    }\n" +
-                "}";
-        return new McpServerFeatures.SyncToolSpecification(
-                new McpSchema.Tool("Test", "Execution", schema),
-                (exchange, arguments) -> {
-                    // Define the behavior for the tool specification
-                    return new McpSchema.CallToolResult("Tool executed successfully", false);
-                });
     }
 }
