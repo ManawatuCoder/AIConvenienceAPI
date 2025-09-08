@@ -8,8 +8,10 @@ import com.azure.core.exception.ClientAuthenticationException;
 import com.azure.core.util.Configuration;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import guidelinesFragmentation.GuidelineParser;
+import netscape.javascript.JSObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -245,7 +247,36 @@ public class Main {
         }
     }
 
-    private static void prepareFragments() throws Exception {
+    private static String sendChunks(OpenAIClient client, String prompt) {
+
+        // Build the content to be analyzed
+        StringBuilder contentBuilder = new StringBuilder();
+
+
+        List<ChatRequestMessage> messages = new ArrayList<>();
+        // Send all content including InputSpecs, TypeSpec, and generated code
+        messages.add(new ChatRequestUserMessage(prompt));
+
+        // Chat settings for the AI model
+        ChatCompletionsOptions options = new ChatCompletionsOptions(messages)
+                .setMaxTokens(4000) // Increase max tokens for better output
+                .setTemperature(0.3) // Lower temperature for more analytical response
+                .setTopP(0.95);
+
+        try {
+            ChatCompletions chatCompletions = client.getChatCompletions(DEPLOYMENT_NAME, options);
+            ChatChoice choice = chatCompletions.getChoices().get(0);
+            String aiResponse = choice.getMessage().getContent();
+            return aiResponse;
+
+        } catch (Exception e) {
+            System.err.println("Error during convenience wrapper generation: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private static void prepareFragments(OpenAIClient client) throws Exception {
         CodegenFragmenter fragmenter = new CodegenFragmenter();
         ChunkLinker linker = new ChunkLinker();
         List<List<String>> linked = List.of();
@@ -254,6 +285,9 @@ public class Main {
         String guidelineString = Files.readString(Path.of(parser.parse("https://azure.github.io/azure-sdk/java_introduction.html")));
         JsonArray guidelineArray = JsonParser.parseString(guidelineString).getAsJsonArray();
         String headings = "";
+        String codeHeader = "";
+        String output = "";
+        String methods = "";
 
         for(JsonElement element : guidelineArray){
             headings += element.getAsJsonObject().get("heading").getAsString() + "\n";
@@ -263,14 +297,21 @@ public class Main {
 
         try{
             Map<String,String> newMap = fragmenter.fragment(new File("..\\TypeSpec_Conversion\\tsp-output\\clients\\java\\src\\main\\java\\azurestoragemanagement\\BlobContainer.java"));
+
+            codeHeader = newMap.get("Header");
+            newMap.remove("Header");
+            methods = newMap.keySet().toString();
+
+//            System.out.println(codeHeader);
+
             linked = linker.link(newMap);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        String prompt = "";
         for(List<String> list : linked){
             //This will be the main loop.
-            String prompt = "";
+
 
             prompt = Files.readString(Path.of("../PlainText/GuidelineRequest.txt")).toString();
 
@@ -280,16 +321,18 @@ public class Main {
                 code += entry;
             }
 
+            code = codeHeader + code;
+
             prompt = prompt.replace("{code}", code);
+            //TODO: Consider changing this to only include method names, rather than entire methods.
             prompt = prompt.replace("{guidelines}", headings);
+            prompt = prompt.replace("{existingMethods}", methods);
 
-//            System.out.println(prompt);
+//            System.out.println(prompt + "\n\nEnd\n\n\n");
 
-            //TODO: Send this prompt through.
-            //Example response: Model Types;Java API Best Practices;Naming Patterns
-
-            //TODO: set the following string equal to the contents of the response;
-            String guidelineResponse = "Model Types;Java API Best Practices;Naming Patterns";
+//            TODO: set the following string equal to the contents of the response;
+//            String guidelineResponse = "Model Types;Java API Best Practices;Naming Patterns";
+            String guidelineResponse = sendChunks(client, prompt);
             String guidelinesRequested = "";
 
             for(JsonElement guideline : guidelineArray){
@@ -307,22 +350,35 @@ public class Main {
             prompt = prompt.replace("{code}", code);
             prompt = prompt.replace("{guidelines}", guidelinesRequested);
 
-            System.out.println(prompt);
+            output = sendChunks(client, prompt);
+
+            //Todo: Save response to output file, to prepare for Spotless parsing.
 //            System.out.println("Chunk List: ");
 //            for(String entry : list){
 //            System.out.println(entry);
 //            }
+            System.out.println(output + "\n\n\n Wrapper code: \n\n\n");
+
+            //TODO: Remove this - just here for demonstrative purposes
+            JsonObject responseArray = JsonParser.parseString(output).getAsJsonObject();
+            String stuff = "";
+
+
+            stuff += responseArray.get("wrapperCode").getAsString() + "\n";
+
+            System.out.println(stuff);
         }
+//        System.out.println(output);
     }
 
     public static void main(String[] args) throws Exception {
+        try {
+            loadConfigProperties();
+            OpenAIClient client = createOpenAIClient();
+            prepareFragments(client);
 
-        prepareFragments();
 
-    //    try {
     //      // Initialize
-    //      loadConfigProperties();
-    //      OpenAIClient client = createOpenAIClient();
     //
     //      // Read all required files
     //      System.out.println("Reading files...");
@@ -334,15 +390,15 @@ public class Main {
     //      // Send content to AI for analysis
     //      analyzeGeneratedCode(client, inputSpecs, typeSpecContent, srcFiles);
     //
-    //    } catch (ClientAuthenticationException e) {
-    //      System.err.println("Authentication failed: " + e.getMessage());
-    //      System.err.println("Please check your API key and endpoint.");
-    //    } catch (IOException e) {
-    //      System.err.println("File reading error: " + e.getMessage());
-    //      e.printStackTrace();
-    //    } catch (Exception e) {
-    //      System.err.println("Error occurred: " + e.getMessage());
-    //      e.printStackTrace();
-    //    }
+        } catch (ClientAuthenticationException e) {
+          System.err.println("Authentication failed: " + e.getMessage());
+          System.err.println("Please check your API key and endpoint.");
+        } catch (IOException e) {
+          System.err.println("File reading error: " + e.getMessage());
+          e.printStackTrace();
+        } catch (Exception e) {
+          System.err.println("Error occurred: " + e.getMessage());
+          e.printStackTrace();
+        }
     }
 }
