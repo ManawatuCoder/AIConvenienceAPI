@@ -2,7 +2,6 @@ import com.azure.ai.openai.OpenAIClient;
 import com.azure.ai.openai.OpenAIClientBuilder;
 import com.azure.ai.openai.models.*;
 import com.azure.core.credential.AzureKeyCredential;
-import com.azure.core.exception.ClientAuthenticationException;
 import com.azure.core.util.Configuration;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javaparser.utils.Log;
@@ -21,7 +20,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 public class Main {
