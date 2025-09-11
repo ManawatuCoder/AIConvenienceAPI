@@ -5,7 +5,7 @@ Here are the design guidelines that you must follow:
 {guidelines}
 
 Your task:
-1. Evaluate the code to identify repeated logic, overlapping functionality, or opportunities to combine methods into a single wrapper.
+1. Identify potential patterns across these methods that could be optimised to improve developer experience
 2. If no patterns are found in certain methods, ignore them
 3. If patterns are found, create a wrapper method that improves developer experience according to the supplied design guidelines.
 4. Only return output in the following structured JSON format:
