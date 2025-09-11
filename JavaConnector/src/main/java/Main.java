@@ -346,8 +346,7 @@ public class Main {
       prompt = prompt.replace("{existingMethods}", methods);
 
       //            System.out.println(prompt + "\n\nEnd\n\n\n");
-
-      //            TODO: set the following string equal to the contents of the response;
+      
       //            String guidelineResponse = "Model Types;Java API Best Practices;Naming
       // Patterns";
       String guidelineResponse = sendChunks(client, prompt);
