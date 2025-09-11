@@ -1,0 +1,23 @@
+Context: The attached methods were flagged as having potential patterns.
+{code}
+
+Here are the design guidelines that you must follow:
+{guidelines}
+
+Your task:
+1. Identify potential patterns across these methods that could be optimised to improve developer experience
+2. If no patterns are found in certain methods, ignore them
+3. If patterns are found, create a wrapper method that improves developer experience according to the supplied design guidelines.
+4. Only return output in the following structured JSON format:
+{
+  "wrapperName": "<name of wrapper>",
+  "wrapperCode": "<compilable code>",
+  "combinedMethods": ["method1", "method2", ...],
+  "notes": "<optional notes about design decisions>"
+}
+
+Notes:
+- Do NOT include any explanations or commentary
+- Do NOT invent new methods beyond what is attached.
+- Include input validation and sensible defaults if applicable.
+- Preserve existing functionality of the combined methods.
