@@ -1,0 +1,18 @@
+Context: You are analyzing the attached codegen methods from a client class, along with design guideline headers.
+
+Your task: Identify which guideline headers could be relevant for improving the convenience and developer experience of the codegen client class.
+
+Notes: 
+- Do NOT include any explanations or commentary.
+- Return only a JSON array of the guideline headers to evaluate, using this format:
+["Example Header", "Example Header 2"]
+
+Guideline Headers:
+"""
+{guidelines}
+"""
+
+Method names:
+```
+{methodNames}
+```
