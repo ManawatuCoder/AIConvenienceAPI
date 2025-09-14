@@ -257,9 +257,14 @@ public class Main {
     }
   }
 
-  private static String sendChunks(OpenAIClient client, String prompt) {
+  private static String sendChunks(OpenAIClient client, String prompt) throws IOException {
 
     List<ChatRequestMessage> messages = new ArrayList<>();
+
+    // Add system prompt
+    String systemPrompt = Files.readString(Path.of("../Prompts/MethodsGuidelinesPrompt.txt"));
+    messages.add(new ChatRequestSystemMessage(systemPrompt));
+
     // Send all content including InputSpecs, TypeSpec, and generated code
     messages.add(new ChatRequestUserMessage(prompt));
 
@@ -284,204 +289,191 @@ public class Main {
   }
 
   private static void prepareFragments(OpenAIClient client) throws Exception {
-      CodegenFragmenter fragmenter = new CodegenFragmenter();
-      ChunkLinker linker = new ChunkLinker();
-      List<List<String>> linked = List.of();
-      GuidelineParser parser = new GuidelineParser();
+    CodegenFragmenter fragmenter = new CodegenFragmenter();
+    ChunkLinker linker = new ChunkLinker();
+    List<List<String>> linked = List.of();
+    GuidelineParser parser = new GuidelineParser();
 
-      String guidelineString =
-              Files.readString(
-                      Path.of(parser.parse("https://azure.github.io/azure-sdk/java_introduction.html")));
-      JsonArray guidelineArray = JsonParser.parseString(guidelineString).getAsJsonArray();
-      String headings = "";
-      String codeHeader = "";
-      String output = "";
-      String methods = "";
+    String guidelineString =
+        Files.readString(
+            Path.of(parser.parse("https://azure.github.io/azure-sdk/java_introduction.html")));
+    JsonArray guidelineArray = JsonParser.parseString(guidelineString).getAsJsonArray();
+    String headings = "";
+    String codeHeader = "";
+    String output = "";
+    String methods = "";
+    String prompt = "";
 
-      for (JsonElement element : guidelineArray) {
-          headings += element.getAsJsonObject().get("heading").getAsString() + "\n";
+    for (JsonElement element : guidelineArray) {
+      headings += element.getAsJsonObject().get("heading").getAsString() + "\n";
+    }
+    Map<String, String> newMap = null;
+    try {
+      newMap =
+          fragmenter.fragment(
+              new File(
+                  "..\\TypeSpec_Conversion\\tsp-output\\clients\\java\\src\\main\\java\\azurestoragemanagement\\BlobContainer.java"));
+      codeHeader = newMap.get("Header");
+      newMap.remove("Header");
+      methods = newMap.keySet().toString();
+      linked = linker.link(newMap);
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    // ########################################
+    // First Prompt (Method Names & Guidelines)
+    // ########################################
+    prompt = Files.readString(Path.of("../Prompts/MethodsGuidelinesPrompt.txt"));
+    prompt = prompt.replace("{methodNames}", methods);
+    prompt = prompt.replace("{guidelines}", headings);
+
+    // Call the AI, returns
+    String outputMethodsGuidelines = sendChunks(client, prompt);
+
+    System.out.println("###################################");
+    System.out.println(prompt);
+    System.out.println("###################################");
+    System.out.println("END OF PROMPT\n\n");
+
+    // Fallback for when the AI cannot find improvements
+    if (outputMethodsGuidelines.toLowerCase().equals("no")) {
+      System.out.println("No patterns found in code. Stopping all further operations");
+      return;
+    }
+
+    // Convert to JSON
+    JsonObject JSONMethodsGuidelines =
+        JsonParser.parseString(outputMethodsGuidelines).getAsJsonObject();
+
+    JsonArray methodsArray = JSONMethodsGuidelines.getAsJsonArray("methods");
+    JsonArray guidelineHeaderArray = JSONMethodsGuidelines.getAsJsonArray("guidelines");
+
+    Map<String, String> flaggedMethods = new HashMap<>();
+    Map<String, String> flaggedGuidelines = new HashMap<>();
+
+    // Attach code to each flagged method
+    for (JsonElement e : methodsArray) {
+      assert newMap != null;
+      String methodName = e.getAsString().trim();
+      String code = newMap.get(methodName + "(");
+
+      // If method name exists in map
+      if (code != null) {
+        // Attach code to method name entry
+        flaggedMethods.put(
+            methodName,
+            newMap.get(methodName + "(")); // The '(' is on all map entry names for pattern matching
       }
-      //        System.out.println(headings);
-      Map<String, String> newMap = null;
-      try {
-          newMap = fragmenter.fragment(
-                  new File(
-                          "..\\TypeSpec_Conversion\\tsp-output\\clients\\java\\src\\main\\java\\azurestoragemanagement\\BlobContainer.java"));
+    }
 
-          codeHeader = newMap.get("Header");
-          newMap.remove("Header");
-          methods = newMap.keySet().toString();
+    // Attach guideline to guideline header
+    for (JsonElement flaggedGuideline : guidelineHeaderArray) {
+      String flaggedGuidelineHeader = flaggedGuideline.getAsString().trim();
 
-          //            System.out.println(codeHeader);
+      for (JsonElement guideline : guidelineArray) {
+        String heading = guideline.getAsJsonObject().get("heading").getAsString().trim();
 
-          linked = linker.link(newMap);
-
-      } catch (IOException e) {
-          e.printStackTrace();
+        if (heading.equals(flaggedGuidelineHeader)) {
+          String guidelineContent = guideline.getAsJsonObject().get("content").getAsString().trim();
+          flaggedGuidelines.put(heading, guidelineContent);
+          break;
+        }
       }
+    }
 
-      String prompt = "";
+    // ########################################
+    // Second (Main) Prompt (Generates wrapper from flagged code and guidelines)
+    // ########################################
+    String selectedCode = "";
+    String selectedGuidelines = "";
+    prompt = Files.readString(Path.of("../Prompts/MainPrompt.txt"));
 
-      // ########################################
-      // First Prompt (Method Names & Guidelines)
-      // ########################################
-      prompt = Files.readString(Path.of("../Prompts/MethodsGuidelinesPrompt.txt"));
-      prompt = prompt.replace("{methodNames}", methods);
-      prompt = prompt.replace("{guidelines}", headings);
+    for (Map.Entry<String, String> method : flaggedMethods.entrySet()) {
+      selectedCode += method.getValue() + "\n";
+    }
+    for (Map.Entry<String, String> guideline : flaggedGuidelines.entrySet()) {
+      selectedGuidelines += guideline.getKey() + "\n" + guideline.getValue() + "\n\n";
+    }
 
-      // Call the AI, returns
-      String outputMethodsGuidelines = sendChunks(client, prompt);
+    prompt = prompt.replace("{code}", selectedCode);
+    prompt = prompt.replace("{guidelines}", selectedGuidelines);
 
-      System.out.println("###################################");
-      System.out.println(prompt);
-      System.out.println("###################################\n\n");
+    String outputWrapper = sendChunks(client, prompt);
 
+    // Fallback for when the AI cannot find improvements
+    if (outputMethodsGuidelines.toLowerCase().equals("no")) {
+      System.out.println("No patterns found in code. Stopping all further operations");
+      return;
+    }
 
-      if (output.toLowerCase().equals("no")) {
-        // No patterns found in method names
-        System.out.println("No patterns found in code");
-        // TODO: We may want to add some state/fallback for when no patterns are found
-        // return;
-      }
+    System.out.println("GENERATED WRAPPER");
+    System.out.println("##########################");
+    System.out.println(outputWrapper);
+    System.out.println("##########################");
 
-      // Convert to JSON
-      JsonObject JSONMethodsGuidelines = JsonParser.parseString(outputMethodsGuidelines).getAsJsonObject();
-
-      JsonArray methodsArray = JSONMethodsGuidelines.getAsJsonArray("methods");
-      JsonArray guidelineHeaderArray = JSONMethodsGuidelines.getAsJsonArray("guidelines");
-
-
-      //String formattedMethodNames = outputMethodNames.replace("[", "").replace("]", "").replace("\"", "");
-      //String[] methodNames = formattedMethodNames.split(",\\s*"); // Strips comma and trailing space
-
-
-      Map<String, String> flaggedMethods = new HashMap<>();
-      Map<String, String> flaggedGuidelines = new HashMap<>();
-
-      // Attach code to each flagged method
-      for (JsonElement e : methodsArray) {
-          assert newMap != null;
-          String methodName = e.getAsString().trim();
-          String code = newMap.get(methodName + "(");
-
-          // If method name exists in map
-          if (code != null) {
-            // Attach code to method name entry
-            flaggedMethods.put(methodName, newMap.get(methodName + "(")); // The '(' is on all map entry names for pattern matching
-          }
-      }
-
-      // Attach guideline to guideline header
-      for (JsonElement flaggedGuideline : guidelineHeaderArray) {
-          String flaggedGuidelineHeader = flaggedGuideline.getAsString().trim();
-
-          for (JsonElement guideline : guidelineArray) {
-              String heading = guideline.getAsJsonObject().get("heading").getAsString().trim();
-
-              if (heading.equals(flaggedGuidelineHeader)) {
-                  String guidelineContent = guideline.getAsJsonObject().get("content").getAsString().trim();
-                  flaggedGuidelines.put(heading, guidelineContent);
-                  break;
-              }
-          }
-      }
-
-      // Prints out the flagged code
-//      for (Map.Entry<String, String> flaggedMethod : flaggedMethods.entrySet()) {
-//        System.out.println("Method Name: " + flaggedMethod.getKey());
-//        System.out.println("Method Code: " + flaggedMethod.getValue());
-//        System.out.println("\n\n");
-//      }
-      // Prints out flagged guidelines
-//      for (Map.Entry<String, String> flaggedGuideline : flaggedGuidelines.entrySet()) {
-//          System.out.println("Guideline Name: " + flaggedGuideline.getKey());
-//          System.out.println("Guidelines Code: " + flaggedGuideline.getValue());
-//          System.out.println("\n\n");
-//      }
-
-      // ########################################
-      // Second (Main) Prompt (Generates wrapper from flagged code and guidelines)
-      // ########################################
-      String selectedCode = "";
-      String selectedGuidelines = "";
-      prompt = Files.readString(Path.of("../Prompts/MainPrompt.txt"));
-
-      for (Map.Entry<String, String> method : flaggedMethods.entrySet()) {
-          selectedCode += method.getValue() + "\n";
-      }
-      for (Map.Entry<String, String> guideline : flaggedGuidelines.entrySet()) {
-          selectedGuidelines += guideline.getKey() + "\n" + guideline.getValue() + "\n\n";
-      }
-
-      prompt = prompt.replace("{code}", selectedCode);
-      prompt = prompt.replace("{guidelines}", selectedGuidelines);
-
-      String outputWrapper = sendChunks(client, prompt);
-
-      System.out.println("GENERATED WRAPPER");
-      System.out.println("##########################");
-      System.out.println(outputWrapper);
-      System.out.println("##########################");
-
-      // Guideliens Prompt
-//      for (List<String> list : linked) {
-//          prompt = Files.readString(Path.of("../PlainText/GuidelineRequest.txt")).toString();
-//
-//          String code = "";
-//
-//          for (String entry : list) {
-//              code += entry;
-//          }
-//
-//          code = codeHeader + code;
-//
-//          prompt = prompt.replace("{code}", code);
-//          // TODO: Consider changing this to only include method names, rather than entire methods.
-//          prompt = prompt.replace("{guidelines}", headings);
-//          prompt = prompt.replace("{existingMethods}", methods);
-//
-//          //            System.out.println(prompt + "\n\nEnd\n\n\n");
-//
-//          //            String guidelineResponse = "Model Types;Java API Best Practices;Naming
-//          // Patterns";
-//          String guidelineResponse = sendChunks(client, prompt);
-//          String guidelinesRequested = "";
-//
-//          for (JsonElement guideline : guidelineArray) {
-//              String heading = guideline.getAsJsonObject().get("heading").getAsString();
-//
-//              if (guidelineResponse.contains(heading)) {
-//                  guidelinesRequested +=
-//                          heading + "\n" + guideline.getAsJsonObject().get("content").getAsString() + "\n\n";
-//              }
-//          }
-//
-//          //            System.out.println(guidelinesRequested);
-//
-//          prompt = Files.readString(Path.of("../PlainText/WrapperRequest.txt")).toString();
-//
-//          prompt = prompt.replace("{code}", code);
-//          prompt = prompt.replace("{guidelines}", guidelinesRequested);
-//
-//          output = sendChunks(client, prompt);
-//
-//          // Todo: Save response to output file, to prepare for Spotless parsing.
-//
-//          //            System.out.println("Chunk List: ");
-//          //            for(String entry : list){
-//          //            System.out.println(entry);
-//          //            }
-////      System.out.println(output + "\n\n\n Wrapper code: \n\n\n");
-//
-//          // TODO: Remove this - just here for demonstrative purposes
-//          JsonObject responseArray = JsonParser.parseString(output).getAsJsonObject();
-//          String stuff = "";
-//
-//          stuff += responseArray.get("wrapperCode").getAsString() + "\n";
-//
-//          System.out.println(stuff);
-//      }
-      // System.out.println(output);
+    // Guidelines Prompt
+    //      for (List<String> list : linked) {
+    //          prompt = Files.readString(Path.of("../PlainText/GuidelineRequest.txt")).toString();
+    //
+    //          String code = "";
+    //
+    //          for (String entry : list) {
+    //              code += entry;
+    //          }
+    //
+    //          code = codeHeader + code;
+    //
+    //          prompt = prompt.replace("{code}", code);
+    //          // TODO: Consider changing this to only include method names, rather than entire
+    // methods.
+    //          prompt = prompt.replace("{guidelines}", headings);
+    //          prompt = prompt.replace("{existingMethods}", methods);
+    //
+    //          //            System.out.println(prompt + "\n\nEnd\n\n\n");
+    //
+    //          //            String guidelineResponse = "Model Types;Java API Best Practices;Naming
+    //          // Patterns";
+    //          String guidelineResponse = sendChunks(client, prompt);
+    //          String guidelinesRequested = "";
+    //
+    //          for (JsonElement guideline : guidelineArray) {
+    //              String heading = guideline.getAsJsonObject().get("heading").getAsString();
+    //
+    //              if (guidelineResponse.contains(heading)) {
+    //                  guidelinesRequested +=
+    //                          heading + "\n" +
+    // guideline.getAsJsonObject().get("content").getAsString() + "\n\n";
+    //              }
+    //          }
+    //
+    //          //            System.out.println(guidelinesRequested);
+    //
+    //          prompt = Files.readString(Path.of("../PlainText/WrapperRequest.txt")).toString();
+    //
+    //          prompt = prompt.replace("{code}", code);
+    //          prompt = prompt.replace("{guidelines}", guidelinesRequested);
+    //
+    //          output = sendChunks(client, prompt);
+    //
+    //          // Todo: Save response to output file, to prepare for Spotless parsing.
+    //
+    //          //            System.out.println("Chunk List: ");
+    //          //            for(String entry : list){
+    //          //            System.out.println(entry);
+    //          //            }
+    ////      System.out.println(output + "\n\n\n Wrapper code: \n\n\n");
+    //
+    //          // TODO: Remove this - just here for demonstrative purposes
+    //          JsonObject responseArray = JsonParser.parseString(output).getAsJsonObject();
+    //          String stuff = "";
+    //
+    //          stuff += responseArray.get("wrapperCode").getAsString() + "\n";
+    //
+    //          System.out.println(stuff);
+    //      }
+    // System.out.println(output);
   }
 
   public static void main(String[] args) throws Exception {
