@@ -1,0 +1,17 @@
+Context: You are analyzing the attached codegen methods from a client class.
+Your task: Identify potential patterns across these methods that could be optimised to improve developer experience (e.g. similar operations that could be combined, consistent parameter patterns, repetitive return processing, avoiding low level data types like byte streams)
+Instructions:
+1. Only consider patterns relevant to developer convenience. Ignore low-level protocol details
+2. Evaluate whether there is any true convenience to be added
+3. If no patterns are found, return only the string “no”
+4. If patterns are found, return only a JSON array of the method names to evaluate further, using this format: ["foo", "bar"]
+
+Notes: 
+- Do NOT include any explanations or commentary
+- Do not put the generated code into a class. You must only return the newly created methods on their own
+- If there is no real convenience to be added, then ignore all steps and return only the word “no”
+
+Method names:
+```
+{methodNames}
+```
