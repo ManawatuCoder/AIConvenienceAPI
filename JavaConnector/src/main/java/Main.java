@@ -20,37 +20,34 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Main {
-  private static final Properties prop = new Properties();
+  private static final Properties props = new Properties();
   // Azure OpenAI configuration constants
-  private static String AZURE_OPENAI_ENDPOINT;
-  private static String AZURE_OPENAI_KEY;
   private static final String DEPLOYMENT_NAME = "gpt-4.1";
 
   // Loads config properties
-  private static void loadConfigProperties() {
-    try (InputStream configInput = Files.newInputStream(Paths.get("config.properties"))) {
-      prop.load(configInput);
+  static Properties loadConfigProperties(Path configFile) {
+    try (InputStream configInput = Files.newInputStream(configFile)) {
+      props.load(configInput);
 
-      AZURE_OPENAI_ENDPOINT = prop.getProperty("AZURE_OPENAI_ENDPOINT");
-      AZURE_OPENAI_KEY = prop.getProperty("AZURE_OPENAI_KEY");
-
-      if (AZURE_OPENAI_KEY == null || AZURE_OPENAI_KEY.isEmpty()) {
+      if (props.getProperty("AZURE_OPENAI_KEY") == null || props.getProperty("AZURE_OPENAI_KEY").isEmpty()) {
         throw new IllegalStateException("AZURE_OPENAI_KEY is missing in config.properties");
       }
-      if (AZURE_OPENAI_ENDPOINT == null || AZURE_OPENAI_ENDPOINT.isEmpty()) {
+      if (props.getProperty("AZURE_OPENAI_ENDPOINT") == null || props.getProperty("AZURE_OPENAI_ENDPOINT").isEmpty()) {
         throw new IllegalStateException("AZURE_OPENAI_ENDPOINT is missing in config.properties");
       }
+
+      return props;
     } catch (Exception e) {
       throw new RuntimeException("Unable to find config.properties", e);
     }
   }
 
   // Creates and configures the Azure OpenAI client
-  private static OpenAIClient createOpenAIClient() {
+  static OpenAIClient createOpenAIClient() {
     String endpoint =
-        Configuration.getGlobalConfiguration().get("AZURE_OPENAI_ENDPOINT", AZURE_OPENAI_ENDPOINT);
+        Configuration.getGlobalConfiguration().get("AZURE_OPENAI_ENDPOINT", props.getProperty("AZURE_OPENAI_ENDPOINT"));
     String apiKey =
-        Configuration.getGlobalConfiguration().get("AZURE_OPENAI_KEY", AZURE_OPENAI_KEY);
+        Configuration.getGlobalConfiguration().get("AZURE_OPENAI_KEY", props.getProperty("AZURE_OPENAI_KEY"));
     return new OpenAIClientBuilder()
         .endpoint(endpoint)
         .credential(new AzureKeyCredential(apiKey))
@@ -258,7 +255,7 @@ public class Main {
 
   public static void main(String[] args) throws Exception {
     try {
-      loadConfigProperties();
+      loadConfigProperties(Paths.get("config.properties"));
       OpenAIClient client = createOpenAIClient();
       prepareFragments(client);
 
