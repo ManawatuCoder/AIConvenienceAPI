@@ -18,7 +18,6 @@ import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.stream.Stream;
 
 public class Main {
   private static final Properties prop = new Properties();
@@ -56,205 +55,6 @@ public class Main {
         .endpoint(endpoint)
         .credential(new AzureKeyCredential(apiKey))
         .buildClient();
-  }
-
-  private static String readFileContent(String filePath) throws IOException {
-    Path path = Paths.get(filePath);
-    if (!Files.exists(path)) {
-      System.err.println("Warning: File not found: " + filePath);
-      return "File not found: " + filePath;
-    }
-    return Files.readString(path);
-  }
-
-  private static List<String> readAllSourceFiles(String baseDir) throws IOException {
-    List<String> sourceFileContents = new ArrayList<>();
-    Path basePath = Paths.get(baseDir);
-
-    if (!Files.exists(basePath)) {
-      System.err.println("Warning: Directory not found: " + baseDir);
-      return sourceFileContents;
-    }
-
-    try (Stream<Path> paths = Files.walk(basePath)) {
-      paths
-          .filter(Files::isRegularFile)
-          .filter(path -> !path.toString().contains(".class")) // Exclude compiled files
-          .forEach(
-              path -> {
-                try {
-                  String relativePath = basePath.relativize(path).toString();
-                  String content = Files.readString(path);
-                  String fileInfo = String.format("\n\n=== %s ===\n%s", relativePath, content);
-                  sourceFileContents.add(fileInfo);
-                  System.out.println("Read: " + relativePath);
-                } catch (IOException e) {
-                  System.err.println("Error reading file: " + path + " - " + e.getMessage());
-                }
-              });
-    }
-
-    return sourceFileContents;
-  }
-
-  // Sends all content to Azure OpenAI
-  private static void analyzeGeneratedCode(
-      OpenAIClient client, String inputSpecs, String typeSpecContent, List<String> srcFiles) {
-
-    // Build the content to be analyzed
-    StringBuilder contentBuilder = new StringBuilder();
-
-    // Add InputSpecs content first for reference
-    contentBuilder.append("=== INPUT SPECIFICATIONS (InputSpecs.txt) ===\n");
-    contentBuilder.append(inputSpecs);
-    contentBuilder.append("\n\n");
-
-    // Add TypeSpec content
-    contentBuilder.append("=== GENERATED TYPESPEC (blob-storage.tsp) ===\n");
-    contentBuilder.append(typeSpecContent);
-    contentBuilder.append("\n\n");
-
-    // Add source files from tsp-output/src
-    contentBuilder.append("=== KEY GENERATED SOURCE FILES (SAMPLE) ===\n");
-
-    // Send only the most important files to stay within token limits
-    int filesIncluded = 0;
-    int maxFiles = 5;
-    for (String srcFile : srcFiles) {
-      if (filesIncluded >= maxFiles) break;
-
-      // Small sample size as token limits are strict
-      if (srcFile.contains("Client.java")
-          || srcFile.contains("Builder.java")
-          || srcFile.contains("BlobContainer.java")
-          || srcFile.contains("BlobServiceProperties.java")
-          || srcFile.contains("ContainerProperties.java")) {
-        contentBuilder.append(srcFile);
-        filesIncluded++;
-      }
-    }
-
-    List<ChatRequestMessage> messages = new ArrayList<>();
-    // Send all content including InputSpecs, TypeSpec, and generated code
-    messages.add(new ChatRequestUserMessage(contentBuilder.toString()));
-
-    // Chat settings for the AI model
-    ChatCompletionsOptions options =
-        new ChatCompletionsOptions(messages)
-            .setMaxTokens(4000) // Increase max tokens for better output
-            .setTemperature(0.3) // Lower temperature for more analytical response
-            .setTopP(0.95);
-
-    try {
-      ChatCompletions chatCompletions = client.getChatCompletions(DEPLOYMENT_NAME, options);
-      ChatChoice choice = chatCompletions.getChoices().get(0);
-      String aiResponse = choice.getMessage().getContent();
-
-      System.out.println("=== GENERATED JAVA CONVENIENCE WRAPPER ===");
-      System.out.println(aiResponse);
-
-      // Store the AI response to a file
-      saveResponseToFile(aiResponse, chatCompletions.getUsage());
-
-      System.out.println("\n=== USAGE STATISTICS ===");
-      System.out.println("Prompt tokens: " + chatCompletions.getUsage().getPromptTokens());
-      System.out.println("Completion tokens: " + chatCompletions.getUsage().getCompletionTokens());
-      System.out.println("Total tokens: " + chatCompletions.getUsage().getTotalTokens());
-
-    } catch (Exception e) {
-      System.err.println("Error during convenience wrapper generation: " + e.getMessage());
-      e.printStackTrace();
-
-      // Save error report to file
-      saveErrorReportToFile(e, contentBuilder.toString(), inputSpecs);
-    }
-  }
-
-  // Saves the AI response to a timestamped file
-  private static void saveResponseToFile(String response, CompletionsUsage usage) {
-    try {
-      // Create a timestamped filename
-      String timestamp =
-          LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
-      String filename = String.format("java_convenience_wrapper_%s.txt", timestamp);
-      Path outputPath = Paths.get(filename);
-
-      // Create the complete report content
-      StringBuilder reportBuilder = new StringBuilder();
-      reportBuilder.append("Java Convenience Wrapper Generated by Azure OpenAI\n");
-      reportBuilder
-          .append("Generated: ")
-          .append(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-          .append("\n");
-      reportBuilder.append("========================================\n\n");
-
-      reportBuilder.append("=== GENERATED CONVENIENCE WRAPPER ===\n");
-      reportBuilder.append(response);
-      reportBuilder.append("\n\n");
-
-      reportBuilder.append("=== USAGE STATISTICS ===\n");
-      reportBuilder.append("Prompt tokens: ").append(usage.getPromptTokens()).append("\n");
-      reportBuilder.append("Completion tokens: ").append(usage.getCompletionTokens()).append("\n");
-      reportBuilder.append("Total tokens: ").append(usage.getTotalTokens()).append("\n");
-      reportBuilder.append("========================================\n");
-
-      // Write to file
-      Files.writeString(
-          outputPath,
-          reportBuilder.toString(),
-          StandardOpenOption.CREATE,
-          StandardOpenOption.WRITE);
-
-      System.out.println("\n=== CONVENIENCE WRAPPER GENERATED ===");
-      System.out.println("Java convenience wrapper saved to: " + outputPath.toAbsolutePath());
-
-    } catch (IOException e) {
-      System.err.println("Error saving AI response to file: " + e.getMessage());
-      e.printStackTrace();
-    }
-  }
-
-  // Saves an error report to a timestamped file
-  private static void saveErrorReportToFile(
-      Exception error, String contentToAnalyze, String systemPrompt) {
-    try {
-      // Create a timestamped filename
-      String timestamp =
-          LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
-      String filename = String.format("convenience_wrapper_error_%s.txt", timestamp);
-      Path outputPath = Paths.get(filename);
-
-      // Create the complete error report content
-      StringBuilder reportBuilder = new StringBuilder();
-      reportBuilder.append("Java Convenience Wrapper Generation Error Report\n");
-      reportBuilder
-          .append("Generated: ")
-          .append(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-          .append("\n");
-      reportBuilder.append("========================================\n\n");
-      reportBuilder.append("=== ERROR DETAILS ===\n");
-      reportBuilder.append("Error Type: ").append(error.getClass().getSimpleName()).append("\n");
-      reportBuilder.append("Error Message: ").append(error.getMessage()).append("\n");
-      reportBuilder.append("Stack Trace:\n");
-
-      for (StackTraceElement element : error.getStackTrace()) {
-        reportBuilder.append("  ").append(element.toString()).append("\n");
-      }
-      reportBuilder.append("\n========================================\n");
-
-      // Write to file
-      Files.writeString(
-          outputPath,
-          reportBuilder.toString(),
-          StandardOpenOption.CREATE,
-          StandardOpenOption.WRITE);
-      System.out.println("\n=== ERROR REPORT SAVED ===");
-      System.out.println("Error report saved to: " + outputPath.toAbsolutePath());
-
-    } catch (IOException e) {
-      System.err.println("Error saving error report to file: " + e.getMessage());
-      e.printStackTrace();
-    }
   }
 
   private static String sendChunks(OpenAIClient client, String prompt) throws IOException {
@@ -295,16 +95,15 @@ public class Main {
     GuidelineParser parser = new GuidelineParser();
 
     // Create a timestamped filename
-    String timestamp =
-            LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm"));
+    String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm"));
     String filename = String.format("../WrapperOutputs/java_convenience_wrapper_%s.txt", timestamp);
     Path outputPath = Paths.get(filename);
     StringBuilder reportBuilder = new StringBuilder();
     reportBuilder.append("Java Convenience Wrapper Generated by Azure OpenAI\n");
     reportBuilder
-            .append("Generated: ")
-            .append(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-            .append("\n");
+        .append("Generated: ")
+        .append(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+        .append("\n");
 
     String guidelineString =
         Files.readString(
@@ -335,7 +134,7 @@ public class Main {
     }
 
     // ########################################
-    // First Prompt (Method Names & Guidelines)
+    // First Prompt (Flags Method Names & Guidelines from List)
     // ########################################
     prompt = Files.readString(Path.of("../Prompts/MethodsGuidelinesPrompt.txt"));
     prompt = prompt.replace("{methodNames}", methods);
@@ -343,17 +142,25 @@ public class Main {
 
     // Call the AI, returns
     String outputMethodsGuidelines = sendChunks(client, prompt);
-    reportBuilder.append("\n\n===========================================================================================\n");
-    reportBuilder.append("Prompt 1\n");
-    reportBuilder.append("===========================================================================================\n\n\n");
-    reportBuilder.append(prompt);
-    reportBuilder.append("\n===========================================================================================\n\n\n\n");
-    reportBuilder.append("\n===========================================================================================\n");
-    reportBuilder.append("Step 1 Output: Method and Guideline request\n");
-    reportBuilder.append("===========================================================================================\n\n");
-    reportBuilder.append(outputMethodsGuidelines);
-    reportBuilder.append("\n===========================================================================================\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
+    // Appends prompt + output to file
+    // TODO: Implement logging to format the output better
+    reportBuilder.append(
+        "\n\n===========================================================================================\n");
+    reportBuilder.append("Prompt 1\n");
+    reportBuilder.append(
+        "===========================================================================================\n\n\n");
+    reportBuilder.append(prompt);
+    reportBuilder.append(
+        "\n===========================================================================================\n\n\n\n");
+    reportBuilder.append(
+        "\n===========================================================================================\n");
+    reportBuilder.append("Step 1 Output: Method and Guideline request\n");
+    reportBuilder.append(
+        "===========================================================================================\n\n");
+    reportBuilder.append(outputMethodsGuidelines);
+    reportBuilder.append(
+        "\n===========================================================================================\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
     // Fallback for when the AI cannot find improvements
     if (outputMethodsGuidelines.toLowerCase().equals("no")) {
@@ -361,7 +168,7 @@ public class Main {
       return;
     }
 
-    // Convert to JSON
+    // Format the output to be used for next prompt
     JsonObject JSONMethodsGuidelines =
         JsonParser.parseString(outputMethodsGuidelines).getAsJsonObject();
 
@@ -419,94 +226,34 @@ public class Main {
     prompt = prompt.replace("{guidelines}", selectedGuidelines);
 
     String outputWrapper = sendChunks(client, prompt);
-    reportBuilder.append("===========================================================================================\n");
+    reportBuilder.append(
+        "===========================================================================================\n");
     reportBuilder.append("Prompt 2\n");
-    reportBuilder.append("===========================================================================================\n\n");
+    reportBuilder.append(
+        "===========================================================================================\n\n");
     reportBuilder.append(prompt);
-    reportBuilder.append("\n===========================================================================================\n\n\n\n\n");
-
+    reportBuilder.append(
+        "\n===========================================================================================\n\n\n\n\n");
 
     // Fallback for when the AI cannot find improvements
     if (outputWrapper.toLowerCase().equals("no")) {
       System.out.println("No patterns found in code. Stopping all further operations");
       return;
     }
-    reportBuilder.append("===========================================================================================\n");
+    reportBuilder.append(
+        "===========================================================================================\n");
     reportBuilder.append("Step 2 Output: Generated Wrapper\n");
-    reportBuilder.append("===========================================================================================\n");
+    reportBuilder.append(
+        "===========================================================================================\n");
     reportBuilder.append(outputWrapper);
-    reportBuilder.append("\n===========================================================================================\n\n");
+    reportBuilder.append(
+        "\n===========================================================================================\n\n");
 
     // Write to file
     Files.writeString(
-            outputPath,
-            reportBuilder.toString(),
-            StandardOpenOption.CREATE,
-            StandardOpenOption.WRITE);
+        outputPath, reportBuilder.toString(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
 
     System.out.println("Java Wrapper saved to file");
-
-    // Guidelines Prompt
-    //      for (List<String> list : linked) {
-    //          prompt = Files.readString(Path.of("../PlainText/GuidelineRequest.txt")).toString();
-    //
-    //          String code = "";
-    //
-    //          for (String entry : list) {
-    //              code += entry;
-    //          }
-    //
-    //          code = codeHeader + code;
-    //
-    //          prompt = prompt.replace("{code}", code);
-    //          // TODO: Consider changing this to only include method names, rather than entire
-    // methods.
-    //          prompt = prompt.replace("{guidelines}", headings);
-    //          prompt = prompt.replace("{existingMethods}", methods);
-    //
-    //          //            System.out.println(prompt + "\n\nEnd\n\n\n");
-    //
-    //          //            String guidelineResponse = "Model Types;Java API Best Practices;Naming
-    //          // Patterns";
-    //          String guidelineResponse = sendChunks(client, prompt);
-    //          String guidelinesRequested = "";
-    //
-    //          for (JsonElement guideline : guidelineArray) {
-    //              String heading = guideline.getAsJsonObject().get("heading").getAsString();
-    //
-    //              if (guidelineResponse.contains(heading)) {
-    //                  guidelinesRequested +=
-    //                          heading + "\n" +
-    // guideline.getAsJsonObject().get("content").getAsString() + "\n\n";
-    //              }
-    //          }
-    //
-    //          //            System.out.println(guidelinesRequested);
-    //
-    //          prompt = Files.readString(Path.of("../PlainText/WrapperRequest.txt")).toString();
-    //
-    //          prompt = prompt.replace("{code}", code);
-    //          prompt = prompt.replace("{guidelines}", guidelinesRequested);
-    //
-    //          output = sendChunks(client, prompt);
-    //
-    //          // Todo: Save response to output file, to prepare for Spotless parsing.
-    //
-    //          //            System.out.println("Chunk List: ");
-    //          //            for(String entry : list){
-    //          //            System.out.println(entry);
-    //          //            }
-    ////      System.out.println(output + "\n\n\n Wrapper code: \n\n\n");
-    //
-    //          // TODO: Remove this - just here for demonstrative purposes
-    //          JsonObject responseArray = JsonParser.parseString(output).getAsJsonObject();
-    //          String stuff = "";
-    //
-    //          stuff += responseArray.get("wrapperCode").getAsString() + "\n";
-    //
-    //          System.out.println(stuff);
-    //      }
-    // System.out.println(output);
   }
 
   public static void main(String[] args) throws Exception {
@@ -515,18 +262,6 @@ public class Main {
       OpenAIClient client = createOpenAIClient();
       prepareFragments(client);
 
-      //      // Initialize
-      //
-      //      // Read all required files
-      //      System.out.println("Reading files...");
-      //      String inputSpecs = readFileContent("../PlainText/InputSpecs.txt");
-      //      String typeSpecContent = readFileContent("../TypeSpec_Conversion/blob-storage.tsp");
-      //      List<String> srcFiles =
-      //          readAllSourceFiles("../TypeSpec_Conversion/tsp-output/clients/java/src");
-      //
-      //      // Send content to AI for analysis
-      //      analyzeGeneratedCode(client, inputSpecs, typeSpecContent, srcFiles);
-      //
     } catch (ClientAuthenticationException e) {
       System.err.println("Authentication failed: " + e.getMessage());
       System.err.println("Please check your API key and endpoint.");
