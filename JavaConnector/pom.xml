@@ -19,8 +19,14 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <azure.version>1.2.18</azure.version>
+
+        <!-- default so IDE stops complaining; JaCoCo will append to it at build time -->
+        <junit.version>5.10.2</junit.version>
+        <mockito.inline.version>5.2.0</mockito.inline.version>
+        <surefire.version>3.2.5</surefire.version>
+        <!-- silence IDE; JaCoCo will append -->
+        <argLine></argLine>
     </properties>
-    
     <dependencies>
         <!-- Azure OpenAI SDK -->
         <dependency>
@@ -50,11 +56,11 @@
             <version>2.0.9</version>
         </dependency>
         
-        <!-- JUnit for testing (optional) -->
+        <!-- JUnit for testing -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -85,13 +91,13 @@
             <artifactId>gson</artifactId>
             <version>2.13.1</version>
         </dependency>
+
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>RELEASE</version>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-inline</artifactId>
+            <version>5.2.0</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
     
     <build>
@@ -139,6 +145,42 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- SSurefire: must pass ${argLine} and -add-opens for JDK 21+ -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <useModulePath>false</useModulePath>
+                    <argLine>
+                    ${argLine}
+                    --add-opens java.base/java.lang=ALL-UNNAMED
+                    --add-opens java.base/java.lang.invoke=ALL-UNNAMED
+                    --add-opens java.base/java.util=ALL-UNNAMED
+                    --add-opens java.base/java.io=ALL-UNNAMED
+                </argLine>
+                </configuration>
+            </plugin>
+
+            <!-- JaCoCo -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.11</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals><goal>prepare-agent</goal></goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>verify</phase>
+                        <goals><goal>report</goal></goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             
             <!-- Maven Shade Plugin for creating an executable JAR -->
             <plugin>

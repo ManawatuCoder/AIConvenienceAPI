@@ -29,10 +29,12 @@ public class Main {
     try (InputStream configInput = Files.newInputStream(configFile)) {
       props.load(configInput);
 
-      if (props.getProperty("AZURE_OPENAI_KEY") == null || props.getProperty("AZURE_OPENAI_KEY").isEmpty()) {
+      if (props.getProperty("AZURE_OPENAI_KEY") == null
+          || props.getProperty("AZURE_OPENAI_KEY").isEmpty()) {
         throw new IllegalStateException("AZURE_OPENAI_KEY is missing in config.properties");
       }
-      if (props.getProperty("AZURE_OPENAI_ENDPOINT") == null || props.getProperty("AZURE_OPENAI_ENDPOINT").isEmpty()) {
+      if (props.getProperty("AZURE_OPENAI_ENDPOINT") == null
+          || props.getProperty("AZURE_OPENAI_ENDPOINT").isEmpty()) {
         throw new IllegalStateException("AZURE_OPENAI_ENDPOINT is missing in config.properties");
       }
 
@@ -45,9 +47,11 @@ public class Main {
   // Creates and configures the Azure OpenAI client
   static OpenAIClient createOpenAIClient() {
     String endpoint =
-        Configuration.getGlobalConfiguration().get("AZURE_OPENAI_ENDPOINT", props.getProperty("AZURE_OPENAI_ENDPOINT"));
+        Configuration.getGlobalConfiguration()
+            .get("AZURE_OPENAI_ENDPOINT", props.getProperty("AZURE_OPENAI_ENDPOINT"));
     String apiKey =
-        Configuration.getGlobalConfiguration().get("AZURE_OPENAI_KEY", props.getProperty("AZURE_OPENAI_KEY"));
+        Configuration.getGlobalConfiguration()
+            .get("AZURE_OPENAI_KEY", props.getProperty("AZURE_OPENAI_KEY"));
     return new OpenAIClientBuilder()
         .endpoint(endpoint)
         .credential(new AzureKeyCredential(apiKey))
