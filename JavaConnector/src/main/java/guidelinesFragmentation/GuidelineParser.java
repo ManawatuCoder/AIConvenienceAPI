@@ -32,7 +32,7 @@ public class GuidelineParser {
 
       //            Collect all heading tags
       Elements headings = doc.select("h1, h2, h3, h4, h5, h6");
-      List<Map<String, String>> chunks = new ArrayList<>();
+      List<Map<String, String>> fragments = new ArrayList<>();
 
       for (int i = 0; i < headings.size(); i++) {
         Element heading = headings.get(i);
@@ -50,16 +50,16 @@ public class GuidelineParser {
         }
 
         if (contentBuilder.length() > 0) {
-          Map<String, String> chunk = new HashMap<>();
-          chunk.put("heading", headingText);
-          chunk.put("content", contentBuilder.toString().trim());
-          chunks.add(chunk);
+          Map<String, String> fragment = new HashMap<>();
+          fragment.put("heading", headingText);
+          fragment.put("content", contentBuilder.toString().trim());
+          fragments.add(fragment);
         }
       }
 
       // Convert to JSON using Gson
       Gson gson = new GsonBuilder().setPrettyPrinting().create();
-      String json = gson.toJson(chunks);
+      String json = gson.toJson(fragments);
 
       try {
         if (!Files.exists(parsedGuidelines)) {

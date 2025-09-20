@@ -1,4 +1,4 @@
-import codegenFragmenter.ChunkLinker;
+import codegenFragmenter.FragmentLinker;
 import codegenFragmenter.CodegenFragmenter;
 import com.azure.ai.openai.OpenAIClient;
 import com.azure.ai.openai.OpenAIClientBuilder;
@@ -57,7 +57,7 @@ public class Main {
         .buildClient();
   }
 
-  private static String sendChunks(OpenAIClient client, String prompt) throws IOException {
+  private static String sendFragments(OpenAIClient client, String prompt) throws IOException {
 
     List<ChatRequestMessage> messages = new ArrayList<>();
 
@@ -90,7 +90,7 @@ public class Main {
 
   private static void prepareFragments(OpenAIClient client) throws Exception {
     CodegenFragmenter fragmenter = new CodegenFragmenter();
-    ChunkLinker linker = new ChunkLinker();
+    FragmentLinker linker = new FragmentLinker();
     List<List<String>> linked = List.of();
     GuidelineParser parser = new GuidelineParser();
 
@@ -141,7 +141,7 @@ public class Main {
     prompt = prompt.replace("{guidelines}", headings);
 
     // Call the AI, returns
-    String outputMethodsGuidelines = sendChunks(client, prompt);
+    String outputMethodsGuidelines = sendFragments(client, prompt);
 
     // Appends prompt + output to file
     // TODO: Implement logging to format the output better
@@ -225,7 +225,7 @@ public class Main {
     prompt = prompt.replace("{code}", selectedCode);
     prompt = prompt.replace("{guidelines}", selectedGuidelines);
 
-    String outputWrapper = sendChunks(client, prompt);
+    String outputWrapper = sendFragments(client, prompt);
     reportBuilder.append(
         "===========================================================================================\n");
     reportBuilder.append("Prompt 2\n");
