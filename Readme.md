@@ -20,6 +20,13 @@ java -jar /path/to/your/JavaConnector/target/MCP-Server-1.0.0.jar
 
 **Important:** Replace `/path/to/your/` with your actual local project path.
 
+## MCP Inpector Settings
+
+- **Transport Type**: STDIO
+- **Command**: java
+- **Arguments**: Paste the above jar file location with your updated dir
+- **Request Timeout & Maximum Request Timeout**: This might need adjusting according to your machine
+
 ## Usage Modes
 
 - **CLI Mode (`--cli`)**: Runs once and generates wrapper immediately, then exits
