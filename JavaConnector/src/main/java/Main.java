@@ -10,6 +10,8 @@ import com.azure.ai.openai.models.*;
 import com.azure.core.credential.AzureKeyCredential;
 import com.azure.core.exception.ClientAuthenticationException;
 import com.azure.core.util.Configuration;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.javaparser.utils.Log;
 import com.google.gson.*;
 import guidelinesFragmentation.GuidelineParser;
 
@@ -97,7 +99,7 @@ public class Main {
     return null;
   }
 
-  private static void prepareFragments(OpenAIClient client) throws Exception {
+  private static String prepareFragments(OpenAIClient client) throws Exception {
     CodegenFragmenter fragmenter = new CodegenFragmenter();
     FragmentLinker linker = new FragmentLinker();
     List<List<String>> linked = List.of();
@@ -172,7 +174,7 @@ public class Main {
     // Fallback for when the AI cannot find improvements
     if (outputMethodsGuidelines.toLowerCase().equals("no")) {
       System.out.println("No patterns found in code. Stopping all further operations");
-      return;
+      return null;
     }
 
     // Format the output to be used for next prompt
@@ -244,7 +246,7 @@ public class Main {
     // Fallback for when the AI cannot find improvements
     if (outputWrapper.toLowerCase().equals("no")) {
       System.out.println("No patterns found in code. Stopping all further operations");
-      return;
+      return null;
     }
     reportBuilder.append(
         "===========================================================================================\n");
@@ -260,23 +262,77 @@ public class Main {
         outputPath, reportBuilder.toString(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
 
     System.out.println("Java Wrapper saved to file");
+    return reportBuilder.toString();
+  }
+
+  // Get Sync Tool Specification
+  private static McpServerFeatures.SyncToolSpecification getSyncToolSpecification() {
+    // Create and return a SyncToolSpecification instance
+    String schema = "{\n" +
+        "    \"type\": \"object\",\n" +
+        "    \"properties\": {\n" +
+        "        \"input\": {\n" +
+        "            \"type\": \"string\"\n" +
+        "        },\n" +
+        "        \"output\": {\n" +
+        "            \"type\": \"string\"\n" +
+        "        }\n" +
+        "    }\n" +
+        "}";
+    return new McpServerFeatures.SyncToolSpecification(
+        new McpSchema.Tool("Blob-Storage-Generate-Convenience-Wrapper",
+            "Generates Convenience Wrapper for blob storage Azure API", schema),
+        (exchange, arguments) -> {
+          // Define the behavior for the tool specification
+          try {
+            // Initialize
+            loadConfigProperties();
+            OpenAIClient client = createOpenAIClient();
+            String result = prepareFragments(client);
+
+            // Return the generated wrapper as tool result
+            return new McpSchema.CallToolResult(result, false);
+
+          } catch (ClientAuthenticationException e) {
+            String errorMsg = "Authentication failed: " + e.getMessage()
+                + "\nPlease check your API key and endpoint.";
+            System.err.println(errorMsg);
+            return new McpSchema.CallToolResult(errorMsg, true);
+
+          } catch (IOException e) {
+            String errorMsg = "File reading error: " + e.getMessage();
+            System.err.println(errorMsg);
+            e.printStackTrace();
+            return new McpSchema.CallToolResult(errorMsg, true);
+
+          } catch (Exception e) {
+            String errorMsg = "Error occurred: " + e.getMessage();
+            System.err.println(errorMsg);
+            e.printStackTrace();
+            return new McpSchema.CallToolResult(errorMsg, true);
+
+          }
+        });
   }
 
   public static void main(String[] args) throws Exception {
-    try {
-      loadConfigProperties();
-      OpenAIClient client = createOpenAIClient();
-      prepareFragments(client);
 
-    } catch (ClientAuthenticationException e) {
-      System.err.println("Authentication failed: " + e.getMessage());
-      System.err.println("Please check your API key and endpoint.");
-    } catch (IOException e) {
-      System.err.println("File reading error: " + e.getMessage());
-      e.printStackTrace();
-    } catch (Exception e) {
-      System.err.println("Error occurred: " + e.getMessage());
-      e.printStackTrace();
-    }
+    // STDIO Server Transport
+    var transportProvider = new StdioServerTransportProvider(new ObjectMapper());
+
+    // Create Sync Tool Specification
+    var syncToolSpec = getSyncToolSpecification();
+
+    // Create MCP Server
+    McpServer.sync(transportProvider)
+        .serverInfo("JavaConnector-MCP-Server", "1.0.0")
+        .capabilities(McpSchema.ServerCapabilities.builder()
+            .tools(true)
+            .logging()
+            .build())
+        .tools(syncToolSpec).build();
+
+    Log.info("MCP Server created successfully");
   }
+
 }
