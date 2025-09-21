@@ -1,5 +1,9 @@
-import codegenFragmenter.FragmentLinker;
+
+// Main class for generating Java convenience wrappers using Azure OpenAI
 import codegenFragmenter.CodegenFragmenter;
+import codegenFragmenter.FragmentLinker;
+
+// Imports for Azure OpenAI SDK
 import com.azure.ai.openai.OpenAIClient;
 import com.azure.ai.openai.OpenAIClientBuilder;
 import com.azure.ai.openai.models.*;
@@ -8,6 +12,14 @@ import com.azure.core.exception.ClientAuthenticationException;
 import com.azure.core.util.Configuration;
 import com.google.gson.*;
 import guidelinesFragmentation.GuidelineParser;
+
+// Imports for MCP server
+import io.modelcontextprotocol.server.McpServer;
+import io.modelcontextprotocol.server.McpServerFeatures;
+import io.modelcontextprotocol.server.transport.StdioServerTransportProvider;
+import io.modelcontextprotocol.spec.McpSchema;
+
+// Imports for file handling and utilities
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,10 +59,8 @@ public class Main {
 
   // Creates and configures the Azure OpenAI client
   private static OpenAIClient createOpenAIClient() {
-    String endpoint =
-        Configuration.getGlobalConfiguration().get("AZURE_OPENAI_ENDPOINT", AZURE_OPENAI_ENDPOINT);
-    String apiKey =
-        Configuration.getGlobalConfiguration().get("AZURE_OPENAI_KEY", AZURE_OPENAI_KEY);
+    String endpoint = Configuration.getGlobalConfiguration().get("AZURE_OPENAI_ENDPOINT", AZURE_OPENAI_ENDPOINT);
+    String apiKey = Configuration.getGlobalConfiguration().get("AZURE_OPENAI_KEY", AZURE_OPENAI_KEY);
     return new OpenAIClientBuilder()
         .endpoint(endpoint)
         .credential(new AzureKeyCredential(apiKey))
@@ -69,11 +79,10 @@ public class Main {
     messages.add(new ChatRequestUserMessage(prompt));
 
     // Chat settings for the AI model
-    ChatCompletionsOptions options =
-        new ChatCompletionsOptions(messages)
-            .setMaxTokens(4000) // Increase max tokens for better output
-            .setTemperature(0.3) // Lower temperature for more analytical response
-            .setTopP(0.95);
+    ChatCompletionsOptions options = new ChatCompletionsOptions(messages)
+        .setMaxTokens(4000) // Increase max tokens for better output
+        .setTemperature(0.3) // Lower temperature for more analytical response
+        .setTopP(0.95);
 
     try {
       ChatCompletions chatCompletions = client.getChatCompletions(DEPLOYMENT_NAME, options);
@@ -105,9 +114,8 @@ public class Main {
         .append(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
         .append("\n");
 
-    String guidelineString =
-        Files.readString(
-            Path.of(parser.parse("https://azure.github.io/azure-sdk/java_introduction.html")));
+    String guidelineString = Files.readString(
+        Path.of(parser.parse("https://azure.github.io/azure-sdk/java_introduction.html")));
     JsonArray guidelineArray = JsonParser.parseString(guidelineString).getAsJsonArray();
     String headings = "";
     String codeHeader = "";
@@ -120,10 +128,9 @@ public class Main {
     }
     Map<String, String> newMap = null;
     try {
-      newMap =
-          fragmenter.fragment(
-              new File(
-                  "..\\TypeSpec_Conversion\\tsp-output\\clients\\java\\src\\main\\java\\azurestoragemanagement\\BlobContainersClient.java"));
+      newMap = fragmenter.fragment(
+          new File(
+              "..\\TypeSpec_Conversion\\tsp-output\\clients\\java\\src\\main\\java\\azurestoragemanagement\\BlobContainersClient.java"));
       codeHeader = newMap.get("Header");
       newMap.remove("Header");
       methods = newMap.keySet().toString();
@@ -169,8 +176,7 @@ public class Main {
     }
 
     // Format the output to be used for next prompt
-    JsonObject JSONMethodsGuidelines =
-        JsonParser.parseString(outputMethodsGuidelines).getAsJsonObject();
+    JsonObject JSONMethodsGuidelines = JsonParser.parseString(outputMethodsGuidelines).getAsJsonObject();
 
     JsonArray methodsArray = JSONMethodsGuidelines.getAsJsonArray("methods");
     JsonArray guidelineHeaderArray = JSONMethodsGuidelines.getAsJsonArray("guidelines");

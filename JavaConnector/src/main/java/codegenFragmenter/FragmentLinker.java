@@ -17,7 +17,8 @@ public class FragmentLinker {
     int i = 0;
     for (String fragment : functionFragments.values()) {
       List<String> singleFragmentList = new ArrayList<>();
-      // We can add the header fragment here, or we can do it elsewhere depending how prompts will be
+      // We can add the header fragment here, or we can do it elsewhere depending how prompts will
+      // be
       // constructed.
       // TODO: Decide whether to keep following line:
       //            singleFragmentList.add(functionFragments.get("Header"));

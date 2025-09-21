@@ -121,7 +121,8 @@ public class CodegenFragmenter {
       currentFragment.append(outputLine.get(j) + "\n");
     }
 
-    String key = md.getNameAsString() + "("; // bracket included for pattern matching in FragmentLinker
+    String key =
+        md.getNameAsString() + "("; // bracket included for pattern matching in FragmentLinker
     return currentFragment.toString();
   }
 
