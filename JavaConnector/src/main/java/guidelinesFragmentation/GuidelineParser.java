@@ -26,7 +26,7 @@ public class GuidelineParser {
     //        String url = "https://azure.github.io/azure-sdk/java_introduction.html";
     LastModifiedCheck check = new LastModifiedCheck();
     Path parsedGuidelines =
-        Path.of("src\\main\\java\\guidelinesFragmentation\\output\\guidelinesJson.txt");
+        Path.of("D:\\UpdatedMCP\\AIConvenienceAPI\\JavaConnector\\src\\main\\java\\guidelinesFragmentation\\output\\guidelinesJson.txt");
     if (check.check(url) || !Files.exists(parsedGuidelines)) {
       Document doc = Jsoup.connect(url).get();
 

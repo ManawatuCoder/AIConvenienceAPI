@@ -20,8 +20,8 @@ public class LastModifiedCheck {
     String lastModified = String.valueOf(conn.getLastModified());
 
     try {
-      Path lastModifiedPath =
-          Path.of("src\\main\\java\\guidelinesFragmentation\\output\\last-modified.txt");
+      Path lastModifiedPath = Path.of(
+          "D:\\UpdatedMCP\\AIConvenienceAPI\\JavaConnector\\src\\main\\java\\guidelinesFragmentation\\output\\last-modified.txt");
 
       if (!Files.exists(lastModifiedPath)) {
         Files.writeString(
