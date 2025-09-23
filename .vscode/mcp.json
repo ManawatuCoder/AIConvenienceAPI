@@ -1,0 +1,13 @@
+{
+	"servers": {
+		"MCP-CodeGen": {
+			"type": "stdio",
+			"command": "java",
+			"args": [
+				"-jar",
+				"D:/UpdatedMCP/AIConvenienceAPI/JavaConnector/target/MCP-Server-1.0.0.jar"
+			]
+		}
+	},
+	"inputs": []
+}
