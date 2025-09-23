@@ -6,6 +6,7 @@
 
 package guidelinesFragmentation;
 
+import config.PathConfiguration;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
@@ -23,14 +24,13 @@ import org.jsoup.select.Elements;
 
 public class GuidelineParser {
   public static String parse(String url) throws Exception {
-    //        String url = "https://azure.github.io/azure-sdk/java_introduction.html";
+    // String url = "https://azure.github.io/azure-sdk/java_introduction.html";
     LastModifiedCheck check = new LastModifiedCheck();
-    Path parsedGuidelines =
-        Path.of("src\\main\\java\\guidelinesFragmentation\\output\\guidelinesJson.txt");
+    Path parsedGuidelines = Path.of(PathConfiguration.GUIDELINES_JSON);
     if (check.check(url) || !Files.exists(parsedGuidelines)) {
       Document doc = Jsoup.connect(url).get();
 
-      //            Collect all heading tags
+      // Collect all heading tags
       Elements headings = doc.select("h1, h2, h3, h4, h5, h6");
       List<Map<String, String>> fragments = new ArrayList<>();
 
@@ -39,9 +39,8 @@ public class GuidelineParser {
         String headingText = heading.text();
 
         StringBuilder contentBuilder = new StringBuilder();
-        for (Element sibling = heading.nextElementSibling();
-            sibling != null && !sibling.tagName().matches("h[1-6]");
-            sibling = sibling.nextElementSibling()) {
+        for (Element sibling = heading.nextElementSibling(); sibling != null
+            && !sibling.tagName().matches("h[1-6]"); sibling = sibling.nextElementSibling()) {
 
           // Include block-level content tags
           if (sibling.isBlock()) {

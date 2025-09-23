@@ -4,6 +4,7 @@
 
 package guidelinesFragmentation;
 
+import config.PathConfiguration;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -20,8 +21,7 @@ public class LastModifiedCheck {
     String lastModified = String.valueOf(conn.getLastModified());
 
     try {
-      Path lastModifiedPath =
-          Path.of("src\\main\\java\\guidelinesFragmentation\\output\\last-modified.txt");
+      Path lastModifiedPath = Path.of(PathConfiguration.LAST_MODIFIED_FILE);
 
       if (!Files.exists(lastModifiedPath)) {
         Files.writeString(

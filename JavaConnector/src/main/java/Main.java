@@ -1,13 +1,28 @@
-import codegenFragmenter.FragmentLinker;
+
+// Main class for generating Java convenience wrappers using Azure OpenAI
 import codegenFragmenter.CodegenFragmenter;
+import codegenFragmenter.FragmentLinker;
+import config.PathConfiguration;
+
+// Imports for Azure OpenAI SDK
 import com.azure.ai.openai.OpenAIClient;
 import com.azure.ai.openai.OpenAIClientBuilder;
 import com.azure.ai.openai.models.*;
 import com.azure.core.credential.AzureKeyCredential;
 import com.azure.core.exception.ClientAuthenticationException;
 import com.azure.core.util.Configuration;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.javaparser.utils.Log;
 import com.google.gson.*;
 import guidelinesFragmentation.GuidelineParser;
+
+// Imports for MCP server
+import io.modelcontextprotocol.server.McpServer;
+import io.modelcontextprotocol.server.McpServerFeatures;
+import io.modelcontextprotocol.server.transport.StdioServerTransportProvider;
+import io.modelcontextprotocol.spec.McpSchema;
+
+// Imports for file handling and utilities
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,7 +43,8 @@ public class Main {
 
   // Loads config properties
   private static void loadConfigProperties() {
-    try (InputStream configInput = Files.newInputStream(Paths.get("config.properties"))) {
+    try (InputStream configInput = Files
+        .newInputStream(Paths.get(PathConfiguration.CONFIG_PROPERTIES))) {
       prop.load(configInput);
 
       AZURE_OPENAI_ENDPOINT = prop.getProperty("AZURE_OPENAI_ENDPOINT");
@@ -47,33 +63,32 @@ public class Main {
 
   // Creates and configures the Azure OpenAI client
   private static OpenAIClient createOpenAIClient() {
-    String endpoint =
-        Configuration.getGlobalConfiguration().get("AZURE_OPENAI_ENDPOINT", AZURE_OPENAI_ENDPOINT);
-    String apiKey =
-        Configuration.getGlobalConfiguration().get("AZURE_OPENAI_KEY", AZURE_OPENAI_KEY);
+    String endpoint = Configuration.getGlobalConfiguration().get("AZURE_OPENAI_ENDPOINT", AZURE_OPENAI_ENDPOINT);
+    String apiKey = Configuration.getGlobalConfiguration().get("AZURE_OPENAI_KEY", AZURE_OPENAI_KEY);
     return new OpenAIClientBuilder()
         .endpoint(endpoint)
         .credential(new AzureKeyCredential(apiKey))
         .buildClient();
   }
 
+  // Sends the prompt and fragments to Azure OpenAI and returns the AI response
   private static String sendFragments(OpenAIClient client, String prompt) throws IOException {
 
     List<ChatRequestMessage> messages = new ArrayList<>();
 
     // Add system prompt
-    String systemPrompt = Files.readString(Path.of("../Prompts/MethodsGuidelinesPrompt.txt"));
+    String systemPrompt = Files
+        .readString(Path.of(PathConfiguration.METHODS_GUIDELINES_PROMPT));
     messages.add(new ChatRequestSystemMessage(systemPrompt));
 
     // Send all content including InputSpecs, TypeSpec, and generated code
     messages.add(new ChatRequestUserMessage(prompt));
 
     // Chat settings for the AI model
-    ChatCompletionsOptions options =
-        new ChatCompletionsOptions(messages)
-            .setMaxTokens(4000) // Increase max tokens for better output
-            .setTemperature(0.3) // Lower temperature for more analytical response
-            .setTopP(0.95);
+    ChatCompletionsOptions options = new ChatCompletionsOptions(messages)
+        .setMaxTokens(4000) // Increase max tokens for better output
+        .setTemperature(0.3) // Lower temperature for more analytical response
+        .setTopP(0.95);
 
     try {
       ChatCompletions chatCompletions = client.getChatCompletions(DEPLOYMENT_NAME, options);
@@ -88,189 +103,351 @@ public class Main {
     return null;
   }
 
-  private static void prepareFragments(OpenAIClient client) throws Exception {
-    CodegenFragmenter fragmenter = new CodegenFragmenter();
-    FragmentLinker linker = new FragmentLinker();
-    List<List<String>> linked = List.of();
+  // Main workflow coordinator with progress tracking
+  private static String prepareFragments(OpenAIClient client) throws Exception {
+    System.out.println("Starting convenience wrapper generation...");
+
+    // Initialize components
     GuidelineParser parser = new GuidelineParser();
 
-    // Create a timestamped filename
+    // Create timestamped output file
+    Path outputPath = createOutputFile();
+    StringBuilder reportBuilder = createReportHeader();
+
+    // Parse guidelines from web
+    System.out.println("Fetching and parsing guidelines...");
+    JsonArray guidelineArray = parseGuidelines(parser);
+    String headings = extractHeadings(guidelineArray);
+
+    // Fragment the code
+    System.out.println("Fragmenting code...");
+    Map<String, String> codeFragments = fragmentCode();
+    String methods = codeFragments.keySet().toString();
+
+    // Step 1: Get method and guideline recommendations
+    System.out.println("Step 1: Getting AI recommendations...");
+    String methodGuidelineOutput = processFirstPrompt(client, methods, headings, reportBuilder);
+
+    if (isNoImprovementsFound(methodGuidelineOutput)) {
+      return finalizeReport(outputPath, reportBuilder, "No patterns found in code. Stopping operations.");
+    }
+
+    // Step 2: Generate convenience wrapper
+    System.out.println("Step 2: Generating convenience wrapper...");
+    Map<String, String> flaggedMethods = extractFlaggedMethods(methodGuidelineOutput, codeFragments);
+    Map<String, String> flaggedGuidelines = extractFlaggedGuidelines(methodGuidelineOutput, guidelineArray);
+
+    String wrapperOutput = processSecondPrompt(client, flaggedMethods, flaggedGuidelines, reportBuilder);
+
+    if (isNoImprovementsFound(wrapperOutput)) {
+      return finalizeReport(outputPath, reportBuilder, "No wrapper improvements found.");
+    }
+
+    appendWrapperOutput(reportBuilder, wrapperOutput);
+
+    // Save and return results
+    String result = finalizeReport(outputPath, reportBuilder, "Java Wrapper generation completed successfully!");
+    System.out.println("Output saved to: " + outputPath.toString());
+
+    return result;
+  }
+
+  // Creates a timestamped output file path
+  private static Path createOutputFile() {
     String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm"));
-    String filename = String.format("../WrapperOutputs/java_convenience_wrapper_%s.txt", timestamp);
-    Path outputPath = Paths.get(filename);
+    String filename = PathConfiguration.getWrapperOutputPath(timestamp);
+    return Paths.get(filename);
+  }
+
+  // Creates the report header
+  private static StringBuilder createReportHeader() {
     StringBuilder reportBuilder = new StringBuilder();
     reportBuilder.append("Java Convenience Wrapper Generated by Azure OpenAI\n");
-    reportBuilder
-        .append("Generated: ")
+    reportBuilder.append("Generated: ")
         .append(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-        .append("\n");
+        .append("\n\n");
+    return reportBuilder;
+  }
 
-    String guidelineString =
-        Files.readString(
-            Path.of(parser.parse("https://azure.github.io/azure-sdk/java_introduction.html")));
-    JsonArray guidelineArray = JsonParser.parseString(guidelineString).getAsJsonArray();
-    String headings = "";
-    String codeHeader = "";
-    String output = "";
-    String methods = "";
-    String prompt = "";
+  // Parses guidelines from the specified URL and returns as a JsonArray
+  private static JsonArray parseGuidelines(GuidelineParser parser) throws Exception {
+    String guidelineString = Files.readString(
+        Path.of(GuidelineParser.parse("https://azure.github.io/azure-sdk/java_introduction.html")));
+    return JsonParser.parseString(guidelineString).getAsJsonArray();
+  }
 
+  // Extracts the headings from the guideline array
+  private static String extractHeadings(JsonArray guidelineArray) {
+    StringBuilder headings = new StringBuilder();
     for (JsonElement element : guidelineArray) {
-      headings += element.getAsJsonObject().get("heading").getAsString() + "\n";
+      headings.append(element.getAsJsonObject().get("heading").getAsString()).append("\n");
     }
-    Map<String, String> newMap = null;
-    try {
-      newMap =
-          fragmenter.fragment(
-              new File(
-                  "..\\TypeSpec_Conversion\\tsp-output\\clients\\java\\src\\main\\java\\azurestoragemanagement\\BlobContainersClient.java"));
-      codeHeader = newMap.get("Header");
-      newMap.remove("Header");
-      methods = newMap.keySet().toString();
-      linked = linker.link(newMap);
+    return headings.toString();
+  }
 
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+  // Fragments the code and returns a map of method names to code snippets
+  private static Map<String, String> fragmentCode() throws IOException {
+    Map<String, String> codeFragments = CodegenFragmenter.fragment(
+        new File(PathConfiguration.BLOB_CONTAINERS_CLIENT));
 
-    // ########################################
-    // First Prompt (Flags Method Names & Guidelines from List)
-    // ########################################
-    prompt = Files.readString(Path.of("../Prompts/MethodsGuidelinesPrompt.txt"));
+    // Remove header as it's not needed for method analysis
+    codeFragments.remove("Header");
+    return codeFragments;
+  }
+
+  // Processes the first prompt and returns the AI response
+  private static String processFirstPrompt(OpenAIClient client, String methods, String headings,
+      StringBuilder reportBuilder) throws IOException {
+
+    String prompt = Files.readString(Path.of(PathConfiguration.METHODS_GUIDELINES_PROMPT));
     prompt = prompt.replace("{methodNames}", methods);
     prompt = prompt.replace("{guidelines}", headings);
 
-    // Call the AI, returns
-    String outputMethodsGuidelines = sendFragments(client, prompt);
+    String output = sendFragments(client, prompt);
 
-    // Appends prompt + output to file
-    // TODO: Implement logging to format the output better
-    reportBuilder.append(
-        "\n\n===========================================================================================\n");
-    reportBuilder.append("Prompt 1\n");
-    reportBuilder.append(
-        "===========================================================================================\n\n\n");
+    // Append to report
+    appendSectionHeader(reportBuilder, "Prompt 1: Method and Guideline Analysis");
     reportBuilder.append(prompt);
-    reportBuilder.append(
-        "\n===========================================================================================\n\n\n\n");
-    reportBuilder.append(
-        "\n===========================================================================================\n");
-    reportBuilder.append("Step 1 Output: Method and Guideline request\n");
-    reportBuilder.append(
-        "===========================================================================================\n\n");
-    reportBuilder.append(outputMethodsGuidelines);
-    reportBuilder.append(
-        "\n===========================================================================================\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    appendSectionDivider(reportBuilder);
+    reportBuilder.append("\nStep 1 Output:\n");
+    reportBuilder.append(output);
+    appendSectionFooter(reportBuilder);
 
-    // Fallback for when the AI cannot find improvements
-    if (outputMethodsGuidelines.toLowerCase().equals("no")) {
-      System.out.println("No patterns found in code. Stopping all further operations");
-      return;
-    }
+    return output;
+  }
 
-    // Format the output to be used for next prompt
-    JsonObject JSONMethodsGuidelines =
-        JsonParser.parseString(outputMethodsGuidelines).getAsJsonObject();
+  // Processes the second prompt and returns the AI response
+  private static String processSecondPrompt(OpenAIClient client, Map<String, String> flaggedMethods,
+      Map<String, String> flaggedGuidelines, StringBuilder reportBuilder) throws IOException {
 
-    JsonArray methodsArray = JSONMethodsGuidelines.getAsJsonArray("methods");
-    JsonArray guidelineHeaderArray = JSONMethodsGuidelines.getAsJsonArray("guidelines");
+    String prompt = Files.readString(Path.of(PathConfiguration.MAIN_PROMPT));
 
+    // Build selected code and guidelines
+    StringBuilder selectedCode = new StringBuilder();
+    StringBuilder selectedGuidelines = new StringBuilder();
+
+    flaggedMethods.values().forEach(code -> selectedCode.append(code).append("\n"));
+    flaggedGuidelines
+        .forEach((heading, content) -> selectedGuidelines.append(heading).append("\n").append(content).append("\n\n"));
+
+    prompt = prompt.replace("{code}", selectedCode.toString());
+    prompt = prompt.replace("{guidelines}", selectedGuidelines.toString());
+
+    String output = sendFragments(client, prompt);
+
+    // Append to report
+    appendSectionHeader(reportBuilder, "Prompt 2: Convenience Wrapper Generation");
+    reportBuilder.append(prompt);
+    appendSectionDivider(reportBuilder);
+
+    return output;
+  }
+
+  // Extracts flagged methods from the AI response
+  private static Map<String, String> extractFlaggedMethods(String methodGuidelineOutput,
+      Map<String, String> codeFragments) {
     Map<String, String> flaggedMethods = new HashMap<>();
-    Map<String, String> flaggedGuidelines = new HashMap<>();
 
-    // Attach code to each flagged method
-    for (JsonElement e : methodsArray) {
-      assert newMap != null;
-      String methodName = e.getAsString().trim();
-      String code = newMap.get(methodName + "(");
+    try {
+      JsonObject jsonOutput = JsonParser.parseString(methodGuidelineOutput).getAsJsonObject();
+      JsonArray methodsArray = jsonOutput.getAsJsonArray("methods");
 
-      // If method name exists in map
-      if (code != null) {
-        // Attach code to method name entry
-        flaggedMethods.put(
-            methodName,
-            newMap.get(methodName + "(")); // The '(' is on all map entry names for pattern matching
-      }
-    }
+      for (JsonElement element : methodsArray) {
+        String methodName = element.getAsString().trim();
+        String code = codeFragments.get(methodName + "("); // Pattern matching key
 
-    // Attach guideline to guideline header
-    for (JsonElement flaggedGuideline : guidelineHeaderArray) {
-      String flaggedGuidelineHeader = flaggedGuideline.getAsString().trim();
-
-      for (JsonElement guideline : guidelineArray) {
-        String heading = guideline.getAsJsonObject().get("heading").getAsString().trim();
-
-        if (heading.equals(flaggedGuidelineHeader)) {
-          String guidelineContent = guideline.getAsJsonObject().get("content").getAsString().trim();
-          flaggedGuidelines.put(heading, guidelineContent);
-          break;
+        if (code != null) {
+          flaggedMethods.put(methodName, code);
         }
       }
+    } catch (Exception e) {
+      System.err.println("Warning: Could not parse method recommendations: " + e.getMessage());
     }
 
-    // ########################################
-    // Second (Main) Prompt (Generates wrapper from flagged code and guidelines)
-    // ########################################
-    String selectedCode = "";
-    String selectedGuidelines = "";
-    prompt = Files.readString(Path.of("../Prompts/MainPrompt.txt"));
+    return flaggedMethods;
+  }
 
-    for (Map.Entry<String, String> method : flaggedMethods.entrySet()) {
-      selectedCode += method.getValue() + "\n";
+  // Extracts flagged guidelines from the AI response
+  private static Map<String, String> extractFlaggedGuidelines(String methodGuidelineOutput,
+      JsonArray guidelineArray) {
+    Map<String, String> flaggedGuidelines = new HashMap<>();
+
+    try {
+      JsonObject jsonOutput = JsonParser.parseString(methodGuidelineOutput).getAsJsonObject();
+      JsonArray guidelineHeaderArray = jsonOutput.getAsJsonArray("guidelines");
+
+      for (JsonElement flaggedElement : guidelineHeaderArray) {
+        String flaggedHeader = flaggedElement.getAsString().trim();
+
+        for (JsonElement guideline : guidelineArray) {
+          String heading = guideline.getAsJsonObject().get("heading").getAsString().trim();
+
+          if (heading.equals(flaggedHeader)) {
+            String content = guideline.getAsJsonObject().get("content").getAsString().trim();
+            flaggedGuidelines.put(heading, content);
+            break;
+          }
+        }
+      }
+    } catch (Exception e) {
+      System.err.println("Warning: Could not parse guideline recommendations: " + e.getMessage());
     }
-    for (Map.Entry<String, String> guideline : flaggedGuidelines.entrySet()) {
-      selectedGuidelines += guideline.getKey() + "\n" + guideline.getValue() + "\n\n";
-    }
 
-    prompt = prompt.replace("{code}", selectedCode);
-    prompt = prompt.replace("{guidelines}", selectedGuidelines);
+    return flaggedGuidelines;
+  }
 
-    String outputWrapper = sendFragments(client, prompt);
-    reportBuilder.append(
-        "===========================================================================================\n");
-    reportBuilder.append("Prompt 2\n");
-    reportBuilder.append(
-        "===========================================================================================\n\n");
-    reportBuilder.append(prompt);
-    reportBuilder.append(
-        "\n===========================================================================================\n\n\n\n\n");
+  // Checks if the AI output indicates no improvements found
+  private static boolean isNoImprovementsFound(String aiOutput) {
+    return aiOutput != null && aiOutput.toLowerCase().trim().equals("no");
+  }
 
-    // Fallback for when the AI cannot find improvements
-    if (outputWrapper.toLowerCase().equals("no")) {
-      System.out.println("No patterns found in code. Stopping all further operations");
-      return;
-    }
-    reportBuilder.append(
-        "===========================================================================================\n");
-    reportBuilder.append("Step 2 Output: Generated Wrapper\n");
-    reportBuilder.append(
-        "===========================================================================================\n");
-    reportBuilder.append(outputWrapper);
-    reportBuilder.append(
-        "\n===========================================================================================\n\n");
+  // Appends a section header to the report
+  private static void appendSectionHeader(StringBuilder builder, String title) {
+    builder.append("\n\n").append("=".repeat(80)).append("\n");
+    builder.append(title).append("\n");
+    builder.append("=".repeat(80)).append("\n\n");
+  }
 
-    // Write to file
-    Files.writeString(
-        outputPath, reportBuilder.toString(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+  // Appends a section divider to the report
+  private static void appendSectionDivider(StringBuilder builder) {
+    builder.append("\n").append("-".repeat(80)).append("\n");
+  }
 
-    System.out.println("Java Wrapper saved to file");
+  // Appends a section footer to the report
+  private static void appendSectionFooter(StringBuilder builder) {
+    builder.append("\n").append("=".repeat(80)).append("\n");
+  }
+
+  // Appends the output of the wrapper generation step to the report
+  private static void appendWrapperOutput(StringBuilder reportBuilder, String wrapperOutput) {
+    reportBuilder.append("\nStep 2 Output: Generated Convenience Wrapper\n");
+    appendSectionDivider(reportBuilder);
+    reportBuilder.append(wrapperOutput);
+    appendSectionFooter(reportBuilder);
+  }
+
+  // Saves the final report to file and returns the report string
+  private static String finalizeReport(Path outputPath, StringBuilder reportBuilder, String message)
+      throws IOException {
+    // Write final report to file
+    Files.writeString(outputPath, reportBuilder.toString(),
+        StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+
+    System.out.println(message);
+    return reportBuilder.toString();
+  }
+
+  // Creates and returns a SyncToolSpecification instance
+  private static McpServerFeatures.SyncToolSpecification getSyncToolSpecification() {
+    String schema = "{\n" +
+        "    \"type\": \"object\",\n" +
+        "    \"properties\": {\n" +
+        "        \"input\": {\n" +
+        "            \"type\": \"string\"\n" +
+        "        },\n" +
+        "        \"output\": {\n" +
+        "            \"type\": \"string\"\n" +
+        "        }\n" +
+        "    }\n" +
+        "}";
+    return new McpServerFeatures.SyncToolSpecification(
+        new McpSchema.Tool("Blob-Storage-Generate-Convenience-Wrapper",
+            "Generates Convenience Wrapper for blob storage Azure API", schema),
+        (exchange, arguments) -> {
+          // Define the behavior for the tool specification
+          try {
+            // Ensure required directories exist and print path configuration
+            PathConfiguration.ensureDirectoriesExist();
+
+            // Load configuration properties
+            loadConfigProperties();
+
+            // Initialize
+            OpenAIClient client = createOpenAIClient();
+            String result = prepareFragments(client);
+
+            // Return the generated wrapper as tool result
+            return new McpSchema.CallToolResult(result, false);
+
+          } catch (ClientAuthenticationException e) {
+            String errorMsg = "Authentication failed: " + e.getMessage()
+                + "\nPlease check your API key and endpoint.";
+            System.err.println(errorMsg);
+            return new McpSchema.CallToolResult(errorMsg, true);
+
+          } catch (IOException e) {
+            String errorMsg = "File reading error: " + e.getMessage();
+            System.err.println(errorMsg);
+            e.printStackTrace();
+            return new McpSchema.CallToolResult(errorMsg, true);
+
+          } catch (Exception e) {
+            String errorMsg = "Error occurred: " + e.getMessage();
+            System.err.println(errorMsg);
+            e.printStackTrace();
+            return new McpSchema.CallToolResult(errorMsg, true);
+
+          }
+        });
   }
 
   public static void main(String[] args) throws Exception {
+    // Check if running in CLI mode
+    if (args.length > 0 && args[0].equals("--cli")) {
+      System.out.println("Running in CLI mode...");
+      runCliMode();
+      return;
+    }
+
+    // Default MCP Server mode
+    System.out.println("Starting MCP Server mode...");
+    runMcpServerMode();
+  }
+
+  // Runs the application in CLI mode (direct execution)
+  private static void runCliMode() {
     try {
+      PathConfiguration.ensureDirectoriesExist();
       loadConfigProperties();
       OpenAIClient client = createOpenAIClient();
       prepareFragments(client);
+      System.out.println("\n" + "=".repeat(80));
+      System.out.println("CLI EXECUTION COMPLETED SUCCESSFULLY");
+      System.out.println("=".repeat(80));
 
     } catch (ClientAuthenticationException e) {
       System.err.println("Authentication failed: " + e.getMessage());
       System.err.println("Please check your API key and endpoint.");
+      System.exit(1);
     } catch (IOException e) {
       System.err.println("File reading error: " + e.getMessage());
       e.printStackTrace();
+      System.exit(1);
     } catch (Exception e) {
       System.err.println("Error occurred: " + e.getMessage());
       e.printStackTrace();
+      System.exit(1);
     }
   }
+
+  // Runs the application in MCP Server mode
+  private static void runMcpServerMode() throws Exception {
+    // STDIO Server Transport
+    var transportProvider = new StdioServerTransportProvider(new ObjectMapper());
+
+    // Create Sync Tool Specification
+    var syncToolSpec = getSyncToolSpecification();
+
+    // Create MCP Server
+    McpServer.sync(transportProvider)
+        .serverInfo("JavaConnector-MCP-Server", "1.0.0")
+        .capabilities(McpSchema.ServerCapabilities.builder()
+            .tools(true)
+            .logging()
+            .build())
+        .tools(syncToolSpec).build();
+
+    Log.info("MCP Server created successfully and listening for requests...");
+  }
+
 }
