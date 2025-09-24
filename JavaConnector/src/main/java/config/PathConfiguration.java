@@ -3,11 +3,12 @@ package config;
 public class PathConfiguration {
 
     // *** UPDATE THIS PATH FOR YOUR LOCAL ENVIRONMENT ***
-    private static final String BASE_PROJECT_PATH = "D:\\UpdatedMCP\\AIConvenienceAPI";
+    private static final String BASE_PROJECT_PATH = "C:\\Users\\New\\Desktop\\uni\\2025\\AIConvenienceAPI";
 
     // DO NOT MODIFY THESE
     private static final String JAVA_CONNECTOR_BASE = BASE_PROJECT_PATH + "\\JavaConnector";
     private static final String PROMPTS_BASE = BASE_PROJECT_PATH + "\\Prompts";
+    private static final String LOGS_OUTPUTS_BASE = BASE_PROJECT_PATH + "\\Logs";
     private static final String WRAPPER_OUTPUTS_BASE = BASE_PROJECT_PATH + "\\WrapperOutputs";
     private static final String TYPESPEC_BASE = BASE_PROJECT_PATH + "\\TypeSpec_Conversion";
     private static final String GUIDELINES_OUTPUT_BASE = JAVA_CONNECTOR_BASE +
@@ -21,7 +22,8 @@ public class PathConfiguration {
     public static final String MAIN_PROMPT = PROMPTS_BASE + "\\MainPrompt.txt";
 
     // Output files
-    public static final String WRAPPER_OUTPUT_TEMPLATE = WRAPPER_OUTPUTS_BASE + "\\java_convenience_wrapper_%s.txt";
+    public static final String WRAPPER_OUTPUT_TEMPLATE = WRAPPER_OUTPUTS_BASE + "\\java_wrapper_%s.txt";
+    public static final String LOG_OUTPUT_TEMPLATE = LOGS_OUTPUTS_BASE + "\\wrapper_logs_%s.txt";
 
     // TypeSpec generated files
     public static final String BLOB_CONTAINERS_CLIENT = TYPESPEC_BASE +
@@ -34,6 +36,9 @@ public class PathConfiguration {
     public static String getWrapperOutputPath(String timestamp) {
         return String.format(WRAPPER_OUTPUT_TEMPLATE, timestamp);
     }
+    public static String getLogsOutputPath(String timestamp) {
+        return String.format(LOG_OUTPUT_TEMPLATE, timestamp);
+    }
 
     public static String getBaseProjectPath() {
         return BASE_PROJECT_PATH;
@@ -41,7 +46,7 @@ public class PathConfiguration {
 
     public static void ensureDirectoriesExist() {
         java.nio.file.Path[] requiredDirs = {
-                java.nio.file.Paths.get(WRAPPER_OUTPUTS_BASE),
+                java.nio.file.Paths.get(LOGS_OUTPUTS_BASE),
                 java.nio.file.Paths.get(GUIDELINES_OUTPUT_BASE),
                 java.nio.file.Paths.get(PROMPTS_BASE)
         };
