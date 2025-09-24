@@ -1,0 +1,139 @@
+Generated Convenience Wrapper: 
+
+// Wrapper for setLegalHold and setLegalHoldWithResponse
+// Reason: Both methods perform the same operation (setting legal hold tags) with and without RequestContext. 
+// This wrapper provides a single entry point using the options pattern, improving usability and future extensibility.
+
+public class SetLegalHoldOptions {
+    private final String subscriptionId;
+    private final String resourceGroupName;
+    private final String accountName;
+    private final String containerName;
+    private final String apiVersion;
+    private final LegalHold legalHold;
+    private RequestContext requestContext;
+
+    public SetLegalHoldOptions(String subscriptionId, String resourceGroupName, String accountName,
+                               String containerName, String apiVersion, LegalHold legalHold) {
+        this.subscriptionId = subscriptionId;
+        this.resourceGroupName = resourceGroupName;
+        this.accountName = accountName;
+        this.containerName = containerName;
+        this.apiVersion = apiVersion;
+        this.legalHold = legalHold;
+    }
+
+    public String getSubscriptionId() { return subscriptionId; }
+    public String getResourceGroupName() { return resourceGroupName; }
+    public String getAccountName() { return accountName; }
+    public String getContainerName() { return containerName; }
+    public String getApiVersion() { return apiVersion; }
+    public LegalHold getLegalHold() { return legalHold; }
+    public RequestContext getRequestContext() { return requestContext; }
+    public SetLegalHoldOptions setRequestContext(RequestContext requestContext) {
+        this.requestContext = requestContext;
+        return this;
+    }
+}
+
+@ServiceMethod(returns = ReturnType.SINGLE)
+public Response<LegalHold> setLegalHold(SetLegalHoldOptions options) {
+    if (options == null) {
+        throw new IllegalArgumentException("SetLegalHoldOptions cannot be null.");
+    }
+    if (options.getSubscriptionId() == null || options.getResourceGroupName() == null ||
+        options.getAccountName() == null || options.getContainerName() == null ||
+        options.getApiVersion() == null || options.getLegalHold() == null) {
+        throw new IllegalArgumentException("Required parameters must not be null.");
+    }
+    if (options.getRequestContext() != null) {
+        return this.setLegalHoldWithResponse(
+            options.getSubscriptionId(),
+            options.getResourceGroupName(),
+            options.getAccountName(),
+            options.getContainerName(),
+            options.getApiVersion(),
+            options.getLegalHold(),
+            options.getRequestContext()
+        );
+    } else {
+        LegalHold result = this.setLegalHold(
+            options.getSubscriptionId(),
+            options.getResourceGroupName(),
+            options.getAccountName(),
+            options.getContainerName(),
+            options.getApiVersion(),
+            options.getLegalHold()
+        );
+        return new SimpleResponse<>(null, 200, null, result);
+    }
+}
+
+// Wrapper for clearLegalHold and clearLegalHoldWithResponse
+// Reason: Both methods perform the same operation (clearing legal hold tags) with and without RequestContext. 
+// This wrapper provides a single entry point using the options pattern, improving usability and future extensibility.
+
+public class ClearLegalHoldOptions {
+    private final String subscriptionId;
+    private final String resourceGroupName;
+    private final String accountName;
+    private final String containerName;
+    private final String apiVersion;
+    private final LegalHold legalHold;
+    private RequestContext requestContext;
+
+    public ClearLegalHoldOptions(String subscriptionId, String resourceGroupName, String accountName,
+                                 String containerName, String apiVersion, LegalHold legalHold) {
+        this.subscriptionId = subscriptionId;
+        this.resourceGroupName = resourceGroupName;
+        this.accountName = accountName;
+        this.containerName = containerName;
+        this.apiVersion = apiVersion;
+        this.legalHold = legalHold;
+    }
+
+    public String getSubscriptionId() { return subscriptionId; }
+    public String getResourceGroupName() { return resourceGroupName; }
+    public String getAccountName() { return accountName; }
+    public String getContainerName() { return containerName; }
+    public String getApiVersion() { return apiVersion; }
+    public LegalHold getLegalHold() { return legalHold; }
+    public RequestContext getRequestContext() { return requestContext; }
+    public ClearLegalHoldOptions setRequestContext(RequestContext requestContext) {
+        this.requestContext = requestContext;
+        return this;
+    }
+}
+
+@ServiceMethod(returns = ReturnType.SINGLE)
+public Response<LegalHold> clearLegalHold(ClearLegalHoldOptions options) {
+    if (options == null) {
+        throw new IllegalArgumentException("ClearLegalHoldOptions cannot be null.");
+    }
+    if (options.getSubscriptionId() == null || options.getResourceGroupName() == null ||
+        options.getAccountName() == null || options.getContainerName() == null ||
+        options.getApiVersion() == null || options.getLegalHold() == null) {
+        throw new IllegalArgumentException("Required parameters must not be null.");
+    }
+    if (options.getRequestContext() != null) {
+        return this.clearLegalHoldWithResponse(
+            options.getSubscriptionId(),
+            options.getResourceGroupName(),
+            options.getAccountName(),
+            options.getContainerName(),
+            options.getApiVersion(),
+            options.getLegalHold(),
+            options.getRequestContext()
+        );
+    } else {
+        LegalHold result = this.clearLegalHold(
+            options.getSubscriptionId(),
+            options.getResourceGroupName(),
+            options.getAccountName(),
+            options.getContainerName(),
+            options.getApiVersion(),
+            options.getLegalHold()
+        );
+        return new SimpleResponse<>(null, 200, null, result);
+    }
+}
