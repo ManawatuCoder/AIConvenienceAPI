@@ -424,19 +424,17 @@ public class Main {
   }
 
   public static void main(String[] args) throws Exception {
-    PrintStream originalErr = System.err;
-    System.setErr(new PrintStream(new FileOutputStream("../Logs/system.err.log", true)));
 
     // Check if running in CLI mode
-//    if (args.length > 0 && args[0].equals("--cli")) {
+    if (args.length > 0 && args[0].equals("--cli")) {
       System.out.println("Running in CLI mode...");
       runCliMode();
       return;
-//    }
+    }
 
-//    // Default MCP Server mode
-//    System.out.println("Starting MCP Server mode...");
-//    runMcpServerMode();
+    // Default MCP Server mode
+    System.out.println("Starting MCP Server mode...");
+    runMcpServerMode();
   }
 
   // Runs the application in CLI mode (direct execution)
