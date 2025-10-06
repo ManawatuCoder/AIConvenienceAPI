@@ -33,6 +33,8 @@ import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.io.PrintStream;
+import java.io.FileOutputStream;
 
 //Imports for logging
 import org.slf4j.Logger;
@@ -44,6 +46,16 @@ public class Main {
   private static String AZURE_OPENAI_ENDPOINT;
   private static String AZURE_OPENAI_KEY;
   private static final String DEPLOYMENT_NAME = "gpt-4.1";
+
+  //Logging
+  static {
+    try {
+      PrintStream fileErr = new PrintStream(new FileOutputStream("../Logs/system.err.log", true));
+      System.setErr(fileErr);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
   //Logger
   private static Logger logger = LoggerFactory.getLogger("Main logger");
 
@@ -412,6 +424,8 @@ public class Main {
   }
 
   public static void main(String[] args) throws Exception {
+    PrintStream originalErr = System.err;
+    System.setErr(new PrintStream(new FileOutputStream("../Logs/system.err.log", true)));
 
     // Check if running in CLI mode
 //    if (args.length > 0 && args[0].equals("--cli")) {

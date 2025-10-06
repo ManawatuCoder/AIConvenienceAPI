@@ -20,7 +20,6 @@
         <!-- Netty Appender - separate file for netty spam-->
         <File name="NettyLogger" fileName="../Logs/netty.log" append="true">
             <PatternLayout pattern="%d [%t] %-5level %logger - %msg%n"/>
-            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
     </Appenders>
 
