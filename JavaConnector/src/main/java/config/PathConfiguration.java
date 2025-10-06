@@ -3,13 +3,14 @@ package config;
 public class PathConfiguration {
 
     // *** UPDATE THIS PATH FOR YOUR LOCAL ENVIRONMENT ***
-    private static final String BASE_PROJECT_PATH = "C:\\Users\\New\\Desktop\\uni\\2025\\AIConvenienceAPI";
+    private static final String BASE_PROJECT_PATH = "C:\\Path\\To\\AIConvenienceAPI";
 
     // DO NOT MODIFY THESE
     private static final String JAVA_CONNECTOR_BASE = BASE_PROJECT_PATH + "\\JavaConnector";
     private static final String PROMPTS_BASE = BASE_PROJECT_PATH + "\\Prompts";
-    private static final String LOGS_OUTPUTS_BASE = BASE_PROJECT_PATH + "\\Logs";
-    private static final String WRAPPER_OUTPUTS_BASE = BASE_PROJECT_PATH + "\\WrapperOutputs";
+    private static final String LOGS_OUTPUTS_BASE = BASE_PROJECT_PATH + "\\Outputs\\Logs";
+    private static final String WRAPPER_OUTPUTS_BASE = BASE_PROJECT_PATH + "\\Outputs\\RawWrapperOutputs";
+    private static final String MERGED_OUTPUT_BASE = BASE_PROJECT_PATH + "\\Outputs\\MergedOutputs";
     private static final String TYPESPEC_BASE = BASE_PROJECT_PATH + "\\TypeSpec_Conversion";
     private static final String GUIDELINES_OUTPUT_BASE = JAVA_CONNECTOR_BASE +
             "\\src\\main\\java\\guidelinesFragmentation\\output";
@@ -22,7 +23,8 @@ public class PathConfiguration {
     public static final String MAIN_PROMPT = PROMPTS_BASE + "\\MainPrompt.txt";
 
     // Output files
-    public static final String WRAPPER_OUTPUT_TEMPLATE = WRAPPER_OUTPUTS_BASE + "\\java_wrapper_%s.txt";
+    public static final String MERGED_OUTPUT_TEMPLATE = MERGED_OUTPUT_BASE + "\\java_wrapper_%s.java";
+    public static final String WRAPPER_OUTPUT_TEMPLATE = WRAPPER_OUTPUTS_BASE + "\\raw_wrapper_output_%s.txt";
     public static final String LOG_OUTPUT_TEMPLATE = LOGS_OUTPUTS_BASE + "\\wrapper_logs_%s.txt";
 
     // TypeSpec generated files
@@ -33,6 +35,9 @@ public class PathConfiguration {
     public static final String GUIDELINES_JSON = GUIDELINES_OUTPUT_BASE + "\\guidelinesJson.txt";
     public static final String LAST_MODIFIED_FILE = GUIDELINES_OUTPUT_BASE + "\\last-modified.txt";
 
+    public static String getFinalOutputPath(String timestamp) {
+        return String.format(MERGED_OUTPUT_TEMPLATE, timestamp);
+    }
     public static String getWrapperOutputPath(String timestamp) {
         return String.format(WRAPPER_OUTPUT_TEMPLATE, timestamp);
     }
