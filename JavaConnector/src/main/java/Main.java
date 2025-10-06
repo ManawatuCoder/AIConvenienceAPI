@@ -33,6 +33,8 @@ import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
   private static final Properties prop = new Properties();
@@ -150,6 +152,8 @@ public class Main {
     saveWrapperOutput(wrapperOutput);
     System.out.println("Logs saved to: " + outputPath.toString());
 
+    mergeWrapperToExistingFile(wrapperOutput);
+
     return result;
   }
 
@@ -164,6 +168,40 @@ public class Main {
     System.out.println("Wrapper saved to: " + outputPath.toString());
 
     Files.writeString(outputPath, wrapperOutputContent, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+  }
+
+  // Adds the wrapper code into a file with the original library ocde
+  private static void mergeWrapperToExistingFile(String wrapperOutput) throws IOException {
+    // Create new file
+    String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm"));
+    String filename = PathConfiguration.getFinalOutputPath(timestamp);
+    Path outputPath = Paths.get(filename);
+
+    Path inputFilePath = Paths.get(PathConfiguration.BLOB_CONTAINERS_CLIENT);
+    String inputFileContent = Files.readString(inputFilePath);
+
+
+
+    // Append generated wrapper code to file
+    String formattedWrapperOutput = "\n\n/********************* GENERATED WRAPPER CODE *********************/\n" + wrapperOutput + "\n/********************* END OF GENERATED CODE *********************/\n\n";
+
+    // Regex to detect start of class block
+    Pattern classDeclarationPattern = Pattern.compile("(class\\s+\\w+\\s*\\{)", Pattern.MULTILINE);
+    Matcher matcher = classDeclarationPattern.matcher(inputFileContent);
+
+    String mergedWrapperOutput = "";
+    if (matcher.find()) {
+      // Insert wrapped code at the beginning of the class block
+      int insertPos = matcher.end();
+      mergedWrapperOutput = inputFileContent.substring(0, insertPos) + formattedWrapperOutput + inputFileContent.substring(insertPos);
+    } else {
+      // If no class detected, paste wrapper code at top of file
+      mergedWrapperOutput = formattedWrapperOutput + inputFileContent;
+      System.out.println("Error: No class declaration detected. Appended wrapper at top of file");
+    }
+
+    Files.writeString(outputPath, mergedWrapperOutput, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+    System.out.println("Merged wrapper saved to: " + outputPath);
   }
 
   // Creates a timestamped output file path
