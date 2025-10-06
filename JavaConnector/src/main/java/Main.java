@@ -34,17 +34,23 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+//Imports for logging
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Main {
   private static final Properties prop = new Properties();
   // Azure OpenAI configuration constants
   private static String AZURE_OPENAI_ENDPOINT;
   private static String AZURE_OPENAI_KEY;
   private static final String DEPLOYMENT_NAME = "gpt-4.1";
+  //Logger
+  private static Logger logger = LoggerFactory.getLogger("Main logger");
 
   // Loads config properties
   private static void loadConfigProperties() {
     try (InputStream configInput = Files
-        .newInputStream(Paths.get(PathConfiguration.CONFIG_PROPERTIES))) {
+            .newInputStream(Paths.get(PathConfiguration.CONFIG_PROPERTIES))) {
       prop.load(configInput);
 
       AZURE_OPENAI_ENDPOINT = prop.getProperty("AZURE_OPENAI_ENDPOINT");
@@ -66,9 +72,9 @@ public class Main {
     String endpoint = Configuration.getGlobalConfiguration().get("AZURE_OPENAI_ENDPOINT", AZURE_OPENAI_ENDPOINT);
     String apiKey = Configuration.getGlobalConfiguration().get("AZURE_OPENAI_KEY", AZURE_OPENAI_KEY);
     return new OpenAIClientBuilder()
-        .endpoint(endpoint)
-        .credential(new AzureKeyCredential(apiKey))
-        .buildClient();
+            .endpoint(endpoint)
+            .credential(new AzureKeyCredential(apiKey))
+            .buildClient();
   }
 
   // Sends the prompt and fragments to Azure OpenAI and returns the AI response
@@ -78,7 +84,7 @@ public class Main {
 
     // Add system prompt
     String systemPrompt = Files
-        .readString(Path.of(PathConfiguration.METHODS_GUIDELINES_PROMPT));
+            .readString(Path.of(PathConfiguration.METHODS_GUIDELINES_PROMPT));
     messages.add(new ChatRequestSystemMessage(systemPrompt));
 
     // Send all content including InputSpecs, TypeSpec, and generated code
@@ -86,9 +92,9 @@ public class Main {
 
     // Chat settings for the AI model
     ChatCompletionsOptions options = new ChatCompletionsOptions(messages)
-        .setMaxTokens(4000) // Increase max tokens for better output
-        .setTemperature(0.3) // Lower temperature for more analytical response
-        .setTopP(0.95);
+            .setMaxTokens(4000) // Increase max tokens for better output
+            .setTemperature(0.3) // Lower temperature for more analytical response
+            .setTopP(0.95);
 
     try {
       ChatCompletions chatCompletions = client.getChatCompletions(DEPLOYMENT_NAME, options);
@@ -97,7 +103,7 @@ public class Main {
       return aiResponse;
 
     } catch (Exception e) {
-      System.err.println("Error during convenience wrapper generation: " + e.getMessage());
+      logger.error("Error during convenience wrapper generation: " + e.getMessage(), e);
       e.printStackTrace();
     }
     return null;
@@ -105,7 +111,7 @@ public class Main {
 
   // Main workflow coordinator with progress tracking
   private static String prepareFragments(OpenAIClient client) throws Exception {
-    System.out.println("Starting convenience wrapper generation...");
+    logger.info("Starting convenience wrapper generation...");
 
     // Initialize components
     GuidelineParser parser = new GuidelineParser();
@@ -115,17 +121,17 @@ public class Main {
     StringBuilder reportBuilder = createReportHeader();
 
     // Parse guidelines from web
-    System.out.println("Fetching and parsing guidelines...");
+    logger.info("Fetching and parsing guidelines...");
     JsonArray guidelineArray = parseGuidelines(parser);
     String headings = extractHeadings(guidelineArray);
 
     // Fragment the code
-    System.out.println("Fragmenting code...");
+    logger.info("Fragmenting code...");
     Map<String, String> codeFragments = fragmentCode();
     String methods = codeFragments.keySet().toString();
 
     // Step 1: Get method and guideline recommendations
-    System.out.println("Step 1: Getting AI recommendations...");
+    logger.info("Step 1: Getting AI recommendations...");
     String methodGuidelineOutput = processFirstPrompt(client, methods, headings, reportBuilder);
 
     if (isNoImprovementsFound(methodGuidelineOutput)) {
@@ -133,7 +139,7 @@ public class Main {
     }
 
     // Step 2: Generate convenience wrapper
-    System.out.println("Step 2: Generating convenience wrapper...");
+    logger.info("Step 2: Generating convenience wrapper...");
     Map<String, String> flaggedMethods = extractFlaggedMethods(methodGuidelineOutput, codeFragments);
     Map<String, String> flaggedGuidelines = extractFlaggedGuidelines(methodGuidelineOutput, guidelineArray);
 
@@ -148,7 +154,7 @@ public class Main {
     // Save and return results
     String result = finalizeReport(outputPath, reportBuilder, "Java Wrapper generation completed successfully!");
     saveWrapperOutput(wrapperOutput);
-    System.out.println("Logs saved to: " + outputPath.toString());
+    logger.info("Report saved to: " + outputPath.toString());
 
     return result;
   }
@@ -161,7 +167,7 @@ public class Main {
 
     String wrapperOutputContent = "Java Convenience Wrapper Generated by Azure OpenAI\nGenerated: " + timestamp + "\n\n\n" + output;
 
-    System.out.println("Wrapper saved to: " + outputPath.toString());
+    logger.info("Wrapper saved to: " + outputPath.toString());
 
     Files.writeString(outputPath, wrapperOutputContent, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
   }
@@ -178,15 +184,15 @@ public class Main {
     StringBuilder reportBuilder = new StringBuilder();
     reportBuilder.append("Java Convenience Wrapper Generated by Azure OpenAI\n");
     reportBuilder.append("Generated: ")
-        .append(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-        .append("\n\n");
+            .append(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+            .append("\n\n");
     return reportBuilder;
   }
 
   // Parses guidelines from the specified URL and returns as a JsonArray
   private static JsonArray parseGuidelines(GuidelineParser parser) throws Exception {
     String guidelineString = Files.readString(
-        Path.of(GuidelineParser.parse("https://azure.github.io/azure-sdk/java_introduction.html")));
+            Path.of(GuidelineParser.parse("https://azure.github.io/azure-sdk/java_introduction.html", logger)));
     return JsonParser.parseString(guidelineString).getAsJsonArray();
   }
 
@@ -202,7 +208,7 @@ public class Main {
   // Fragments the code and returns a map of method names to code snippets
   private static Map<String, String> fragmentCode() throws IOException {
     Map<String, String> codeFragments = CodegenFragmenter.fragment(
-        new File(PathConfiguration.BLOB_CONTAINERS_CLIENT));
+            new File(PathConfiguration.BLOB_CONTAINERS_CLIENT));
 
     // Remove header as it's not needed for method analysis
     codeFragments.remove("Header");
@@ -211,7 +217,7 @@ public class Main {
 
   // Processes the first prompt and returns the AI response
   private static String processFirstPrompt(OpenAIClient client, String methods, String headings,
-      StringBuilder reportBuilder) throws IOException {
+                                           StringBuilder reportBuilder) throws IOException {
 
     String prompt = Files.readString(Path.of(PathConfiguration.METHODS_GUIDELINES_PROMPT));
     prompt = prompt.replace("{methodNames}", methods);
@@ -232,7 +238,7 @@ public class Main {
 
   // Processes the second prompt and returns the AI response
   private static String processSecondPrompt(OpenAIClient client, Map<String, String> flaggedMethods,
-      Map<String, String> flaggedGuidelines, StringBuilder reportBuilder) throws IOException {
+                                            Map<String, String> flaggedGuidelines, StringBuilder reportBuilder) throws IOException {
 
     String prompt = Files.readString(Path.of(PathConfiguration.MAIN_PROMPT));
 
@@ -242,7 +248,7 @@ public class Main {
 
     flaggedMethods.values().forEach(code -> selectedCode.append(code).append("\n"));
     flaggedGuidelines
-        .forEach((heading, content) -> selectedGuidelines.append(heading).append("\n").append(content).append("\n\n"));
+            .forEach((heading, content) -> selectedGuidelines.append(heading).append("\n").append(content).append("\n\n"));
 
     prompt = prompt.replace("{code}", selectedCode.toString());
     prompt = prompt.replace("{guidelines}", selectedGuidelines.toString());
@@ -259,7 +265,7 @@ public class Main {
 
   // Extracts flagged methods from the AI response
   private static Map<String, String> extractFlaggedMethods(String methodGuidelineOutput,
-      Map<String, String> codeFragments) {
+                                                           Map<String, String> codeFragments) {
     Map<String, String> flaggedMethods = new HashMap<>();
 
     try {
@@ -275,7 +281,7 @@ public class Main {
         }
       }
     } catch (Exception e) {
-      System.err.println("Warning: Could not parse method recommendations: " + e.getMessage());
+      logger.error("Warning: Could not parse method recommendations: " + e.getMessage(), e);
     }
 
     return flaggedMethods;
@@ -283,7 +289,7 @@ public class Main {
 
   // Extracts flagged guidelines from the AI response
   private static Map<String, String> extractFlaggedGuidelines(String methodGuidelineOutput,
-      JsonArray guidelineArray) {
+                                                              JsonArray guidelineArray) {
     Map<String, String> flaggedGuidelines = new HashMap<>();
 
     try {
@@ -304,7 +310,7 @@ public class Main {
         }
       }
     } catch (Exception e) {
-      System.err.println("Warning: Could not parse guideline recommendations: " + e.getMessage());
+      logger.error("Warning: Could not parse guideline recommendations: " + e.getMessage(), e);
     }
 
     return flaggedGuidelines;
@@ -342,70 +348,71 @@ public class Main {
 
   // Saves the final report to file and returns the report string
   private static String finalizeReport(Path outputPath, StringBuilder reportBuilder, String message)
-      throws IOException {
+          throws IOException {
     // Write final report to file
     Files.writeString(outputPath, reportBuilder.toString(),
-        StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+            StandardOpenOption.CREATE, StandardOpenOption.WRITE);
 
-    System.out.println(message);
+    logger.info(message);
     return reportBuilder.toString();
   }
 
   // Creates and returns a SyncToolSpecification instance
   private static McpServerFeatures.SyncToolSpecification getSyncToolSpecification() {
     String schema = "{\n" +
-        "    \"type\": \"object\",\n" +
-        "    \"properties\": {\n" +
-        "        \"input\": {\n" +
-        "            \"type\": \"string\"\n" +
-        "        },\n" +
-        "        \"output\": {\n" +
-        "            \"type\": \"string\"\n" +
-        "        }\n" +
-        "    }\n" +
-        "}";
+            "    \"type\": \"object\",\n" +
+            "    \"properties\": {\n" +
+            "        \"input\": {\n" +
+            "            \"type\": \"string\"\n" +
+            "        },\n" +
+            "        \"output\": {\n" +
+            "            \"type\": \"string\"\n" +
+            "        }\n" +
+            "    }\n" +
+            "}";
     return new McpServerFeatures.SyncToolSpecification(
-        new McpSchema.Tool("Blob-Storage-Generate-Convenience-Wrapper",
-            "Generates Convenience Wrapper for blob storage Azure API", schema),
-        (exchange, arguments) -> {
-          // Define the behavior for the tool specification
-          try {
-            // Ensure required directories exist and print path configuration
-            PathConfiguration.ensureDirectoriesExist();
+            new McpSchema.Tool("Blob-Storage-Generate-Convenience-Wrapper",
+                    "Generates Convenience Wrapper for blob storage Azure API", schema),
+            (exchange, arguments) -> {
+              // Define the behavior for the tool specification
+              try {
+                // Ensure required directories exist and print path configuration
+                PathConfiguration.ensureDirectoriesExist();
 
-            // Load configuration properties
-            loadConfigProperties();
+                // Load configuration properties
+                loadConfigProperties();
 
-            // Initialize
-            OpenAIClient client = createOpenAIClient();
-            String result = prepareFragments(client);
+                // Initialize
+                OpenAIClient client = createOpenAIClient();
+                String result = prepareFragments(client);
 
-            // Return the generated wrapper as tool result
-            return new McpSchema.CallToolResult(result, false);
+                // Return the generated wrapper as tool result
+                return new McpSchema.CallToolResult(result, false);
 
-          } catch (ClientAuthenticationException e) {
-            String errorMsg = "Authentication failed: " + e.getMessage()
-                + "\nPlease check your API key and endpoint.";
-            System.err.println(errorMsg);
-            return new McpSchema.CallToolResult(errorMsg, true);
+              } catch (ClientAuthenticationException e) {
+                String errorMsg = "Authentication failed: " + e.getMessage()
+                        + "\nPlease check your API key and endpoint.";
+                logger.error(errorMsg, e);
+                return new McpSchema.CallToolResult(errorMsg, true);
 
-          } catch (IOException e) {
-            String errorMsg = "File reading error: " + e.getMessage();
-            System.err.println(errorMsg);
-            e.printStackTrace();
-            return new McpSchema.CallToolResult(errorMsg, true);
+              } catch (IOException e) {
+                String errorMsg = "File reading error: " + e.getMessage();
+                logger.error(errorMsg, e);
+                e.printStackTrace();
+                return new McpSchema.CallToolResult(errorMsg, true);
 
-          } catch (Exception e) {
-            String errorMsg = "Error occurred: " + e.getMessage();
-            System.err.println(errorMsg);
-            e.printStackTrace();
-            return new McpSchema.CallToolResult(errorMsg, true);
+              } catch (Exception e) {
+                String errorMsg = "Error occurred: " + e.getMessage();
+                logger.error(errorMsg, e);
+                e.printStackTrace();
+                return new McpSchema.CallToolResult(errorMsg, true);
 
-          }
-        });
+              }
+            });
   }
 
   public static void main(String[] args) throws Exception {
+
     // Check if running in CLI mode
     if (args.length > 0 && args[0].equals("--cli")) {
       System.out.println("Running in CLI mode...");
@@ -425,20 +432,21 @@ public class Main {
       loadConfigProperties();
       OpenAIClient client = createOpenAIClient();
       prepareFragments(client);
-      System.out.println("\n" + "=".repeat(80));
-      System.out.println("CLI EXECUTION COMPLETED SUCCESSFULLY");
-      System.out.println("=".repeat(80));
+      logger.info("\n" + "=".repeat(80));
+      logger.info("CLI EXECUTION COMPLETED SUCCESSFULLY");
+      logger.info("=".repeat(80));
 
     } catch (ClientAuthenticationException e) {
-      System.err.println("Authentication failed: " + e.getMessage());
-      System.err.println("Please check your API key and endpoint.");
+      logger.error("Authentication failed: " + e.getMessage(), e);
+      logger.error("Please check your API key and endpoint." + e.getMessage(), e);
+      logger.warn("Please check your API key and endpoint.");
       System.exit(1);
     } catch (IOException e) {
-      System.err.println("File reading error: " + e.getMessage());
+      logger.error("File reading error: " + e.getMessage(), e);
       e.printStackTrace();
       System.exit(1);
     } catch (Exception e) {
-      System.err.println("Error occurred: " + e.getMessage());
+      logger.error("Error occurred: " + e.getMessage(), e);
       e.printStackTrace();
       System.exit(1);
     }
@@ -454,14 +462,14 @@ public class Main {
 
     // Create MCP Server
     McpServer.sync(transportProvider)
-        .serverInfo("JavaConnector-MCP-Server", "1.0.0")
-        .capabilities(McpSchema.ServerCapabilities.builder()
-            .tools(true)
-            .logging()
-            .build())
-        .tools(syncToolSpec).build();
+            .serverInfo("JavaConnector-MCP-Server", "1.0.0")
+            .capabilities(McpSchema.ServerCapabilities.builder()
+                    .tools(true)
+                    .logging()
+                    .build())
+            .tools(syncToolSpec).build();
 
-    Log.info("MCP Server created successfully and listening for requests...");
+    logger.info("MCP Server created successfully and listening for requests...");
   }
 
 }
