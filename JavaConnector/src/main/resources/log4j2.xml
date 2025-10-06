@@ -16,9 +16,23 @@
             <PatternLayout pattern="%d [%t] %-5level %logger - %msg%n"/>
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
+
+        <!-- Netty Appender - separate file for netty spam-->
+        <File name="NettyLogger" fileName="../Logs/netty.log" append="true">
+            <PatternLayout pattern="%d [%t] %-5level %logger - %msg%n"/>
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
     </Appenders>
 
     <Loggers>
+        <Logger name="reactor.netty" additivity="false">
+            <AppenderRef ref="NettyLogger"/>
+        </Logger>
+
+        <Logger name="io.netty" additivity="false">
+            <AppenderRef ref="NettyLogger"/>
+        </Logger>
+
         <Root level="DEBUG">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="FileLogger"/>
