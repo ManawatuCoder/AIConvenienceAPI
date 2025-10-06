@@ -21,9 +21,10 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
 
 public class GuidelineParser {
-  public static String parse(String url) throws Exception {
+  public static String parse(String url, Logger logger) throws Exception {
     // String url = "https://azure.github.io/azure-sdk/java_introduction.html";
     LastModifiedCheck check = new LastModifiedCheck();
     Path parsedGuidelines = Path.of(PathConfiguration.GUIDELINES_JSON);
@@ -40,7 +41,7 @@ public class GuidelineParser {
 
         StringBuilder contentBuilder = new StringBuilder();
         for (Element sibling = heading.nextElementSibling(); sibling != null
-            && !sibling.tagName().matches("h[1-6]"); sibling = sibling.nextElementSibling()) {
+                && !sibling.tagName().matches("h[1-6]"); sibling = sibling.nextElementSibling()) {
 
           // Include block-level content tags
           if (sibling.isBlock()) {
@@ -63,11 +64,12 @@ public class GuidelineParser {
       try {
         if (!Files.exists(parsedGuidelines)) {
           Files.writeString(
-              parsedGuidelines, json, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+                  parsedGuidelines, json, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
         } else {
           Files.writeString(parsedGuidelines, json);
         }
       } catch (IOException e) {
+        logger.error(e.getMessage(), e);
         e.printStackTrace();
       }
     }

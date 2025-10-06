@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="level %logger - %msg%n"/>
+        </Console>
+
+        <!-- File Appender -->
+        <File name="FileLogger" fileName="../Logs/application.log" append="true">
+            <PatternLayout pattern="%d [%t] %-5level %logger - %msg%n"/>
+        </File>
+
+        <!-- Error Appender - separate file only for errors-->
+        <File name="ErrorLogger" fileName="../Logs/errors.log" append="true">
+            <PatternLayout pattern="%d [%t] %-5level %logger - %msg%n"/>
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Root level="DEBUG">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileLogger"/>
+            <AppenderRef ref="ErrorLogger"/>
+        </Root>
+    </Loggers>
+</Configuration>
