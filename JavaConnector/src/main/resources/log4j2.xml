@@ -7,18 +7,31 @@
         </Console>
 
         <!-- File Appender -->
-        <File name="FileLogger" fileName="../Logs/application.log" append="true">
+        <File name="FileLogger" fileName="../Outputs/Logs/application.log" append="true">
             <PatternLayout pattern="%d [%t] %-5level %logger - %msg%n"/>
         </File>
 
         <!-- Error Appender - separate file only for errors-->
-        <File name="ErrorLogger" fileName="../Logs/errors.log" append="true">
+        <File name="ErrorLogger" fileName="../Outputs//Logs/errors.log" append="true">
             <PatternLayout pattern="%d [%t] %-5level %logger - %msg%n"/>
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+
+        <!-- Netty Appender - separate file for netty spam-->
+        <File name="NettyLogger" fileName="../Outputs//Logs/netty.log" append="true">
+            <PatternLayout pattern="%d [%t] %-5level %logger - %msg%n"/>
         </File>
     </Appenders>
 
     <Loggers>
+        <Logger name="reactor.netty" additivity="false">
+            <AppenderRef ref="NettyLogger"/>
+        </Logger>
+
+        <Logger name="io.netty" additivity="false">
+            <AppenderRef ref="NettyLogger"/>
+        </Logger>
+
         <Root level="DEBUG">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="FileLogger"/>
