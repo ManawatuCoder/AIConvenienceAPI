@@ -2,6 +2,9 @@
 // Main class for generating Java convenience wrappers using Azure OpenAI
 import codegenFragmenter.CodegenFragmenter;
 import codegenFragmenter.FragmentLinker;
+import com.github.javaparser.StaticJavaParser;
+import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import config.PathConfiguration;
 
 // Imports for Azure OpenAI SDK
@@ -26,6 +29,7 @@ import io.modelcontextprotocol.spec.McpSchema;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -33,8 +37,6 @@ import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Main {
   private static final Properties prop = new Properties();
@@ -180,24 +182,26 @@ public class Main {
     Path inputFilePath = Paths.get(PathConfiguration.BLOB_CONTAINERS_CLIENT);
     String inputFileContent = Files.readString(inputFilePath);
 
+    List<String> lines = Files.readAllLines(inputFilePath, StandardCharsets.UTF_8);
+    StringBuilder mergedWrapperOutput = new StringBuilder();
 
+    wrapperOutput = wrapperOutput.replace("\\R", "\n    ");
 
     // Append generated wrapper code to file
-    String formattedWrapperOutput = "\n\n/********************* GENERATED WRAPPER CODE *********************/\n" + wrapperOutput + "\n/********************* END OF GENERATED CODE *********************/\n\n";
+    String formattedWrapperOutput = "\n\n    /********************* GENERATED WRAPPER CODE *********************/\n" + wrapperOutput + "\n    /********************* END OF GENERATED CODE *********************/\n";
 
-    // Regex to detect start of class block
-    Pattern classDeclarationPattern = Pattern.compile("(class\\s+\\w+\\s*\\{)", Pattern.MULTILINE);
-    Matcher matcher = classDeclarationPattern.matcher(inputFileContent);
+    CompilationUnit compilationUnit = StaticJavaParser.parse(inputFileContent);
+    Optional<ClassOrInterfaceDeclaration> inputClass = compilationUnit.findFirst(ClassOrInterfaceDeclaration.class);
 
-    String mergedWrapperOutput = "";
-    if (matcher.find()) {
-      // Insert wrapped code at the beginning of the class block
-      int insertPos = matcher.end();
-      mergedWrapperOutput = inputFileContent.substring(0, insertPos) + formattedWrapperOutput + inputFileContent.substring(insertPos);
-    } else {
-      // If no class detected, paste wrapper code at top of file
-      mergedWrapperOutput = formattedWrapperOutput + inputFileContent;
-      System.out.println("Error: No class declaration detected. Appended wrapper at top of file");
+    inputClass.ifPresent(clazz -> {
+      int classEndLine = clazz.getEnd().get().line - 1;
+      // Insert wrapper output at line above end
+      lines.add(classEndLine, formattedWrapperOutput);
+    });
+
+    // Rebuild the output with merged content
+    for (String line : lines) {
+      mergedWrapperOutput.append(line).append("\n");
     }
 
     Files.writeString(outputPath, mergedWrapperOutput, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
@@ -300,16 +304,31 @@ public class Main {
       Map<String, String> codeFragments) {
     Map<String, String> flaggedMethods = new HashMap<>();
 
+    System.out.println("Method Guideline Output: " + methodGuidelineOutput);
+
+    Map<String, List<String>> fragmentsMap = FragmentLinker.link(codeFragments);
+
     try {
       JsonObject jsonOutput = JsonParser.parseString(methodGuidelineOutput).getAsJsonObject();
       JsonArray methodsArray = jsonOutput.getAsJsonArray("methods");
 
       for (JsonElement element : methodsArray) {
         String methodName = element.getAsString().trim();
-        String code = codeFragments.get(methodName + "("); // Pattern matching key
 
-        if (code != null) {
-          flaggedMethods.put(methodName, code);
+        // if fragment key contains requested method, send back values
+        for (String key : fragmentsMap.keySet()) {
+          if (key.contains(methodName)) {
+            List<String> list = fragmentsMap.get(key);
+
+            String output = "";
+            // Stores every method related to fragment
+            for (String string : list) {
+              output += string;
+            }
+            System.out.println("Output: " +output);
+
+            flaggedMethods.put(key, output);
+          }
         }
       }
     } catch (Exception e) {
