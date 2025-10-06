@@ -414,15 +414,15 @@ public class Main {
   public static void main(String[] args) throws Exception {
 
     // Check if running in CLI mode
-    if (args.length > 0 && args[0].equals("--cli")) {
+//    if (args.length > 0 && args[0].equals("--cli")) {
       System.out.println("Running in CLI mode...");
       runCliMode();
       return;
-    }
+//    }
 
-    // Default MCP Server mode
-    System.out.println("Starting MCP Server mode...");
-    runMcpServerMode();
+//    // Default MCP Server mode
+//    System.out.println("Starting MCP Server mode...");
+//    runMcpServerMode();
   }
 
   // Runs the application in CLI mode (direct execution)
@@ -432,7 +432,7 @@ public class Main {
       loadConfigProperties();
       OpenAIClient client = createOpenAIClient();
       prepareFragments(client);
-      logger.info("\n" + "=".repeat(80));
+      logger.info("=".repeat(80));
       logger.info("CLI EXECUTION COMPLETED SUCCESSFULLY");
       logger.info("=".repeat(80));
 

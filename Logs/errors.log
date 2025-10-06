@@ -1,1 +1,17 @@
 2025-10-06 21:39:27,478 [main] ERROR Main logger - Dbugging stuff
+2025-10-07 00:52:53,494 [main] ERROR Main logger - Error occurred: Unable to find config.properties
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:66)
+	at Main.runCliMode(Main.java:432)
+	at Main.main(Main.java:419)
+Caused by: java.nio.file.NoSuchFileException: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:53)
+	... 2 more
