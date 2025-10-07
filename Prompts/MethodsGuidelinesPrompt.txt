@@ -9,11 +9,14 @@ Your tasks:
 Instructions:
 - Only consider patterns relevant to developer convenience. Ignore low-level protocol details.
 - Evaluate whether there is any true convenience to be added.
+- You will generate wrappers over multiple requests, so any methods you wish to wrap together should be grouped together in your response.
+- Each group will be sent as its own prompt alongside the entire list of requested guidelines; Large grouping is acceptable, and can be desireable for reduced LLM costs.
+- Duplicates through groups are undesireable; Coallescing of groups is preferred.
 - If no patterns are found, return only the string "no".
 - If patterns are found, return a JSON object in the format:
 
 {
-  "methods": ["foo", "bar"],
+  "methods": [["foo", "bar", ...], ["foobar"], ...],
   "guidelines": ["Header 1", "Header 3"]
 }
 

@@ -152,10 +152,14 @@ public class Main {
 
     // Step 2: Generate convenience wrapper
     logger.info("Step 2: Generating convenience wrapper...");
-    Map<String, String> flaggedMethods = extractFlaggedMethods(methodGuidelineOutput, codeFragments);
+    List<Map<String, String>> flaggedMethods = extractFlaggedMethods(methodGuidelineOutput, codeFragments);
     Map<String, String> flaggedGuidelines = extractFlaggedGuidelines(methodGuidelineOutput, guidelineArray);
 
-    String wrapperOutput = processSecondPrompt(client, flaggedMethods, flaggedGuidelines, reportBuilder);
+    String wrapperOutput = "";
+    for(Map<String, String> methodGroup : flaggedMethods){
+      //For each group of methods, send a prompt requesting convenience.
+      wrapperOutput += processSecondPrompt(client, methodGroup, flaggedGuidelines, reportBuilder);
+    }
 
     if (isNoImprovementsFound(wrapperOutput)) {
       return finalizeReport(outputPath, reportBuilder, "No wrapper improvements found.");
@@ -276,21 +280,26 @@ public class Main {
   }
 
   // Extracts flagged methods from the AI response
-  private static Map<String, String> extractFlaggedMethods(String methodGuidelineOutput,
+  private static List<Map<String, String>> extractFlaggedMethods(String methodGuidelineOutput,
                                                            Map<String, String> codeFragments) {
-    Map<String, String> flaggedMethods = new HashMap<>();
+    List<Map<String, String>> flaggedMethods = new ArrayList<>();
 
     try {
       JsonObject jsonOutput = JsonParser.parseString(methodGuidelineOutput).getAsJsonObject();
       JsonArray methodsArray = jsonOutput.getAsJsonArray("methods");
 
-      for (JsonElement element : methodsArray) {
-        String methodName = element.getAsString().trim();
-        String code = codeFragments.get(methodName + "("); // Pattern matching key
+      for (JsonElement groupElement : methodsArray) {
+        JsonArray group = groupElement.getAsJsonArray();
+        Map<String, String> methodMap = new HashMap<>();
+        for (JsonElement methodElement : group) {
+          String methodName = methodElement.getAsString().trim();
+          String code = codeFragments.get(methodName + "("); // Pattern matching key
 
-        if (code != null) {
-          flaggedMethods.put(methodName, code);
+          if (code != null) {
+            methodMap.put(methodName, code);
+          }
         }
+        flaggedMethods.add(methodMap);
       }
     } catch (Exception e) {
       logger.error("Warning: Could not parse method recommendations: " + e.getMessage(), e);
