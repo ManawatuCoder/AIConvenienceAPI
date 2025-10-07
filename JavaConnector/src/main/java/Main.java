@@ -144,6 +144,7 @@ public class Main {
 
     // Step 1: Get method and guideline recommendations
     logger.info("Step 1: Getting AI recommendations...");
+    logger.debug("Sending initial evaluation prompt.");
     String methodGuidelineOutput = processFirstPrompt(client, methods, headings, reportBuilder);
 
     if (isNoImprovementsFound(methodGuidelineOutput)) {
@@ -154,8 +155,11 @@ public class Main {
     logger.info("Step 2: Generating convenience wrapper...");
     JsonArray groupsArray = JsonParser.parseString(methodGuidelineOutput).getAsJsonArray();
     String wrapperOutput = "";
+    int methodGroupCounter = 0;
 
     for (JsonElement groupElement : groupsArray) {
+      methodGroupCounter++;//Debug tracker
+        logger.debug("Sending iterative wrapping prompt number: {}", methodGroupCounter);
       JsonObject groupObj = groupElement.getAsJsonObject();
       String groupJson = groupObj.toString(); // Turn the individual group back into a JSON string
       //This should be optimised away by feeding the json straight to the extractor methods.
