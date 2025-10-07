@@ -1,8 +1,0 @@
-2025-10-06 21:39:27,478 [main] ERROR Main logger - Dbugging stuff2025-10-07 22:34:25,549 [main] ERROR Main logger - Warning: Could not parse method recommendations: null
-java.lang.UnsupportedOperationException
-	at java.base/java.util.ImmutableCollections.uoe(ImmutableCollections.java:142)
-	at java.base/java.util.ImmutableCollections$AbstractImmutableCollection.add(ImmutableCollections.java:147)
-	at Main.extractFlaggedMethods(Main.java:312)
-	at Main.prepareFragments(Main.java:155)
-	at Main.runCliMode(Main.java:465)
-	at Main.main(Main.java:450)
