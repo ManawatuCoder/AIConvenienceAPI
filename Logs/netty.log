@@ -3112,3 +3112,1047 @@ Date: <filtered>
 2025-10-07 22:51:30,688 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [4080f26d, L:/192.168.1.159:62754 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Releasing channel
 2025-10-07 22:51:30,688 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [4080f26d, L:/192.168.1.159:62754 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel cleaned, now: 0 active connections, 1 inactive connections and 0 pending acquire requests.
 2025-10-07 22:51:30,688 [reactor-http-nio-1] DEBUG reactor.netty.channel.FluxReceive - [4080f26d, L:/192.168.1.159:62754 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] [terminated=true, cancelled=false, pending=2, error=null]: subscribing inbound receiver
+2025-10-07 23:33:55,376 [main] DEBUG io.netty.util.internal.logging.InternalLoggerFactory - Using SLF4J as the default logging framework
+2025-10-07 23:33:55,380 [main] DEBUG io.netty.util.internal.PlatformDependent0 - -Dio.netty.noUnsafe: false
+2025-10-07 23:33:55,381 [main] DEBUG io.netty.util.internal.PlatformDependent0 - Java version: 22
+2025-10-07 23:33:55,384 [main] DEBUG io.netty.util.internal.PlatformDependent0 - sun.misc.Unsafe.theUnsafe: available
+2025-10-07 23:33:55,385 [main] DEBUG io.netty.util.internal.PlatformDependent0 - sun.misc.Unsafe.copyMemory: available
+2025-10-07 23:33:55,386 [main] DEBUG io.netty.util.internal.PlatformDependent0 - sun.misc.Unsafe.storeFence: available
+2025-10-07 23:33:55,387 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.Buffer.address: available
+2025-10-07 23:33:55,387 [main] DEBUG io.netty.util.internal.PlatformDependent0 - direct buffer constructor: unavailable: Reflective setAccessible(true) disabled
+2025-10-07 23:33:55,388 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.Bits.unaligned: available, true
+2025-10-07 23:33:55,390 [main] DEBUG io.netty.util.internal.PlatformDependent0 - jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable: class io.netty.util.internal.PlatformDependent0$7 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @4ac3c60d
+2025-10-07 23:33:55,391 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.DirectByteBuffer.<init>(long, {int,long}): unavailable
+2025-10-07 23:33:55,392 [main] DEBUG io.netty.util.internal.PlatformDependent - sun.misc.Unsafe: available
+2025-10-07 23:33:55,392 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.tmpdir: C:\Users\Pease\AppData\Local\Temp (java.io.tmpdir)
+2025-10-07 23:33:55,392 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2025-10-07 23:33:55,393 [main] DEBUG io.netty.util.internal.PlatformDependent - Platform: Windows
+2025-10-07 23:33:55,394 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.maxDirectMemory: -1 bytes
+2025-10-07 23:33:55,394 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2025-10-07 23:33:55,397 [main] DEBUG io.netty.util.internal.CleanerJava9 - java.nio.ByteBuffer.cleaner(): available
+2025-10-07 23:33:55,398 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.noPreferDirect: false
+2025-10-07 23:33:55,488 [main] DEBUG io.netty.util.internal.InternalThreadLocalMap - -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2025-10-07 23:33:55,488 [main] DEBUG io.netty.util.internal.InternalThreadLocalMap - -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2025-10-07 23:33:55,513 [main] DEBUG io.netty.util.ResourceLeakDetector - -Dio.netty.leakDetection.level: simple
+2025-10-07 23:33:55,513 [main] DEBUG io.netty.util.ResourceLeakDetector - -Dio.netty.leakDetection.targetRecords: 4
+2025-10-07 23:33:57,062 [main] DEBUG io.netty.util.NetUtil - -Djava.net.preferIPv4Stack: false
+2025-10-07 23:33:57,062 [main] DEBUG io.netty.util.NetUtil - -Djava.net.preferIPv6Addresses: false
+2025-10-07 23:33:57,068 [main] DEBUG io.netty.util.NetUtilInitializations - Loopback interface: loopback_2 (Software Loopback Interface 1, 0:0:0:0:0:0:0:1)
+2025-10-07 23:33:57,069 [main] DEBUG io.netty.util.NetUtil - Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2025-10-07 23:33:57,114 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.workdir: C:\Users\Pease\AppData\Local\Temp (io.netty.tmpdir)
+2025-10-07 23:33:57,115 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.deleteLibAfterLoading: true
+2025-10-07 23:33:57,115 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.tryPatchShadedId: true
+2025-10-07 23:33:57,115 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.detectNativeLibraryDuplicates: true
+2025-10-07 23:33:57,294 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - Successfully loaded the library C:\Users\Pease\AppData\Local\Temp\netty_tcnative_windows_x86_6415754718237336389566.dll
+2025-10-07 23:33:57,295 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - Loaded library with name 'netty_tcnative_windows_x86_64'
+2025-10-07 23:33:57,295 [main] DEBUG io.netty.handler.ssl.OpenSsl - Initialize netty-tcnative using engine: 'default'
+2025-10-07 23:33:57,295 [main] DEBUG io.netty.handler.ssl.OpenSsl - netty-tcnative using native library: BoringSSL
+2025-10-07 23:33:57,304 [main] DEBUG io.netty.buffer.AbstractByteBuf - -Dio.netty.buffer.checkAccessible: true
+2025-10-07 23:33:57,304 [main] DEBUG io.netty.buffer.AbstractByteBuf - -Dio.netty.buffer.checkBounds: true
+2025-10-07 23:33:57,305 [main] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@23b8d9f3
+2025-10-07 23:33:57,316 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.numHeapArenas: 16
+2025-10-07 23:33:57,317 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.numDirectArenas: 16
+2025-10-07 23:33:57,317 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.pageSize: 8192
+2025-10-07 23:33:57,317 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxOrder: 9
+2025-10-07 23:33:57,317 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.chunkSize: 4194304
+2025-10-07 23:33:57,317 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.smallCacheSize: 256
+2025-10-07 23:33:57,317 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.normalCacheSize: 64
+2025-10-07 23:33:57,317 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2025-10-07 23:33:57,317 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.cacheTrimInterval: 8192
+2025-10-07 23:33:57,317 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2025-10-07 23:33:57,317 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.useCacheForAllThreads: false
+2025-10-07 23:33:57,317 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2025-10-07 23:33:57,326 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.allocator.type: pooled
+2025-10-07 23:33:57,326 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.threadLocalDirectBufferSize: 0
+2025-10-07 23:33:57,326 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2025-10-07 23:33:57,330 [main] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@25ad4f71
+2025-10-07 23:33:57,337 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.maxCapacityPerThread: 4096
+2025-10-07 23:33:57,337 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.ratio: 8
+2025-10-07 23:33:57,337 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.chunkSize: 32
+2025-10-07 23:33:57,337 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.blocking: false
+2025-10-07 23:33:57,337 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.batchFastThreadLocalOnly: true
+2025-10-07 23:33:57,343 [main] DEBUG io.netty.util.internal.PlatformDependent - org.jctools-core.MpscChunkedArrayQueue: available
+2025-10-07 23:33:57,353 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 => ECDHE-ECDSA-AES128-GCM-SHA256
+2025-10-07 23:33:57,353 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 => ECDHE-ECDSA-AES128-GCM-SHA256
+2025-10-07 23:33:57,354 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 => ECDHE-RSA-AES128-GCM-SHA256
+2025-10-07 23:33:57,354 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_128_GCM_SHA256 => ECDHE-RSA-AES128-GCM-SHA256
+2025-10-07 23:33:57,354 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 => ECDHE-ECDSA-AES256-GCM-SHA384
+2025-10-07 23:33:57,354 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 => ECDHE-ECDSA-AES256-GCM-SHA384
+2025-10-07 23:33:57,354 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 => ECDHE-RSA-AES256-GCM-SHA384
+2025-10-07 23:33:57,354 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_256_GCM_SHA384 => ECDHE-RSA-AES256-GCM-SHA384
+2025-10-07 23:33:57,354 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-ECDSA-CHACHA20-POLY1305
+2025-10-07 23:33:57,354 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-ECDSA-CHACHA20-POLY1305
+2025-10-07 23:33:57,354 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-RSA-CHACHA20-POLY1305
+2025-10-07 23:33:57,354 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-RSA-CHACHA20-POLY1305
+2025-10-07 23:33:57,354 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-PSK-CHACHA20-POLY1305
+2025-10-07 23:33:57,354 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-PSK-CHACHA20-POLY1305
+2025-10-07 23:33:57,355 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA => ECDHE-ECDSA-AES128-SHA
+2025-10-07 23:33:57,355 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_128_CBC_SHA => ECDHE-ECDSA-AES128-SHA
+2025-10-07 23:33:57,355 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA => ECDHE-RSA-AES128-SHA
+2025-10-07 23:33:57,355 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_128_CBC_SHA => ECDHE-RSA-AES128-SHA
+2025-10-07 23:33:57,355 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA => ECDHE-PSK-AES128-CBC-SHA
+2025-10-07 23:33:57,355 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_PSK_WITH_AES_128_CBC_SHA => ECDHE-PSK-AES128-CBC-SHA
+2025-10-07 23:33:57,355 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA => ECDHE-ECDSA-AES256-SHA
+2025-10-07 23:33:57,355 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_256_CBC_SHA => ECDHE-ECDSA-AES256-SHA
+2025-10-07 23:33:57,355 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA => ECDHE-RSA-AES256-SHA
+2025-10-07 23:33:57,355 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_256_CBC_SHA => ECDHE-RSA-AES256-SHA
+2025-10-07 23:33:57,355 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA => ECDHE-PSK-AES256-CBC-SHA
+2025-10-07 23:33:57,355 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_PSK_WITH_AES_256_CBC_SHA => ECDHE-PSK-AES256-CBC-SHA
+2025-10-07 23:33:57,356 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_128_GCM_SHA256 => AES128-GCM-SHA256
+2025-10-07 23:33:57,356 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_128_GCM_SHA256 => AES128-GCM-SHA256
+2025-10-07 23:33:57,356 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_256_GCM_SHA384 => AES256-GCM-SHA384
+2025-10-07 23:33:57,356 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_256_GCM_SHA384 => AES256-GCM-SHA384
+2025-10-07 23:33:57,356 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_128_CBC_SHA => AES128-SHA
+2025-10-07 23:33:57,356 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_128_CBC_SHA => AES128-SHA
+2025-10-07 23:33:57,356 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_PSK_WITH_AES_128_CBC_SHA => PSK-AES128-CBC-SHA
+2025-10-07 23:33:57,356 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_PSK_WITH_AES_128_CBC_SHA => PSK-AES128-CBC-SHA
+2025-10-07 23:33:57,356 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_256_CBC_SHA => AES256-SHA
+2025-10-07 23:33:57,356 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_256_CBC_SHA => AES256-SHA
+2025-10-07 23:33:57,356 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_PSK_WITH_AES_256_CBC_SHA => PSK-AES256-CBC-SHA
+2025-10-07 23:33:57,356 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_PSK_WITH_AES_256_CBC_SHA => PSK-AES256-CBC-SHA
+2025-10-07 23:33:57,357 [main] DEBUG io.netty.handler.ssl.OpenSsl - Supported protocols (OpenSSL): [SSLv2Hello, TLSv1, TLSv1.1, TLSv1.2, TLSv1.3] 
+2025-10-07 23:33:57,357 [main] DEBUG io.netty.handler.ssl.OpenSsl - Default cipher suites (OpenSSL): [TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256]
+2025-10-07 23:33:57,383 [main] DEBUG reactor.netty.tcp.TcpResources - [http] resources will use the default LoopResources: DefaultLoopResources {prefix=reactor-http, daemon=true, selectCount=8, workerCount=8}
+2025-10-07 23:33:57,383 [main] DEBUG reactor.netty.tcp.TcpResources - [http] resources will use the default ConnectionProvider: reactor.netty.resources.DefaultPooledConnectionProvider@3743539f
+2025-10-07 23:33:57,386 [main] DEBUG reactor.netty.resources.PooledConnectionProvider - Creating a new [http] client pool [PoolFactory{evictionInterval=PT0S, leasingStrategy=fifo, maxConnections=500, maxIdleTime=-1, maxLifeTime=-1, metricsEnabled=false, pendingAcquireMaxCount=1000, pendingAcquireTimeout=45000}] for [azsdk-openai.openai.azure.com/<unresolved>:443]
+2025-10-07 23:33:57,409 [main] DEBUG reactor.netty.resources.DefaultLoopIOUring - Default io_uring support : false
+2025-10-07 23:33:57,421 [main] DEBUG reactor.netty.resources.DefaultLoopEpoll - Default Epoll support : false
+2025-10-07 23:33:57,423 [main] DEBUG reactor.netty.resources.DefaultLoopKQueue - Default KQueue support : false
+2025-10-07 23:33:57,426 [main] DEBUG io.netty.channel.MultithreadEventLoopGroup - -Dio.netty.eventLoopThreads: 16
+2025-10-07 23:33:57,436 [main] DEBUG io.netty.util.concurrent.GlobalEventExecutor - -Dio.netty.globalEventExecutor.quietPeriodSeconds: 1
+2025-10-07 23:33:57,443 [main] DEBUG io.netty.channel.nio.NioEventLoop - -Dio.netty.noKeySetOptimization: false
+2025-10-07 23:33:57,443 [main] DEBUG io.netty.channel.nio.NioEventLoop - -Dio.netty.selectorAutoRebuildThreshold: 512
+2025-10-07 23:33:57,486 [main] DEBUG io.netty.channel.DefaultChannelId - -Dio.netty.processId: 12656 (auto-detected)
+2025-10-07 23:33:57,488 [main] DEBUG io.netty.channel.DefaultChannelId - -Dio.netty.machineId: f8:32:e4:ff:fe:bd:e0:09 (auto-detected)
+2025-10-07 23:33:57,523 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [7cb64698] Created a new pooled channel, now: 0 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:33:57,538 [reactor-http-nio-1] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@1e47bfe0
+2025-10-07 23:33:57,544 [reactor-http-nio-1] DEBUG reactor.netty.tcp.SslProvider - [7cb64698] SSL enabled using engine io.netty.handler.ssl.OpenSslEngine@3b971d42 and SNI azsdk-openai.openai.azure.com/<unresolved>:443
+2025-10-07 23:33:57,558 [reactor-http-nio-1] DEBUG reactor.netty.transport.TransportConfig - [7cb64698] Initialized pipeline DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.sslReader = reactor.netty.tcp.SslProvider$SslReadHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:33:57,653 [reactor-http-nio-1] DEBUG reactor.netty.transport.TransportConnector - [7cb64698] Connecting to [azsdk-openai.openai.azure.com/20.62.58.5:443].
+2025-10-07 23:33:57,855 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Registering pool release on close event for channel
+2025-10-07 23:33:57,856 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel connected, now: 1 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:33:58,305 [reactor-http-nio-1] DEBUG io.netty.handler.ssl.SslHandler - [id: 0x7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] HANDSHAKEN: protocol:TLSv1.3 cipher suite:TLS_AES_256_GCM_SHA384
+2025-10-07 23:33:58,306 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(PooledConnection{channel=[id: 0x7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}, [connected])
+2025-10-07 23:33:58,324 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [7cb64698-1, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(GET{uri=null, connection=PooledConnection{channel=[id: 0x7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [configured])
+2025-10-07 23:33:58,324 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientConnect - [7cb64698-1, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Handler is being applied: {uri=https://azsdk-openai.openai.azure.com//openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview, method=POST}
+2025-10-07 23:33:58,329 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [7cb64698-1, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_prepared])
+2025-10-07 23:33:58,332 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [7cb64698-1, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Added decoder [azureSdkHandler] at the end of the user pipeline, full pipeline: [reactor.left.sslHandler, reactor.left.httpCodec, azureSdkHandler, reactor.right.reactiveBridge, DefaultChannelPipeline$TailContext#0]
+2025-10-07 23:33:58,344 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [7cb64698-1, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_sent])
+2025-10-07 23:33:58,558 [reactor-http-nio-1] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@238c2b55
+2025-10-07 23:34:01,679 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [7cb64698-1, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received response (auto-read:false) : RESPONSE(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+Content-Length: <filtered>
+Content-Type: <filtered>
+apim-request-id: <filtered>
+Strict-Transport-Security: <filtered>
+x-content-type-options: <filtered>
+x-ms-region: <filtered>
+x-ratelimit-remaining-requests: <filtered>
+x-ratelimit-limit-requests: <filtered>
+x-ratelimit-remaining-tokens: <filtered>
+x-ratelimit-limit-tokens: <filtered>
+azureml-model-session: <filtered>
+x-accel-buffering: <filtered>
+x-ms-rai-invoked: <filtered>
+x-request-id: <filtered>
+x-ms-client-request-id: <filtered>
+x-ms-deployment-name: <filtered>
+Date: <filtered>
+2025-10-07 23:34:01,680 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [7cb64698-1, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_received])
+2025-10-07 23:34:01,690 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [7cb64698-1, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received last HTTP packet
+2025-10-07 23:34:01,691 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_completed])
+2025-10-07 23:34:01,691 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Removed handler: azureSdkHandler, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:34:01,692 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Non Removed handler: azureSdkHandler, context: null, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:34:01,692 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [disconnecting])
+2025-10-07 23:34:01,692 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Releasing channel
+2025-10-07 23:34:01,695 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel cleaned, now: 0 active connections, 1 inactive connections and 0 pending acquire requests.
+2025-10-07 23:34:01,709 [reactor-http-nio-1] DEBUG reactor.netty.channel.FluxReceive - [7cb64698, L:/192.168.1.159:63618 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] [terminated=true, cancelled=false, pending=1, error=null]: subscribing inbound receiver
+2025-10-07 23:34:17,760 [main] DEBUG io.netty.util.internal.logging.InternalLoggerFactory - Using SLF4J as the default logging framework
+2025-10-07 23:34:17,764 [main] DEBUG io.netty.util.internal.PlatformDependent0 - -Dio.netty.noUnsafe: false
+2025-10-07 23:34:17,764 [main] DEBUG io.netty.util.internal.PlatformDependent0 - Java version: 22
+2025-10-07 23:34:17,766 [main] DEBUG io.netty.util.internal.PlatformDependent0 - sun.misc.Unsafe.theUnsafe: available
+2025-10-07 23:34:17,767 [main] DEBUG io.netty.util.internal.PlatformDependent0 - sun.misc.Unsafe.copyMemory: available
+2025-10-07 23:34:17,767 [main] DEBUG io.netty.util.internal.PlatformDependent0 - sun.misc.Unsafe.storeFence: available
+2025-10-07 23:34:17,768 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.Buffer.address: available
+2025-10-07 23:34:17,769 [main] DEBUG io.netty.util.internal.PlatformDependent0 - direct buffer constructor: unavailable: Reflective setAccessible(true) disabled
+2025-10-07 23:34:17,770 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.Bits.unaligned: available, true
+2025-10-07 23:34:17,771 [main] DEBUG io.netty.util.internal.PlatformDependent0 - jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable: class io.netty.util.internal.PlatformDependent0$7 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @4ac3c60d
+2025-10-07 23:34:17,772 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.DirectByteBuffer.<init>(long, {int,long}): unavailable
+2025-10-07 23:34:17,772 [main] DEBUG io.netty.util.internal.PlatformDependent - sun.misc.Unsafe: available
+2025-10-07 23:34:17,772 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.tmpdir: C:\Users\Pease\AppData\Local\Temp (java.io.tmpdir)
+2025-10-07 23:34:17,773 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2025-10-07 23:34:17,773 [main] DEBUG io.netty.util.internal.PlatformDependent - Platform: Windows
+2025-10-07 23:34:17,774 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.maxDirectMemory: -1 bytes
+2025-10-07 23:34:17,774 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2025-10-07 23:34:17,776 [main] DEBUG io.netty.util.internal.CleanerJava9 - java.nio.ByteBuffer.cleaner(): available
+2025-10-07 23:34:17,777 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.noPreferDirect: false
+2025-10-07 23:34:17,872 [main] DEBUG io.netty.util.internal.InternalThreadLocalMap - -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2025-10-07 23:34:17,872 [main] DEBUG io.netty.util.internal.InternalThreadLocalMap - -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2025-10-07 23:34:17,898 [main] DEBUG io.netty.util.ResourceLeakDetector - -Dio.netty.leakDetection.level: simple
+2025-10-07 23:34:17,898 [main] DEBUG io.netty.util.ResourceLeakDetector - -Dio.netty.leakDetection.targetRecords: 4
+2025-10-07 23:34:19,090 [main] DEBUG io.netty.util.NetUtil - -Djava.net.preferIPv4Stack: false
+2025-10-07 23:34:19,091 [main] DEBUG io.netty.util.NetUtil - -Djava.net.preferIPv6Addresses: false
+2025-10-07 23:34:19,096 [main] DEBUG io.netty.util.NetUtilInitializations - Loopback interface: loopback_2 (Software Loopback Interface 1, 0:0:0:0:0:0:0:1)
+2025-10-07 23:34:19,097 [main] DEBUG io.netty.util.NetUtil - Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2025-10-07 23:34:19,145 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.workdir: C:\Users\Pease\AppData\Local\Temp (io.netty.tmpdir)
+2025-10-07 23:34:19,145 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.deleteLibAfterLoading: true
+2025-10-07 23:34:19,145 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.tryPatchShadedId: true
+2025-10-07 23:34:19,145 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.detectNativeLibraryDuplicates: true
+2025-10-07 23:34:19,316 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - Successfully loaded the library C:\Users\Pease\AppData\Local\Temp\netty_tcnative_windows_x86_641931796893525534396.dll
+2025-10-07 23:34:19,317 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - Loaded library with name 'netty_tcnative_windows_x86_64'
+2025-10-07 23:34:19,317 [main] DEBUG io.netty.handler.ssl.OpenSsl - Initialize netty-tcnative using engine: 'default'
+2025-10-07 23:34:19,317 [main] DEBUG io.netty.handler.ssl.OpenSsl - netty-tcnative using native library: BoringSSL
+2025-10-07 23:34:19,329 [main] DEBUG io.netty.buffer.AbstractByteBuf - -Dio.netty.buffer.checkAccessible: true
+2025-10-07 23:34:19,329 [main] DEBUG io.netty.buffer.AbstractByteBuf - -Dio.netty.buffer.checkBounds: true
+2025-10-07 23:34:19,330 [main] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@23b8d9f3
+2025-10-07 23:34:19,343 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.numHeapArenas: 16
+2025-10-07 23:34:19,343 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.numDirectArenas: 16
+2025-10-07 23:34:19,343 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.pageSize: 8192
+2025-10-07 23:34:19,343 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxOrder: 9
+2025-10-07 23:34:19,344 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.chunkSize: 4194304
+2025-10-07 23:34:19,344 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.smallCacheSize: 256
+2025-10-07 23:34:19,344 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.normalCacheSize: 64
+2025-10-07 23:34:19,344 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2025-10-07 23:34:19,344 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.cacheTrimInterval: 8192
+2025-10-07 23:34:19,344 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2025-10-07 23:34:19,344 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.useCacheForAllThreads: false
+2025-10-07 23:34:19,344 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2025-10-07 23:34:19,352 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.allocator.type: pooled
+2025-10-07 23:34:19,352 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.threadLocalDirectBufferSize: 0
+2025-10-07 23:34:19,352 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2025-10-07 23:34:19,355 [main] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@25ad4f71
+2025-10-07 23:34:19,361 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.maxCapacityPerThread: 4096
+2025-10-07 23:34:19,361 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.ratio: 8
+2025-10-07 23:34:19,361 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.chunkSize: 32
+2025-10-07 23:34:19,361 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.blocking: false
+2025-10-07 23:34:19,361 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.batchFastThreadLocalOnly: true
+2025-10-07 23:34:19,367 [main] DEBUG io.netty.util.internal.PlatformDependent - org.jctools-core.MpscChunkedArrayQueue: available
+2025-10-07 23:34:19,380 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 => ECDHE-ECDSA-AES128-GCM-SHA256
+2025-10-07 23:34:19,380 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 => ECDHE-ECDSA-AES128-GCM-SHA256
+2025-10-07 23:34:19,380 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 => ECDHE-RSA-AES128-GCM-SHA256
+2025-10-07 23:34:19,380 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_128_GCM_SHA256 => ECDHE-RSA-AES128-GCM-SHA256
+2025-10-07 23:34:19,380 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 => ECDHE-ECDSA-AES256-GCM-SHA384
+2025-10-07 23:34:19,381 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 => ECDHE-ECDSA-AES256-GCM-SHA384
+2025-10-07 23:34:19,381 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 => ECDHE-RSA-AES256-GCM-SHA384
+2025-10-07 23:34:19,381 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_256_GCM_SHA384 => ECDHE-RSA-AES256-GCM-SHA384
+2025-10-07 23:34:19,381 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-ECDSA-CHACHA20-POLY1305
+2025-10-07 23:34:19,381 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-ECDSA-CHACHA20-POLY1305
+2025-10-07 23:34:19,381 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-RSA-CHACHA20-POLY1305
+2025-10-07 23:34:19,381 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-RSA-CHACHA20-POLY1305
+2025-10-07 23:34:19,381 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-PSK-CHACHA20-POLY1305
+2025-10-07 23:34:19,381 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-PSK-CHACHA20-POLY1305
+2025-10-07 23:34:19,381 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA => ECDHE-ECDSA-AES128-SHA
+2025-10-07 23:34:19,382 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_128_CBC_SHA => ECDHE-ECDSA-AES128-SHA
+2025-10-07 23:34:19,382 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA => ECDHE-RSA-AES128-SHA
+2025-10-07 23:34:19,382 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_128_CBC_SHA => ECDHE-RSA-AES128-SHA
+2025-10-07 23:34:19,382 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA => ECDHE-PSK-AES128-CBC-SHA
+2025-10-07 23:34:19,382 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_PSK_WITH_AES_128_CBC_SHA => ECDHE-PSK-AES128-CBC-SHA
+2025-10-07 23:34:19,382 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA => ECDHE-ECDSA-AES256-SHA
+2025-10-07 23:34:19,382 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_256_CBC_SHA => ECDHE-ECDSA-AES256-SHA
+2025-10-07 23:34:19,382 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA => ECDHE-RSA-AES256-SHA
+2025-10-07 23:34:19,382 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_256_CBC_SHA => ECDHE-RSA-AES256-SHA
+2025-10-07 23:34:19,382 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA => ECDHE-PSK-AES256-CBC-SHA
+2025-10-07 23:34:19,382 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_PSK_WITH_AES_256_CBC_SHA => ECDHE-PSK-AES256-CBC-SHA
+2025-10-07 23:34:19,382 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_128_GCM_SHA256 => AES128-GCM-SHA256
+2025-10-07 23:34:19,382 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_128_GCM_SHA256 => AES128-GCM-SHA256
+2025-10-07 23:34:19,383 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_256_GCM_SHA384 => AES256-GCM-SHA384
+2025-10-07 23:34:19,383 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_256_GCM_SHA384 => AES256-GCM-SHA384
+2025-10-07 23:34:19,383 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_128_CBC_SHA => AES128-SHA
+2025-10-07 23:34:19,383 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_128_CBC_SHA => AES128-SHA
+2025-10-07 23:34:19,383 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_PSK_WITH_AES_128_CBC_SHA => PSK-AES128-CBC-SHA
+2025-10-07 23:34:19,383 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_PSK_WITH_AES_128_CBC_SHA => PSK-AES128-CBC-SHA
+2025-10-07 23:34:19,383 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_256_CBC_SHA => AES256-SHA
+2025-10-07 23:34:19,383 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_256_CBC_SHA => AES256-SHA
+2025-10-07 23:34:19,383 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_PSK_WITH_AES_256_CBC_SHA => PSK-AES256-CBC-SHA
+2025-10-07 23:34:19,383 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_PSK_WITH_AES_256_CBC_SHA => PSK-AES256-CBC-SHA
+2025-10-07 23:34:19,384 [main] DEBUG io.netty.handler.ssl.OpenSsl - Supported protocols (OpenSSL): [SSLv2Hello, TLSv1, TLSv1.1, TLSv1.2, TLSv1.3] 
+2025-10-07 23:34:19,384 [main] DEBUG io.netty.handler.ssl.OpenSsl - Default cipher suites (OpenSSL): [TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256]
+2025-10-07 23:34:19,410 [main] DEBUG reactor.netty.tcp.TcpResources - [http] resources will use the default LoopResources: DefaultLoopResources {prefix=reactor-http, daemon=true, selectCount=8, workerCount=8}
+2025-10-07 23:34:19,410 [main] DEBUG reactor.netty.tcp.TcpResources - [http] resources will use the default ConnectionProvider: reactor.netty.resources.DefaultPooledConnectionProvider@3743539f
+2025-10-07 23:34:19,412 [main] DEBUG reactor.netty.resources.PooledConnectionProvider - Creating a new [http] client pool [PoolFactory{evictionInterval=PT0S, leasingStrategy=fifo, maxConnections=500, maxIdleTime=-1, maxLifeTime=-1, metricsEnabled=false, pendingAcquireMaxCount=1000, pendingAcquireTimeout=45000}] for [azsdk-openai.openai.azure.com/<unresolved>:443]
+2025-10-07 23:34:19,428 [main] DEBUG reactor.netty.resources.DefaultLoopIOUring - Default io_uring support : false
+2025-10-07 23:34:19,446 [main] DEBUG reactor.netty.resources.DefaultLoopEpoll - Default Epoll support : false
+2025-10-07 23:34:19,448 [main] DEBUG reactor.netty.resources.DefaultLoopKQueue - Default KQueue support : false
+2025-10-07 23:34:19,460 [main] DEBUG io.netty.channel.MultithreadEventLoopGroup - -Dio.netty.eventLoopThreads: 16
+2025-10-07 23:34:19,470 [main] DEBUG io.netty.util.concurrent.GlobalEventExecutor - -Dio.netty.globalEventExecutor.quietPeriodSeconds: 1
+2025-10-07 23:34:19,479 [main] DEBUG io.netty.channel.nio.NioEventLoop - -Dio.netty.noKeySetOptimization: false
+2025-10-07 23:34:19,479 [main] DEBUG io.netty.channel.nio.NioEventLoop - -Dio.netty.selectorAutoRebuildThreshold: 512
+2025-10-07 23:34:19,518 [main] DEBUG io.netty.channel.DefaultChannelId - -Dio.netty.processId: 17916 (auto-detected)
+2025-10-07 23:34:19,520 [main] DEBUG io.netty.channel.DefaultChannelId - -Dio.netty.machineId: f8:32:e4:ff:fe:bd:e0:09 (auto-detected)
+2025-10-07 23:34:19,560 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [f2f61b8e] Created a new pooled channel, now: 0 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:34:19,574 [reactor-http-nio-1] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@2f166cfc
+2025-10-07 23:34:19,579 [reactor-http-nio-1] DEBUG reactor.netty.tcp.SslProvider - [f2f61b8e] SSL enabled using engine io.netty.handler.ssl.OpenSslEngine@506b18b7 and SNI azsdk-openai.openai.azure.com/<unresolved>:443
+2025-10-07 23:34:19,594 [reactor-http-nio-1] DEBUG reactor.netty.transport.TransportConfig - [f2f61b8e] Initialized pipeline DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.sslReader = reactor.netty.tcp.SslProvider$SslReadHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:34:19,693 [reactor-http-nio-1] DEBUG reactor.netty.transport.TransportConnector - [f2f61b8e] Connecting to [azsdk-openai.openai.azure.com/20.62.58.5:443].
+2025-10-07 23:34:19,902 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [f2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Registering pool release on close event for channel
+2025-10-07 23:34:19,903 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [f2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel connected, now: 1 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:34:20,368 [reactor-http-nio-1] DEBUG io.netty.handler.ssl.SslHandler - [id: 0xf2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] HANDSHAKEN: protocol:TLSv1.3 cipher suite:TLS_AES_256_GCM_SHA384
+2025-10-07 23:34:20,370 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [f2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(PooledConnection{channel=[id: 0xf2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}, [connected])
+2025-10-07 23:34:20,388 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [f2f61b8e-1, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(GET{uri=null, connection=PooledConnection{channel=[id: 0xf2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [configured])
+2025-10-07 23:34:20,388 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientConnect - [f2f61b8e-1, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Handler is being applied: {uri=https://azsdk-openai.openai.azure.com//openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview, method=POST}
+2025-10-07 23:34:20,394 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [f2f61b8e-1, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xf2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_prepared])
+2025-10-07 23:34:20,400 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [f2f61b8e-1, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Added decoder [azureSdkHandler] at the end of the user pipeline, full pipeline: [reactor.left.sslHandler, reactor.left.httpCodec, azureSdkHandler, reactor.right.reactiveBridge, DefaultChannelPipeline$TailContext#0]
+2025-10-07 23:34:20,413 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [f2f61b8e-1, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xf2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_sent])
+2025-10-07 23:34:20,634 [reactor-http-nio-1] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@566f501c
+2025-10-07 23:34:23,571 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [f2f61b8e-1, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received response (auto-read:false) : RESPONSE(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+Content-Length: <filtered>
+Content-Type: <filtered>
+apim-request-id: <filtered>
+Strict-Transport-Security: <filtered>
+x-content-type-options: <filtered>
+x-ms-region: <filtered>
+x-ratelimit-remaining-requests: <filtered>
+x-ratelimit-limit-requests: <filtered>
+x-ratelimit-remaining-tokens: <filtered>
+x-ratelimit-limit-tokens: <filtered>
+azureml-model-session: <filtered>
+x-accel-buffering: <filtered>
+x-ms-rai-invoked: <filtered>
+x-request-id: <filtered>
+x-ms-client-request-id: <filtered>
+x-ms-deployment-name: <filtered>
+Date: <filtered>
+2025-10-07 23:34:23,571 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [f2f61b8e-1, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xf2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_received])
+2025-10-07 23:34:23,580 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [f2f61b8e-1, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received last HTTP packet
+2025-10-07 23:34:23,581 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [f2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xf2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_completed])
+2025-10-07 23:34:23,581 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [f2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Removed handler: azureSdkHandler, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:34:23,582 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [f2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Non Removed handler: azureSdkHandler, context: null, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:34:23,582 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [f2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xf2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [disconnecting])
+2025-10-07 23:34:23,582 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [f2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Releasing channel
+2025-10-07 23:34:23,584 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [f2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel cleaned, now: 0 active connections, 1 inactive connections and 0 pending acquire requests.
+2025-10-07 23:34:23,594 [reactor-http-nio-1] DEBUG reactor.netty.channel.FluxReceive - [f2f61b8e, L:/192.168.1.159:63629 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] [terminated=true, cancelled=false, pending=1, error=null]: subscribing inbound receiver
+2025-10-07 23:35:08,849 [main] DEBUG io.netty.util.internal.logging.InternalLoggerFactory - Using SLF4J as the default logging framework
+2025-10-07 23:35:08,855 [main] DEBUG io.netty.util.internal.PlatformDependent0 - -Dio.netty.noUnsafe: false
+2025-10-07 23:35:08,856 [main] DEBUG io.netty.util.internal.PlatformDependent0 - Java version: 22
+2025-10-07 23:35:08,858 [main] DEBUG io.netty.util.internal.PlatformDependent0 - sun.misc.Unsafe.theUnsafe: available
+2025-10-07 23:35:08,859 [main] DEBUG io.netty.util.internal.PlatformDependent0 - sun.misc.Unsafe.copyMemory: available
+2025-10-07 23:35:08,859 [main] DEBUG io.netty.util.internal.PlatformDependent0 - sun.misc.Unsafe.storeFence: available
+2025-10-07 23:35:08,860 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.Buffer.address: available
+2025-10-07 23:35:08,861 [main] DEBUG io.netty.util.internal.PlatformDependent0 - direct buffer constructor: unavailable: Reflective setAccessible(true) disabled
+2025-10-07 23:35:08,861 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.Bits.unaligned: available, true
+2025-10-07 23:35:08,862 [main] DEBUG io.netty.util.internal.PlatformDependent0 - jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable: class io.netty.util.internal.PlatformDependent0$7 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @4ac3c60d
+2025-10-07 23:35:08,863 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.DirectByteBuffer.<init>(long, {int,long}): unavailable
+2025-10-07 23:35:08,864 [main] DEBUG io.netty.util.internal.PlatformDependent - sun.misc.Unsafe: available
+2025-10-07 23:35:08,864 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.tmpdir: C:\Users\Pease\AppData\Local\Temp (java.io.tmpdir)
+2025-10-07 23:35:08,864 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2025-10-07 23:35:08,865 [main] DEBUG io.netty.util.internal.PlatformDependent - Platform: Windows
+2025-10-07 23:35:08,867 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.maxDirectMemory: -1 bytes
+2025-10-07 23:35:08,867 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2025-10-07 23:35:08,870 [main] DEBUG io.netty.util.internal.CleanerJava9 - java.nio.ByteBuffer.cleaner(): available
+2025-10-07 23:35:08,870 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.noPreferDirect: false
+2025-10-07 23:35:08,945 [main] DEBUG io.netty.util.internal.InternalThreadLocalMap - -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2025-10-07 23:35:08,945 [main] DEBUG io.netty.util.internal.InternalThreadLocalMap - -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2025-10-07 23:35:08,968 [main] DEBUG io.netty.util.ResourceLeakDetector - -Dio.netty.leakDetection.level: simple
+2025-10-07 23:35:08,968 [main] DEBUG io.netty.util.ResourceLeakDetector - -Dio.netty.leakDetection.targetRecords: 4
+2025-10-07 23:35:10,178 [main] DEBUG io.netty.util.NetUtil - -Djava.net.preferIPv4Stack: false
+2025-10-07 23:35:10,179 [main] DEBUG io.netty.util.NetUtil - -Djava.net.preferIPv6Addresses: false
+2025-10-07 23:35:10,182 [main] DEBUG io.netty.util.NetUtilInitializations - Loopback interface: loopback_2 (Software Loopback Interface 1, 0:0:0:0:0:0:0:1)
+2025-10-07 23:35:10,183 [main] DEBUG io.netty.util.NetUtil - Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2025-10-07 23:35:10,227 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.workdir: C:\Users\Pease\AppData\Local\Temp (io.netty.tmpdir)
+2025-10-07 23:35:10,227 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.deleteLibAfterLoading: true
+2025-10-07 23:35:10,227 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.tryPatchShadedId: true
+2025-10-07 23:35:10,227 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.detectNativeLibraryDuplicates: true
+2025-10-07 23:35:10,417 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - Successfully loaded the library C:\Users\Pease\AppData\Local\Temp\netty_tcnative_windows_x86_645594870794885167431.dll
+2025-10-07 23:35:10,417 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - Loaded library with name 'netty_tcnative_windows_x86_64'
+2025-10-07 23:35:10,417 [main] DEBUG io.netty.handler.ssl.OpenSsl - Initialize netty-tcnative using engine: 'default'
+2025-10-07 23:35:10,418 [main] DEBUG io.netty.handler.ssl.OpenSsl - netty-tcnative using native library: BoringSSL
+2025-10-07 23:35:10,428 [main] DEBUG io.netty.buffer.AbstractByteBuf - -Dio.netty.buffer.checkAccessible: true
+2025-10-07 23:35:10,428 [main] DEBUG io.netty.buffer.AbstractByteBuf - -Dio.netty.buffer.checkBounds: true
+2025-10-07 23:35:10,429 [main] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@23b8d9f3
+2025-10-07 23:35:10,439 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.numHeapArenas: 16
+2025-10-07 23:35:10,439 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.numDirectArenas: 16
+2025-10-07 23:35:10,440 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.pageSize: 8192
+2025-10-07 23:35:10,440 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxOrder: 9
+2025-10-07 23:35:10,440 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.chunkSize: 4194304
+2025-10-07 23:35:10,440 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.smallCacheSize: 256
+2025-10-07 23:35:10,440 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.normalCacheSize: 64
+2025-10-07 23:35:10,440 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2025-10-07 23:35:10,440 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.cacheTrimInterval: 8192
+2025-10-07 23:35:10,440 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2025-10-07 23:35:10,440 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.useCacheForAllThreads: false
+2025-10-07 23:35:10,440 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2025-10-07 23:35:10,447 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.allocator.type: pooled
+2025-10-07 23:35:10,447 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.threadLocalDirectBufferSize: 0
+2025-10-07 23:35:10,447 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2025-10-07 23:35:10,450 [main] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@25ad4f71
+2025-10-07 23:35:10,457 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.maxCapacityPerThread: 4096
+2025-10-07 23:35:10,457 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.ratio: 8
+2025-10-07 23:35:10,457 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.chunkSize: 32
+2025-10-07 23:35:10,457 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.blocking: false
+2025-10-07 23:35:10,457 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.batchFastThreadLocalOnly: true
+2025-10-07 23:35:10,463 [main] DEBUG io.netty.util.internal.PlatformDependent - org.jctools-core.MpscChunkedArrayQueue: available
+2025-10-07 23:35:10,474 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 => ECDHE-ECDSA-AES128-GCM-SHA256
+2025-10-07 23:35:10,474 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 => ECDHE-ECDSA-AES128-GCM-SHA256
+2025-10-07 23:35:10,474 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 => ECDHE-RSA-AES128-GCM-SHA256
+2025-10-07 23:35:10,474 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_128_GCM_SHA256 => ECDHE-RSA-AES128-GCM-SHA256
+2025-10-07 23:35:10,475 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 => ECDHE-ECDSA-AES256-GCM-SHA384
+2025-10-07 23:35:10,475 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 => ECDHE-ECDSA-AES256-GCM-SHA384
+2025-10-07 23:35:10,475 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 => ECDHE-RSA-AES256-GCM-SHA384
+2025-10-07 23:35:10,475 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_256_GCM_SHA384 => ECDHE-RSA-AES256-GCM-SHA384
+2025-10-07 23:35:10,475 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-ECDSA-CHACHA20-POLY1305
+2025-10-07 23:35:10,475 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-ECDSA-CHACHA20-POLY1305
+2025-10-07 23:35:10,475 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-RSA-CHACHA20-POLY1305
+2025-10-07 23:35:10,475 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-RSA-CHACHA20-POLY1305
+2025-10-07 23:35:10,475 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-PSK-CHACHA20-POLY1305
+2025-10-07 23:35:10,475 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-PSK-CHACHA20-POLY1305
+2025-10-07 23:35:10,475 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA => ECDHE-ECDSA-AES128-SHA
+2025-10-07 23:35:10,475 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_128_CBC_SHA => ECDHE-ECDSA-AES128-SHA
+2025-10-07 23:35:10,475 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA => ECDHE-RSA-AES128-SHA
+2025-10-07 23:35:10,476 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_128_CBC_SHA => ECDHE-RSA-AES128-SHA
+2025-10-07 23:35:10,476 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA => ECDHE-PSK-AES128-CBC-SHA
+2025-10-07 23:35:10,476 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_PSK_WITH_AES_128_CBC_SHA => ECDHE-PSK-AES128-CBC-SHA
+2025-10-07 23:35:10,476 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA => ECDHE-ECDSA-AES256-SHA
+2025-10-07 23:35:10,476 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_256_CBC_SHA => ECDHE-ECDSA-AES256-SHA
+2025-10-07 23:35:10,476 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA => ECDHE-RSA-AES256-SHA
+2025-10-07 23:35:10,476 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_256_CBC_SHA => ECDHE-RSA-AES256-SHA
+2025-10-07 23:35:10,476 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA => ECDHE-PSK-AES256-CBC-SHA
+2025-10-07 23:35:10,476 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_PSK_WITH_AES_256_CBC_SHA => ECDHE-PSK-AES256-CBC-SHA
+2025-10-07 23:35:10,476 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_128_GCM_SHA256 => AES128-GCM-SHA256
+2025-10-07 23:35:10,476 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_128_GCM_SHA256 => AES128-GCM-SHA256
+2025-10-07 23:35:10,476 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_256_GCM_SHA384 => AES256-GCM-SHA384
+2025-10-07 23:35:10,476 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_256_GCM_SHA384 => AES256-GCM-SHA384
+2025-10-07 23:35:10,476 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_128_CBC_SHA => AES128-SHA
+2025-10-07 23:35:10,477 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_128_CBC_SHA => AES128-SHA
+2025-10-07 23:35:10,477 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_PSK_WITH_AES_128_CBC_SHA => PSK-AES128-CBC-SHA
+2025-10-07 23:35:10,477 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_PSK_WITH_AES_128_CBC_SHA => PSK-AES128-CBC-SHA
+2025-10-07 23:35:10,477 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_256_CBC_SHA => AES256-SHA
+2025-10-07 23:35:10,477 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_256_CBC_SHA => AES256-SHA
+2025-10-07 23:35:10,477 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_PSK_WITH_AES_256_CBC_SHA => PSK-AES256-CBC-SHA
+2025-10-07 23:35:10,477 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_PSK_WITH_AES_256_CBC_SHA => PSK-AES256-CBC-SHA
+2025-10-07 23:35:10,477 [main] DEBUG io.netty.handler.ssl.OpenSsl - Supported protocols (OpenSSL): [SSLv2Hello, TLSv1, TLSv1.1, TLSv1.2, TLSv1.3] 
+2025-10-07 23:35:10,477 [main] DEBUG io.netty.handler.ssl.OpenSsl - Default cipher suites (OpenSSL): [TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256]
+2025-10-07 23:35:10,506 [main] DEBUG reactor.netty.tcp.TcpResources - [http] resources will use the default LoopResources: DefaultLoopResources {prefix=reactor-http, daemon=true, selectCount=8, workerCount=8}
+2025-10-07 23:35:10,506 [main] DEBUG reactor.netty.tcp.TcpResources - [http] resources will use the default ConnectionProvider: reactor.netty.resources.DefaultPooledConnectionProvider@3743539f
+2025-10-07 23:35:10,509 [main] DEBUG reactor.netty.resources.PooledConnectionProvider - Creating a new [http] client pool [PoolFactory{evictionInterval=PT0S, leasingStrategy=fifo, maxConnections=500, maxIdleTime=-1, maxLifeTime=-1, metricsEnabled=false, pendingAcquireMaxCount=1000, pendingAcquireTimeout=45000}] for [azsdk-openai.openai.azure.com/<unresolved>:443]
+2025-10-07 23:35:10,524 [main] DEBUG reactor.netty.resources.DefaultLoopIOUring - Default io_uring support : false
+2025-10-07 23:35:10,539 [main] DEBUG reactor.netty.resources.DefaultLoopEpoll - Default Epoll support : false
+2025-10-07 23:35:10,541 [main] DEBUG reactor.netty.resources.DefaultLoopKQueue - Default KQueue support : false
+2025-10-07 23:35:10,544 [main] DEBUG io.netty.channel.MultithreadEventLoopGroup - -Dio.netty.eventLoopThreads: 16
+2025-10-07 23:35:10,554 [main] DEBUG io.netty.util.concurrent.GlobalEventExecutor - -Dio.netty.globalEventExecutor.quietPeriodSeconds: 1
+2025-10-07 23:35:10,562 [main] DEBUG io.netty.channel.nio.NioEventLoop - -Dio.netty.noKeySetOptimization: false
+2025-10-07 23:35:10,562 [main] DEBUG io.netty.channel.nio.NioEventLoop - -Dio.netty.selectorAutoRebuildThreshold: 512
+2025-10-07 23:35:10,611 [main] DEBUG io.netty.channel.DefaultChannelId - -Dio.netty.processId: 18220 (auto-detected)
+2025-10-07 23:35:10,613 [main] DEBUG io.netty.channel.DefaultChannelId - -Dio.netty.machineId: f8:32:e4:ff:fe:bd:e0:09 (auto-detected)
+2025-10-07 23:35:10,655 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [421eddb2] Created a new pooled channel, now: 0 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:35:10,667 [reactor-http-nio-1] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@76e0861e
+2025-10-07 23:35:10,674 [reactor-http-nio-1] DEBUG reactor.netty.tcp.SslProvider - [421eddb2] SSL enabled using engine io.netty.handler.ssl.OpenSslEngine@66cd7567 and SNI azsdk-openai.openai.azure.com/<unresolved>:443
+2025-10-07 23:35:10,687 [reactor-http-nio-1] DEBUG reactor.netty.transport.TransportConfig - [421eddb2] Initialized pipeline DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.sslReader = reactor.netty.tcp.SslProvider$SslReadHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:35:10,798 [reactor-http-nio-1] DEBUG reactor.netty.transport.TransportConnector - [421eddb2] Connecting to [azsdk-openai.openai.azure.com/20.62.58.5:443].
+2025-10-07 23:35:11,001 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Registering pool release on close event for channel
+2025-10-07 23:35:11,002 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel connected, now: 1 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:35:11,447 [reactor-http-nio-1] DEBUG io.netty.handler.ssl.SslHandler - [id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] HANDSHAKEN: protocol:TLSv1.3 cipher suite:TLS_AES_256_GCM_SHA384
+2025-10-07 23:35:11,448 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}, [connected])
+2025-10-07 23:35:11,462 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2-1, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(GET{uri=null, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [configured])
+2025-10-07 23:35:11,462 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientConnect - [421eddb2-1, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Handler is being applied: {uri=https://azsdk-openai.openai.azure.com//openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview, method=POST}
+2025-10-07 23:35:11,467 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2-1, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_prepared])
+2025-10-07 23:35:11,470 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [421eddb2-1, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Added decoder [azureSdkHandler] at the end of the user pipeline, full pipeline: [reactor.left.sslHandler, reactor.left.httpCodec, azureSdkHandler, reactor.right.reactiveBridge, DefaultChannelPipeline$TailContext#0]
+2025-10-07 23:35:11,483 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2-1, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_sent])
+2025-10-07 23:35:11,699 [reactor-http-nio-1] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@1656cd6f
+2025-10-07 23:35:14,514 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [421eddb2-1, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received response (auto-read:false) : RESPONSE(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+Content-Length: <filtered>
+Content-Type: <filtered>
+apim-request-id: <filtered>
+Strict-Transport-Security: <filtered>
+x-content-type-options: <filtered>
+x-ms-region: <filtered>
+x-ratelimit-remaining-requests: <filtered>
+x-ratelimit-limit-requests: <filtered>
+x-ratelimit-remaining-tokens: <filtered>
+x-ratelimit-limit-tokens: <filtered>
+azureml-model-session: <filtered>
+x-accel-buffering: <filtered>
+x-ms-rai-invoked: <filtered>
+x-request-id: <filtered>
+x-ms-client-request-id: <filtered>
+x-ms-deployment-name: <filtered>
+Date: <filtered>
+2025-10-07 23:35:14,515 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2-1, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_received])
+2025-10-07 23:35:14,522 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [421eddb2-1, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received last HTTP packet
+2025-10-07 23:35:14,523 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_completed])
+2025-10-07 23:35:14,524 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Removed handler: azureSdkHandler, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:35:14,524 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Non Removed handler: azureSdkHandler, context: null, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:35:14,524 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [disconnecting])
+2025-10-07 23:35:14,524 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Releasing channel
+2025-10-07 23:35:14,527 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel cleaned, now: 0 active connections, 1 inactive connections and 0 pending acquire requests.
+2025-10-07 23:35:14,539 [reactor-http-nio-1] DEBUG reactor.netty.channel.FluxReceive - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] [terminated=true, cancelled=false, pending=1, error=null]: subscribing inbound receiver
+2025-10-07 23:35:14,671 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel acquired, now: 1 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:35:14,671 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientConnect - [421eddb2-2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Handler is being applied: {uri=https://azsdk-openai.openai.azure.com//openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview, method=POST}
+2025-10-07 23:35:14,672 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2-2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_prepared])
+2025-10-07 23:35:14,672 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [421eddb2-2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Added decoder [azureSdkHandler] at the end of the user pipeline, full pipeline: [reactor.left.sslHandler, reactor.left.httpCodec, azureSdkHandler, reactor.right.reactiveBridge, DefaultChannelPipeline$TailContext#0]
+2025-10-07 23:35:14,674 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2-2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_sent])
+2025-10-07 23:35:29,540 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [421eddb2-2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received response (auto-read:false) : RESPONSE(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+Content-Length: <filtered>
+Content-Type: <filtered>
+apim-request-id: <filtered>
+Strict-Transport-Security: <filtered>
+x-content-type-options: <filtered>
+x-ms-region: <filtered>
+x-ratelimit-remaining-requests: <filtered>
+x-ratelimit-limit-requests: <filtered>
+x-ratelimit-remaining-tokens: <filtered>
+x-ratelimit-limit-tokens: <filtered>
+azureml-model-session: <filtered>
+x-accel-buffering: <filtered>
+x-ms-rai-invoked: <filtered>
+x-request-id: <filtered>
+x-ms-client-request-id: <filtered>
+x-ms-deployment-name: <filtered>
+Date: <filtered>
+2025-10-07 23:35:29,540 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2-2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_received])
+2025-10-07 23:35:29,541 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [421eddb2-2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received last HTTP packet
+2025-10-07 23:35:29,541 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_completed])
+2025-10-07 23:35:29,541 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Removed handler: azureSdkHandler, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:35:29,541 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Non Removed handler: azureSdkHandler, context: null, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:35:29,541 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [disconnecting])
+2025-10-07 23:35:29,541 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Releasing channel
+2025-10-07 23:35:29,542 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel cleaned, now: 0 active connections, 1 inactive connections and 0 pending acquire requests.
+2025-10-07 23:35:29,542 [reactor-http-nio-1] DEBUG reactor.netty.channel.FluxReceive - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] [terminated=true, cancelled=false, pending=2, error=null]: subscribing inbound receiver
+2025-10-07 23:35:29,548 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel acquired, now: 1 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:35:29,548 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientConnect - [421eddb2-3, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Handler is being applied: {uri=https://azsdk-openai.openai.azure.com//openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview, method=POST}
+2025-10-07 23:35:29,549 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2-3, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_prepared])
+2025-10-07 23:35:29,549 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [421eddb2-3, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Added decoder [azureSdkHandler] at the end of the user pipeline, full pipeline: [reactor.left.sslHandler, reactor.left.httpCodec, azureSdkHandler, reactor.right.reactiveBridge, DefaultChannelPipeline$TailContext#0]
+2025-10-07 23:35:29,550 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2-3, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_sent])
+2025-10-07 23:35:37,772 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [421eddb2-3, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received response (auto-read:false) : RESPONSE(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+Content-Length: <filtered>
+Content-Type: <filtered>
+apim-request-id: <filtered>
+Strict-Transport-Security: <filtered>
+x-content-type-options: <filtered>
+x-ms-region: <filtered>
+x-ratelimit-remaining-requests: <filtered>
+x-ratelimit-limit-requests: <filtered>
+x-ratelimit-remaining-tokens: <filtered>
+x-ratelimit-limit-tokens: <filtered>
+azureml-model-session: <filtered>
+x-accel-buffering: <filtered>
+x-ms-rai-invoked: <filtered>
+x-request-id: <filtered>
+x-ms-client-request-id: <filtered>
+x-ms-deployment-name: <filtered>
+Date: <filtered>
+2025-10-07 23:35:37,772 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2-3, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_received])
+2025-10-07 23:35:37,772 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [421eddb2-3, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received last HTTP packet
+2025-10-07 23:35:37,772 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_completed])
+2025-10-07 23:35:37,773 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Removed handler: azureSdkHandler, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:35:37,773 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Non Removed handler: azureSdkHandler, context: null, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:35:37,773 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [disconnecting])
+2025-10-07 23:35:37,773 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Releasing channel
+2025-10-07 23:35:37,773 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel cleaned, now: 0 active connections, 1 inactive connections and 0 pending acquire requests.
+2025-10-07 23:35:37,773 [reactor-http-nio-1] DEBUG reactor.netty.channel.FluxReceive - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] [terminated=true, cancelled=false, pending=1, error=null]: subscribing inbound receiver
+2025-10-07 23:35:37,780 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel acquired, now: 1 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:35:37,780 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientConnect - [421eddb2-4, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Handler is being applied: {uri=https://azsdk-openai.openai.azure.com//openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview, method=POST}
+2025-10-07 23:35:37,780 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2-4, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_prepared])
+2025-10-07 23:35:37,780 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [421eddb2-4, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Added decoder [azureSdkHandler] at the end of the user pipeline, full pipeline: [reactor.left.sslHandler, reactor.left.httpCodec, azureSdkHandler, reactor.right.reactiveBridge, DefaultChannelPipeline$TailContext#0]
+2025-10-07 23:35:37,781 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2-4, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_sent])
+2025-10-07 23:35:46,721 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [421eddb2-4, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received response (auto-read:false) : RESPONSE(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+Content-Length: <filtered>
+Content-Type: <filtered>
+apim-request-id: <filtered>
+Strict-Transport-Security: <filtered>
+x-content-type-options: <filtered>
+x-ms-region: <filtered>
+x-ratelimit-remaining-requests: <filtered>
+x-ratelimit-limit-requests: <filtered>
+x-ratelimit-remaining-tokens: <filtered>
+x-ratelimit-limit-tokens: <filtered>
+azureml-model-session: <filtered>
+x-accel-buffering: <filtered>
+x-ms-rai-invoked: <filtered>
+x-request-id: <filtered>
+x-ms-client-request-id: <filtered>
+x-ms-deployment-name: <filtered>
+Date: <filtered>
+2025-10-07 23:35:46,721 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2-4, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_received])
+2025-10-07 23:35:46,722 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [421eddb2-4, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received last HTTP packet
+2025-10-07 23:35:46,722 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_completed])
+2025-10-07 23:35:46,722 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Removed handler: azureSdkHandler, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:35:46,722 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Non Removed handler: azureSdkHandler, context: null, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:35:46,722 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [disconnecting])
+2025-10-07 23:35:46,722 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Releasing channel
+2025-10-07 23:35:46,723 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel cleaned, now: 0 active connections, 1 inactive connections and 0 pending acquire requests.
+2025-10-07 23:35:46,723 [reactor-http-nio-1] DEBUG reactor.netty.channel.FluxReceive - [421eddb2, L:/192.168.1.159:63649 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] [terminated=true, cancelled=false, pending=1, error=null]: subscribing inbound receiver
+2025-10-07 23:46:06,066 [main] DEBUG io.netty.util.internal.logging.InternalLoggerFactory - Using SLF4J as the default logging framework
+2025-10-07 23:46:06,071 [main] DEBUG io.netty.util.internal.PlatformDependent0 - -Dio.netty.noUnsafe: false
+2025-10-07 23:46:06,071 [main] DEBUG io.netty.util.internal.PlatformDependent0 - Java version: 22
+2025-10-07 23:46:06,074 [main] DEBUG io.netty.util.internal.PlatformDependent0 - sun.misc.Unsafe.theUnsafe: available
+2025-10-07 23:46:06,075 [main] DEBUG io.netty.util.internal.PlatformDependent0 - sun.misc.Unsafe.copyMemory: available
+2025-10-07 23:46:06,075 [main] DEBUG io.netty.util.internal.PlatformDependent0 - sun.misc.Unsafe.storeFence: available
+2025-10-07 23:46:06,076 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.Buffer.address: available
+2025-10-07 23:46:06,076 [main] DEBUG io.netty.util.internal.PlatformDependent0 - direct buffer constructor: unavailable: Reflective setAccessible(true) disabled
+2025-10-07 23:46:06,077 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.Bits.unaligned: available, true
+2025-10-07 23:46:06,078 [main] DEBUG io.netty.util.internal.PlatformDependent0 - jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable: class io.netty.util.internal.PlatformDependent0$7 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @4ac3c60d
+2025-10-07 23:46:06,078 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.DirectByteBuffer.<init>(long, {int,long}): unavailable
+2025-10-07 23:46:06,079 [main] DEBUG io.netty.util.internal.PlatformDependent - sun.misc.Unsafe: available
+2025-10-07 23:46:06,079 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.tmpdir: C:\Users\Pease\AppData\Local\Temp (java.io.tmpdir)
+2025-10-07 23:46:06,079 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2025-10-07 23:46:06,079 [main] DEBUG io.netty.util.internal.PlatformDependent - Platform: Windows
+2025-10-07 23:46:06,080 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.maxDirectMemory: -1 bytes
+2025-10-07 23:46:06,080 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2025-10-07 23:46:06,082 [main] DEBUG io.netty.util.internal.CleanerJava9 - java.nio.ByteBuffer.cleaner(): available
+2025-10-07 23:46:06,082 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.noPreferDirect: false
+2025-10-07 23:46:06,156 [main] DEBUG io.netty.util.internal.InternalThreadLocalMap - -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2025-10-07 23:46:06,156 [main] DEBUG io.netty.util.internal.InternalThreadLocalMap - -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2025-10-07 23:46:06,180 [main] DEBUG io.netty.util.ResourceLeakDetector - -Dio.netty.leakDetection.level: simple
+2025-10-07 23:46:06,180 [main] DEBUG io.netty.util.ResourceLeakDetector - -Dio.netty.leakDetection.targetRecords: 4
+2025-10-07 23:46:07,598 [main] DEBUG io.netty.util.NetUtil - -Djava.net.preferIPv4Stack: false
+2025-10-07 23:46:07,598 [main] DEBUG io.netty.util.NetUtil - -Djava.net.preferIPv6Addresses: false
+2025-10-07 23:46:07,603 [main] DEBUG io.netty.util.NetUtilInitializations - Loopback interface: loopback_2 (Software Loopback Interface 1, 0:0:0:0:0:0:0:1)
+2025-10-07 23:46:07,605 [main] DEBUG io.netty.util.NetUtil - Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2025-10-07 23:46:07,650 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.workdir: C:\Users\Pease\AppData\Local\Temp (io.netty.tmpdir)
+2025-10-07 23:46:07,650 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.deleteLibAfterLoading: true
+2025-10-07 23:46:07,650 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.tryPatchShadedId: true
+2025-10-07 23:46:07,650 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.detectNativeLibraryDuplicates: true
+2025-10-07 23:46:07,822 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - Successfully loaded the library C:\Users\Pease\AppData\Local\Temp\netty_tcnative_windows_x86_6411087520211375227401.dll
+2025-10-07 23:46:07,823 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - Loaded library with name 'netty_tcnative_windows_x86_64'
+2025-10-07 23:46:07,823 [main] DEBUG io.netty.handler.ssl.OpenSsl - Initialize netty-tcnative using engine: 'default'
+2025-10-07 23:46:07,824 [main] DEBUG io.netty.handler.ssl.OpenSsl - netty-tcnative using native library: BoringSSL
+2025-10-07 23:46:07,832 [main] DEBUG io.netty.buffer.AbstractByteBuf - -Dio.netty.buffer.checkAccessible: true
+2025-10-07 23:46:07,832 [main] DEBUG io.netty.buffer.AbstractByteBuf - -Dio.netty.buffer.checkBounds: true
+2025-10-07 23:46:07,833 [main] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@23b8d9f3
+2025-10-07 23:46:07,844 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.numHeapArenas: 16
+2025-10-07 23:46:07,844 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.numDirectArenas: 16
+2025-10-07 23:46:07,844 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.pageSize: 8192
+2025-10-07 23:46:07,844 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxOrder: 9
+2025-10-07 23:46:07,844 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.chunkSize: 4194304
+2025-10-07 23:46:07,844 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.smallCacheSize: 256
+2025-10-07 23:46:07,844 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.normalCacheSize: 64
+2025-10-07 23:46:07,845 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2025-10-07 23:46:07,845 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.cacheTrimInterval: 8192
+2025-10-07 23:46:07,845 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2025-10-07 23:46:07,845 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.useCacheForAllThreads: false
+2025-10-07 23:46:07,845 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2025-10-07 23:46:07,852 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.allocator.type: pooled
+2025-10-07 23:46:07,853 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.threadLocalDirectBufferSize: 0
+2025-10-07 23:46:07,853 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2025-10-07 23:46:07,856 [main] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@25ad4f71
+2025-10-07 23:46:07,861 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.maxCapacityPerThread: 4096
+2025-10-07 23:46:07,861 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.ratio: 8
+2025-10-07 23:46:07,861 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.chunkSize: 32
+2025-10-07 23:46:07,862 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.blocking: false
+2025-10-07 23:46:07,862 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.batchFastThreadLocalOnly: true
+2025-10-07 23:46:07,869 [main] DEBUG io.netty.util.internal.PlatformDependent - org.jctools-core.MpscChunkedArrayQueue: available
+2025-10-07 23:46:07,881 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 => ECDHE-ECDSA-AES128-GCM-SHA256
+2025-10-07 23:46:07,881 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 => ECDHE-ECDSA-AES128-GCM-SHA256
+2025-10-07 23:46:07,881 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 => ECDHE-RSA-AES128-GCM-SHA256
+2025-10-07 23:46:07,881 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_128_GCM_SHA256 => ECDHE-RSA-AES128-GCM-SHA256
+2025-10-07 23:46:07,881 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 => ECDHE-ECDSA-AES256-GCM-SHA384
+2025-10-07 23:46:07,881 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 => ECDHE-ECDSA-AES256-GCM-SHA384
+2025-10-07 23:46:07,881 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 => ECDHE-RSA-AES256-GCM-SHA384
+2025-10-07 23:46:07,881 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_256_GCM_SHA384 => ECDHE-RSA-AES256-GCM-SHA384
+2025-10-07 23:46:07,882 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-ECDSA-CHACHA20-POLY1305
+2025-10-07 23:46:07,882 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-ECDSA-CHACHA20-POLY1305
+2025-10-07 23:46:07,882 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-RSA-CHACHA20-POLY1305
+2025-10-07 23:46:07,882 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-RSA-CHACHA20-POLY1305
+2025-10-07 23:46:07,882 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-PSK-CHACHA20-POLY1305
+2025-10-07 23:46:07,882 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-PSK-CHACHA20-POLY1305
+2025-10-07 23:46:07,882 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA => ECDHE-ECDSA-AES128-SHA
+2025-10-07 23:46:07,882 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_128_CBC_SHA => ECDHE-ECDSA-AES128-SHA
+2025-10-07 23:46:07,882 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA => ECDHE-RSA-AES128-SHA
+2025-10-07 23:46:07,882 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_128_CBC_SHA => ECDHE-RSA-AES128-SHA
+2025-10-07 23:46:07,882 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA => ECDHE-PSK-AES128-CBC-SHA
+2025-10-07 23:46:07,882 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_PSK_WITH_AES_128_CBC_SHA => ECDHE-PSK-AES128-CBC-SHA
+2025-10-07 23:46:07,882 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA => ECDHE-ECDSA-AES256-SHA
+2025-10-07 23:46:07,882 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_256_CBC_SHA => ECDHE-ECDSA-AES256-SHA
+2025-10-07 23:46:07,883 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA => ECDHE-RSA-AES256-SHA
+2025-10-07 23:46:07,883 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_256_CBC_SHA => ECDHE-RSA-AES256-SHA
+2025-10-07 23:46:07,883 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA => ECDHE-PSK-AES256-CBC-SHA
+2025-10-07 23:46:07,883 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_PSK_WITH_AES_256_CBC_SHA => ECDHE-PSK-AES256-CBC-SHA
+2025-10-07 23:46:07,883 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_128_GCM_SHA256 => AES128-GCM-SHA256
+2025-10-07 23:46:07,883 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_128_GCM_SHA256 => AES128-GCM-SHA256
+2025-10-07 23:46:07,883 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_256_GCM_SHA384 => AES256-GCM-SHA384
+2025-10-07 23:46:07,883 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_256_GCM_SHA384 => AES256-GCM-SHA384
+2025-10-07 23:46:07,883 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_128_CBC_SHA => AES128-SHA
+2025-10-07 23:46:07,883 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_128_CBC_SHA => AES128-SHA
+2025-10-07 23:46:07,883 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_PSK_WITH_AES_128_CBC_SHA => PSK-AES128-CBC-SHA
+2025-10-07 23:46:07,883 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_PSK_WITH_AES_128_CBC_SHA => PSK-AES128-CBC-SHA
+2025-10-07 23:46:07,883 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_256_CBC_SHA => AES256-SHA
+2025-10-07 23:46:07,883 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_256_CBC_SHA => AES256-SHA
+2025-10-07 23:46:07,883 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_PSK_WITH_AES_256_CBC_SHA => PSK-AES256-CBC-SHA
+2025-10-07 23:46:07,884 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_PSK_WITH_AES_256_CBC_SHA => PSK-AES256-CBC-SHA
+2025-10-07 23:46:07,884 [main] DEBUG io.netty.handler.ssl.OpenSsl - Supported protocols (OpenSSL): [SSLv2Hello, TLSv1, TLSv1.1, TLSv1.2, TLSv1.3] 
+2025-10-07 23:46:07,884 [main] DEBUG io.netty.handler.ssl.OpenSsl - Default cipher suites (OpenSSL): [TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256]
+2025-10-07 23:46:07,908 [main] DEBUG reactor.netty.tcp.TcpResources - [http] resources will use the default LoopResources: DefaultLoopResources {prefix=reactor-http, daemon=true, selectCount=8, workerCount=8}
+2025-10-07 23:46:07,908 [main] DEBUG reactor.netty.tcp.TcpResources - [http] resources will use the default ConnectionProvider: reactor.netty.resources.DefaultPooledConnectionProvider@3743539f
+2025-10-07 23:46:07,911 [main] DEBUG reactor.netty.resources.PooledConnectionProvider - Creating a new [http] client pool [PoolFactory{evictionInterval=PT0S, leasingStrategy=fifo, maxConnections=500, maxIdleTime=-1, maxLifeTime=-1, metricsEnabled=false, pendingAcquireMaxCount=1000, pendingAcquireTimeout=45000}] for [azsdk-openai.openai.azure.com/<unresolved>:443]
+2025-10-07 23:46:07,931 [main] DEBUG reactor.netty.resources.DefaultLoopIOUring - Default io_uring support : false
+2025-10-07 23:46:07,944 [main] DEBUG reactor.netty.resources.DefaultLoopEpoll - Default Epoll support : false
+2025-10-07 23:46:07,947 [main] DEBUG reactor.netty.resources.DefaultLoopKQueue - Default KQueue support : false
+2025-10-07 23:46:07,950 [main] DEBUG io.netty.channel.MultithreadEventLoopGroup - -Dio.netty.eventLoopThreads: 16
+2025-10-07 23:46:07,959 [main] DEBUG io.netty.util.concurrent.GlobalEventExecutor - -Dio.netty.globalEventExecutor.quietPeriodSeconds: 1
+2025-10-07 23:46:07,967 [main] DEBUG io.netty.channel.nio.NioEventLoop - -Dio.netty.noKeySetOptimization: false
+2025-10-07 23:46:07,967 [main] DEBUG io.netty.channel.nio.NioEventLoop - -Dio.netty.selectorAutoRebuildThreshold: 512
+2025-10-07 23:46:08,004 [main] DEBUG io.netty.channel.DefaultChannelId - -Dio.netty.processId: 10100 (auto-detected)
+2025-10-07 23:46:08,006 [main] DEBUG io.netty.channel.DefaultChannelId - -Dio.netty.machineId: f8:32:e4:ff:fe:bd:e0:09 (auto-detected)
+2025-10-07 23:46:08,043 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [babf70e7] Created a new pooled channel, now: 0 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:46:08,055 [reactor-http-nio-1] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@255b4a68
+2025-10-07 23:46:08,059 [reactor-http-nio-1] DEBUG reactor.netty.tcp.SslProvider - [babf70e7] SSL enabled using engine io.netty.handler.ssl.OpenSslEngine@bfd1399 and SNI azsdk-openai.openai.azure.com/<unresolved>:443
+2025-10-07 23:46:08,072 [reactor-http-nio-1] DEBUG reactor.netty.transport.TransportConfig - [babf70e7] Initialized pipeline DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.sslReader = reactor.netty.tcp.SslProvider$SslReadHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:46:08,156 [reactor-http-nio-1] DEBUG reactor.netty.transport.TransportConnector - [babf70e7] Connecting to [azsdk-openai.openai.azure.com/20.62.58.5:443].
+2025-10-07 23:46:08,355 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Registering pool release on close event for channel
+2025-10-07 23:46:08,356 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel connected, now: 1 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:46:08,810 [reactor-http-nio-1] DEBUG io.netty.handler.ssl.SslHandler - [id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] HANDSHAKEN: protocol:TLSv1.3 cipher suite:TLS_AES_256_GCM_SHA384
+2025-10-07 23:46:08,811 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}, [connected])
+2025-10-07 23:46:08,831 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7-1, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(GET{uri=null, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [configured])
+2025-10-07 23:46:08,831 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientConnect - [babf70e7-1, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Handler is being applied: {uri=https://azsdk-openai.openai.azure.com//openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview, method=POST}
+2025-10-07 23:46:08,836 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7-1, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_prepared])
+2025-10-07 23:46:08,841 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [babf70e7-1, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Added decoder [azureSdkHandler] at the end of the user pipeline, full pipeline: [reactor.left.sslHandler, reactor.left.httpCodec, azureSdkHandler, reactor.right.reactiveBridge, DefaultChannelPipeline$TailContext#0]
+2025-10-07 23:46:08,852 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7-1, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_sent])
+2025-10-07 23:46:09,073 [reactor-http-nio-1] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@1a0a303d
+2025-10-07 23:46:11,862 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [babf70e7-1, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received response (auto-read:false) : RESPONSE(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+Content-Length: <filtered>
+Content-Type: <filtered>
+apim-request-id: <filtered>
+Strict-Transport-Security: <filtered>
+x-content-type-options: <filtered>
+x-ms-region: <filtered>
+x-ratelimit-remaining-requests: <filtered>
+x-ratelimit-limit-requests: <filtered>
+x-ratelimit-remaining-tokens: <filtered>
+x-ratelimit-limit-tokens: <filtered>
+azureml-model-session: <filtered>
+x-accel-buffering: <filtered>
+x-ms-rai-invoked: <filtered>
+x-request-id: <filtered>
+x-ms-client-request-id: <filtered>
+x-ms-deployment-name: <filtered>
+Date: <filtered>
+2025-10-07 23:46:11,862 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7-1, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_received])
+2025-10-07 23:46:11,869 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [babf70e7-1, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received last HTTP packet
+2025-10-07 23:46:11,871 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_completed])
+2025-10-07 23:46:11,871 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Removed handler: azureSdkHandler, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:46:11,872 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Non Removed handler: azureSdkHandler, context: null, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:46:11,872 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [disconnecting])
+2025-10-07 23:46:11,872 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Releasing channel
+2025-10-07 23:46:11,875 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel cleaned, now: 0 active connections, 1 inactive connections and 0 pending acquire requests.
+2025-10-07 23:46:11,885 [reactor-http-nio-1] DEBUG reactor.netty.channel.FluxReceive - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] [terminated=true, cancelled=false, pending=1, error=null]: subscribing inbound receiver
+2025-10-07 23:46:12,025 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel acquired, now: 1 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:46:12,025 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientConnect - [babf70e7-2, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Handler is being applied: {uri=https://azsdk-openai.openai.azure.com//openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview, method=POST}
+2025-10-07 23:46:12,025 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7-2, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_prepared])
+2025-10-07 23:46:12,026 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [babf70e7-2, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Added decoder [azureSdkHandler] at the end of the user pipeline, full pipeline: [reactor.left.sslHandler, reactor.left.httpCodec, azureSdkHandler, reactor.right.reactiveBridge, DefaultChannelPipeline$TailContext#0]
+2025-10-07 23:46:12,027 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7-2, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_sent])
+2025-10-07 23:46:24,924 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [babf70e7-2, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received response (auto-read:false) : RESPONSE(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+Content-Length: <filtered>
+Content-Type: <filtered>
+apim-request-id: <filtered>
+Strict-Transport-Security: <filtered>
+x-content-type-options: <filtered>
+x-ms-region: <filtered>
+x-ratelimit-remaining-requests: <filtered>
+x-ratelimit-limit-requests: <filtered>
+x-ratelimit-remaining-tokens: <filtered>
+x-ratelimit-limit-tokens: <filtered>
+azureml-model-session: <filtered>
+x-accel-buffering: <filtered>
+x-ms-rai-invoked: <filtered>
+x-request-id: <filtered>
+x-ms-client-request-id: <filtered>
+x-ms-deployment-name: <filtered>
+Date: <filtered>
+2025-10-07 23:46:24,925 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7-2, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_received])
+2025-10-07 23:46:24,925 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [babf70e7-2, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received last HTTP packet
+2025-10-07 23:46:24,925 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_completed])
+2025-10-07 23:46:24,925 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Removed handler: azureSdkHandler, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:46:24,925 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Non Removed handler: azureSdkHandler, context: null, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:46:24,926 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [disconnecting])
+2025-10-07 23:46:24,926 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Releasing channel
+2025-10-07 23:46:24,926 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel cleaned, now: 0 active connections, 1 inactive connections and 0 pending acquire requests.
+2025-10-07 23:46:24,926 [reactor-http-nio-1] DEBUG reactor.netty.channel.FluxReceive - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] [terminated=true, cancelled=false, pending=2, error=null]: subscribing inbound receiver
+2025-10-07 23:46:24,933 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel acquired, now: 1 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:46:24,933 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientConnect - [babf70e7-3, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Handler is being applied: {uri=https://azsdk-openai.openai.azure.com//openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview, method=POST}
+2025-10-07 23:46:24,934 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7-3, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_prepared])
+2025-10-07 23:46:24,934 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [babf70e7-3, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Added decoder [azureSdkHandler] at the end of the user pipeline, full pipeline: [reactor.left.sslHandler, reactor.left.httpCodec, azureSdkHandler, reactor.right.reactiveBridge, DefaultChannelPipeline$TailContext#0]
+2025-10-07 23:46:24,935 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7-3, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_sent])
+2025-10-07 23:46:32,343 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [babf70e7-3, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received response (auto-read:false) : RESPONSE(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+Content-Length: <filtered>
+Content-Type: <filtered>
+apim-request-id: <filtered>
+Strict-Transport-Security: <filtered>
+x-content-type-options: <filtered>
+x-ms-region: <filtered>
+x-ratelimit-remaining-requests: <filtered>
+x-ratelimit-limit-requests: <filtered>
+x-ratelimit-remaining-tokens: <filtered>
+x-ratelimit-limit-tokens: <filtered>
+azureml-model-session: <filtered>
+x-accel-buffering: <filtered>
+x-ms-rai-invoked: <filtered>
+x-request-id: <filtered>
+x-ms-client-request-id: <filtered>
+x-ms-deployment-name: <filtered>
+Date: <filtered>
+2025-10-07 23:46:32,344 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7-3, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_received])
+2025-10-07 23:46:32,344 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [babf70e7-3, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received last HTTP packet
+2025-10-07 23:46:32,344 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_completed])
+2025-10-07 23:46:32,344 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Removed handler: azureSdkHandler, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:46:32,344 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Non Removed handler: azureSdkHandler, context: null, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:46:32,344 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [disconnecting])
+2025-10-07 23:46:32,344 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Releasing channel
+2025-10-07 23:46:32,345 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel cleaned, now: 0 active connections, 1 inactive connections and 0 pending acquire requests.
+2025-10-07 23:46:32,345 [reactor-http-nio-1] DEBUG reactor.netty.channel.FluxReceive - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] [terminated=true, cancelled=false, pending=1, error=null]: subscribing inbound receiver
+2025-10-07 23:46:32,353 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [babf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel acquired, now: 1 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:46:32,353 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientConnect - [babf70e7-4, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Handler is being applied: {uri=https://azsdk-openai.openai.azure.com//openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview, method=POST}
+2025-10-07 23:46:32,353 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7-4, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_prepared])
+2025-10-07 23:46:32,354 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [babf70e7-4, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Added decoder [azureSdkHandler] at the end of the user pipeline, full pipeline: [reactor.left.sslHandler, reactor.left.httpCodec, azureSdkHandler, reactor.right.reactiveBridge, DefaultChannelPipeline$TailContext#0]
+2025-10-07 23:46:32,355 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [babf70e7-4, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0xbabf70e7, L:/192.168.1.159:63861 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_sent])
+2025-10-07 23:47:12,046 [main] DEBUG io.netty.util.internal.logging.InternalLoggerFactory - Using SLF4J as the default logging framework
+2025-10-07 23:47:12,051 [main] DEBUG io.netty.util.internal.PlatformDependent0 - -Dio.netty.noUnsafe: false
+2025-10-07 23:47:12,051 [main] DEBUG io.netty.util.internal.PlatformDependent0 - Java version: 22
+2025-10-07 23:47:12,053 [main] DEBUG io.netty.util.internal.PlatformDependent0 - sun.misc.Unsafe.theUnsafe: available
+2025-10-07 23:47:12,054 [main] DEBUG io.netty.util.internal.PlatformDependent0 - sun.misc.Unsafe.copyMemory: available
+2025-10-07 23:47:12,054 [main] DEBUG io.netty.util.internal.PlatformDependent0 - sun.misc.Unsafe.storeFence: available
+2025-10-07 23:47:12,055 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.Buffer.address: available
+2025-10-07 23:47:12,056 [main] DEBUG io.netty.util.internal.PlatformDependent0 - direct buffer constructor: unavailable: Reflective setAccessible(true) disabled
+2025-10-07 23:47:12,057 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.Bits.unaligned: available, true
+2025-10-07 23:47:12,058 [main] DEBUG io.netty.util.internal.PlatformDependent0 - jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable: class io.netty.util.internal.PlatformDependent0$7 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @4ac3c60d
+2025-10-07 23:47:12,059 [main] DEBUG io.netty.util.internal.PlatformDependent0 - java.nio.DirectByteBuffer.<init>(long, {int,long}): unavailable
+2025-10-07 23:47:12,059 [main] DEBUG io.netty.util.internal.PlatformDependent - sun.misc.Unsafe: available
+2025-10-07 23:47:12,059 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.tmpdir: C:\Users\Pease\AppData\Local\Temp (java.io.tmpdir)
+2025-10-07 23:47:12,059 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2025-10-07 23:47:12,060 [main] DEBUG io.netty.util.internal.PlatformDependent - Platform: Windows
+2025-10-07 23:47:12,060 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.maxDirectMemory: -1 bytes
+2025-10-07 23:47:12,061 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2025-10-07 23:47:12,063 [main] DEBUG io.netty.util.internal.CleanerJava9 - java.nio.ByteBuffer.cleaner(): available
+2025-10-07 23:47:12,063 [main] DEBUG io.netty.util.internal.PlatformDependent - -Dio.netty.noPreferDirect: false
+2025-10-07 23:47:12,142 [main] DEBUG io.netty.util.internal.InternalThreadLocalMap - -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2025-10-07 23:47:12,142 [main] DEBUG io.netty.util.internal.InternalThreadLocalMap - -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2025-10-07 23:47:12,167 [main] DEBUG io.netty.util.ResourceLeakDetector - -Dio.netty.leakDetection.level: simple
+2025-10-07 23:47:12,167 [main] DEBUG io.netty.util.ResourceLeakDetector - -Dio.netty.leakDetection.targetRecords: 4
+2025-10-07 23:47:13,385 [main] DEBUG io.netty.util.NetUtil - -Djava.net.preferIPv4Stack: false
+2025-10-07 23:47:13,385 [main] DEBUG io.netty.util.NetUtil - -Djava.net.preferIPv6Addresses: false
+2025-10-07 23:47:13,390 [main] DEBUG io.netty.util.NetUtilInitializations - Loopback interface: loopback_2 (Software Loopback Interface 1, 0:0:0:0:0:0:0:1)
+2025-10-07 23:47:13,392 [main] DEBUG io.netty.util.NetUtil - Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2025-10-07 23:47:13,438 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.workdir: C:\Users\Pease\AppData\Local\Temp (io.netty.tmpdir)
+2025-10-07 23:47:13,438 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.deleteLibAfterLoading: true
+2025-10-07 23:47:13,438 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.tryPatchShadedId: true
+2025-10-07 23:47:13,438 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - -Dio.netty.native.detectNativeLibraryDuplicates: true
+2025-10-07 23:47:13,612 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - Successfully loaded the library C:\Users\Pease\AppData\Local\Temp\netty_tcnative_windows_x86_6416804581953152119047.dll
+2025-10-07 23:47:13,612 [main] DEBUG io.netty.util.internal.NativeLibraryLoader - Loaded library with name 'netty_tcnative_windows_x86_64'
+2025-10-07 23:47:13,612 [main] DEBUG io.netty.handler.ssl.OpenSsl - Initialize netty-tcnative using engine: 'default'
+2025-10-07 23:47:13,612 [main] DEBUG io.netty.handler.ssl.OpenSsl - netty-tcnative using native library: BoringSSL
+2025-10-07 23:47:13,621 [main] DEBUG io.netty.buffer.AbstractByteBuf - -Dio.netty.buffer.checkAccessible: true
+2025-10-07 23:47:13,621 [main] DEBUG io.netty.buffer.AbstractByteBuf - -Dio.netty.buffer.checkBounds: true
+2025-10-07 23:47:13,622 [main] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@22a736d7
+2025-10-07 23:47:13,633 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.numHeapArenas: 16
+2025-10-07 23:47:13,633 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.numDirectArenas: 16
+2025-10-07 23:47:13,633 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.pageSize: 8192
+2025-10-07 23:47:13,633 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxOrder: 9
+2025-10-07 23:47:13,633 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.chunkSize: 4194304
+2025-10-07 23:47:13,633 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.smallCacheSize: 256
+2025-10-07 23:47:13,633 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.normalCacheSize: 64
+2025-10-07 23:47:13,633 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2025-10-07 23:47:13,633 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.cacheTrimInterval: 8192
+2025-10-07 23:47:13,633 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2025-10-07 23:47:13,634 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.useCacheForAllThreads: false
+2025-10-07 23:47:13,634 [main] DEBUG io.netty.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2025-10-07 23:47:13,642 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.allocator.type: pooled
+2025-10-07 23:47:13,642 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.threadLocalDirectBufferSize: 0
+2025-10-07 23:47:13,642 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2025-10-07 23:47:13,645 [main] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@7fdab70c
+2025-10-07 23:47:13,652 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.maxCapacityPerThread: 4096
+2025-10-07 23:47:13,652 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.ratio: 8
+2025-10-07 23:47:13,652 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.chunkSize: 32
+2025-10-07 23:47:13,652 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.blocking: false
+2025-10-07 23:47:13,652 [main] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.batchFastThreadLocalOnly: true
+2025-10-07 23:47:13,658 [main] DEBUG io.netty.util.internal.PlatformDependent - org.jctools-core.MpscChunkedArrayQueue: available
+2025-10-07 23:47:13,669 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 => ECDHE-ECDSA-AES128-GCM-SHA256
+2025-10-07 23:47:13,669 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 => ECDHE-ECDSA-AES128-GCM-SHA256
+2025-10-07 23:47:13,670 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 => ECDHE-RSA-AES128-GCM-SHA256
+2025-10-07 23:47:13,670 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_128_GCM_SHA256 => ECDHE-RSA-AES128-GCM-SHA256
+2025-10-07 23:47:13,670 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 => ECDHE-ECDSA-AES256-GCM-SHA384
+2025-10-07 23:47:13,670 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 => ECDHE-ECDSA-AES256-GCM-SHA384
+2025-10-07 23:47:13,670 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 => ECDHE-RSA-AES256-GCM-SHA384
+2025-10-07 23:47:13,670 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_256_GCM_SHA384 => ECDHE-RSA-AES256-GCM-SHA384
+2025-10-07 23:47:13,670 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-ECDSA-CHACHA20-POLY1305
+2025-10-07 23:47:13,670 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-ECDSA-CHACHA20-POLY1305
+2025-10-07 23:47:13,670 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-RSA-CHACHA20-POLY1305
+2025-10-07 23:47:13,670 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-RSA-CHACHA20-POLY1305
+2025-10-07 23:47:13,670 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-PSK-CHACHA20-POLY1305
+2025-10-07 23:47:13,671 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256 => ECDHE-PSK-CHACHA20-POLY1305
+2025-10-07 23:47:13,671 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA => ECDHE-ECDSA-AES128-SHA
+2025-10-07 23:47:13,671 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_128_CBC_SHA => ECDHE-ECDSA-AES128-SHA
+2025-10-07 23:47:13,671 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA => ECDHE-RSA-AES128-SHA
+2025-10-07 23:47:13,671 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_128_CBC_SHA => ECDHE-RSA-AES128-SHA
+2025-10-07 23:47:13,671 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA => ECDHE-PSK-AES128-CBC-SHA
+2025-10-07 23:47:13,671 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_PSK_WITH_AES_128_CBC_SHA => ECDHE-PSK-AES128-CBC-SHA
+2025-10-07 23:47:13,671 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA => ECDHE-ECDSA-AES256-SHA
+2025-10-07 23:47:13,671 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_ECDSA_WITH_AES_256_CBC_SHA => ECDHE-ECDSA-AES256-SHA
+2025-10-07 23:47:13,671 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA => ECDHE-RSA-AES256-SHA
+2025-10-07 23:47:13,671 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_RSA_WITH_AES_256_CBC_SHA => ECDHE-RSA-AES256-SHA
+2025-10-07 23:47:13,671 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA => ECDHE-PSK-AES256-CBC-SHA
+2025-10-07 23:47:13,671 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_ECDHE_PSK_WITH_AES_256_CBC_SHA => ECDHE-PSK-AES256-CBC-SHA
+2025-10-07 23:47:13,671 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_128_GCM_SHA256 => AES128-GCM-SHA256
+2025-10-07 23:47:13,671 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_128_GCM_SHA256 => AES128-GCM-SHA256
+2025-10-07 23:47:13,671 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_256_GCM_SHA384 => AES256-GCM-SHA384
+2025-10-07 23:47:13,671 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_256_GCM_SHA384 => AES256-GCM-SHA384
+2025-10-07 23:47:13,672 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_128_CBC_SHA => AES128-SHA
+2025-10-07 23:47:13,672 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_128_CBC_SHA => AES128-SHA
+2025-10-07 23:47:13,672 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_PSK_WITH_AES_128_CBC_SHA => PSK-AES128-CBC-SHA
+2025-10-07 23:47:13,672 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_PSK_WITH_AES_128_CBC_SHA => PSK-AES128-CBC-SHA
+2025-10-07 23:47:13,672 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_RSA_WITH_AES_256_CBC_SHA => AES256-SHA
+2025-10-07 23:47:13,672 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_RSA_WITH_AES_256_CBC_SHA => AES256-SHA
+2025-10-07 23:47:13,672 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: TLS_PSK_WITH_AES_256_CBC_SHA => PSK-AES256-CBC-SHA
+2025-10-07 23:47:13,672 [main] DEBUG io.netty.handler.ssl.CipherSuiteConverter - Cipher suite mapping: SSL_PSK_WITH_AES_256_CBC_SHA => PSK-AES256-CBC-SHA
+2025-10-07 23:47:13,673 [main] DEBUG io.netty.handler.ssl.OpenSsl - Supported protocols (OpenSSL): [SSLv2Hello, TLSv1, TLSv1.1, TLSv1.2, TLSv1.3] 
+2025-10-07 23:47:13,673 [main] DEBUG io.netty.handler.ssl.OpenSsl - Default cipher suites (OpenSSL): [TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256]
+2025-10-07 23:47:13,704 [main] DEBUG reactor.netty.tcp.TcpResources - [http] resources will use the default LoopResources: DefaultLoopResources {prefix=reactor-http, daemon=true, selectCount=8, workerCount=8}
+2025-10-07 23:47:13,705 [main] DEBUG reactor.netty.tcp.TcpResources - [http] resources will use the default ConnectionProvider: reactor.netty.resources.DefaultPooledConnectionProvider@7b122839
+2025-10-07 23:47:13,709 [main] DEBUG reactor.netty.resources.PooledConnectionProvider - Creating a new [http] client pool [PoolFactory{evictionInterval=PT0S, leasingStrategy=fifo, maxConnections=500, maxIdleTime=-1, maxLifeTime=-1, metricsEnabled=false, pendingAcquireMaxCount=1000, pendingAcquireTimeout=45000}] for [azsdk-openai.openai.azure.com/<unresolved>:443]
+2025-10-07 23:47:13,728 [main] DEBUG reactor.netty.resources.DefaultLoopIOUring - Default io_uring support : false
+2025-10-07 23:47:13,741 [main] DEBUG reactor.netty.resources.DefaultLoopEpoll - Default Epoll support : false
+2025-10-07 23:47:13,743 [main] DEBUG reactor.netty.resources.DefaultLoopKQueue - Default KQueue support : false
+2025-10-07 23:47:13,746 [main] DEBUG io.netty.channel.MultithreadEventLoopGroup - -Dio.netty.eventLoopThreads: 16
+2025-10-07 23:47:13,754 [main] DEBUG io.netty.util.concurrent.GlobalEventExecutor - -Dio.netty.globalEventExecutor.quietPeriodSeconds: 1
+2025-10-07 23:47:13,762 [main] DEBUG io.netty.channel.nio.NioEventLoop - -Dio.netty.noKeySetOptimization: false
+2025-10-07 23:47:13,762 [main] DEBUG io.netty.channel.nio.NioEventLoop - -Dio.netty.selectorAutoRebuildThreshold: 512
+2025-10-07 23:47:13,798 [main] DEBUG io.netty.channel.DefaultChannelId - -Dio.netty.processId: 10468 (auto-detected)
+2025-10-07 23:47:13,800 [main] DEBUG io.netty.channel.DefaultChannelId - -Dio.netty.machineId: f8:32:e4:ff:fe:bd:e0:09 (auto-detected)
+2025-10-07 23:47:13,836 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [69863c6a] Created a new pooled channel, now: 0 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:47:13,847 [reactor-http-nio-1] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@29540166
+2025-10-07 23:47:13,852 [reactor-http-nio-1] DEBUG reactor.netty.tcp.SslProvider - [69863c6a] SSL enabled using engine io.netty.handler.ssl.OpenSslEngine@5e0b12dc and SNI azsdk-openai.openai.azure.com/<unresolved>:443
+2025-10-07 23:47:13,865 [reactor-http-nio-1] DEBUG reactor.netty.transport.TransportConfig - [69863c6a] Initialized pipeline DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.sslReader = reactor.netty.tcp.SslProvider$SslReadHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:47:13,983 [reactor-http-nio-1] DEBUG reactor.netty.transport.TransportConnector - [69863c6a] Connecting to [azsdk-openai.openai.azure.com/20.62.58.5:443].
+2025-10-07 23:47:14,185 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Registering pool release on close event for channel
+2025-10-07 23:47:14,186 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel connected, now: 1 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:47:14,649 [reactor-http-nio-1] DEBUG io.netty.handler.ssl.SslHandler - [id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] HANDSHAKEN: protocol:TLSv1.3 cipher suite:TLS_AES_256_GCM_SHA384
+2025-10-07 23:47:14,651 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}, [connected])
+2025-10-07 23:47:14,676 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a-1, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(GET{uri=null, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [configured])
+2025-10-07 23:47:14,676 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientConnect - [69863c6a-1, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Handler is being applied: {uri=https://azsdk-openai.openai.azure.com//openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview, method=POST}
+2025-10-07 23:47:14,681 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a-1, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_prepared])
+2025-10-07 23:47:14,685 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [69863c6a-1, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Added decoder [azureSdkHandler] at the end of the user pipeline, full pipeline: [reactor.left.sslHandler, reactor.left.httpCodec, azureSdkHandler, reactor.right.reactiveBridge, DefaultChannelPipeline$TailContext#0]
+2025-10-07 23:47:14,699 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a-1, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_sent])
+2025-10-07 23:47:14,913 [reactor-http-nio-1] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@30269d26
+2025-10-07 23:47:17,891 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [69863c6a-1, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received response (auto-read:false) : RESPONSE(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+Content-Length: <filtered>
+Content-Type: <filtered>
+apim-request-id: <filtered>
+Strict-Transport-Security: <filtered>
+x-content-type-options: <filtered>
+x-ms-region: <filtered>
+x-ratelimit-remaining-requests: <filtered>
+x-ratelimit-limit-requests: <filtered>
+x-ratelimit-remaining-tokens: <filtered>
+x-ratelimit-limit-tokens: <filtered>
+azureml-model-session: <filtered>
+x-accel-buffering: <filtered>
+x-ms-rai-invoked: <filtered>
+x-request-id: <filtered>
+x-ms-client-request-id: <filtered>
+x-ms-deployment-name: <filtered>
+Date: <filtered>
+2025-10-07 23:47:17,891 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a-1, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_received])
+2025-10-07 23:47:17,898 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [69863c6a-1, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received last HTTP packet
+2025-10-07 23:47:17,899 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_completed])
+2025-10-07 23:47:17,899 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Removed handler: azureSdkHandler, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:47:17,899 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Non Removed handler: azureSdkHandler, context: null, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:47:17,899 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [disconnecting])
+2025-10-07 23:47:17,899 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Releasing channel
+2025-10-07 23:47:17,902 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel cleaned, now: 0 active connections, 1 inactive connections and 0 pending acquire requests.
+2025-10-07 23:47:17,914 [reactor-http-nio-1] DEBUG reactor.netty.channel.FluxReceive - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] [terminated=true, cancelled=false, pending=1, error=null]: subscribing inbound receiver
+2025-10-07 23:47:18,057 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel acquired, now: 1 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:47:18,057 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientConnect - [69863c6a-2, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Handler is being applied: {uri=https://azsdk-openai.openai.azure.com//openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview, method=POST}
+2025-10-07 23:47:18,057 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a-2, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_prepared])
+2025-10-07 23:47:18,058 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [69863c6a-2, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Added decoder [azureSdkHandler] at the end of the user pipeline, full pipeline: [reactor.left.sslHandler, reactor.left.httpCodec, azureSdkHandler, reactor.right.reactiveBridge, DefaultChannelPipeline$TailContext#0]
+2025-10-07 23:47:18,061 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a-2, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_sent])
+2025-10-07 23:47:27,116 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [69863c6a-2, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received response (auto-read:false) : RESPONSE(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+Content-Length: <filtered>
+Content-Type: <filtered>
+apim-request-id: <filtered>
+Strict-Transport-Security: <filtered>
+x-content-type-options: <filtered>
+x-ms-region: <filtered>
+x-ratelimit-remaining-requests: <filtered>
+x-ratelimit-limit-requests: <filtered>
+x-ratelimit-remaining-tokens: <filtered>
+x-ratelimit-limit-tokens: <filtered>
+azureml-model-session: <filtered>
+x-accel-buffering: <filtered>
+x-ms-rai-invoked: <filtered>
+x-request-id: <filtered>
+x-ms-client-request-id: <filtered>
+x-ms-deployment-name: <filtered>
+Date: <filtered>
+2025-10-07 23:47:27,116 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a-2, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_received])
+2025-10-07 23:47:27,117 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [69863c6a-2, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received last HTTP packet
+2025-10-07 23:47:27,117 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_completed])
+2025-10-07 23:47:27,117 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Removed handler: azureSdkHandler, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:47:27,117 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Non Removed handler: azureSdkHandler, context: null, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:47:27,117 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [disconnecting])
+2025-10-07 23:47:27,117 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Releasing channel
+2025-10-07 23:47:27,118 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel cleaned, now: 0 active connections, 1 inactive connections and 0 pending acquire requests.
+2025-10-07 23:47:27,118 [reactor-http-nio-1] DEBUG reactor.netty.channel.FluxReceive - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] [terminated=true, cancelled=false, pending=2, error=null]: subscribing inbound receiver
+2025-10-07 23:47:27,123 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel acquired, now: 1 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:47:27,123 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientConnect - [69863c6a-3, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Handler is being applied: {uri=https://azsdk-openai.openai.azure.com//openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview, method=POST}
+2025-10-07 23:47:27,123 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a-3, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_prepared])
+2025-10-07 23:47:27,123 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [69863c6a-3, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Added decoder [azureSdkHandler] at the end of the user pipeline, full pipeline: [reactor.left.sslHandler, reactor.left.httpCodec, azureSdkHandler, reactor.right.reactiveBridge, DefaultChannelPipeline$TailContext#0]
+2025-10-07 23:47:27,124 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a-3, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_sent])
+2025-10-07 23:47:33,760 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [69863c6a-3, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received response (auto-read:false) : RESPONSE(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+Content-Length: <filtered>
+Content-Type: <filtered>
+apim-request-id: <filtered>
+Strict-Transport-Security: <filtered>
+x-content-type-options: <filtered>
+x-ms-region: <filtered>
+x-ratelimit-remaining-requests: <filtered>
+x-ratelimit-limit-requests: <filtered>
+x-ratelimit-remaining-tokens: <filtered>
+x-ratelimit-limit-tokens: <filtered>
+azureml-model-session: <filtered>
+x-accel-buffering: <filtered>
+x-ms-rai-invoked: <filtered>
+x-request-id: <filtered>
+x-ms-client-request-id: <filtered>
+x-ms-deployment-name: <filtered>
+Date: <filtered>
+2025-10-07 23:47:33,761 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a-3, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_received])
+2025-10-07 23:47:33,761 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [69863c6a-3, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received last HTTP packet
+2025-10-07 23:47:33,761 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_completed])
+2025-10-07 23:47:33,761 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Removed handler: azureSdkHandler, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:47:33,761 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Non Removed handler: azureSdkHandler, context: null, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:47:33,761 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [disconnecting])
+2025-10-07 23:47:33,761 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Releasing channel
+2025-10-07 23:47:33,761 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel cleaned, now: 0 active connections, 1 inactive connections and 0 pending acquire requests.
+2025-10-07 23:47:33,762 [reactor-http-nio-1] DEBUG reactor.netty.channel.FluxReceive - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] [terminated=true, cancelled=false, pending=1, error=null]: subscribing inbound receiver
+2025-10-07 23:47:33,767 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel acquired, now: 1 active connections, 0 inactive connections and 0 pending acquire requests.
+2025-10-07 23:47:33,768 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientConnect - [69863c6a-4, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Handler is being applied: {uri=https://azsdk-openai.openai.azure.com//openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview, method=POST}
+2025-10-07 23:47:33,768 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a-4, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_prepared])
+2025-10-07 23:47:33,768 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [69863c6a-4, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Added decoder [azureSdkHandler] at the end of the user pipeline, full pipeline: [reactor.left.sslHandler, reactor.left.httpCodec, azureSdkHandler, reactor.right.reactiveBridge, DefaultChannelPipeline$TailContext#0]
+2025-10-07 23:47:33,769 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a-4, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [request_sent])
+2025-10-07 23:47:44,065 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [69863c6a-4, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received response (auto-read:false) : RESPONSE(decodeResult: success, version: HTTP/1.1)
+HTTP/1.1 200 OK
+Content-Length: <filtered>
+Content-Type: <filtered>
+apim-request-id: <filtered>
+Strict-Transport-Security: <filtered>
+x-content-type-options: <filtered>
+x-ms-region: <filtered>
+x-ratelimit-remaining-requests: <filtered>
+x-ratelimit-limit-requests: <filtered>
+x-ratelimit-remaining-tokens: <filtered>
+x-ratelimit-limit-tokens: <filtered>
+azureml-model-session: <filtered>
+x-accel-buffering: <filtered>
+x-ms-rai-invoked: <filtered>
+x-request-id: <filtered>
+x-ms-client-request-id: <filtered>
+x-ms-deployment-name: <filtered>
+Date: <filtered>
+2025-10-07 23:47:44,065 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a-4, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_received])
+2025-10-07 23:47:44,065 [reactor-http-nio-1] DEBUG reactor.netty.http.client.HttpClientOperations - [69863c6a-4, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Received last HTTP packet
+2025-10-07 23:47:44,066 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [response_completed])
+2025-10-07 23:47:44,066 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Removed handler: azureSdkHandler, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:47:44,066 [reactor-http-nio-1] DEBUG reactor.netty.ReactorNetty - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Non Removed handler: azureSdkHandler, context: null, pipeline: DefaultChannelPipeline{(reactor.left.sslHandler = io.netty.handler.ssl.SslHandler), (reactor.left.httpCodec = io.netty.handler.codec.http.HttpClientCodec), (reactor.right.reactiveBridge = reactor.netty.channel.ChannelOperationsHandler)}
+2025-10-07 23:47:44,066 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] onStateChange(POST{uri=//openai/deployments/gpt-4.1/chat/completions, connection=PooledConnection{channel=[id: 0x69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443]}}, [disconnecting])
+2025-10-07 23:47:44,066 [reactor-http-nio-1] DEBUG reactor.netty.resources.DefaultPooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Releasing channel
+2025-10-07 23:47:44,066 [reactor-http-nio-1] DEBUG reactor.netty.resources.PooledConnectionProvider - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] Channel cleaned, now: 0 active connections, 1 inactive connections and 0 pending acquire requests.
+2025-10-07 23:47:44,066 [reactor-http-nio-1] DEBUG reactor.netty.channel.FluxReceive - [69863c6a, L:/192.168.1.159:63891 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] [terminated=true, cancelled=false, pending=2, error=null]: subscribing inbound receiver

@@ -152,13 +152,31 @@ public class Main {
 
     // Step 2: Generate convenience wrapper
     logger.info("Step 2: Generating convenience wrapper...");
-    List<Map<String, String>> flaggedMethods = extractFlaggedMethods(methodGuidelineOutput, codeFragments);
-    Map<String, String> flaggedGuidelines = extractFlaggedGuidelines(methodGuidelineOutput, guidelineArray);
-
+    JsonArray groupsArray = JsonParser.parseString(methodGuidelineOutput).getAsJsonArray();
     String wrapperOutput = "";
-    for(Map<String, String> methodGroup : flaggedMethods){
-      //For each group of methods, send a prompt requesting convenience.
-      wrapperOutput += processSecondPrompt(client, methodGroup, flaggedGuidelines, reportBuilder);
+
+    for (JsonElement groupElement : groupsArray) {
+      JsonObject groupObj = groupElement.getAsJsonObject();
+      String groupJson = groupObj.toString(); // Turn the individual group back into a JSON string
+      //This should be optimised away by feeding the json straight to the extractor methods.
+      //They currently exist, as is, as a result of redefinition of usage.
+
+      Map<String, String> flaggedMethods = extractFlaggedMethods(groupJson, codeFragments);
+      Map<String, String> flaggedGuidelines = extractFlaggedGuidelines(groupJson, guidelineArray);
+
+      String tempWrapperOutput = processSecondPrompt(client, flaggedMethods, flaggedGuidelines, reportBuilder);
+      if(tempWrapperOutput == "no"){
+        if(wrapperOutput == "") {
+          //Set wrapper output to "no" only if nothing else received thus far.
+          wrapperOutput = "no";
+        }
+      }else {
+        //Ensure response does not start with "no".
+        if(wrapperOutput == "no"){
+          wrapperOutput = "";
+        }
+        wrapperOutput += tempWrapperOutput;
+      }
     }
 
     if (isNoImprovementsFound(wrapperOutput)) {
@@ -280,26 +298,21 @@ public class Main {
   }
 
   // Extracts flagged methods from the AI response
-  private static List<Map<String, String>> extractFlaggedMethods(String methodGuidelineOutput,
+  private static Map<String, String> extractFlaggedMethods(String methodGuidelineOutput,
                                                            Map<String, String> codeFragments) {
-    List<Map<String, String>> flaggedMethods = new ArrayList<>();
+    Map<String, String> flaggedMethods = new HashMap<>();
 
     try {
       JsonObject jsonOutput = JsonParser.parseString(methodGuidelineOutput).getAsJsonObject();
       JsonArray methodsArray = jsonOutput.getAsJsonArray("methods");
 
-      for (JsonElement groupElement : methodsArray) {
-        JsonArray group = groupElement.getAsJsonArray();
-        Map<String, String> methodMap = new HashMap<>();
-        for (JsonElement methodElement : group) {
-          String methodName = methodElement.getAsString().trim();
-          String code = codeFragments.get(methodName + "("); // Pattern matching key
+      for (JsonElement element : methodsArray) {
+        String methodName = element.getAsString().trim();
+        String code = codeFragments.get(methodName + "("); // Pattern matching key
 
-          if (code != null) {
-            methodMap.put(methodName, code);
-          }
+        if (code != null) {
+          flaggedMethods.put(methodName, code);
         }
-        flaggedMethods.add(methodMap);
       }
     } catch (Exception e) {
       logger.error("Warning: Could not parse method recommendations: " + e.getMessage(), e);
