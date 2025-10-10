@@ -3,7 +3,7 @@ package config;
 public class PathConfiguration {
 
     // *** UPDATE THIS PATH FOR YOUR LOCAL ENVIRONMENT ***
-    private static final String BASE_PROJECT_PATH = "C:\\Users\\New\\Desktop\\uni\\2025\\AIConvenienceAPI";
+    private static final String BASE_PROJECT_PATH = "C:\\Path\\To\\AIConvenienceAPI";
 
     // DO NOT MODIFY THESE
     private static final String JAVA_CONNECTOR_BASE = BASE_PROJECT_PATH + "\\JavaConnector";
@@ -28,8 +28,8 @@ public class PathConfiguration {
     public static final String LOG_OUTPUT_TEMPLATE = LOGS_OUTPUTS_BASE + "\\wrapper_logs_%s.txt";
 
     // TypeSpec generated files
-    public static final String BLOB_CONTAINERS_CLIENT = TYPESPEC_BASE +
-            "\\tsp-output\\clients\\java\\src\\main\\java\\azurestoragemanagement\\BlobContainersClient.java";
+    public static final String BLOB_CONTAINERS_CLIENT = BASE_PROJECT_PATH +
+            "\\blob-storage-src\\BlobContainerClient.java";
 
     // Guidelines fragmentation cache files
     public static final String GUIDELINES_JSON = GUIDELINES_OUTPUT_BASE + "\\guidelinesJson.txt";

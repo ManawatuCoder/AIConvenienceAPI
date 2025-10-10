@@ -8,12 +8,13 @@ Your task:
 
 Your outputted wrapper methods must use the following format and structure:
 /**
- * Combined Methods: methodOne, methodTwo, etc
- * Reason: Brief explanation of why the combined methods were wrapped, and why the wrapped method provides convenience
- * 
- * Comment: Explain what the method does
+ * JavaDocs to explain what the method does
  */
 public void exampleMethod() {
+    /* 
+      Combined Methods: methodOne, methodTwo, etc
+      Reason: Brief explanation of why the combined methods were wrapped, and why the wrapped method provides convenience
+    */
     // Code here
 }
 
