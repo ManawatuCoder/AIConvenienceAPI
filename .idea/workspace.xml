@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a45e00b1-fa9f-4959-ae6b-85c268df1552" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a45e00b1-fa9f-4959-ae6b-85c268df1552" name="Changes" comment="AlexTest branch broke - Created new branch to commit one by one to figure out issue.&#10;Github actions added + CodeFragmenterTest methods implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaConnector/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JavaConnector/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaConnector/src/test/java/codegenFragmenter/FragmentLinkerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaConnector/src/test/java/codegenFragmenter/FragmentLinkerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,12 +34,15 @@
     &quot;assignee&quot;: &quot;casinobear&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ManawatuCoder/AIConvenienceAPI.git",
-    "accountId": "6337c978-a3a6-4d38-a506-a4a3368a951b"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ManawatuCoder/AIConvenienceAPI.git&quot;,
+    &quot;accountId&quot;: &quot;6337c978-a3a6-4d38-a506-a4a3368a951b&quot;
   }
-}]]></component>
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -56,20 +54,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "test-rewrite",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/ghostowl/IdeaProjects/AIConvenienceAPI/JavaConnector/pom.xml",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;test-rewrite&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/ghostowl/IdeaProjects/AIConvenienceAPI/JavaConnector/pom.xml&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="WrapperGenerator" />
@@ -94,6 +92,19 @@
       <option name="presentableId" value="Default" />
       <updated>1753951125133</updated>
     </task>
+    <task id="LOCAL-00001" summary="AlexTest branch broke - Created new branch to commit one by one to figure out issue.&#10;Github actions added + CodeFragmenterTest methods implemented">
+      <option name="closed" value="true" />
+      <created>1760233827525</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1760233827525</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="AlexTest branch broke - Created new branch to commit one by one to figure out issue.&#10;Github actions added + CodeFragmenterTest methods implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="AlexTest branch broke - Created new branch to commit one by one to figure out issue.&#10;Github actions added + CodeFragmenterTest methods implemented" />
   </component>
 </project>
