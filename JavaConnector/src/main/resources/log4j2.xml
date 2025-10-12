@@ -3,7 +3,7 @@
     <Appenders>
         <!-- Console Appender -->
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="level %logger - %msg%n"/>
+            <PatternLayout pattern="%-5level %logger - %msg%n"/>
         </Console>
 
         <!-- File Appender -->
@@ -21,6 +21,11 @@
         <File name="NettyLogger" fileName="../Outputs//Logs/netty.log" append="true">
             <PatternLayout pattern="%d [%t] %-5level %logger - %msg%n"/>
         </File>
+
+        <!-- Azure Appender - separate file for Azure logs-->
+        <File name="AzureLogger" fileName="../Logs/azure.log" append="true">
+            <PatternLayout pattern="%d [%t] %-5level %logger - %msg%n"/>
+        </File>
     </Appenders>
 
     <Loggers>
@@ -30,6 +35,10 @@
 
         <Logger name="io.netty" additivity="false">
             <AppenderRef ref="NettyLogger"/>
+        </Logger>
+
+        <Logger name="com.azure" additivity="false">
+            <AppenderRef ref="AzureLogger"/>
         </Logger>
 
         <Root level="DEBUG">

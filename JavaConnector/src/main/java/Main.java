@@ -147,6 +147,7 @@ public class Main {
 
     // Step 1: Get method and guideline recommendations
     logger.info("Step 1: Getting AI recommendations...");
+    logger.debug("Sending initial evaluation prompt.");
     String methodGuidelineOutput = processFirstPrompt(client, methods, headings, reportBuilder);
 
     if (isNoImprovementsFound(methodGuidelineOutput)) {
@@ -155,10 +156,35 @@ public class Main {
 
     // Step 2: Generate convenience wrapper
     logger.info("Step 2: Generating convenience wrapper...");
-    Map<String, String> flaggedMethods = extractFlaggedMethods(methodGuidelineOutput, codeFragments);
-    Map<String, String> flaggedGuidelines = extractFlaggedGuidelines(methodGuidelineOutput, guidelineArray);
+    JsonArray groupsArray = JsonParser.parseString(methodGuidelineOutput).getAsJsonArray();
+    String wrapperOutput = "";
+    int methodGroupCounter = 0;
 
-    String wrapperOutput = processSecondPrompt(client, flaggedMethods, flaggedGuidelines, reportBuilder);
+    for (JsonElement groupElement : groupsArray) {
+      methodGroupCounter++;//Debug tracker
+        logger.debug("Sending iterative wrapping prompt number: {}", methodGroupCounter);
+      JsonObject groupObj = groupElement.getAsJsonObject();
+      String groupJson = groupObj.toString(); // Turn the individual group back into a JSON string
+      //This should be optimised away by feeding the json straight to the extractor methods.
+      //They currently exist, as is, as a result of redefinition of usage.
+
+      Map<String, String> flaggedMethods = extractFlaggedMethods(groupJson, codeFragments);
+      Map<String, String> flaggedGuidelines = extractFlaggedGuidelines(groupJson, guidelineArray);
+
+      String tempWrapperOutput = processSecondPrompt(client, flaggedMethods, flaggedGuidelines, reportBuilder);
+      if(tempWrapperOutput == "no"){
+        if(wrapperOutput == "") {
+          //Set wrapper output to "no" only if nothing else received thus far.
+          wrapperOutput = "no";
+        }
+      }else {
+        //Ensure response does not start with "no".
+        if(wrapperOutput == "no"){
+          wrapperOutput = "";
+        }
+        wrapperOutput += tempWrapperOutput;
+      }
+    }
 
     if (isNoImprovementsFound(wrapperOutput)) {
       return finalizeReport(outputPath, reportBuilder, "No wrapper improvements found.");
