@@ -1,14 +1,27 @@
 Context: The attached methods were flagged as having potential patterns, and the guidelines were selected as potentially being relevant:
 
 Your task:
-1. Evaluate the code to identify repeated logic, overlapping functionality, or opportunities to combine methods into a single wrapper.
+1. Evaluate the code to identify repeated logic, overlapping functionality, or opportunities to combine methods into wrapper methods.
 2. If no patterns are found in certain methods, ignore them.
-3. If patterns are found, create a wrapper method that improves developer experience according to the supplied design guidelines.
-4. Return the generated wrapper code, along with comments stating which methods were wrapped along with a reason for the wrapping.
+3. If patterns are found, create wrapper methods that improves developer experience according to the supplied design guidelines.
+4. Return the generated wrapper methods, along with comments stating which methods were wrapped along with a reason for the wrapping.
 
-Notes:
-- Do NOT invent new methods beyond what is attached.
-- Include input validation and sensible defaults if applicable.
+Your outputted wrapper methods must use the following format and structure:
+/**
+ * JavaDocs to explain what the method does
+ */
+public void exampleMethod() {
+    /* 
+      Combined Methods: methodOne, methodTwo, etc
+      Reason: Brief explanation of why the combined methods were wrapped, and why the wrapped method provides convenience
+    */
+    // Code here
+}
+
+
+Extra Notes:
+- Do NOT create any classes. Your output code should only be wrapper methods.
+- Do NOT include any extra commentary, aside from that in the wrapper method comments.
 - Preserve existing functionality of the combined methods.
 
 Methods:
