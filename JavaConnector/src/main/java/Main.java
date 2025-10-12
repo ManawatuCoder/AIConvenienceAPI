@@ -2,6 +2,9 @@
 // Main class for generating Java convenience wrappers using Azure OpenAI
 import codegenFragmenter.CodegenFragmenter;
 import codegenFragmenter.FragmentLinker;
+import com.github.javaparser.StaticJavaParser;
+import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import config.PathConfiguration;
 
 // Imports for Azure OpenAI SDK
@@ -12,7 +15,6 @@ import com.azure.core.credential.AzureKeyCredential;
 import com.azure.core.exception.ClientAuthenticationException;
 import com.azure.core.util.Configuration;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.javaparser.utils.Log;
 import com.google.gson.*;
 import guidelinesFragmentation.GuidelineParser;
 
@@ -26,6 +28,7 @@ import io.modelcontextprotocol.spec.McpSchema;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -50,7 +53,7 @@ public class Main {
   //Logging
   static {
     try {
-      PrintStream fileErr = new PrintStream(new FileOutputStream("../Logs/system.err.log", true));
+      PrintStream fileErr = new PrintStream(new FileOutputStream("../Outputs/Logs/system.err.log", true));
       System.setErr(fileErr);
     } catch (IOException e) {
       e.printStackTrace();
@@ -96,7 +99,7 @@ public class Main {
 
     // Add system prompt
     String systemPrompt = Files
-            .readString(Path.of(PathConfiguration.METHODS_GUIDELINES_PROMPT));
+            .readString(Path.of(PathConfiguration.SYSTEM_PROMPT));
     messages.add(new ChatRequestSystemMessage(systemPrompt));
 
     // Send all content including InputSpecs, TypeSpec, and generated code
@@ -168,6 +171,8 @@ public class Main {
     saveWrapperOutput(wrapperOutput);
     logger.info("Report saved to: " + outputPath.toString());
 
+    mergeWrapperToExistingFile(wrapperOutput);
+
     return result;
   }
 
@@ -182,6 +187,48 @@ public class Main {
     logger.info("Wrapper saved to: " + outputPath.toString());
 
     Files.writeString(outputPath, wrapperOutputContent, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+  }
+
+  // Adds the wrapper code into a file with the original library ocde
+  private static void mergeWrapperToExistingFile(String wrapperOutput) throws IOException {
+    // Create new file
+    String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm"));
+    String filename = PathConfiguration.getFinalOutputPath(timestamp);
+    Path outputPath = Paths.get(filename);
+
+    Path inputFilePath = Paths.get(PathConfiguration.BLOB_CONTAINERS_CLIENT);
+    String inputFileContent = Files.readString(inputFilePath);
+
+    List<String> lines = Files.readAllLines(inputFilePath, StandardCharsets.UTF_8);
+    StringBuilder mergedWrapperOutput = new StringBuilder();
+
+    String[] wrapperLines = wrapperOutput.split("\\R");
+
+    StringBuilder wrapperOutputBuilder = new StringBuilder();
+    for (String wrapperLine : wrapperLines) {
+      wrapperOutputBuilder.append("    ").append(wrapperLine).append("\n");
+    }
+    String formattedWrapperOutput = wrapperOutputBuilder.toString();
+
+      // Append generated wrapper code to file
+    String commentedWrapperOutput = "\n\n    /********************* GENERATED WRAPPER CODE *********************/\n" + formattedWrapperOutput + "\n    /********************* END OF GENERATED CODE *********************/\n";
+
+    CompilationUnit compilationUnit = StaticJavaParser.parse(inputFileContent);
+    Optional<ClassOrInterfaceDeclaration> inputClass = compilationUnit.findFirst(ClassOrInterfaceDeclaration.class);
+
+    inputClass.ifPresent(clazz -> {
+      int classEndLine = clazz.getEnd().get().line - 1;
+      // Insert wrapper output at line above end
+      lines.add(classEndLine, commentedWrapperOutput);
+    });
+
+    // Rebuild the output with merged content
+    for (String line : lines) {
+      mergedWrapperOutput.append(line).append("\n");
+    }
+
+    Files.writeString(outputPath, mergedWrapperOutput, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+    System.out.println("Merged wrapper saved to: " + outputPath);
   }
 
   // Creates a timestamped output file path
@@ -276,9 +323,10 @@ public class Main {
   }
 
   // Extracts flagged methods from the AI response
-  private static Map<String, String> extractFlaggedMethods(String methodGuidelineOutput,
-                                                           Map<String, String> codeFragments) {
+  private static Map<String, String> extractFlaggedMethods(String methodGuidelineOutput, Map<String, String> codeFragments) {
     Map<String, String> flaggedMethods = new HashMap<>();
+
+    Map<String, List<String>> fragmentsMap = FragmentLinker.link(codeFragments);
 
     try {
       JsonObject jsonOutput = JsonParser.parseString(methodGuidelineOutput).getAsJsonObject();
@@ -286,10 +334,20 @@ public class Main {
 
       for (JsonElement element : methodsArray) {
         String methodName = element.getAsString().trim();
-        String code = codeFragments.get(methodName + "("); // Pattern matching key
 
-        if (code != null) {
-          flaggedMethods.put(methodName, code);
+        // if fragment key contains requested method, send back values
+        for (String key : fragmentsMap.keySet()) {
+          if (key.contains(methodName)) {
+            List<String> list = fragmentsMap.get(key);
+
+            String output = "";
+            // Stores every method related to fragment
+            for (String string : list) {
+              output += string;
+            }
+
+            flaggedMethods.put(key, output);
+          }
         }
       }
     } catch (Exception e) {
@@ -300,8 +358,7 @@ public class Main {
   }
 
   // Extracts flagged guidelines from the AI response
-  private static Map<String, String> extractFlaggedGuidelines(String methodGuidelineOutput,
-                                                              JsonArray guidelineArray) {
+  private static Map<String, String> extractFlaggedGuidelines(String methodGuidelineOutput, JsonArray guidelineArray) {
     Map<String, String> flaggedGuidelines = new HashMap<>();
 
     try {
@@ -483,5 +540,4 @@ public class Main {
 
     logger.info("MCP Server created successfully and listening for requests...");
   }
-
 }

@@ -50,7 +50,7 @@ public class CodegenFragmenter {
               previousMethod, thisMethod + 1); // All lines between previousMethod and thisMethod
       StringBuilder currentFragment = new StringBuilder();
 
-      Comment comment = md.getComment().get();
+      // Comment comment = md.getComment().get();
       //            System.out.println("Comment: " + comment);
 
       for (int j = 0; j < outputLine.size(); j++) {
