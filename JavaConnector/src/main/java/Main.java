@@ -99,7 +99,7 @@ public class Main {
 
     // Add system prompt
     String systemPrompt = Files
-            .readString(Path.of(PathConfiguration.METHODS_GUIDELINES_PROMPT));
+            .readString(Path.of(PathConfiguration.SYSTEM_PROMPT));
     messages.add(new ChatRequestSystemMessage(systemPrompt));
 
     // Send all content including InputSpecs, TypeSpec, and generated code

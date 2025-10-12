@@ -3,7 +3,7 @@ package config;
 public class PathConfiguration {
 
     // *** UPDATE THIS PATH FOR YOUR LOCAL ENVIRONMENT ***
-    private static final String BASE_PROJECT_PATH = "C:\\Path\\To\\AIConvenienceAPI";
+    private static final String BASE_PROJECT_PATH = "C:\\Users\\New\\Desktop\\uni\\2025\\AIConvenienceAPI";
 
     // DO NOT MODIFY THESE
     private static final String JAVA_CONNECTOR_BASE = BASE_PROJECT_PATH + "\\JavaConnector";
@@ -19,8 +19,9 @@ public class PathConfiguration {
     public static final String CONFIG_PROPERTIES = JAVA_CONNECTOR_BASE + "\\config.properties";
 
     // Prompt files
+    public static final String SYSTEM_PROMPT = PROMPTS_BASE + "\\DeveloperIntentSystemPrompt.txt";
     public static final String METHODS_GUIDELINES_PROMPT = PROMPTS_BASE + "\\MethodsGuidelinesPrompt.txt";
-    public static final String MAIN_PROMPT = PROMPTS_BASE + "\\MainPrompt.txt";
+    public static final String MAIN_PROMPT = PROMPTS_BASE + "\\DeveloperIntentMainPrompt.txt";
 
     // Output files
     public static final String MERGED_OUTPUT_TEMPLATE = MERGED_OUTPUT_BASE + "\\java_wrapper_%s.java";
@@ -29,7 +30,7 @@ public class PathConfiguration {
 
     // TypeSpec generated files
     public static final String BLOB_CONTAINERS_CLIENT = BASE_PROJECT_PATH +
-            "\\blob-storage-src\\BlobContainerClient.java";
+            "\\azure-sdks\\ai-src\\DatasetsClient.java";
 
     // Guidelines fragmentation cache files
     public static final String GUIDELINES_JSON = GUIDELINES_OUTPUT_BASE + "\\guidelinesJson.txt";
