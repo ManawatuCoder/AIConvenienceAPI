@@ -3,7 +3,7 @@ package config;
 public class PathConfiguration {
 
     // *** UPDATE THIS PATH FOR YOUR LOCAL ENVIRONMENT ***
-    private static final String BASE_PROJECT_PATH = "C:\\Path\\To\\AIConvenienceAPI";
+    private static final String BASE_PROJECT_PATH = "D:\\Wrapper\\AIConvenienceAPI";
 
     // DO NOT MODIFY THESE
     private static final String JAVA_CONNECTOR_BASE = BASE_PROJECT_PATH + "\\JavaConnector";
@@ -39,9 +39,11 @@ public class PathConfiguration {
     public static String getFinalOutputPath(String timestamp) {
         return String.format(MERGED_OUTPUT_TEMPLATE, timestamp);
     }
+
     public static String getWrapperOutputPath(String timestamp) {
         return String.format(WRAPPER_OUTPUT_TEMPLATE, timestamp);
     }
+
     public static String getLogsOutputPath(String timestamp) {
         return String.format(LOG_OUTPUT_TEMPLATE, timestamp);
     }
