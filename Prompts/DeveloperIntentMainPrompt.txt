@@ -3,6 +3,7 @@ Context: The following Java SDK methods were flagged as potential candidates for
 Your task:
 Your goal is to think like an SDK designer, not a refactorer.
 Analyse the methods and guidelines to identify high-level developer goals or workflows that are currently too low-level or fragmented.
+Evaluate the code to identify abstractables like low level functionality and other areas where convenience could be introduced to improve developer useability.
 
 Follow these steps:
 1. Understand developer intent:
@@ -18,13 +19,19 @@ Follow these steps:
 - Do NOT propose wrappers that only merge 2-3 existing methods, unless they significantly improve clarity or hide complex logic.
 5.  Return the generated wrapper methods, along with comments stating which methods were wrapped, and the reason for wrapping.
 
+These wrappers simplify repetitive setup, connection, and error-handling tasks, while retaining all important functionality.
+Use descriptive function names aligned with developer goals.
+Keep your output concise, readable, and production-grade.
+Do not simply restate SDK usage in a new function.
+Do not create classes or wrappers that add no abstraction value.
+
 Output format:
 /**
  * {Brief JavaDoc summary of code.}
  */
 public void exampleWrapper() {
     /*
-      Combined Methods: methodOne, methodTwo, etc.
+      Changes made: e.g. method 1 and method 2 combined
       Reason: Explain why this wrapper improves developer experience
     */
     // Code here

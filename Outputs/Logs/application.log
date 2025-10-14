@@ -44,3 +44,123 @@
 2025-10-07 01:39:35,961 [main] INFO  Main logger - ================================================================================
 2025-10-07 01:39:35,961 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
 2025-10-07 01:39:35,962 [main] INFO  Main logger - ================================================================================
+2025-10-14 22:11:54,850 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-14 22:11:55,023 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-14 22:11:55,024 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-14 22:11:56,768 [main] INFO  Main logger - Fragmenting code...
+2025-10-14 22:11:57,107 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-14 22:11:57,108 [main] DEBUG Main logger - Sending initial evaluation prompt.
+2025-10-14 22:12:04,275 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-14 22:12:04,276 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 1
+2025-10-14 22:12:14,483 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 2
+2025-10-14 22:12:21,222 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 3
+2025-10-14 22:12:33,356 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 4
+2025-10-14 22:12:42,842 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 5
+2025-10-14 22:12:55,486 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 6
+2025-10-14 22:13:04,917 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 7
+2025-10-14 22:13:19,538 [main] INFO  Main logger - Java Wrapper generation completed successfully!
+2025-10-14 22:13:19,539 [main] INFO  Main logger - Wrapper saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\Outputs\RawWrapperOutputs\raw_wrapper_output_2025-10-14_22-13.txt
+2025-10-14 22:13:19,541 [main] INFO  Main logger - Report saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\Outputs\Logs\wrapper_logs_2025-10-14_22-11.txt
+2025-10-14 22:13:19,586 [main] INFO  Main logger - ================================================================================
+2025-10-14 22:13:19,586 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
+2025-10-14 22:13:19,586 [main] INFO  Main logger - ================================================================================
+2025-10-14 22:22:38,928 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-14 22:22:39,199 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-14 22:22:39,201 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-14 22:22:40,060 [main] INFO  Main logger - Fragmenting code...
+2025-10-14 22:22:40,422 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-14 22:22:40,422 [main] DEBUG Main logger - Sending initial evaluation prompt.
+2025-10-14 22:22:46,440 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-14 22:22:46,440 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 1
+2025-10-14 22:22:51,555 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 2
+2025-10-14 22:22:58,190 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 3
+2025-10-14 22:23:19,328 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 4
+2025-10-14 22:23:33,507 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 5
+2025-10-14 22:23:46,525 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 6
+2025-10-14 22:23:56,661 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 7
+2025-10-14 22:24:07,060 [main] INFO  Main logger - Java Wrapper generation completed successfully!
+2025-10-14 22:24:07,061 [main] INFO  Main logger - Wrapper saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\Outputs\RawWrapperOutputs\raw_wrapper_output_2025-10-14_22-24.txt
+2025-10-14 22:24:07,063 [main] INFO  Main logger - Report saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\Outputs\Logs\wrapper_logs_2025-10-14_22-22.txt
+2025-10-14 22:24:07,117 [main] INFO  Main logger - ================================================================================
+2025-10-14 22:24:07,117 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
+2025-10-14 22:24:07,117 [main] INFO  Main logger - ================================================================================
+2025-10-14 22:28:51,438 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-14 22:28:51,594 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-14 22:28:51,595 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-14 22:28:52,084 [main] INFO  Main logger - Fragmenting code...
+2025-10-14 22:28:52,413 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-14 22:28:52,413 [main] DEBUG Main logger - Sending initial evaluation prompt.
+2025-10-14 22:28:58,212 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-14 22:28:58,213 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 1
+2025-10-14 22:29:06,568 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 2
+2025-10-14 22:29:19,505 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 3
+2025-10-14 22:29:27,505 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 4
+2025-10-14 22:29:46,331 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 5
+2025-10-14 22:29:56,807 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 6
+2025-10-14 22:30:04,047 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 7
+2025-10-14 22:30:14,797 [main] INFO  Main logger - Java Wrapper generation completed successfully!
+2025-10-14 22:30:14,797 [main] INFO  Main logger - Wrapper saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\Outputs\RawWrapperOutputs\raw_wrapper_output_2025-10-14_22-30.txt
+2025-10-14 22:30:14,798 [main] INFO  Main logger - Report saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\Outputs\Logs\wrapper_logs_2025-10-14_22-28.txt
+2025-10-14 22:30:14,837 [main] INFO  Main logger - ================================================================================
+2025-10-14 22:30:14,838 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
+2025-10-14 22:30:14,838 [main] INFO  Main logger - ================================================================================
+2025-10-14 22:33:20,181 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-14 22:33:20,349 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-14 22:33:20,350 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-14 22:33:21,048 [main] INFO  Main logger - Fragmenting code...
+2025-10-14 22:33:21,389 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-14 22:33:21,389 [main] DEBUG Main logger - Sending initial evaluation prompt.
+2025-10-14 22:33:28,222 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-14 22:33:28,222 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 1
+2025-10-14 22:33:36,580 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 2
+2025-10-14 22:33:50,892 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 3
+2025-10-14 22:34:05,570 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 4
+2025-10-14 22:34:14,447 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 5
+2025-10-14 22:34:24,126 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 6
+2025-10-14 22:34:37,289 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 7
+2025-10-14 22:34:45,141 [main] INFO  Main logger - Java Wrapper generation completed successfully!
+2025-10-14 22:34:45,142 [main] INFO  Main logger - Wrapper saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\Outputs\RawWrapperOutputs\raw_wrapper_output_2025-10-14_22-34.txt
+2025-10-14 22:34:45,143 [main] INFO  Main logger - Report saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\Outputs\Logs\wrapper_logs_2025-10-14_22-33.txt
+2025-10-14 22:34:45,181 [main] INFO  Main logger - ================================================================================
+2025-10-14 22:34:45,182 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
+2025-10-14 22:34:45,182 [main] INFO  Main logger - ================================================================================
+2025-10-14 22:47:24,232 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-14 22:47:24,377 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-14 22:47:24,378 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-14 22:47:25,090 [main] INFO  Main logger - Fragmenting code...
+2025-10-14 22:47:25,406 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-14 22:47:25,406 [main] DEBUG Main logger - Sending initial evaluation prompt.
+2025-10-14 22:47:31,138 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-14 22:47:31,138 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 1
+2025-10-14 22:47:39,406 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 2
+2025-10-14 22:47:46,804 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 3
+2025-10-14 22:47:57,082 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 4
+2025-10-14 22:48:10,708 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 5
+2025-10-14 22:48:17,805 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 6
+2025-10-14 22:48:31,671 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 7
+2025-10-14 22:48:43,858 [main] INFO  Main logger - Java Wrapper generation completed successfully!
+2025-10-14 22:48:43,858 [main] INFO  Main logger - Wrapper saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\Outputs\RawWrapperOutputs\raw_wrapper_output_2025-10-14_22-48.txt
+2025-10-14 22:48:43,862 [main] INFO  Main logger - Report saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\Outputs\Logs\wrapper_logs_2025-10-14_22-47.txt
+2025-10-14 22:48:43,906 [main] INFO  Main logger - ================================================================================
+2025-10-14 22:48:43,906 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
+2025-10-14 22:48:43,906 [main] INFO  Main logger - ================================================================================
+2025-10-14 22:53:09,136 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-14 22:53:09,283 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-14 22:53:09,289 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-14 22:53:10,144 [main] INFO  Main logger - Fragmenting code...
+2025-10-14 22:53:10,452 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-14 22:53:10,452 [main] DEBUG Main logger - Sending initial evaluation prompt.
+2025-10-14 22:53:16,628 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-14 22:53:16,628 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 1
+2025-10-14 22:53:26,117 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 2
+2025-10-14 22:53:37,333 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 3
+2025-10-14 22:53:49,100 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 4
+2025-10-14 22:54:05,168 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 5
+2025-10-14 22:54:13,503 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 6
+2025-10-14 22:54:29,097 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 7
+2025-10-14 22:54:42,052 [main] INFO  Main logger - Java Wrapper generation completed successfully!
+2025-10-14 22:54:42,053 [main] INFO  Main logger - Wrapper saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\Outputs\RawWrapperOutputs\raw_wrapper_output_2025-10-14_22-54.txt
+2025-10-14 22:54:42,055 [main] INFO  Main logger - Report saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\Outputs\Logs\wrapper_logs_2025-10-14_22-53.txt
+2025-10-14 22:54:42,113 [main] INFO  Main logger - ================================================================================
+2025-10-14 22:54:42,114 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
+2025-10-14 22:54:42,114 [main] INFO  Main logger - ================================================================================

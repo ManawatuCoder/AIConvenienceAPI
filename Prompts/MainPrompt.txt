@@ -1,10 +1,16 @@
 Context: The attached methods were flagged as having potential patterns, and the guidelines were selected as potentially being relevant:
 
 Your task:
-1. Evaluate the code to identify repeated logic, overlapping functionality, or opportunities to combine methods into wrapper methods.
+1. Evaluate the code to identify abstractables like low level functionality and other areas where convenience could be introduced to improve developer useability.
 2. If no patterns are found in certain methods, ignore them.
 3. If patterns are found, create wrapper methods that improves developer experience according to the supplied design guidelines.
 4. Return the generated wrapper methods, along with comments stating which methods were wrapped along with a reason for the wrapping.
+
+These wrappers simplify repetitive setup, connection, and error-handling tasks, while retaining all important functionality.
+Use descriptive function names aligned with developer goals.
+Keep your output concise, readable, and production-grade.
+Do not simply restate SDK usage in a new function.
+Do not create classes or wrappers that add no abstraction value.
 
 Your outputted wrapper methods must use the following format and structure:
 /**
@@ -12,8 +18,8 @@ Your outputted wrapper methods must use the following format and structure:
  */
 public void exampleMethod() {
     /* 
-      Combined Methods: methodOne, methodTwo, etc
-      Reason: Brief explanation of why the combined methods were wrapped, and why the wrapped method provides convenience
+      Changes made: e.g. method 1 and method 2 combined
+      Reason: Brief explanation of what convenience was added, and how your output adds it.
     */
     // Code here
 }

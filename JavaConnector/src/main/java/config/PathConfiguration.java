@@ -3,7 +3,7 @@ package config;
 public class PathConfiguration {
 
     // *** UPDATE THIS PATH FOR YOUR LOCAL ENVIRONMENT ***
-    private static final String BASE_PROJECT_PATH = "C:\\Path\\To\\AIConvenienceAPI";
+    private static final String BASE_PROJECT_PATH = "C:\\Users\\Pease\\Documents\\codes\\Personal\\uni\\Capstone\\wrappergenerator";
 
     // DO NOT MODIFY THESE
     private static final String JAVA_CONNECTOR_BASE = BASE_PROJECT_PATH + "\\JavaConnector";
@@ -21,7 +21,7 @@ public class PathConfiguration {
     // Prompt files
     public static final String SYSTEM_PROMPT = PROMPTS_BASE + "\\DeveloperIntentSystemPrompt.txt";
     public static final String METHODS_GUIDELINES_PROMPT = PROMPTS_BASE + "\\MethodsGuidelinesPrompt.txt";
-    public static final String MAIN_PROMPT = PROMPTS_BASE + "\\DeveloperIntentMainPrompt.txt";
+    public static final String MAIN_PROMPT = PROMPTS_BASE + "\\DeveloperIntentMainPrompt.txt";//This is a bad name for this path - at least while a file named 'MainPrompt.txt' exists in the same directory.
 
     // Output files
     public static final String MERGED_OUTPUT_TEMPLATE = MERGED_OUTPUT_BASE + "\\java_wrapper_%s.java";

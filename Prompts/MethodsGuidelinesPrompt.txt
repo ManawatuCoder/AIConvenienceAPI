@@ -9,9 +9,11 @@ Your tasks:
 Instructions:
 - Only consider patterns relevant to developer convenience. Ignore low-level protocol details.
 - Evaluate whether there is any true convenience to be added.
+- Do not be overzealous with your evaluation. You want to reach a reasonable tradeoff between the overheads of wrapping, and the convenience of a wrapper. 
+- Say "no" if only minor convenience can be added.
 - You will generate wrappers over multiple requests, so any methods you wish to wrap together should be grouped together in your response.
 - Each group will be sent as its own prompt alongside the entire list of requested guidelines; Large grouping is acceptable, and can be desireable for reduced LLM costs.
-- Duplicates methods through groups are undesireable; Coallescing of groups is preferred to duplicate methods.
+- Duplicate methods through groups are undesireable; Coallescing of groups is preferred to duplicate methods.
 - Duplicate guidelines are completely acceptable, it is desired that you have what you need to output quality.
 - If no patterns are found, return only the string "no".
 - If patterns are found, return a JSON object in the format:
@@ -27,6 +29,12 @@ Instructions:
   },
   ...
 ]
+
+Details regarding the wrappers, which we will request in our next prompts:
+These wrappers simplify repetitive setup, connection, and error-handling tasks, while retaining all important functionality.
+You will not simply restate SDK usage in a new function.
+You will not create wrappers that add no abstraction value.
+You will not be generating new classes - your outputted wrappers will be programmatically injected into the existing class.
 
 Notes:
 - Do NOT include any explanations or commentary.
