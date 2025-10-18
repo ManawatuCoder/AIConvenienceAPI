@@ -5,7 +5,7 @@
 			"command": "java",
 			"args": [
 				"-jar",
-				"D:/UpdatedMCP/AIConvenienceAPI/JavaConnector/target/MCP-Server-1.0.0.jar"
+				"D:/Wrapper/AIConvenienceAPI/JavaConnector/target/MCP-Server-1.0.0.jar"
 			]
 		}
 	},
