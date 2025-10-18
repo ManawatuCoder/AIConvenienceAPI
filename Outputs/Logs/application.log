@@ -44,3 +44,19 @@
 2025-10-07 01:39:35,961 [main] INFO  Main logger - ================================================================================
 2025-10-07 01:39:35,961 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
 2025-10-07 01:39:35,962 [main] INFO  Main logger - ================================================================================
+2025-10-19 01:36:39,032 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-19 01:37:07,390 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-19 01:37:07,392 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-19 01:37:07,691 [main] INFO  Main logger - Fragmenting code...
+2025-10-19 01:37:07,691 [main] INFO  Main logger - Using custom SDK file: D:\Wrapper\AIConvenienceAPI\azure-sdks\ai-src\ConnectionsAsyncClient.java
+2025-10-19 01:37:07,877 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-19 01:37:07,878 [main] DEBUG Main logger - Sending initial evaluation prompt.
+2025-10-19 01:37:11,171 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-19 01:37:11,172 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 1
+2025-10-19 01:37:17,242 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 2
+2025-10-19 01:37:19,045 [main] INFO  Main logger - Java Wrapper generation completed successfully!
+2025-10-19 01:37:19,047 [main] INFO  Main logger - Wrapper saved to: D:\Wrapper\AIConvenienceAPI\Outputs\RawWrapperOutputs\raw_wrapper_output_2025-10-19_01-37.txt
+2025-10-19 01:37:19,048 [main] INFO  Main logger - Report saved to: D:\Wrapper\AIConvenienceAPI\Outputs\Logs\wrapper_logs_2025-10-19_01-37.txt
+2025-10-19 01:37:19,071 [main] INFO  Main logger - ================================================================================
+2025-10-19 01:37:19,071 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
+2025-10-19 01:37:19,071 [main] INFO  Main logger - ================================================================================

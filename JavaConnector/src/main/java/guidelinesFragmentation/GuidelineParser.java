@@ -41,7 +41,7 @@ public class GuidelineParser {
 
         StringBuilder contentBuilder = new StringBuilder();
         for (Element sibling = heading.nextElementSibling(); sibling != null
-                && !sibling.tagName().matches("h[1-6]"); sibling = sibling.nextElementSibling()) {
+            && !sibling.tagName().matches("h[1-6]"); sibling = sibling.nextElementSibling()) {
 
           // Include block-level content tags
           if (sibling.isBlock()) {
@@ -64,7 +64,7 @@ public class GuidelineParser {
       try {
         if (!Files.exists(parsedGuidelines)) {
           Files.writeString(
-                  parsedGuidelines, json, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+              parsedGuidelines, json, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
         } else {
           Files.writeString(parsedGuidelines, json);
         }

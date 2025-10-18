@@ -28,8 +28,8 @@ public class PathConfiguration {
     public static final String WRAPPER_OUTPUT_TEMPLATE = WRAPPER_OUTPUTS_BASE + "\\raw_wrapper_output_%s.txt";
     public static final String LOG_OUTPUT_TEMPLATE = LOGS_OUTPUTS_BASE + "\\wrapper_logs_%s.txt";
 
-    // TypeSpec generated files
-    public static final String BLOB_CONTAINERS_CLIENT = BASE_PROJECT_PATH +
+    // TypeSpec generated files - default path
+    public static final String DEFAULT_CONTAINERS_CLIENT = BASE_PROJECT_PATH +
             "\\azure-sdks\\ai-src\\DatasetsClient.java";
 
     // Guidelines fragmentation cache files
@@ -50,6 +50,10 @@ public class PathConfiguration {
 
     public static String getBaseProjectPath() {
         return BASE_PROJECT_PATH;
+    }
+
+    public static String getDefaultContainersClient() {
+        return DEFAULT_CONTAINERS_CLIENT;
     }
 
     public static void ensureDirectoriesExist() {
