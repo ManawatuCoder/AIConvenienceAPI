@@ -19,11 +19,12 @@ public class FragmentLinker {
     for (Map.Entry rawFragment : functionFragments.entrySet()) {
       List<String> singleFragmentList = new ArrayList<>();
       String fragment = rawFragment.getValue().toString();
-      // We can add the header fragment here, or we can do it elsewhere depending how prompts will
+      // We can add the header fragment here, or we can do it elsewhere depending how
+      // prompts will
       // be
       // constructed.
       // TODO: Decide whether to keep following line:
-      //            singleFragmentList.add(functionFragments.get("Header"));
+      // singleFragmentList.add(functionFragments.get("Header"));
       singleFragmentList.add(fragment);
       if (!fragment.startsWith(
           "Header:")) { // Header fragment needs no linking. Should be sent with all prompts.

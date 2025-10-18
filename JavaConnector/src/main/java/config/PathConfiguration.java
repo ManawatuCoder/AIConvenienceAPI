@@ -3,7 +3,7 @@ package config;
 public class PathConfiguration {
 
     // *** UPDATE THIS PATH FOR YOUR LOCAL ENVIRONMENT ***
-    private static final String BASE_PROJECT_PATH = "C:\\Path\\To\\AIConvenienceAPI";
+    private static final String BASE_PROJECT_PATH = "D:\\Wrapper\\AIConvenienceAPI";
 
     // DO NOT MODIFY THESE
     private static final String JAVA_CONNECTOR_BASE = BASE_PROJECT_PATH + "\\JavaConnector";
@@ -11,7 +11,6 @@ public class PathConfiguration {
     private static final String LOGS_OUTPUTS_BASE = BASE_PROJECT_PATH + "\\Outputs\\Logs";
     private static final String WRAPPER_OUTPUTS_BASE = BASE_PROJECT_PATH + "\\Outputs\\RawWrapperOutputs";
     private static final String MERGED_OUTPUT_BASE = BASE_PROJECT_PATH + "\\Outputs\\MergedOutputs";
-    private static final String TYPESPEC_BASE = BASE_PROJECT_PATH + "\\TypeSpec_Conversion";
     private static final String GUIDELINES_OUTPUT_BASE = JAVA_CONNECTOR_BASE +
             "\\src\\main\\java\\guidelinesFragmentation\\output";
 
@@ -28,8 +27,8 @@ public class PathConfiguration {
     public static final String WRAPPER_OUTPUT_TEMPLATE = WRAPPER_OUTPUTS_BASE + "\\raw_wrapper_output_%s.txt";
     public static final String LOG_OUTPUT_TEMPLATE = LOGS_OUTPUTS_BASE + "\\wrapper_logs_%s.txt";
 
-    // TypeSpec generated files
-    public static final String BLOB_CONTAINERS_CLIENT = BASE_PROJECT_PATH +
+    // TypeSpec generated files - default path
+    public static final String DEFAULT_CONTAINERS_CLIENT = BASE_PROJECT_PATH +
             "\\azure-sdks\\ai-src\\DatasetsClient.java";
 
     // Guidelines fragmentation cache files
@@ -39,15 +38,21 @@ public class PathConfiguration {
     public static String getFinalOutputPath(String timestamp) {
         return String.format(MERGED_OUTPUT_TEMPLATE, timestamp);
     }
+
     public static String getWrapperOutputPath(String timestamp) {
         return String.format(WRAPPER_OUTPUT_TEMPLATE, timestamp);
     }
+
     public static String getLogsOutputPath(String timestamp) {
         return String.format(LOG_OUTPUT_TEMPLATE, timestamp);
     }
 
     public static String getBaseProjectPath() {
         return BASE_PROJECT_PATH;
+    }
+
+    public static String getDefaultContainersClient() {
+        return DEFAULT_CONTAINERS_CLIENT;
     }
 
     public static void ensureDirectoriesExist() {

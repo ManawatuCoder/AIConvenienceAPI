@@ -31,7 +31,7 @@ public class CodegenFragmenter {
     CompilationUnit compilationUnit = StaticJavaParser.parse(file);
 
     List<MethodDeclaration> methods = compilationUnit.findAll(MethodDeclaration.class);
-    //        methods.sort(Comparator.comparing(md -> md.getBegin().get().line));
+    // methods.sort(Comparator.comparing(md -> md.getBegin().get().line));
 
     String key = "Header"; // bracket included for pattern matching in FragmentLinker
     fragments.put(key, headerExtractor(methods, lines));
@@ -45,13 +45,12 @@ public class CodegenFragmenter {
       md = methods.get(i);
       int thisMethod = (md.getEnd().get().line);
 
-      List<String> outputLine =
-          lines.subList(
-              previousMethod, thisMethod + 1); // All lines between previousMethod and thisMethod
+      List<String> outputLine = lines.subList(
+          previousMethod, thisMethod + 1); // All lines between previousMethod and thisMethod
       StringBuilder currentFragment = new StringBuilder();
 
       // Comment comment = md.getComment().get();
-      //            System.out.println("Comment: " + comment);
+      // System.out.println("Comment: " + comment);
 
       for (int j = 0; j < outputLine.size(); j++) {
         // Stick lines together into one contiguous fragment
@@ -71,17 +70,17 @@ public class CodegenFragmenter {
     int nextMethod = md.getBegin().get().line - 2; // Start at first method declaration as failsafe
 
     Optional<JavadocComment> commentOpt = md.getJavadocComment();
-    // Try end the header before the beginning of the comment for the first method declaration
+    // Try end the header before the beginning of the comment for the first method
+    // declaration
     if (commentOpt.isPresent() && commentOpt.get().getRange().isPresent()) {
       int commentStartLine = commentOpt.get().getRange().get().begin.line - 2;
-      //            System.out.println(commentOpt);
+      // System.out.println(commentOpt);
       if (commentStartLine < nextMethod) {
         nextMethod = commentStartLine;
       }
     }
 
-    List<String> outputLine =
-        lines.subList(thisMethod, nextMethod + 1); // All lines between thisMethod and nextMethod
+    List<String> outputLine = lines.subList(thisMethod, nextMethod + 1); // All lines between thisMethod and nextMethod
     StringBuilder currentFragment = new StringBuilder();
     currentFragment.append("Header:\n");
 
@@ -100,31 +99,31 @@ public class CodegenFragmenter {
     int nextMethod = md.getEnd().get().line;
 
     Optional<JavadocComment> commentOpt = md.getJavadocComment();
-    // Try end the header before the beginning of the comment for the first method declaration
+    // Try end the header before the beginning of the comment for the first method
+    // declaration
     if (commentOpt.isPresent() && commentOpt.get().getRange().isPresent()) {
       int commentStartLine = commentOpt.get().getRange().get().begin.line - 2;
-      //            System.out.println(commentOpt);
+      // System.out.println(commentOpt);
       if (commentStartLine < thisMethod) {
         thisMethod = commentStartLine;
       }
     }
 
-    List<String> outputLine =
-        lines.subList(thisMethod, nextMethod + 1); // All lines between thisMethod and nextMethod
+    List<String> outputLine = lines.subList(thisMethod, nextMethod + 1); // All lines between thisMethod and nextMethod
     StringBuilder currentFragment = new StringBuilder();
 
     Comment comment = md.getComment().get();
-    //        System.out.println("Comment: " + comment);
+    // System.out.println("Comment: " + comment);
 
     for (int j = 0; j < outputLine.size(); j++) {
       // Stick lines together into one contiguous fragment
       currentFragment.append(outputLine.get(j) + "\n");
     }
 
-    String key =
-        md.getNameAsString() + "("; // bracket included for pattern matching in FragmentLinker
+    String key = md.getNameAsString() + "("; // bracket included for pattern matching in FragmentLinker
     return currentFragment.toString();
   }
 
-  public CodegenFragmenter() throws IOException {}
+  public CodegenFragmenter() throws IOException {
+  }
 }
