@@ -11,7 +11,6 @@ public class PathConfiguration {
     private static final String LOGS_OUTPUTS_BASE = BASE_PROJECT_PATH + "\\Outputs\\Logs";
     private static final String WRAPPER_OUTPUTS_BASE = BASE_PROJECT_PATH + "\\Outputs\\RawWrapperOutputs";
     private static final String MERGED_OUTPUT_BASE = BASE_PROJECT_PATH + "\\Outputs\\MergedOutputs";
-    private static final String TYPESPEC_BASE = BASE_PROJECT_PATH + "\\TypeSpec_Conversion";
     private static final String GUIDELINES_OUTPUT_BASE = JAVA_CONNECTOR_BASE +
             "\\src\\main\\java\\guidelinesFragmentation\\output";
 
