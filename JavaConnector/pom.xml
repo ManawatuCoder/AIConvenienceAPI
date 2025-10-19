@@ -131,7 +131,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>RELEASE</version>
+            <version>25.0.0</version>
             <scope>compile</scope>
         </dependency>
 
@@ -263,8 +263,7 @@
                 </executions>
             </plugin>
 
-            <!-- SSurefire: must pass ${argLine} and -add-opens for JDK 21+ -->
-            <!-- Surefire: directly inject JaCoCo agent using the local repo path -->
+            <!-- Surefire: must pass ${argLine} and -add-opens for JDK 17+ -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -272,7 +271,6 @@
                 <configuration>
                     <useModulePath>false</useModulePath>
                     <argLine>
-                        -javaagent:${settings.localRepository}/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=${project.build.directory}/jacoco.exec,append=true
                         --add-opens java.base/java.lang=ALL-UNNAMED
                         --add-opens java.base/java.lang.invoke=ALL-UNNAMED
                         --add-opens java.base/java.util=ALL-UNNAMED
@@ -282,16 +280,24 @@
                 </configuration>
             </plugin>
 
-            <!-- JaCoCo: only generate the HTML at verify -->
+            <!-- JaCoCo: prepare agent and generate HTML report -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.11</version>
                 <executions>
                     <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
                         <id>report</id>
                         <phase>verify</phase>
-                        <goals><goal>report</goal></goals>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

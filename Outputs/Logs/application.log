@@ -161,3 +161,13 @@ Caused by: java.nio.file.NoSuchFileException: C:\Users\Pease\Documents\codes\Per
 	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
 	at Main.loadConfigProperties(Main.java:70)
 	... 2 more
+2025-10-19 23:55:32,005 [main] INFO  Main logger - done
+2025-10-19 23:55:35,053 [main] INFO  Main logger - Merged wrapper saved to: D:\Test\AIConvenienceAPI\Outputs\MergedOutputs\java_wrapper_2025-10-19_23-55.java
+2025-10-19 23:55:36,181 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-19 23:55:36,308 [main] INFO  Main logger - Wrapper saved to: D:\Test\AIConvenienceAPI\Outputs\RawWrapperOutputs\raw_wrapper_output_2025-10-19_23-55.txt
+2025-10-19 23:55:36,311 [main] INFO  Main logger - Wrapper saved to: D:\Test\AIConvenienceAPI\Outputs\RawWrapperOutputs\raw_wrapper_output_2025-10-19_23-55.txt
+2025-10-19 23:56:01,148 [main] INFO  Main logger - done
+2025-10-19 23:56:03,385 [main] INFO  Main logger - Merged wrapper saved to: D:\Test\AIConvenienceAPI\Outputs\MergedOutputs\java_wrapper_2025-10-19_23-56.java
+2025-10-19 23:56:04,232 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-19 23:56:04,378 [main] INFO  Main logger - Wrapper saved to: D:\Test\AIConvenienceAPI\Outputs\RawWrapperOutputs\raw_wrapper_output_2025-10-19_23-56.txt
+2025-10-19 23:56:04,382 [main] INFO  Main logger - Wrapper saved to: D:\Test\AIConvenienceAPI\Outputs\RawWrapperOutputs\raw_wrapper_output_2025-10-19_23-56.txt
