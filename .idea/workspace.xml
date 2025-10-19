@@ -4,15 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a45e00b1-fa9f-4959-ae6b-85c268df1552" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a45e00b1-fa9f-4959-ae6b-85c268df1552" name="Changes" comment="GuideLineParserTest Reimplemented">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaConnector/src/main/java/guidelinesFragmentation/output/last-modified.txt" beforeDir="false" afterPath="$PROJECT_DIR$/JavaConnector/src/main/java/guidelinesFragmentation/output/last-modified.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaConnector/src/test/java/guidelinesFragmentation/LastModifiedCheckTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaConnector/src/test/java/guidelinesFragmentation/LastModifiedCheckTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -24,13 +38,19 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/ManawatuCoder/AIConvenienceAPI.git&quot;,
-    &quot;accountId&quot;: &quot;7608b658-829f-4c2e-86dc-03bcb4997d7e&quot;
+    &quot;accountId&quot;: &quot;6337c978-a3a6-4d38-a506-a4a3368a951b&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="30dIfJtOuYIE1MGpDyiYViEtq8g" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -40,11 +60,12 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;test-rewrite&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/ghostowl/IdeaProjects/AIConvenienceAPI/JavaConnector/pom.xml&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
 }</component>
@@ -72,6 +93,37 @@
       <option name="presentableId" value="Default" />
       <updated>1753951125133</updated>
     </task>
+    <task id="LOCAL-00001" summary="AlexTest branch broke - Created new branch to commit one by one to figure out issue.&#10;Github actions added + CodeFragmenterTest methods implemented">
+      <option name="closed" value="true" />
+      <created>1760233827525</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1760233827525</updated>
+    </task>
+    <task id="LOCAL-00002" summary="FragmentLinkerTest reimplemented">
+      <option name="closed" value="true" />
+      <created>1760234401435</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1760234401435</updated>
+    </task>
+    <task id="LOCAL-00003" summary="GuideLineParserTest Reimplemented">
+      <option name="closed" value="true" />
+      <created>1760243536284</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1760243536284</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="AlexTest branch broke - Created new branch to commit one by one to figure out issue.&#10;Github actions added + CodeFragmenterTest methods implemented" />
+    <MESSAGE value="FragmentLinkerTest reimplemented" />
+    <MESSAGE value="GuideLineParserTest Reimplemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="GuideLineParserTest Reimplemented" />
   </component>
 </project>

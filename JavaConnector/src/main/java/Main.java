@@ -339,7 +339,7 @@ public class Main {
   }
 
   // Creates a timestamped output file path
-  private static Path createOutputFile() {
+  static Path createOutputFile() {
     String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm"));
     String filename = PathConfiguration.getLogsOutputPath(timestamp);
     return Paths.get(filename);

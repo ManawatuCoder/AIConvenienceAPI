@@ -1,0 +1,60 @@
+name: CI (Maven + Spotless + JaCoCo)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'pom.xml'
+      - '**/*.java'
+      - '.github/workflows/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'pom.xml'
+      - '**/*.java'
+      - '.github/workflows/**'
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      # Run formatting/linting explicitly so failures are obvious
+      - name: Spotless check
+        run: mvn -B -ntp spotless:check
+
+      # Build, run tests, and generate coverage
+      - name: Build & test
+        run: mvn -B -ntp verify
+
+      - name: Generate JaCoCo site
+        run: mvn -B -ntp -DskipTests=false jacoco:report site
+
+      # Upload useful artifacts for debugging & coverage review
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: |
+            **/target/surefire-reports/**
+            **/target/failsafe-reports/**
+            **/target/site/jacoco/**
+            **/target/jacoco*.exec
+            **/target/site/**
