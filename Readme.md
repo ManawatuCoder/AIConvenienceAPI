@@ -80,9 +80,9 @@ mvn clean package
 
 ## Prerequisites
 
-- **Java 8+**
-- **Maven 3.6+**
-- **Node.js** (for MCP Inspector)
+- **JDK-17+**
+- **Apache Maven 3.6+**
+- **Node.js 11.5.1+** (for MCP Inspector)
 - **Azure OpenAI** access with API key
 - **VS Code** (for MCP integration)
 
