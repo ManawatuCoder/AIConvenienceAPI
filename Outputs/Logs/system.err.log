@@ -30,3 +30,63 @@
 2025-10-19T03:04:42.464878900Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[f4f63b8f, L:/192.168.1.3:50754 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
 2025-10-19T03:04:42.469906100Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[f4f63b8f, L:/192.168.1.3:50754 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
 2025-10-19T03:04:50.390813100Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[f4f63b8f, L:/192.168.1.3:50754 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:84)
+	at Main.runCliMode(Main.java:689)
+	at Main.main(Main.java:675)
+Caused by: java.nio.file.NoSuchFileException: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator2\AIConvenienceAPI\JavaConnector\JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:84)
+	at Main.runCliMode(Main.java:689)
+	at Main.main(Main.java:675)
+Caused by: java.nio.file.NoSuchFileException: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator2\AIConvenienceAPI\JavaConnector\JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.nio.file.NoSuchFileException: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator2\AIConvenienceAPI\JavaConnector\JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.nio.file.NoSuchFileException: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator2\AIConvenienceAPI\JavaConnector\JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more

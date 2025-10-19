@@ -12,18 +12,18 @@
         </File>
 
         <!-- Error Appender - separate file only for errors-->
-        <File name="ErrorLogger" fileName="../Outputs//Logs/errors.log" append="true">
+        <File name="ErrorLogger" fileName="../Outputs/Logs/errors.log" append="true">
             <PatternLayout pattern="%d [%t] %-5level %logger - %msg%n"/>
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
         </File>
 
         <!-- Netty Appender - separate file for netty spam-->
-        <File name="NettyLogger" fileName="../Outputs//Logs/netty.log" append="true">
+        <File name="NettyLogger" fileName="../Outputs/Logs/netty.log" append="true">
             <PatternLayout pattern="%d [%t] %-5level %logger - %msg%n"/>
         </File>
 
         <!-- Azure Appender - separate file for Azure logs-->
-        <File name="AzureLogger" fileName="../Logs/azure.log" append="true">
+        <File name="AzureLogger" fileName="../Outputs/Logs/azure.log" append="true">
             <PatternLayout pattern="%d [%t] %-5level %logger - %msg%n"/>
         </File>
     </Appenders>
