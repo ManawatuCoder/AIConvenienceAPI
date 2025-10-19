@@ -29,24 +29,14 @@ cp config.properties.example config.properties
 
 **Note:** You must have access to an Azure OpenAI API key to paste into the `AZURE_OPENAI_KEY` property
 
-### 3. Update Path Configuration File
-
-Update the base path in `JavaConnector/src/main/java/config/PathConfiguration.java` to use your local project directory path
-
-```java
-public static final String BASE_PROJECT_PATH = "C:\\path\\to\\your\\AIConvenienceAPI";
-```
-
-**Important:** Ensure this is an absolute path
-
-### 4. Build the Project
+### 3. Build the Project
 
 ```bash
 # From inside the JavaConnector directory
 mvn clean package
 ```
 
-### 5. Run in CLI Mode
+### 4. Run in CLI Mode
 
 ```bash
 # Note that you must update the path in this command:
@@ -55,7 +45,7 @@ java -jar /path/to/your/AIConvenienceAPI/JavaConnector/target/MCP-Server-1.0.0.j
 
 **Important:** Replace `/path/to/your` with your actual local project path
 
-### 6. (Optional) Run in MCP Server Mode
+### 5. (Optional) Run in MCP Server Mode
 
 1. Build the project:
 
