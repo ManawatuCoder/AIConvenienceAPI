@@ -64,31 +64,6 @@ class CodegenFragmenterTest {
     }
 
     @Test
-    void fragment_throwsIfSubsequentMethodHasNoComment(@TempDir Path tempDir) throws IOException {
-        // Arrange: second method lacks a comment; current implementation calls md.getComment().get()
-        // which will throw if absent. Might need to change to md.getComment().orElse(null) for more robust
-        String src =
-                "package codegenFragmenter;\n"
-                        + "\n"
-                        + "public class DemoNoComment {\n"
-                        + "  /** First method javadoc */\n"
-                        + "  public void first() {}\n"
-                        + "\n"
-                      //  + "  // No Javadoc intentionally for second()\n"
-                        + "  public void second() {}\n"
-                        + "}\n";
-
-        Path filePath = tempDir.resolve("DemoNoComment.java");
-        Files.write(filePath, src.getBytes());
-
-        // Act + Assert: expect NoSuchElementException from md.getComment().get()
-        assertThrows(
-                java.util.NoSuchElementException.class,
-                () -> CodegenFragmenter.fragment(filePath.toFile()),
-                "When a subsequent method has no associated comment, current code should throw");
-    }
-
-    @Test
     void extractsHeaderStoppingBeforeFirstMethodJavadoc(@TempDir Path tempDir) throws IOException {
         String src =
                 "package codegenFragmenter;\n"

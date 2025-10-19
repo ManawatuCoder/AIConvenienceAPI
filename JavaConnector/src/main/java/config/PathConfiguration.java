@@ -3,7 +3,7 @@ package config;
 public class PathConfiguration {
 
     // *** UPDATE THIS PATH FOR YOUR LOCAL ENVIRONMENT ***
-    private static final String BASE_PROJECT_PATH = "C:\\path\\to\\your\\AIConvenienceAPI";
+    private static final String BASE_PROJECT_PATH = "C:\\Users\\smith\\IdeaProjects\\AIConvenienceAPI";
 
     // TypeSpec (codegen) generated files - default path
     public static final String DEFAULT_CONTAINERS_CLIENT = BASE_PROJECT_PATH +

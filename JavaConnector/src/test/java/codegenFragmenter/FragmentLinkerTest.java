@@ -5,93 +5,106 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import org.junit.jupiter.api.Test;
 
 public class FragmentLinkerTest {
 
     @Test
-    void linksFragmentsByDetectingFunctionNamesInFragmentBodies() {
-        // LinkedHashMap for deterministic iteration: Header, A, B, C, D
-        Map<String, String> functionFragments = new LinkedHashMap<>();
-        functionFragments.put("Header", "Header: Common prelude, types, and imports");
-        functionFragments.put("A(", "A body calls B( and C(");              // mentions keys for B and C
-        functionFragments.put("B(", "B body");
-        functionFragments.put("C(", "C body mentions D(");                   // mentions key for D
-        functionFragments.put("D(", "D body");
+    void returnsEmptyMapForEmptyInput() {
+        Map<String, String> input = new LinkedHashMap<>();
 
-        List<List<String>> linked = FragmentLinker.link(functionFragments);
+        Map<String, List<String>> result = FragmentLinker.link(input);
 
-        // One group per input value
-        assertEquals(functionFragments.size(), linked.size());
-
-        // Group 0 is the header: should be just the header (no outbound linking)
-        assertEquals(List.of("Header: Common prelude, types, and imports"), linked.get(0));
-
-        // Group 1 (A): A + (B, C) in the order discovered via entrySet()
-        assertEquals(List.of("A body calls B( and C(", "B body", "C body mentions D("), linked.get(1));
-
-        // Group 2 (B): singleton (no outbound links)
-        assertEquals(List.of("B body"), linked.get(2));
-
-        // Group 3 (C): C + (D)
-        assertEquals(List.of("C body mentions D(", "D body"), linked.get(3));
-
-        // Group 4 (D): singleton
-        assertEquals(List.of("D body"), linked.get(4));
+        assertTrue(result.isEmpty(), "Expected no entries for empty input");
     }
 
     @Test
-    void headerFragmentIsNotLinkedEvenIfItMentionsFunctions() {
-        Map<String, String> functionFragments = new LinkedHashMap<>();
-        functionFragments.put("Header", "Header: mentions A( and B( but should not link");
-        functionFragments.put("A(", "A");
-        functionFragments.put("B(", "B");
+    void headerIsNotLinked() {
+        Map<String, String> input = new LinkedHashMap<>();
+        input.put("Header", "Header: Common prelude, types, and imports");
 
-        List<List<String>> linked = FragmentLinker.link(functionFragments);
+        Map<String, List<String>> result = FragmentLinker.link(input);
 
-        // Header remains single-element
-        assertEquals(List.of("Header: mentions A( and B( but should not link"), linked.get(0));
-        // A and B remain unmodified (no inbound from header)
-        assertEquals(List.of("A"), linked.get(1));
-        assertEquals(List.of("B"), linked.get(2));
+        assertEquals(1, result.size(), "Only the header key should be present");
+        assertTrue(result.containsKey("Header"));
+        assertEquals(
+                List.of("Header: Common prelude, types, and imports"),
+                result.get("Header"),
+                "Header list should contain only the header fragment text"
+        );
     }
 
     @Test
-    void doesNotDuplicateWhenFragmentAlreadyContainsItsOwnValue() {
-        Map<String, String> functionFragments = new LinkedHashMap<>();
-        // Fragment mentions its own key; initial add puts the fragment,
-        // and inner loop must NOT add the same value again.
-        functionFragments.put("X(", "X( appears here: X(");
+    void linksFragmentsByKeyMentionsInIterationOrder() {
+        // LinkedHashMap for deterministic entrySet() order: Header, A(, B(, C(, D(
+        Map<String, String> input = new LinkedHashMap<>();
+        input.put("Header", "Header: Common prelude, types, and imports");
+        input.put("A(", "A body calls B( and C(");          // mentions keys for B and C
+        input.put("B(", "B body");
+        input.put("C(", "C body mentions D(");               // mentions key for D
+        input.put("D(", "D body");
 
-        List<List<String>> linked = FragmentLinker.link(functionFragments);
+        Map<String, List<String>> result = FragmentLinker.link(input);
 
-        assertEquals(1, linked.size());
-        assertEquals(1, linked.get(0).size()); // no duplicate of itself
-        assertEquals("X( appears here: X(", linked.get(0).get(0));
+        // Header: not linked
+        assertEquals(
+                List.of("Header: Common prelude, types, and imports"),
+                result.get("Header")
+        );
+
+        // A mentions B then C; because we iterate over the input map in order, expect B then C
+        assertEquals(
+                List.of("A body calls B( and C(", "B body", "C body mentions D("),
+                result.get("A(")
+        );
+
+        // B mentions nothing
+        assertEquals(List.of("B body"), result.get("B("));
+
+        // C mentions D
+        assertEquals(List.of("C body mentions D(", "D body"), result.get("C("));
+
+        // D mentions nothing
+        assertEquals(List.of("D body"), result.get("D("));
+
+        // Keys preserved
+        assertEquals(Set.of("Header", "A(", "B(", "C(", "D("), result.keySet());
     }
 
     @Test
-    void linksMultipleMatchesWithoutDuplicates() {
-        Map<String, String> functionFragments = new LinkedHashMap<>();
-        functionFragments.put("Header", "Header: stuff");
-        functionFragments.put("Top(", "Top body mentions A( and A( and B("); // duplicate references to A(
-        functionFragments.put("A(", "A body");
-        functionFragments.put("B(", "B body");
+    void ignoresDuplicateMentionsAndSelf() {
+        Map<String, String> input = new LinkedHashMap<>();
+        input.put("Header", "Header: Prelude");
+        input.put("X(", "X calls X( and Y( and Y( again");  // self-mention X( and duplicate Y(
+        input.put("Y(", "Y body");
 
-        List<List<String>> linked = FragmentLinker.link(functionFragments);
+        Map<String, List<String>> result = FragmentLinker.link(input);
 
-        // Top group should contain Top, then A, then B (A only once)
-        assertEquals(List.of("Top body mentions A( and A( and B(", "A body", "B body"), linked.get(1));
+        // Expect: own fragment first, then Y body once (self-mention doesn't duplicate)
+        assertEquals(
+                List.of("X calls X( and Y( and Y( again", "Y body"),
+                result.get("X(")
+        );
+        // Y has no outbound mentions
+        assertEquals(List.of("Y body"), result.get("Y("));
+        // Header stays single
+        assertEquals(List.of("Header: Prelude"), result.get("Header"));
     }
 
     @Test
-    void returnsEmptyListForEmptyInput() {
-        Map<String, String> functionFragments = new LinkedHashMap<>();
+    void doesNotLinkWhenNoMentions() {
+        Map<String, String> input = new LinkedHashMap<>();
+        input.put("Header", "Header: Prelude");
+        input.put("Alpha(", "Alpha body mentions Z( which is not a key");
+        input.put("Beta(", "Beta body");
 
-        List<List<String>> linked = FragmentLinker.link(functionFragments);
+        Map<String, List<String>> result = FragmentLinker.link(input);
 
-        assertNotNull(linked);
-        assertTrue(linked.isEmpty());
+        // Alpha mentions "Z(" which is not a key in the map -> no links added
+        assertEquals(List.of("Alpha body mentions Z( which is not a key"), result.get("Alpha("));
+        assertEquals(List.of("Beta body"), result.get("Beta("));
+        assertEquals(List.of("Header: Prelude"), result.get("Header"));
     }
-
 }
