@@ -6,37 +6,39 @@
 package codegenFragmenter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class FragmentLinker {
 
-  public static List<List<String>> link(Map<String, String> functionFragments) {
-    List<List<String>> linkedFragments = new ArrayList<>();
+  public static Map<String, List<String>> link(Map<String, String> functionFragments) {
+    // Stores all methods that were referenced in fragment
+    Map<String, List<String>> relatedMethods = new HashMap<>();
 
-    int i = 0;
-    for (String fragment : functionFragments.values()) {
+    for (Map.Entry rawFragment : functionFragments.entrySet()) {
       List<String> singleFragmentList = new ArrayList<>();
-      // We can add the header fragment here, or we can do it elsewhere depending how prompts will
+      String fragment = rawFragment.getValue().toString();
+      // We can add the header fragment here, or we can do it elsewhere depending how
+      // prompts will
       // be
       // constructed.
       // TODO: Decide whether to keep following line:
-      //            singleFragmentList.add(functionFragments.get("Header"));
+      // singleFragmentList.add(functionFragments.get("Header"));
       singleFragmentList.add(fragment);
-      linkedFragments.add(singleFragmentList);
       if (!fragment.startsWith(
           "Header:")) { // Header fragment needs no linking. Should be sent with all prompts.
         for (Map.Entry function : functionFragments.entrySet()) {
           if (fragment.contains((CharSequence) function.getKey())) {
-            if (!linkedFragments.get(i).contains(function.getValue())) {
-              linkedFragments.get(i).add((String) function.getValue());
+            if (!singleFragmentList.contains(function.getValue())) {
+              singleFragmentList.add((String) function.getValue());
             }
           }
         }
       }
-      i++;
+      relatedMethods.put(rawFragment.getKey().toString(), singleFragmentList);
     }
 
-    return linkedFragments;
+    return relatedMethods;
   }
 }

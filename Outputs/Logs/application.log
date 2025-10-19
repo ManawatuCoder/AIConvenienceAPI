@@ -1,0 +1,97 @@
+2025-10-06 21:39:27,478 [main] ERROR Main logger - Dbugging stuff
+2025-10-06 21:50:08,504 [main] ERROR Main logger - Still testin stuff
+2025-10-07 01:28:26,371 [main] DEBUG com.azure.core.implementation.ReflectionUtils - Attempting to use java.lang.invoke package to handle reflection.
+2025-10-07 01:28:26,387 [main] DEBUG com.azure.core.implementation.ReflectionUtils - Successfully used java.lang.invoke package to handle reflection.
+2025-10-07 01:28:26,601 [main] DEBUG com.azure.core.implementation.util.Providers - Using com.azure.core.http.netty.NettyAsyncHttpClientProvider as the default com.azure.core.http.HttpClientProvider.
+2025-10-07 01:28:26,684 [main] WARN  com.azure.core.http.netty.implementation.Utility - The following Netty dependencies have versions that do not match the versions specified in the azure-core-http-netty pom.xml file. This may result in unexpected behavior. If your application runs without issue this message can be ignored, otherwise please update the Netty dependencies to match the versions specified in the pom.xml file. Versions found in runtime: 'io.netty:netty-common' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-handler' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-handler-proxy' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-buffer' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-codec' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-codec-http' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-codec-http2' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-transport-native-unix-common' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-transport-native-epoll' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-transport-native-kqueue' version: 4.1.108.Final (expected: 4.1.101.Final)
+2025-10-07 01:28:26,697 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-07 01:28:26,929 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-07 01:28:26,931 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-07 01:28:28,457 [main] INFO  Main logger - Fragmenting code...
+2025-10-07 01:28:28,824 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-07 01:28:28,897 [main] DEBUG com.azure.core.implementation.ReflectionSerializable - XmlSerializable serialization and deserialization isn't supported. If it is required add a dependency of 'com.azure:azure-xml', or another dependencies which include 'com.azure:azure-xml' as a transitive dependency. If your application runs as expected this informational message can be ignored.
+2025-10-07 01:28:32,910 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-07 01:28:43,697 [main] INFO  Main logger - Java Wrapper generation completed successfully!
+2025-10-07 01:28:43,698 [main] INFO  Main logger - Wrapper saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\WrapperOutputs\java_wrapper_2025-10-07_01-28.txt
+2025-10-07 01:28:43,699 [main] INFO  Main logger - Report saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\Logs\wrapper_logs_2025-10-07_01-28.txt
+2025-10-07 01:28:43,699 [main] INFO  Main logger - ================================================================================
+2025-10-07 01:28:43,699 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
+2025-10-07 01:28:43,699 [main] INFO  Main logger - ================================================================================
+2025-10-07 01:37:39,751 [main] DEBUG com.azure.core.implementation.ReflectionUtils - Attempting to use java.lang.invoke package to handle reflection.
+2025-10-07 01:37:39,763 [main] DEBUG com.azure.core.implementation.ReflectionUtils - Successfully used java.lang.invoke package to handle reflection.
+2025-10-07 01:37:39,927 [main] DEBUG com.azure.core.implementation.util.Providers - Using com.azure.core.http.netty.NettyAsyncHttpClientProvider as the default com.azure.core.http.HttpClientProvider.
+2025-10-07 01:37:40,011 [main] WARN  com.azure.core.http.netty.implementation.Utility - The following Netty dependencies have versions that do not match the versions specified in the azure-core-http-netty pom.xml file. This may result in unexpected behavior. If your application runs without issue this message can be ignored, otherwise please update the Netty dependencies to match the versions specified in the pom.xml file. Versions found in runtime: 'io.netty:netty-common' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-handler' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-handler-proxy' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-buffer' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-codec' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-codec-http' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-codec-http2' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-transport-native-unix-common' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-transport-native-epoll' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-transport-native-kqueue' version: 4.1.108.Final (expected: 4.1.101.Final)
+2025-10-07 01:37:40,023 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-07 01:37:40,236 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-07 01:37:40,237 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-07 01:37:40,761 [main] INFO  Main logger - Fragmenting code...
+2025-10-07 01:37:41,237 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-07 01:37:41,332 [main] DEBUG com.azure.core.implementation.ReflectionSerializable - XmlSerializable serialization and deserialization isn't supported. If it is required add a dependency of 'com.azure:azure-xml', or another dependencies which include 'com.azure:azure-xml' as a transitive dependency. If your application runs as expected this informational message can be ignored.
+2025-10-07 01:39:17,070 [main] DEBUG com.azure.core.implementation.ReflectionUtils - Attempting to use java.lang.invoke package to handle reflection.
+2025-10-07 01:39:17,078 [main] DEBUG com.azure.core.implementation.ReflectionUtils - Successfully used java.lang.invoke package to handle reflection.
+2025-10-07 01:39:17,234 [main] DEBUG com.azure.core.implementation.util.Providers - Using com.azure.core.http.netty.NettyAsyncHttpClientProvider as the default com.azure.core.http.HttpClientProvider.
+2025-10-07 01:39:17,316 [main] WARN  com.azure.core.http.netty.implementation.Utility - The following Netty dependencies have versions that do not match the versions specified in the azure-core-http-netty pom.xml file. This may result in unexpected behavior. If your application runs without issue this message can be ignored, otherwise please update the Netty dependencies to match the versions specified in the pom.xml file. Versions found in runtime: 'io.netty:netty-common' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-handler' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-handler-proxy' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-buffer' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-codec' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-codec-http' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-codec-http2' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-transport-native-unix-common' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-transport-native-epoll' version: 4.1.108.Final (expected: 4.1.101.Final),'io.netty:netty-transport-native-kqueue' version: 4.1.108.Final (expected: 4.1.101.Final)
+2025-10-07 01:39:17,327 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-07 01:39:17,518 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-07 01:39:17,519 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-07 01:39:18,257 [main] INFO  Main logger - Fragmenting code...
+2025-10-07 01:39:18,726 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-07 01:39:18,858 [main] DEBUG com.azure.core.implementation.ReflectionSerializable - XmlSerializable serialization and deserialization isn't supported. If it is required add a dependency of 'com.azure:azure-xml', or another dependencies which include 'com.azure:azure-xml' as a transitive dependency. If your application runs as expected this informational message can be ignored.
+2025-10-07 01:39:23,702 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-07 01:39:35,959 [main] INFO  Main logger - Java Wrapper generation completed successfully!
+2025-10-07 01:39:35,960 [main] INFO  Main logger - Wrapper saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\WrapperOutputs\java_wrapper_2025-10-07_01-39.txt
+2025-10-07 01:39:35,961 [main] INFO  Main logger - Report saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\Logs\wrapper_logs_2025-10-07_01-39.txt
+2025-10-07 01:39:35,961 [main] INFO  Main logger - ================================================================================
+2025-10-07 01:39:35,961 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
+2025-10-07 01:39:35,962 [main] INFO  Main logger - ================================================================================
+2025-10-19 01:36:39,032 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-19 01:37:07,390 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-19 01:37:07,392 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-19 01:37:07,691 [main] INFO  Main logger - Fragmenting code...
+2025-10-19 01:37:07,691 [main] INFO  Main logger - Using custom SDK file: D:\Wrapper\AIConvenienceAPI\azure-sdks\ai-src\ConnectionsAsyncClient.java
+2025-10-19 01:37:07,877 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-19 01:37:07,878 [main] DEBUG Main logger - Sending initial evaluation prompt.
+2025-10-19 01:37:11,171 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-19 01:37:11,172 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 1
+2025-10-19 01:37:17,242 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 2
+2025-10-19 01:37:19,045 [main] INFO  Main logger - Java Wrapper generation completed successfully!
+2025-10-19 01:37:19,047 [main] INFO  Main logger - Wrapper saved to: D:\Wrapper\AIConvenienceAPI\Outputs\RawWrapperOutputs\raw_wrapper_output_2025-10-19_01-37.txt
+2025-10-19 01:37:19,048 [main] INFO  Main logger - Report saved to: D:\Wrapper\AIConvenienceAPI\Outputs\Logs\wrapper_logs_2025-10-19_01-37.txt
+2025-10-19 01:37:19,071 [main] INFO  Main logger - ================================================================================
+2025-10-19 01:37:19,071 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
+2025-10-19 01:37:19,071 [main] INFO  Main logger - ================================================================================
+2025-10-19 01:46:39,148 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-19 01:46:57,355 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-19 01:46:57,356 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-19 01:46:57,880 [main] INFO  Main logger - Fragmenting code...
+2025-10-19 01:46:57,880 [main] INFO  Main logger - Using custom SDK file: D:\Wrapper\AIConvenienceAPI\azure-sdks\blob-storage-src\BlobClient.java
+2025-10-19 01:46:58,077 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-19 01:46:58,077 [main] DEBUG Main logger - Sending initial evaluation prompt.
+2025-10-19 01:47:01,256 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-19 01:47:01,257 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 1
+2025-10-19 01:47:06,836 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 2
+2025-10-19 01:47:14,082 [main] INFO  Main logger - Java Wrapper generation completed successfully!
+2025-10-19 01:47:14,085 [main] INFO  Main logger - Wrapper saved to: D:\Wrapper\AIConvenienceAPI\Outputs\RawWrapperOutputs\raw_wrapper_output_2025-10-19_01-47.txt
+2025-10-19 01:47:14,086 [main] INFO  Main logger - Report saved to: D:\Wrapper\AIConvenienceAPI\Outputs\Logs\wrapper_logs_2025-10-19_01-46.txt
+2025-10-19 01:47:14,120 [main] INFO  Main logger - ================================================================================
+2025-10-19 01:47:14,120 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
+2025-10-19 01:47:14,121 [main] INFO  Main logger - ================================================================================
+2025-10-19 16:04:10,985 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-19 16:04:13,008 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-19 16:04:13,009 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-19 16:04:13,716 [main] INFO  Main logger - Fragmenting code...
+2025-10-19 16:04:13,717 [main] INFO  Main logger - Using default SDK file: C:\Users\New\Desktop\uni\2025\AIConvenienceAPI\azure-sdks\ai-src\DatasetsClient.java
+2025-10-19 16:04:13,963 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-19 16:04:13,963 [main] DEBUG Main logger - Sending initial evaluation prompt.
+2025-10-19 16:04:18,201 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-19 16:04:18,201 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 1
+2025-10-19 16:04:23,947 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 2
+2025-10-19 16:04:27,799 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 3
+2025-10-19 16:04:32,605 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 4
+2025-10-19 16:04:42,465 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 5
+2025-10-19 16:04:50,399 [main] INFO  Main logger - Java Wrapper generation completed successfully!
+2025-10-19 16:04:50,401 [main] INFO  Main logger - Wrapper saved to: C:\Users\New\Desktop\uni\2025\AIConvenienceAPI\Outputs\RawWrapperOutputs\raw_wrapper_output_2025-10-19_16-04.txt
+2025-10-19 16:04:50,402 [main] INFO  Main logger - Report saved to: C:\Users\New\Desktop\uni\2025\AIConvenienceAPI\Outputs\Logs\wrapper_logs_2025-10-19_16-04.txt
+2025-10-19 16:04:50,445 [main] INFO  Main logger - ================================================================================
+2025-10-19 16:04:50,445 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
+2025-10-19 16:04:50,445 [main] INFO  Main logger - ================================================================================

@@ -1,0 +1,49 @@
+Context: The following Java SDK methods were flagged as potential candidates for generating convenience wrappers. The accompanying design guidelines outline desired principles for improving developer experience.
+
+Your task:
+Your goal is to think like an SDK designer, not a refactorer.
+Analyse the methods and guidelines to identify high-level developer goals or workflows that are currently too low-level or fragmented.
+
+Follow these steps:
+1. Understand developer intent:
+- What real-world task or developer workflow does this SDK enable?
+- What steps would a developer typically need to perform manually?
+2. Identify friction points:
+- Are there repetitive setup steps, parameter redundancies, or multi-call workflows that could be hidden or automated?
+3. Design potential convenience wrappers that:
+- Represent meaningful user tasks.
+- Eliminate multiple low-level method calls or configuration steps.
+- Provide sensible defaults or intelligent handling for common cases.
+4. Reject shallow wrappers.
+- Do NOT propose wrappers that only merge 2-3 existing methods, unless they significantly improve clarity or hide complex logic.
+5.  Return the generated wrapper methods, along with comments stating which methods were wrapped, and the reason for wrapping.
+
+Output format:
+/**
+ * {Brief JavaDoc summary of code.}
+ */
+public void exampleWrapper() {
+    /*
+      Combined Methods: methodOne, methodTwo, etc.
+      Reason: Explain why this wrapper improves developer experience
+    */
+    // Code here
+}
+
+
+Extra Notes:
+- Do NOT create any classes. Your output code should only be wrapper methods.
+- Do NOT include any extra commentary, aside from that in the wrapper method comments.
+- Make sure that the 'Combined Methods' and 'Reason' comments are in block comments inside of the method, NOT in the Javadocs comment.
+- Preserve existing functionality of the combined methods.
+- Quality over quantity. Avoid creating wrapper methods for the sake of it. All wrappers must be justified
+- Output the code as raw text. Do NOT put it in a code block with backticks
+
+Methods:
+```
+{code}
+```
+Design Guidelines:
+"""
+{guidelines}
+"""
