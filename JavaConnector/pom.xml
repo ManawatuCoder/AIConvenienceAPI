@@ -136,6 +136,7 @@
     </dependencies>
 
     <build>
+        <finalName>JavaConnector</finalName>
         <plugins>
             <!-- Maven Compiler Plugin -->
             <plugin>

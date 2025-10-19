@@ -30,3 +30,378 @@
 2025-10-19T03:04:42.464878900Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[f4f63b8f, L:/192.168.1.3:50754 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
 2025-10-19T03:04:42.469906100Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[f4f63b8f, L:/192.168.1.3:50754 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
 2025-10-19T03:04:50.390813100Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[f4f63b8f, L:/192.168.1.3:50754 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+2025-10-19T05:04:09.026691800Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[32120b6e] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+2025-10-19T05:04:09.358559400Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[32120b6e, L:/192.168.1.159:55380 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+2025-10-19T05:04:10.221354400Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[32120b6e, L:/192.168.1.159:55380 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+com.azure.core.exception.ResourceNotFoundException: Status code 404, "{"error":{"code":"DeploymentNotFound","message":"The API deployment for this resource does not exist. If you created the deployment within the last 5 minutes, please wait a moment and try again."}}"
+	at com.azure.core.implementation.http.rest.RestProxyBase.instantiateUnexpectedException(RestProxyBase.java:347)
+	at com.azure.core.implementation.http.rest.SyncRestProxy.ensureExpectedStatus(SyncRestProxy.java:125)
+	at com.azure.core.implementation.http.rest.SyncRestProxy.handleRestReturnType(SyncRestProxy.java:202)
+	at com.azure.core.implementation.http.rest.SyncRestProxy.invoke(SyncRestProxy.java:82)
+	at com.azure.core.implementation.http.rest.RestProxyBase.invoke(RestProxyBase.java:110)
+	at com.azure.core.http.rest.RestProxy.invoke(RestProxy.java:91)
+	at jdk.proxy2/jdk.proxy2.$Proxy19.getChatCompletionsSync(Unknown Source)
+	at com.azure.ai.openai.implementation.OpenAIClientImpl.getChatCompletionsWithResponse(OpenAIClientImpl.java:1444)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletionsWithResponse(OpenAIClient.java:318)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletions(OpenAIClient.java:685)
+	at Main.sendFragments(Main.java:118)
+	at Main.processFirstPrompt(Main.java:402)
+	at Main.prepareFragments(Main.java:166)
+	at Main.runCliMode(Main.java:731)
+	at Main.main(Main.java:675)
+java.lang.NullPointerException: Cannot invoke "String.length()" because "s" is null
+	at java.base/java.io.StringReader.<init>(StringReader.java:50)
+	at com.google.gson.JsonParser.parseString(JsonParser.java:92)
+	at Main.prepareFragments(Main.java:174)
+	at Main.runCliMode(Main.java:731)
+	at Main.main(Main.java:675)
+2025-10-19T05:06:08.591883700Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[9b252cd5] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+2025-10-19T05:06:08.915537200Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[9b252cd5, L:/192.168.1.159:55419 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+2025-10-19T05:06:12.069806700Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[9b252cd5, L:/192.168.1.159:55419 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+2025-10-19T05:06:12.221802200Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[9b252cd5, L:/192.168.1.159:55419 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+2025-10-19T05:06:17.766163400Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[9b252cd5, L:/192.168.1.159:55419 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+2025-10-19T05:06:17.772162Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[9b252cd5, L:/192.168.1.159:55419 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+2025-10-19T05:06:23.653629200Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[9b252cd5, L:/192.168.1.159:55419 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+2025-10-19T05:06:23.659629400Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[9b252cd5, L:/192.168.1.159:55419 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+2025-10-19T05:06:30.155964Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[9b252cd5, L:/192.168.1.159:55419 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+2025-10-19T05:06:30.160964200Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[9b252cd5, L:/192.168.1.159:55419 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+2025-10-19T05:06:38.655171Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[9b252cd5, L:/192.168.1.159:55419 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+2025-10-19T05:06:38.662170400Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[9b252cd5, L:/192.168.1.159:55419 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+2025-10-19T05:06:42.730269300Z reactor-http-nio-1 WARN found 4 argument placeholders, but provided 5 for pattern `[9b252cd5, L:/192.168.1.159:55419 - R:azsdk-openai.openai.azure.com/20.62.58.5:443] {}, now: {} active connections, {} inactive connections and {} pending acquire requests.`
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:84)
+	at Main.runCliMode(Main.java:689)
+	at Main.main(Main.java:675)
+Caused by: java.nio.file.NoSuchFileException: \JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:84)
+	at Main.runCliMode(Main.java:689)
+	at Main.main(Main.java:675)
+Caused by: java.nio.file.NoSuchFileException: \..\JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:84)
+	at Main.runCliMode(Main.java:689)
+	at Main.main(Main.java:675)
+Caused by: java.nio.file.NoSuchFileException: \JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:84)
+	at Main.runCliMode(Main.java:689)
+	at Main.main(Main.java:675)
+Caused by: java.nio.file.NoSuchFileException: \JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.lang.IllegalStateException: AZURE_OPENAI_KEY is missing in config.properties
+	at Main.loadConfigProperties(Main.java:78)
+	... 2 more
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.lang.IllegalStateException: AZURE_OPENAI_KEY is missing in config.properties
+	at Main.loadConfigProperties(Main.java:78)
+	... 2 more
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.nio.file.NoSuchFileException: \JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.nio.file.NoSuchFileException: \JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.nio.file.NoSuchFileException: .\JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.nio.file.NoSuchFileException: JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.nio.file.NoSuchFileException: JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.nio.file.NoSuchFileException: JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:86)
+	at Main.runCliMode(Main.java:691)
+	at Main.main(Main.java:677)
+Caused by: java.lang.IllegalStateException: AZURE_OPENAI_KEY is missing in config.properties
+	at Main.loadConfigProperties(Main.java:78)
+	... 2 more
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:86)
+	at Main.runCliMode(Main.java:691)
+	at Main.main(Main.java:677)
+Caused by: java.nio.file.NoSuchFileException: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergeneratorJavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:86)
+	at Main.runCliMode(Main.java:691)
+	at Main.main(Main.java:677)
+Caused by: java.lang.IllegalStateException: AZURE_OPENAI_KEY is missing in config.properties
+	at Main.loadConfigProperties(Main.java:78)
+	... 2 more
+reactor.core.Exceptions$ReactiveException: java.net.MalformedURLException: no protocol: 0/openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview
+	at reactor.core.Exceptions.propagate(Exceptions.java:410)
+	at com.azure.core.implementation.http.rest.RestProxyBase.invoke(RestProxyBase.java:116)
+	at com.azure.core.http.rest.RestProxy.invoke(RestProxy.java:91)
+	at jdk.proxy2/jdk.proxy2.$Proxy19.getChatCompletionsSync(Unknown Source)
+	at com.azure.ai.openai.implementation.OpenAIClientImpl.getChatCompletionsWithResponse(OpenAIClientImpl.java:1444)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletionsWithResponse(OpenAIClient.java:318)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletions(OpenAIClient.java:685)
+	at Main.sendFragments(Main.java:120)
+	at Main.processFirstPrompt(Main.java:404)
+	at Main.prepareFragments(Main.java:168)
+	at Main.runCliMode(Main.java:733)
+	at Main.main(Main.java:677)
+Caused by: java.net.MalformedURLException: no protocol: 0/openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview
+	at java.base/java.net.URL.<init>(URL.java:772)
+	at java.base/java.net.URL.<init>(URL.java:654)
+	at java.base/java.net.URL.<init>(URL.java:590)
+	at com.azure.core.implementation.ImplUtils.createUrl(ImplUtils.java:354)
+	at com.azure.core.util.UrlBuilder.toUrl(UrlBuilder.java:332)
+	at com.azure.core.implementation.http.rest.RestProxyBase.createHttpRequest(RestProxyBase.java:238)
+	at com.azure.core.implementation.http.rest.RestProxyBase.invoke(RestProxyBase.java:91)
+	... 10 more
+java.lang.NullPointerException: Cannot invoke "String.length()" because "s" is null
+	at java.base/java.io.StringReader.<init>(StringReader.java:50)
+	at com.google.gson.JsonParser.parseString(JsonParser.java:92)
+	at Main.prepareFragments(Main.java:176)
+	at Main.runCliMode(Main.java:733)
+	at Main.main(Main.java:677)
+java.lang.RuntimeException: config.properties may not exist, or may not be populated
+	at Main.loadConfigProperties(Main.java:86)
+	at Main.runCliMode(Main.java:691)
+	at Main.main(Main.java:677)
+Caused by: java.nio.file.NoSuchFileException: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergeneratornullJavaConnectornullconfig.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+java.lang.RuntimeException: config.properties may not exist, or may not be populated
+	at Main.loadConfigProperties(Main.java:86)
+	at Main.runCliMode(Main.java:693)
+	at Main.main(Main.java:679)
+Caused by: java.nio.file.NoSuchFileException: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergeneratornullJavaConnectornullconfig.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+java.lang.RuntimeException: config.properties may not exist, or may not be populated
+	at Main.loadConfigProperties(Main.java:86)
+	at Main.runCliMode(Main.java:693)
+	at Main.main(Main.java:679)
+Caused by: java.nio.file.NoSuchFileException: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergeneratornullJavaConnectornullconfig.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+java.lang.RuntimeException: config.properties may not exist, or may not be populated
+	at Main.loadConfigProperties(Main.java:86)
+	at Main.runCliMode(Main.java:693)
+	at Main.main(Main.java:679)
+Caused by: java.nio.file.NoSuchFileException: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergeneratornullJavaConnectornullconfig.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+reactor.core.Exceptions$ReactiveException: java.net.MalformedURLException: no protocol: 0/openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview
+	at reactor.core.Exceptions.propagate(Exceptions.java:410)
+	at com.azure.core.implementation.http.rest.RestProxyBase.invoke(RestProxyBase.java:116)
+	at com.azure.core.http.rest.RestProxy.invoke(RestProxy.java:91)
+	at jdk.proxy2/jdk.proxy2.$Proxy19.getChatCompletionsSync(Unknown Source)
+	at com.azure.ai.openai.implementation.OpenAIClientImpl.getChatCompletionsWithResponse(OpenAIClientImpl.java:1444)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletionsWithResponse(OpenAIClient.java:318)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletions(OpenAIClient.java:685)
+	at Main.sendFragments(Main.java:120)
+	at Main.processFirstPrompt(Main.java:404)
+	at Main.prepareFragments(Main.java:168)
+	at Main.runCliMode(Main.java:733)
+	at Main.main(Main.java:677)
+Caused by: java.net.MalformedURLException: no protocol: 0/openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview
+	at java.base/java.net.URL.<init>(URL.java:772)
+	at java.base/java.net.URL.<init>(URL.java:654)
+	at java.base/java.net.URL.<init>(URL.java:590)
+	at com.azure.core.implementation.ImplUtils.createUrl(ImplUtils.java:354)
+	at com.azure.core.util.UrlBuilder.toUrl(UrlBuilder.java:332)
+	at com.azure.core.implementation.http.rest.RestProxyBase.createHttpRequest(RestProxyBase.java:238)
+	at com.azure.core.implementation.http.rest.RestProxyBase.invoke(RestProxyBase.java:91)
+	... 10 more
+java.lang.NullPointerException: Cannot invoke "String.length()" because "s" is null
+	at java.base/java.io.StringReader.<init>(StringReader.java:50)
+	at com.google.gson.JsonParser.parseString(JsonParser.java:92)
+	at Main.prepareFragments(Main.java:176)
+	at Main.runCliMode(Main.java:733)
+	at Main.main(Main.java:677)
+reactor.core.Exceptions$ReactiveException: java.net.MalformedURLException: no protocol: 0/openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview
+	at reactor.core.Exceptions.propagate(Exceptions.java:410)
+	at com.azure.core.implementation.http.rest.RestProxyBase.invoke(RestProxyBase.java:116)
+	at com.azure.core.http.rest.RestProxy.invoke(RestProxy.java:91)
+	at jdk.proxy2/jdk.proxy2.$Proxy19.getChatCompletionsSync(Unknown Source)
+	at com.azure.ai.openai.implementation.OpenAIClientImpl.getChatCompletionsWithResponse(OpenAIClientImpl.java:1444)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletionsWithResponse(OpenAIClient.java:318)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletions(OpenAIClient.java:685)
+	at Main.sendFragments(Main.java:120)
+	at Main.processFirstPrompt(Main.java:404)
+	at Main.prepareFragments(Main.java:168)
+	at Main.runCliMode(Main.java:733)
+	at Main.main(Main.java:677)
+Caused by: java.net.MalformedURLException: no protocol: 0/openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview
+	at java.base/java.net.URL.<init>(URL.java:772)
+	at java.base/java.net.URL.<init>(URL.java:654)
+	at java.base/java.net.URL.<init>(URL.java:590)
+	at com.azure.core.implementation.ImplUtils.createUrl(ImplUtils.java:354)
+	at com.azure.core.util.UrlBuilder.toUrl(UrlBuilder.java:332)
+	at com.azure.core.implementation.http.rest.RestProxyBase.createHttpRequest(RestProxyBase.java:238)
+	at com.azure.core.implementation.http.rest.RestProxyBase.invoke(RestProxyBase.java:91)
+	... 10 more
+java.lang.NullPointerException: Cannot invoke "String.length()" because "s" is null
+	at java.base/java.io.StringReader.<init>(StringReader.java:50)
+	at com.google.gson.JsonParser.parseString(JsonParser.java:92)
+	at Main.prepareFragments(Main.java:176)
+	at Main.runCliMode(Main.java:733)
+	at Main.main(Main.java:677)

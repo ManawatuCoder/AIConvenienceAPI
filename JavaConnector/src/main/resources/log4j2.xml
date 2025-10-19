@@ -26,6 +26,10 @@
         <File name="AzureLogger" fileName="../Logs/azure.log" append="true">
             <PatternLayout pattern="%d [%t] %-5level %logger - %msg%n"/>
         </File>
+
+        <File name="ReactorLogger" fileName="../Logs/reactor.log" append="true">
+            <PatternLayout pattern="%d [%t] %-5level %logger - %msg%n"/>
+        </File>
     </Appenders>
 
     <Loggers>
@@ -41,10 +45,19 @@
             <AppenderRef ref="AzureLogger"/>
         </Logger>
 
+        <Logger name="reactor-http-epoll-1" additivity="false">
+            <AppenderRef ref="ReactorLogger"/>
+        </Logger>
+
         <Root level="DEBUG">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="FileLogger"/>
             <AppenderRef ref="ErrorLogger"/>
         </Root>
+
+        <Logger name="reactor.netty" level="INFO" additivity="false">
+            <AppenderRef ref="NettyLogger"/>
+        </Logger>
+
     </Loggers>
 </Configuration>

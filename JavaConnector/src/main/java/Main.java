@@ -51,16 +51,7 @@ public class Main {
   private static String AZURE_OPENAI_ENDPOINT;
   private static String AZURE_OPENAI_KEY;
   private static String DEPLOYMENT_NAME;
-
-  // Logging
-  static {
-    try {
-      PrintStream fileErr = new PrintStream(new FileOutputStream("../Outputs/Logs/system.err.log", true));
-      System.setErr(fileErr);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
+  
   // Logger
   private static Logger logger = LoggerFactory.getLogger("Main logger");
 
@@ -81,7 +72,7 @@ public class Main {
         throw new IllegalStateException("AZURE_OPENAI_ENDPOINT is missing in config.properties");
       }
     } catch (Exception e) {
-      throw new RuntimeException("Unable to find config.properties", e);
+      throw new RuntimeException("config.properties may not exist, or may not be populated", e);
     }
   }
 

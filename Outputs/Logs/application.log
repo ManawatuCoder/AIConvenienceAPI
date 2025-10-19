@@ -95,3 +95,442 @@
 2025-10-19 16:04:50,445 [main] INFO  Main logger - ================================================================================
 2025-10-19 16:04:50,445 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
 2025-10-19 16:04:50,445 [main] INFO  Main logger - ================================================================================
+2025-10-19 18:03:57,321 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-19 18:04:06,840 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-19 18:04:06,842 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-19 18:04:07,782 [main] INFO  Main logger - Fragmenting code...
+2025-10-19 18:04:07,782 [main] INFO  Main logger - Using default SDK file: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\azure-sdks\ai-src\DatasetsClient.java
+2025-10-19 18:04:08,128 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-19 18:04:08,129 [main] DEBUG Main logger - Sending initial evaluation prompt.
+2025-10-19 18:04:10,278 [main] ERROR Main logger - Error during convenience wrapper generation: Status code 404, "{"error":{"code":"DeploymentNotFound","message":"The API deployment for this resource does not exist. If you created the deployment within the last 5 minutes, please wait a moment and try again."}}"
+com.azure.core.exception.ResourceNotFoundException: Status code 404, "{"error":{"code":"DeploymentNotFound","message":"The API deployment for this resource does not exist. If you created the deployment within the last 5 minutes, please wait a moment and try again."}}"
+	at com.azure.core.implementation.http.rest.RestProxyBase.instantiateUnexpectedException(RestProxyBase.java:347)
+	at com.azure.core.implementation.http.rest.SyncRestProxy.ensureExpectedStatus(SyncRestProxy.java:125)
+	at com.azure.core.implementation.http.rest.SyncRestProxy.handleRestReturnType(SyncRestProxy.java:202)
+	at com.azure.core.implementation.http.rest.SyncRestProxy.invoke(SyncRestProxy.java:82)
+	at com.azure.core.implementation.http.rest.RestProxyBase.invoke(RestProxyBase.java:110)
+	at com.azure.core.http.rest.RestProxy.invoke(RestProxy.java:91)
+	at jdk.proxy2/jdk.proxy2.$Proxy19.getChatCompletionsSync(Unknown Source)
+	at com.azure.ai.openai.implementation.OpenAIClientImpl.getChatCompletionsWithResponse(OpenAIClientImpl.java:1444)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletionsWithResponse(OpenAIClient.java:318)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletions(OpenAIClient.java:685)
+	at Main.sendFragments(Main.java:118)
+	at Main.processFirstPrompt(Main.java:402)
+	at Main.prepareFragments(Main.java:166)
+	at Main.runCliMode(Main.java:731)
+	at Main.main(Main.java:675)
+2025-10-19 18:04:10,280 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-19 18:04:10,281 [main] ERROR Main logger - Error occurred: Cannot invoke "String.length()" because "s" is null
+java.lang.NullPointerException: Cannot invoke "String.length()" because "s" is null
+	at java.base/java.io.StringReader.<init>(StringReader.java:50)
+	at com.google.gson.JsonParser.parseString(JsonParser.java:92)
+	at Main.prepareFragments(Main.java:174)
+	at Main.runCliMode(Main.java:731)
+	at Main.main(Main.java:675)
+2025-10-19 18:06:03,646 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-19 18:06:06,370 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-19 18:06:06,371 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-19 18:06:07,040 [main] INFO  Main logger - Fragmenting code...
+2025-10-19 18:06:07,040 [main] INFO  Main logger - Using default SDK file: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\azure-sdks\ai-src\DatasetsClient.java
+2025-10-19 18:06:07,516 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-19 18:06:07,517 [main] DEBUG Main logger - Sending initial evaluation prompt.
+2025-10-19 18:06:12,203 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-19 18:06:12,203 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 1
+2025-10-19 18:06:17,768 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 2
+2025-10-19 18:06:23,656 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 3
+2025-10-19 18:06:30,156 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 4
+2025-10-19 18:06:38,657 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 5
+2025-10-19 18:06:42,742 [main] INFO  Main logger - Java Wrapper generation completed successfully!
+2025-10-19 18:06:42,745 [main] INFO  Main logger - Wrapper saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\Outputs\RawWrapperOutputs\raw_wrapper_output_2025-10-19_18-06.txt
+2025-10-19 18:06:42,747 [main] INFO  Main logger - Report saved to: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\Outputs\Logs\wrapper_logs_2025-10-19_18-06.txt
+2025-10-19 18:06:42,810 [main] INFO  Main logger - ================================================================================
+2025-10-19 18:06:42,810 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
+2025-10-19 18:06:42,810 [main] INFO  Main logger - ================================================================================
+2025-10-19 18:49:45,703 [main] ERROR Main logger - Error occurred: Unable to find config.properties
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:84)
+	at Main.runCliMode(Main.java:689)
+	at Main.main(Main.java:675)
+Caused by: java.nio.file.NoSuchFileException: \JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+2025-10-19 18:50:27,142 [main] ERROR Main logger - Error occurred: Unable to find config.properties
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:84)
+	at Main.runCliMode(Main.java:689)
+	at Main.main(Main.java:675)
+Caused by: java.nio.file.NoSuchFileException: \..\JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+2025-10-19 18:50:55,784 [main] ERROR Main logger - Error occurred: Unable to find config.properties
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:84)
+	at Main.runCliMode(Main.java:689)
+	at Main.main(Main.java:675)
+Caused by: java.nio.file.NoSuchFileException: \JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+2025-10-19 18:51:09,462 [main] ERROR Main logger - Error occurred: Unable to find config.properties
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:84)
+	at Main.runCliMode(Main.java:689)
+	at Main.main(Main.java:675)
+Caused by: java.nio.file.NoSuchFileException: \JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+2025-10-19 18:59:04,409 [main] ERROR Main logger - Error occurred: Unable to find config.properties
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.lang.IllegalStateException: AZURE_OPENAI_KEY is missing in config.properties
+	at Main.loadConfigProperties(Main.java:78)
+	... 2 more
+2025-10-19 18:59:39,404 [main] ERROR Main logger - Error occurred: Unable to find config.properties
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.lang.IllegalStateException: AZURE_OPENAI_KEY is missing in config.properties
+	at Main.loadConfigProperties(Main.java:78)
+	... 2 more
+2025-10-19 19:00:17,463 [main] ERROR Main logger - Error occurred: Unable to find config.properties
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.nio.file.NoSuchFileException: \JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+2025-10-19 19:01:17,762 [main] ERROR Main logger - Error occurred: Unable to find config.properties
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.nio.file.NoSuchFileException: \JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+2025-10-19 19:01:33,625 [main] ERROR Main logger - Error occurred: Unable to find config.properties
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.nio.file.NoSuchFileException: .\JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+2025-10-19 19:02:53,759 [main] ERROR Main logger - Error occurred: Unable to find config.properties
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.nio.file.NoSuchFileException: JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+2025-10-19 19:03:16,152 [main] ERROR Main logger - Error occurred: Unable to find config.properties
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.nio.file.NoSuchFileException: JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+2025-10-19 19:03:46,448 [main] ERROR Main logger - Error occurred: Unable to find config.properties
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:85)
+	at Main.runCliMode(Main.java:690)
+	at Main.main(Main.java:676)
+Caused by: java.nio.file.NoSuchFileException: JavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+2025-10-19 19:04:53,431 [main] ERROR Main logger - Error occurred: Unable to find config.properties
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:86)
+	at Main.runCliMode(Main.java:691)
+	at Main.main(Main.java:677)
+Caused by: java.lang.IllegalStateException: AZURE_OPENAI_KEY is missing in config.properties
+	at Main.loadConfigProperties(Main.java:78)
+	... 2 more
+2025-10-19 19:09:35,712 [main] ERROR Main logger - Error occurred: Unable to find config.properties
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:86)
+	at Main.runCliMode(Main.java:691)
+	at Main.main(Main.java:677)
+Caused by: java.nio.file.NoSuchFileException: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergeneratorJavaConnector\config.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+2025-10-19 19:10:21,926 [main] ERROR Main logger - Error occurred: Unable to find config.properties
+java.lang.RuntimeException: Unable to find config.properties
+	at Main.loadConfigProperties(Main.java:86)
+	at Main.runCliMode(Main.java:691)
+	at Main.main(Main.java:677)
+Caused by: java.lang.IllegalStateException: AZURE_OPENAI_KEY is missing in config.properties
+	at Main.loadConfigProperties(Main.java:78)
+	... 2 more
+2025-10-19 19:10:46,093 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-19 19:12:24,573 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-19 19:12:29,568 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-19 19:12:29,569 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-19 19:12:30,511 [main] INFO  Main logger - Fragmenting code...
+2025-10-19 19:12:30,512 [main] INFO  Main logger - Using default SDK file: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\azure-sdks\ai-src\DatasetsClient.java
+2025-10-19 19:12:31,035 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-19 19:12:31,035 [main] DEBUG Main logger - Sending initial evaluation prompt.
+2025-10-19 19:12:31,175 [main] ERROR Main logger - Error during convenience wrapper generation: java.net.MalformedURLException: no protocol: 0/openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview
+reactor.core.Exceptions$ReactiveException: java.net.MalformedURLException: no protocol: 0/openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview
+	at reactor.core.Exceptions.propagate(Exceptions.java:410)
+	at com.azure.core.implementation.http.rest.RestProxyBase.invoke(RestProxyBase.java:116)
+	at com.azure.core.http.rest.RestProxy.invoke(RestProxy.java:91)
+	at jdk.proxy2/jdk.proxy2.$Proxy19.getChatCompletionsSync(Unknown Source)
+	at com.azure.ai.openai.implementation.OpenAIClientImpl.getChatCompletionsWithResponse(OpenAIClientImpl.java:1444)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletionsWithResponse(OpenAIClient.java:318)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletions(OpenAIClient.java:685)
+	at Main.sendFragments(Main.java:120)
+	at Main.processFirstPrompt(Main.java:404)
+	at Main.prepareFragments(Main.java:168)
+	at Main.runCliMode(Main.java:733)
+	at Main.main(Main.java:677)
+Caused by: java.net.MalformedURLException: no protocol: 0/openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview
+	at java.base/java.net.URL.<init>(URL.java:772)
+	at java.base/java.net.URL.<init>(URL.java:654)
+	at java.base/java.net.URL.<init>(URL.java:590)
+	at com.azure.core.implementation.ImplUtils.createUrl(ImplUtils.java:354)
+	at com.azure.core.util.UrlBuilder.toUrl(UrlBuilder.java:332)
+	at com.azure.core.implementation.http.rest.RestProxyBase.createHttpRequest(RestProxyBase.java:238)
+	at com.azure.core.implementation.http.rest.RestProxyBase.invoke(RestProxyBase.java:91)
+	... 10 more
+2025-10-19 19:12:31,179 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-19 19:12:31,179 [main] ERROR Main logger - Error occurred: Cannot invoke "String.length()" because "s" is null
+java.lang.NullPointerException: Cannot invoke "String.length()" because "s" is null
+	at java.base/java.io.StringReader.<init>(StringReader.java:50)
+	at com.google.gson.JsonParser.parseString(JsonParser.java:92)
+	at Main.prepareFragments(Main.java:176)
+	at Main.runCliMode(Main.java:733)
+	at Main.main(Main.java:677)
+2025-10-19 19:23:21,452 [main] ERROR Main logger - Error occurred: config.properties may not exist, or may not be populated
+java.lang.RuntimeException: config.properties may not exist, or may not be populated
+	at Main.loadConfigProperties(Main.java:86)
+	at Main.runCliMode(Main.java:691)
+	at Main.main(Main.java:677)
+Caused by: java.nio.file.NoSuchFileException: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergeneratornullJavaConnectornullconfig.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+2025-10-19 19:24:15,175 [main] ERROR Main logger - Error occurred: config.properties may not exist, or may not be populated
+java.lang.RuntimeException: config.properties may not exist, or may not be populated
+	at Main.loadConfigProperties(Main.java:86)
+	at Main.runCliMode(Main.java:693)
+	at Main.main(Main.java:679)
+Caused by: java.nio.file.NoSuchFileException: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergeneratornullJavaConnectornullconfig.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+2025-10-19 19:25:05,690 [main] ERROR Main logger - Error occurred: config.properties may not exist, or may not be populated
+java.lang.RuntimeException: config.properties may not exist, or may not be populated
+	at Main.loadConfigProperties(Main.java:86)
+	at Main.runCliMode(Main.java:693)
+	at Main.main(Main.java:679)
+Caused by: java.nio.file.NoSuchFileException: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergeneratornullJavaConnectornullconfig.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+2025-10-19 19:25:35,274 [main] ERROR Main logger - Error occurred: config.properties may not exist, or may not be populated
+java.lang.RuntimeException: config.properties may not exist, or may not be populated
+	at Main.loadConfigProperties(Main.java:86)
+	at Main.runCliMode(Main.java:693)
+	at Main.main(Main.java:679)
+Caused by: java.nio.file.NoSuchFileException: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergeneratornullJavaConnectornullconfig.properties
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:234)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:379)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:431)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:159)
+	at Main.loadConfigProperties(Main.java:70)
+	... 2 more
+2025-10-19 19:27:48,689 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-19 19:27:52,412 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-19 19:27:52,413 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-19 19:27:53,243 [main] INFO  Main logger - Fragmenting code...
+2025-10-19 19:27:53,244 [main] INFO  Main logger - Using default SDK file: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\azure-sdks\ai-src\DatasetsClient.java
+2025-10-19 19:27:53,676 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-19 19:27:53,676 [main] DEBUG Main logger - Sending initial evaluation prompt.
+2025-10-19 19:27:53,776 [main] ERROR Main logger - Error during convenience wrapper generation: java.net.MalformedURLException: no protocol: 0/openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview
+reactor.core.Exceptions$ReactiveException: java.net.MalformedURLException: no protocol: 0/openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview
+	at reactor.core.Exceptions.propagate(Exceptions.java:410)
+	at com.azure.core.implementation.http.rest.RestProxyBase.invoke(RestProxyBase.java:116)
+	at com.azure.core.http.rest.RestProxy.invoke(RestProxy.java:91)
+	at jdk.proxy2/jdk.proxy2.$Proxy19.getChatCompletionsSync(Unknown Source)
+	at com.azure.ai.openai.implementation.OpenAIClientImpl.getChatCompletionsWithResponse(OpenAIClientImpl.java:1444)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletionsWithResponse(OpenAIClient.java:318)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletions(OpenAIClient.java:685)
+	at Main.sendFragments(Main.java:120)
+	at Main.processFirstPrompt(Main.java:404)
+	at Main.prepareFragments(Main.java:168)
+	at Main.runCliMode(Main.java:733)
+	at Main.main(Main.java:677)
+Caused by: java.net.MalformedURLException: no protocol: 0/openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview
+	at java.base/java.net.URL.<init>(URL.java:772)
+	at java.base/java.net.URL.<init>(URL.java:654)
+	at java.base/java.net.URL.<init>(URL.java:590)
+	at com.azure.core.implementation.ImplUtils.createUrl(ImplUtils.java:354)
+	at com.azure.core.util.UrlBuilder.toUrl(UrlBuilder.java:332)
+	at com.azure.core.implementation.http.rest.RestProxyBase.createHttpRequest(RestProxyBase.java:238)
+	at com.azure.core.implementation.http.rest.RestProxyBase.invoke(RestProxyBase.java:91)
+	... 10 more
+2025-10-19 19:27:53,778 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-19 19:27:53,779 [main] ERROR Main logger - Error occurred: Cannot invoke "String.length()" because "s" is null
+java.lang.NullPointerException: Cannot invoke "String.length()" because "s" is null
+	at java.base/java.io.StringReader.<init>(StringReader.java:50)
+	at com.google.gson.JsonParser.parseString(JsonParser.java:92)
+	at Main.prepareFragments(Main.java:176)
+	at Main.runCliMode(Main.java:733)
+	at Main.main(Main.java:677)
+2025-10-19 19:45:26,205 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-19 19:45:32,642 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-19 19:45:32,643 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-19 19:45:33,476 [main] INFO  Main logger - Fragmenting code...
+2025-10-19 19:45:33,477 [main] INFO  Main logger - Using default SDK file: C:\Users\Pease\Documents\codes\Personal\uni\Capstone\wrappergenerator\azure-sdks\ai-src\DatasetsClient.java
+2025-10-19 19:45:33,868 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-19 19:45:33,869 [main] DEBUG Main logger - Sending initial evaluation prompt.
+2025-10-19 19:45:33,954 [main] ERROR Main logger - Error during convenience wrapper generation: java.net.MalformedURLException: no protocol: 0/openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview
+reactor.core.Exceptions$ReactiveException: java.net.MalformedURLException: no protocol: 0/openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview
+	at reactor.core.Exceptions.propagate(Exceptions.java:410)
+	at com.azure.core.implementation.http.rest.RestProxyBase.invoke(RestProxyBase.java:116)
+	at com.azure.core.http.rest.RestProxy.invoke(RestProxy.java:91)
+	at jdk.proxy2/jdk.proxy2.$Proxy19.getChatCompletionsSync(Unknown Source)
+	at com.azure.ai.openai.implementation.OpenAIClientImpl.getChatCompletionsWithResponse(OpenAIClientImpl.java:1444)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletionsWithResponse(OpenAIClient.java:318)
+	at com.azure.ai.openai.OpenAIClient.getChatCompletions(OpenAIClient.java:685)
+	at Main.sendFragments(Main.java:120)
+	at Main.processFirstPrompt(Main.java:404)
+	at Main.prepareFragments(Main.java:168)
+	at Main.runCliMode(Main.java:733)
+	at Main.main(Main.java:677)
+Caused by: java.net.MalformedURLException: no protocol: 0/openai/deployments/gpt-4.1/chat/completions?api-version=2024-03-01-preview
+	at java.base/java.net.URL.<init>(URL.java:772)
+	at java.base/java.net.URL.<init>(URL.java:654)
+	at java.base/java.net.URL.<init>(URL.java:590)
+	at com.azure.core.implementation.ImplUtils.createUrl(ImplUtils.java:354)
+	at com.azure.core.util.UrlBuilder.toUrl(UrlBuilder.java:332)
+	at com.azure.core.implementation.http.rest.RestProxyBase.createHttpRequest(RestProxyBase.java:238)
+	at com.azure.core.implementation.http.rest.RestProxyBase.invoke(RestProxyBase.java:91)
+	... 10 more
+2025-10-19 19:45:33,956 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-19 19:45:33,957 [main] ERROR Main logger - Error occurred: Cannot invoke "String.length()" because "s" is null
+java.lang.NullPointerException: Cannot invoke "String.length()" because "s" is null
+	at java.base/java.io.StringReader.<init>(StringReader.java:50)
+	at com.google.gson.JsonParser.parseString(JsonParser.java:92)
+	at Main.prepareFragments(Main.java:176)
+	at Main.runCliMode(Main.java:733)
+	at Main.main(Main.java:677)
+2025-10-19 19:52:56,386 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework

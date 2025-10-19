@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a45e00b1-fa9f-4959-ae6b-85c268df1552" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaConnector/src/main/java/config/PathConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaConnector/src/main/java/config/PathConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outputs/Logs/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/Outputs/Logs/application.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outputs/Logs/errors.log" beforeDir="false" afterPath="$PROJECT_DIR$/Outputs/Logs/errors.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outputs/Logs/netty.log" beforeDir="false" afterPath="$PROJECT_DIR$/Outputs/Logs/netty.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outputs/Logs/system.err.log" beforeDir="false" afterPath="$PROJECT_DIR$/Outputs/Logs/system.err.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,19 +42,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/ghostowl/IdeaProjects/AIConvenienceAPI/JavaConnector/pom.xml&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/ghostowl/IdeaProjects/AIConvenienceAPI/JavaConnector/pom.xml",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="WrapperGenerator" />
