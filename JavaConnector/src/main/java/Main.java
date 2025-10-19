@@ -395,7 +395,7 @@ public class Main {
   private static String processFirstPrompt(OpenAIClient client, String methods, String headings,
       StringBuilder reportBuilder) throws IOException {
 
-    String prompt = Files.readString(Path.of(PathConfiguration.METHODS_GUIDELINES_PROMPT));
+    String prompt = Files.readString(Path.of(PathConfiguration.FIRST_PROMPT));
     prompt = prompt.replace("{methodNames}", methods);
     prompt = prompt.replace("{guidelines}", headings);
 
@@ -416,7 +416,7 @@ public class Main {
   private static String processSecondPrompt(OpenAIClient client, Map<String, String> flaggedMethods,
       Map<String, String> flaggedGuidelines, StringBuilder reportBuilder) throws IOException {
 
-    String prompt = Files.readString(Path.of(PathConfiguration.MAIN_PROMPT));
+    String prompt = Files.readString(Path.of(PathConfiguration.SECOND_PROMPT));
 
     // Build selected code and guidelines
     StringBuilder selectedCode = new StringBuilder();
