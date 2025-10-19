@@ -3,7 +3,7 @@ package config;
 public class PathConfiguration {
 
     // *** UPDATE THIS PATH FOR YOUR LOCAL ENVIRONMENT ***
-    private static final String BASE_PROJECT_PATH = "D:\\Wrapper\\AIConvenienceAPI";
+    private static final String BASE_PROJECT_PATH = "C:\\path\\to\\your\\AIConvenienceAPI";
 
     // DO NOT MODIFY THESE
     private static final String JAVA_CONNECTOR_BASE = BASE_PROJECT_PATH + "\\JavaConnector";
