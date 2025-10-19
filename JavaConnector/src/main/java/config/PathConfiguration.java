@@ -5,6 +5,10 @@ public class PathConfiguration {
     // *** UPDATE THIS PATH FOR YOUR LOCAL ENVIRONMENT ***
     private static final String BASE_PROJECT_PATH = "C:\\path\\to\\your\\AIConvenienceAPI";
 
+    // TypeSpec (codegen) generated files - default path
+    public static final String DEFAULT_CONTAINERS_CLIENT = BASE_PROJECT_PATH +
+            "\\azure-sdks\\ai-src\\DatasetsClient.java";
+
     // DO NOT MODIFY THESE
     private static final String JAVA_CONNECTOR_BASE = BASE_PROJECT_PATH + "\\JavaConnector";
     private static final String PROMPTS_BASE = BASE_PROJECT_PATH + "\\Prompts";
@@ -18,18 +22,14 @@ public class PathConfiguration {
     public static final String CONFIG_PROPERTIES = JAVA_CONNECTOR_BASE + "\\config.properties";
 
     // Prompt files
-    public static final String SYSTEM_PROMPT = PROMPTS_BASE + "\\DeveloperIntentSystemPrompt.txt";
-    public static final String METHODS_GUIDELINES_PROMPT = PROMPTS_BASE + "\\MethodsGuidelinesPrompt.txt";
-    public static final String MAIN_PROMPT = PROMPTS_BASE + "\\DeveloperIntentMainPrompt.txt";
+    public static final String SYSTEM_PROMPT = PROMPTS_BASE + "\\SystemPrompt.txt";
+    public static final String FIRST_PROMPT = PROMPTS_BASE + "\\FirstPrompt.txt"; // Method/guideline request prompt
+    public static final String SECOND_PROMPT = PROMPTS_BASE + "\\SecondPrompt.txt"; // Wrapper generation prompt
 
     // Output files
     public static final String MERGED_OUTPUT_TEMPLATE = MERGED_OUTPUT_BASE + "\\java_wrapper_%s.java";
     public static final String WRAPPER_OUTPUT_TEMPLATE = WRAPPER_OUTPUTS_BASE + "\\raw_wrapper_output_%s.txt";
     public static final String LOG_OUTPUT_TEMPLATE = LOGS_OUTPUTS_BASE + "\\wrapper_logs_%s.txt";
-
-    // TypeSpec generated files - default path
-    public static final String DEFAULT_CONTAINERS_CLIENT = BASE_PROJECT_PATH +
-            "\\azure-sdks\\ai-src\\DatasetsClient.java";
 
     // Guidelines fragmentation cache files
     public static final String GUIDELINES_JSON = GUIDELINES_OUTPUT_BASE + "\\guidelinesJson.txt";
