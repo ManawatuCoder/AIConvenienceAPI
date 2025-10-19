@@ -50,7 +50,7 @@ public class Main {
   // Azure OpenAI configuration constants
   private static String AZURE_OPENAI_ENDPOINT;
   private static String AZURE_OPENAI_KEY;
-  private static final String DEPLOYMENT_NAME = "gpt-4.1";
+  private static String DEPLOYMENT_NAME;
 
   // Logging
   static {
@@ -72,6 +72,7 @@ public class Main {
 
       AZURE_OPENAI_ENDPOINT = prop.getProperty("AZURE_OPENAI_ENDPOINT");
       AZURE_OPENAI_KEY = prop.getProperty("AZURE_OPENAI_KEY");
+      DEPLOYMENT_NAME = prop.getProperty("DEPLOYMENT_NAME");
 
       if (AZURE_OPENAI_KEY == null || AZURE_OPENAI_KEY.isEmpty()) {
         throw new IllegalStateException("AZURE_OPENAI_KEY is missing in config.properties");
