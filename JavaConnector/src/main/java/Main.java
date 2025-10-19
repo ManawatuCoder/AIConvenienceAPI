@@ -50,7 +50,7 @@ public class Main {
   // Azure OpenAI configuration constants
   private static String AZURE_OPENAI_ENDPOINT;
   private static String AZURE_OPENAI_KEY;
-  private static final String DEPLOYMENT_NAME = "gpt-4.1";
+  private static String DEPLOYMENT_NAME;
 
   // Logging
   static {
@@ -72,6 +72,7 @@ public class Main {
 
       AZURE_OPENAI_ENDPOINT = prop.getProperty("AZURE_OPENAI_ENDPOINT");
       AZURE_OPENAI_KEY = prop.getProperty("AZURE_OPENAI_KEY");
+      DEPLOYMENT_NAME = prop.getProperty("DEPLOYMENT_NAME");
 
       if (AZURE_OPENAI_KEY == null || AZURE_OPENAI_KEY.isEmpty()) {
         throw new IllegalStateException("AZURE_OPENAI_KEY is missing in config.properties");
@@ -394,7 +395,7 @@ public class Main {
   private static String processFirstPrompt(OpenAIClient client, String methods, String headings,
       StringBuilder reportBuilder) throws IOException {
 
-    String prompt = Files.readString(Path.of(PathConfiguration.METHODS_GUIDELINES_PROMPT));
+    String prompt = Files.readString(Path.of(PathConfiguration.FIRST_PROMPT));
     prompt = prompt.replace("{methodNames}", methods);
     prompt = prompt.replace("{guidelines}", headings);
 
@@ -415,7 +416,7 @@ public class Main {
   private static String processSecondPrompt(OpenAIClient client, Map<String, String> flaggedMethods,
       Map<String, String> flaggedGuidelines, StringBuilder reportBuilder) throws IOException {
 
-    String prompt = Files.readString(Path.of(PathConfiguration.MAIN_PROMPT));
+    String prompt = Files.readString(Path.of(PathConfiguration.SECOND_PROMPT));
 
     // Build selected code and guidelines
     StringBuilder selectedCode = new StringBuilder();

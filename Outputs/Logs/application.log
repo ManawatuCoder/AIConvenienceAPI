@@ -76,3 +76,22 @@
 2025-10-19 01:47:14,120 [main] INFO  Main logger - ================================================================================
 2025-10-19 01:47:14,120 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
 2025-10-19 01:47:14,121 [main] INFO  Main logger - ================================================================================
+2025-10-19 16:04:10,985 [main] DEBUG reactor.util.Loggers - Using Slf4j logging framework
+2025-10-19 16:04:13,008 [main] INFO  Main logger - Starting convenience wrapper generation...
+2025-10-19 16:04:13,009 [main] INFO  Main logger - Fetching and parsing guidelines...
+2025-10-19 16:04:13,716 [main] INFO  Main logger - Fragmenting code...
+2025-10-19 16:04:13,717 [main] INFO  Main logger - Using default SDK file: C:\Users\New\Desktop\uni\2025\AIConvenienceAPI\azure-sdks\ai-src\DatasetsClient.java
+2025-10-19 16:04:13,963 [main] INFO  Main logger - Step 1: Getting AI recommendations...
+2025-10-19 16:04:13,963 [main] DEBUG Main logger - Sending initial evaluation prompt.
+2025-10-19 16:04:18,201 [main] INFO  Main logger - Step 2: Generating convenience wrapper...
+2025-10-19 16:04:18,201 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 1
+2025-10-19 16:04:23,947 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 2
+2025-10-19 16:04:27,799 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 3
+2025-10-19 16:04:32,605 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 4
+2025-10-19 16:04:42,465 [main] DEBUG Main logger - Sending iterative wrapping prompt number: 5
+2025-10-19 16:04:50,399 [main] INFO  Main logger - Java Wrapper generation completed successfully!
+2025-10-19 16:04:50,401 [main] INFO  Main logger - Wrapper saved to: C:\Users\New\Desktop\uni\2025\AIConvenienceAPI\Outputs\RawWrapperOutputs\raw_wrapper_output_2025-10-19_16-04.txt
+2025-10-19 16:04:50,402 [main] INFO  Main logger - Report saved to: C:\Users\New\Desktop\uni\2025\AIConvenienceAPI\Outputs\Logs\wrapper_logs_2025-10-19_16-04.txt
+2025-10-19 16:04:50,445 [main] INFO  Main logger - ================================================================================
+2025-10-19 16:04:50,445 [main] INFO  Main logger - CLI EXECUTION COMPLETED SUCCESSFULLY
+2025-10-19 16:04:50,445 [main] INFO  Main logger - ================================================================================
