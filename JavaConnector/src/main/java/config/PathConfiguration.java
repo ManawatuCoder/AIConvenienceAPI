@@ -1,39 +1,71 @@
 package config;
 
+import java.io.File;
+import java.nio.file.Paths;
+
 public class PathConfiguration {
 
+    static String slash = File.separator;
+
+    private static String calculateBasePath() {
+        String currentDir = System.getProperty("user.dir");
+        java.nio.file.Path currentPath = Paths.get(currentDir);
+
+        // If current directory is JavaConnector go up one level
+        if (currentPath.getFileName().toString().equals("JavaConnector")) {
+            return currentPath.getParent().toString();
+        }
+
+        // If current directory contains JavaConnector subdirectory, use current
+        // directory
+        java.nio.file.Path javaConnectorPath = currentPath.resolve("JavaConnector");
+        if (java.nio.file.Files.exists(javaConnectorPath)) {
+            return currentDir;
+        }
+
+        // check if current directory name contains "AIConvenienceAPI"
+        if (currentPath.getFileName().toString().contains("AIConvenienceAPI")) {
+            return currentDir;
+        }
+
+        // go up one level
+        return currentPath.getParent().toString();
+    }
+
     // *** UPDATE THIS PATH FOR YOUR LOCAL ENVIRONMENT ***
-    private static final String BASE_PROJECT_PATH = "C:\\Users\\smith\\IdeaProjects\\AIConvenienceAPI";
+    private static final String BASE_PROJECT_PATH = calculateBasePath();
+
+    public String getBasePath() {
+        return BASE_PROJECT_PATH;
+    }
 
     // TypeSpec (codegen) generated files - default path
-    public static final String DEFAULT_CONTAINERS_CLIENT = BASE_PROJECT_PATH +
-            "\\azure-sdks\\ai-src\\DatasetsClient.java";
+    public static final String DEFAULT_CONTAINERS_CLIENT = BASE_PROJECT_PATH + "" + slash + "azure-sdks" + slash + "ai-src" + slash + "DatasetsClient.java";
 
     // DO NOT MODIFY THESE
-    private static final String JAVA_CONNECTOR_BASE = BASE_PROJECT_PATH + "\\JavaConnector";
-    private static final String PROMPTS_BASE = BASE_PROJECT_PATH + "\\Prompts";
-    private static final String LOGS_OUTPUTS_BASE = BASE_PROJECT_PATH + "\\Outputs\\Logs";
-    private static final String WRAPPER_OUTPUTS_BASE = BASE_PROJECT_PATH + "\\Outputs\\RawWrapperOutputs";
-    private static final String MERGED_OUTPUT_BASE = BASE_PROJECT_PATH + "\\Outputs\\MergedOutputs";
-    private static final String GUIDELINES_OUTPUT_BASE = JAVA_CONNECTOR_BASE +
-            "\\src\\main\\java\\guidelinesFragmentation\\output";
+    private static final String JAVA_CONNECTOR_BASE = BASE_PROJECT_PATH + "" + slash + "JavaConnector";
+    private static final String PROMPTS_BASE = BASE_PROJECT_PATH + "" + slash + "Prompts";
+    private static final String LOGS_OUTPUTS_BASE = BASE_PROJECT_PATH + "" + slash + "Outputs" + slash + "Logs";
+    private static final String WRAPPER_OUTPUTS_BASE = BASE_PROJECT_PATH + "" + slash + "Outputs" + slash + "RawWrapperOutputs";
+    private static final String MERGED_OUTPUT_BASE = BASE_PROJECT_PATH + "" + slash + "Outputs" + slash + "MergedOutputs";
+    private static final String GUIDELINES_OUTPUT_BASE = JAVA_CONNECTOR_BASE + "" + slash + "src" + slash + "main" + slash + "java" + slash + "guidelinesFragmentation" + slash + "output";
 
     // Configuration files
-    public static final String CONFIG_PROPERTIES = JAVA_CONNECTOR_BASE + "\\config.properties";
+    public static final String CONFIG_PROPERTIES = JAVA_CONNECTOR_BASE + "" + slash + "config.properties";
 
     // Prompt files
-    public static final String SYSTEM_PROMPT = PROMPTS_BASE + "\\SystemPrompt.txt";
-    public static final String FIRST_PROMPT = PROMPTS_BASE + "\\FirstPrompt.txt"; // Method/guideline request prompt
-    public static final String SECOND_PROMPT = PROMPTS_BASE + "\\SecondPrompt.txt"; // Wrapper generation prompt
+    public static final String SYSTEM_PROMPT = PROMPTS_BASE + "" + slash + "SystemPrompt.txt";
+    public static final String FIRST_PROMPT = PROMPTS_BASE + "" + slash + "FirstPrompt.txt"; // Method/guideline request
+    public static final String SECOND_PROMPT = PROMPTS_BASE + "" + slash + "SecondPrompt.txt"; // Wrapper generation
 
     // Output files
-    public static final String MERGED_OUTPUT_TEMPLATE = MERGED_OUTPUT_BASE + "\\java_wrapper_%s.java";
-    public static final String WRAPPER_OUTPUT_TEMPLATE = WRAPPER_OUTPUTS_BASE + "\\raw_wrapper_output_%s.txt";
-    public static final String LOG_OUTPUT_TEMPLATE = LOGS_OUTPUTS_BASE + "\\wrapper_logs_%s.txt";
+    public static final String MERGED_OUTPUT_TEMPLATE = MERGED_OUTPUT_BASE + "" + slash + "java_wrapper_%s.java";
+    public static final String WRAPPER_OUTPUT_TEMPLATE = WRAPPER_OUTPUTS_BASE + "" + slash + "raw_wrapper_output_%s.txt";
+    public static final String LOG_OUTPUT_TEMPLATE = LOGS_OUTPUTS_BASE + "" + slash + "wrapper_logs_%s.txt";
 
     // Guidelines fragmentation cache files
-    public static final String GUIDELINES_JSON = GUIDELINES_OUTPUT_BASE + "\\guidelinesJson.txt";
-    public static final String LAST_MODIFIED_FILE = GUIDELINES_OUTPUT_BASE + "\\last-modified.txt";
+    public static final String GUIDELINES_JSON = GUIDELINES_OUTPUT_BASE + "" + slash + "guidelinesJson.txt";
+    public static final String LAST_MODIFIED_FILE = GUIDELINES_OUTPUT_BASE + "" + slash + "last-modified.txt";
 
     public static String getFinalOutputPath(String timestamp) {
         return String.format(MERGED_OUTPUT_TEMPLATE, timestamp);

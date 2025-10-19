@@ -289,7 +289,7 @@ public class Main {
     }
 
     Files.writeString(outputPath, mergedWrapperOutput, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
-    System.out.println("Merged wrapper saved to: " + outputPath);
+    logger.info("Merged wrapper saved to: " + outputPath);
   }
 
   // Overloaded method that accepts custom file path
@@ -335,7 +335,7 @@ public class Main {
     }
 
     Files.writeString(outputPath, mergedWrapperOutput, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
-    System.out.println("Merged wrapper saved to: " + outputPath);
+    logger.info("Merged wrapper saved to: " + outputPath);
   }
 
   // Creates a timestamped output file path
@@ -671,13 +671,13 @@ public class Main {
 
     // Check if running in CLI mode
     if (args.length > 0 && args[0].equals("--cli")) {
-      System.out.println("Running in CLI mode...");
+      logger.info("Running in CLI mode...");
       runCliMode();
       return;
     }
 
     // Default MCP Server mode
-    System.out.println("Starting MCP Server mode...");
+    logger.info("Starting MCP Server mode...");
     runMcpServerMode();
   }
 
