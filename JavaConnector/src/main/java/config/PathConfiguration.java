@@ -8,7 +8,7 @@ public class PathConfiguration {
     static String slash = File.separator;
 
     // *** UPDATE THIS PATH FOR YOUR LOCAL ENVIRONMENT ***
-    private static final String BASE_PROJECT_PATH = Paths.get(System.getProperty("user.dir")).toString();
+    private static final String BASE_PROJECT_PATH = Paths.get(System.getProperty("user.dir")).getParent().toString();
 
     public String getBasePath(){
         return BASE_PROJECT_PATH;

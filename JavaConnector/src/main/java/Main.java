@@ -81,6 +81,7 @@ public class Main {
         throw new IllegalStateException("AZURE_OPENAI_ENDPOINT is missing in config.properties");
       }
     } catch (Exception e) {
+      System.out.println(PathConfiguration.CONFIG_PROPERTIES);
       throw new RuntimeException("Unable to find config.properties", e);
     }
   }
